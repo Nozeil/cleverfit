@@ -1,7 +1,5 @@
 import { Layout } from 'antd';
 
-import './main-page.css';
-
 const { Header, Content, Footer } = Layout;
 
 export const MainPage = () => {

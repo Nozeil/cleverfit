@@ -4,7 +4,7 @@ import { Menu } from 'antd';
 import { LABELS } from './index.constants';
 
 import styles from './index.module.css';
-import './index.styles.css';
+import './index.css';
 
 const { CALENDAR, WORKOUT, ACHIEVEMENTS, PROFILE } = LABELS;
 

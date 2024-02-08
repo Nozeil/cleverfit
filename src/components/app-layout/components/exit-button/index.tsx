@@ -1,7 +1,7 @@
 import { Button } from 'antd';
 import ExitIcon from '@components/icons/exit-icon';
 
-import './index.styles.css';
+import './index.css';
 
 const ExitButton = () => {
     return (

@@ -1,5 +1,7 @@
-import { AppLayout } from '@components/index';
-import { MainPage } from '@pages/index';
+
+import { AppLayout } from '@components/app-layout';
+import { MainPage } from '@pages/main-page';
+
 import {
     createRoutesFromElements,
     Route,

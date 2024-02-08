@@ -1,7 +1,7 @@
 import { Image } from 'antd';
 import AppLogo from '/svg/logo.svg';
 
-import styles from './logo.module.css';
+import styles from './index.module.css';
 
 export const Logo = () => {
     return (
