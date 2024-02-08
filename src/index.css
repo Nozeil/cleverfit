@@ -1,6 +1,5 @@
 :root {
     --font-family: 'Inter', sans-serif;
-    --second-family: 'Roboto', sans-serif;
     --character-light-title-85: #262626;
     --character-light-primary-85: #262626;
     --character-light-secondary-45: #8c8c8c;
@@ -82,4 +81,15 @@
     --character-dark-link: #177ddc;
     --character-dark-red-4: #791a1f;
     --character-dark-sider-background: #111d2c;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--character-light-title-85);
 }

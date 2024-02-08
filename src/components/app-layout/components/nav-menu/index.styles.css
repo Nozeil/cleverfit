@@ -1,0 +1,14 @@
+.ant-menu.ant-menu-vertical {
+    color: inherit;
+    border-right: none;
+
+    .ant-menu-item {
+        margin-top: 0;
+        height: 42px;
+        line-height: 42px;
+    }
+
+    .ant-menu-item:not(:last-child) {
+        margin-bottom: 16px;
+    }
+}
