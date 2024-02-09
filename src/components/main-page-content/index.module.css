@@ -1,0 +1,9 @@
+.space {
+    max-width: 752px;
+    margin: 24px 0;
+}
+
+.card {
+    white-space: pre-line;
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+}

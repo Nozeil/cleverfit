@@ -1,12 +1,12 @@
-.anticon-calendar svg path:first-child {
+.ant-menu-item .anticon-calendar svg path:first-child {
     fill: var(--primary-light-9);
 }
 
-.anticon-idcard svg path:nth-child(2) {
+.ant-menu-item .anticon-idcard svg path:nth-child(2) {
     fill: transparent;
 }
 
-.anticon-idcard svg path:nth-child(3) {
+.ant-menu-item .anticon-idcard svg path:nth-child(3) {
     fill: var(--primary-light-9);
 }
 

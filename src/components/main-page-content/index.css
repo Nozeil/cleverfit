@@ -1,0 +1,23 @@
+.ant-space-item {
+    & .ant-card {
+        line-height: inherit;
+    }
+}
+
+.ant-card .ant-card-body,
+.ant-card-body .ant-typography {
+    line-height: inherit;
+}
+
+.ant-space-item:first-child .ant-card .ant-typography {
+    font-size: 1rem;
+    color: var(--primary-light-9);
+}
+
+.ant-space-item:nth-child(2) .ant-card {
+    & .ant-typography {
+        font-size: 20px;
+        font-weight: 500;
+        color: inherit;
+    }
+}

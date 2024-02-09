@@ -10,17 +10,14 @@ import { SIDER_SIZES } from './index.constants';
 import styles from './index.module.css';
 import './index.css';
 
-const { Sider } = Layout;
-
 export const AppLayout = () => {
     const [collapsed, setCollapsed] = useState(false);
 
     const onTrigger = () => setCollapsed((prevCollapsed) => !prevCollapsed);
 
-
     return (
         <Layout className={styles.layout}>
-            <Sider
+            <Layout.Sider
                 className={styles.sider}
                 collapsed={collapsed}
                 collapsedWidth={SIDER_SIZES.COLLAPSED_WIDTH}
@@ -32,7 +29,7 @@ export const AppLayout = () => {
                 <Logo cropped={collapsed} />
                 <Trigger collapsed={collapsed} onClick={onTrigger} />
                 <NavMenu />
-            </Sider>
+            </Layout.Sider>
             <Outlet />
         </Layout>
     );

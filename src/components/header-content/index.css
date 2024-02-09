@@ -1,21 +1,4 @@
-.ant-layout-sider + .ant-layout {
-    background-color: transparent;
-
-    & .ant-layout-header,
-    & .ant-layout-content,
-    & .ant-layout-footer {
-        padding: 0 24px;
-    }
-}
-
-.ant-layout-sider + .ant-layout .ant-layout-header {
-    padding-top: 16px;
-    padding-bottom: 16px;
-    height: fit-content;
-    color: inherit;
-    line-height: inherit;
-    background-color: var(--primary-light-1);
-
+.ant-layout-header {
     & .ant-breadcrumb,
     & .ant-breadcrumb li,
     & .ant-typography {
@@ -32,13 +15,11 @@
     }
 }
 
-.ant-space {
-    & .ant-space-item:first-child {
-        flex-grow: 1;
-    }
+.ant-layout-header .ant-space-horizontal .ant-space-item:first-child {
+    flex-grow: 1;
 }
 
-.ant-space-item {
+.ant-layout-header .ant-space-item {
     & .ant-btn {
         padding-top: 0;
         padding-bottom: 0;

@@ -1,5 +1,9 @@
 import { Layout } from 'antd';
 import HeaderContent from '@components/header-content';
+import MainPageContent from '@components/main-page-content';
+import FooterContent from '@components/footer-content';
+
+import './index.css';
 
 const { Header, Content, Footer } = Layout;
 
@@ -9,8 +13,12 @@ export const MainPage = () => {
             <Header>
                 <HeaderContent />
             </Header>
-            <Content>Content</Content>
-            <Footer>Footer</Footer>
+            <Content>
+                <MainPageContent />
+            </Content>
+            <Footer>
+                <FooterContent />
+            </Footer>
         </Layout>
     );
 };
