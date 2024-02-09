@@ -1,6 +1,9 @@
-.ant-layout-sider + .ant-layout {
+.ant-layout-sider + .ant-layout,
+.ant-layout-sider + .ant-layout .ant-layout-footer {
     background-color: transparent;
+}
 
+.ant-layout-sider + .ant-layout {
     & .ant-layout-header,
     & .ant-layout-content,
     & .ant-layout-footer {
@@ -15,4 +18,8 @@
     color: inherit;
     line-height: inherit;
     background-color: var(--primary-light-1);
+}
+
+.ant-layout-sider + .ant-layout .ant-layout-footer {
+    color: inherit;
 }

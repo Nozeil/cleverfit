@@ -6,20 +6,21 @@ import type { ActionCardProps } from './index.types';
 
 import './index.css';
 
+const color = 'var(--primary-light-6)';
 const cards: ActionCardProps[] = [
     {
         title: 'Расписать тренировки',
-        buttonIcon: <HeartFilled style={{ color: 'var(--primary-light-6)' }} />,
+        buttonIcon: <HeartFilled style={{ color: color }} />,
         buttonContent: 'Тренировки',
     },
     {
         title: 'Назначить календарь',
-        buttonIcon: <CalendarTwoTone twoToneColor='var(--primary-light-6)' />,
+        buttonIcon: <CalendarTwoTone twoToneColor={color} />,
         buttonContent: 'Календарь',
     },
     {
         title: 'Заполнить профиль',
-        buttonIcon: <IdcardTwoTone twoToneColor='var(--primary-light-6)' />,
+        buttonIcon: <IdcardTwoTone twoToneColor={color} />,
         buttonContent: 'Профиль',
     },
 ];

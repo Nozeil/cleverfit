@@ -1,0 +1,9 @@
+.space {
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 42px;
+}
+
+.card {
+    box-shadow: var(--card-box-shadow);
+}

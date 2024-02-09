@@ -1,0 +1,30 @@
+.ant-layout-footer .ant-card-body {
+    padding: 0;
+}
+.ant-layout-footer .ant-card-meta {
+    padding: 12px 24px;
+}
+
+.ant-layout-footer .ant-card-meta-detail .ant-btn-link {
+    padding: 0;
+    height: fit-content;
+    text-align: start;
+    line-height: inherit;
+}
+
+.ant-layout-footer .ant-card-meta-detail .ant-btn-link:last-child {
+    padding-right: 25px;
+}
+
+.ant-layout-footer .ant-card-meta-detail .ant-btn-link:last-child:disabled {
+    color: var(--character-light-secondary-45);
+}
+
+.ant-layout-footer .ant-card-actions .ant-btn {
+    padding: 7px 11px;
+    border: none;
+}
+
+.ant-card-actions > li {
+    color: inherit;
+}

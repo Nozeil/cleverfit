@@ -7,6 +7,7 @@ import { Router } from '@components/router';
 import 'antd/dist/antd.css';
 import 'normalize.css';
 import './index.css';
+import './index.module.css';
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);

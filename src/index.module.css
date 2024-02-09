@@ -1,0 +1,11 @@
+:global(.ant-btn-link) {
+    color: var(--primary-light-6);
+}
+
+:global(.ant-card) {
+  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+}
+
+:global(.ant-card) {
+  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+}
