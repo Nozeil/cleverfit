@@ -1,12 +1,12 @@
+import { Divider, Menu } from 'antd';
 import { CalendarOutlined, HeartFilled, TrophyFilled, IdcardOutlined } from '@ant-design/icons';
-import { Menu } from 'antd';
+import ExitIcon from '@components/icons/exit-icon';
 
 import { LABELS } from './index.constants';
 
-import styles from './index.module.css';
 import './index.css';
 
-const { CALENDAR, WORKOUT, ACHIEVEMENTS, PROFILE } = LABELS;
+const { CALENDAR, WORKOUT, ACHIEVEMENTS, PROFILE, EXIT, DIVIDER } = LABELS;
 
 const menuItems = [
     {
@@ -33,10 +33,20 @@ const menuItems = [
         icon: <IdcardOutlined style={{ color: 'var(--primary-light-9)' }} />,
         key: PROFILE,
     },
+    {
+        icon: <Divider />,
+        key: DIVIDER,
+    },
+    {
+        label: EXIT,
+        title: EXIT,
+        icon: <ExitIcon width={16} height={16} />,
+        key: EXIT,
+    },
 ];
 
 const NavMenu = () => {
-    return <Menu className={styles.menu} items={menuItems} />;
+    return <Menu items={menuItems} />;
 };
 
 export default NavMenu;

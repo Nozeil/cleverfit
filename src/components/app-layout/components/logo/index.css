@@ -1,0 +1,14 @@
+.ant-image {
+    & .ant-image-img {
+        margin: 30px 0 50px;
+        padding: 14px 46px 17px 29px;
+        max-height: 64px;
+    }
+}
+
+.ant-layout-sider-collapsed {
+    & .ant-image-img {
+        padding: 18px;
+        width: 100%;
+    }
+}

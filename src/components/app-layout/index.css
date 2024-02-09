@@ -1,8 +1,5 @@
 .ant-layout-sider > .ant-layout-sider-children {
+    position: relative;
     display: flex;
     flex-direction: column;
-}
-
-.ant-divider.ant-divider-horizontal {
-    margin: 0;
 }

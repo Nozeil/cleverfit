@@ -1,14 +1,37 @@
+.ant-divider.ant-divider-horizontal {
+    margin: 0;
+}
+
 .ant-menu.ant-menu-vertical {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
     color: inherit;
     border-right: none;
 
-    .ant-menu-item {
+    & .ant-menu-item {
         margin-top: 0;
         height: 42px;
         line-height: 42px;
     }
 
-    .ant-menu-item:not(:last-child) {
+    & .ant-menu-item:not(:last-child) {
         margin-bottom: 16px;
+    }
+
+    & .ant-menu-item:nth-last-child(2) {
+        padding: 0;
+        margin: auto 0 0;
+        height: 1px;
+        pointer-events: none;
+    }
+
+    & .ant-menu-item:last-child {
+        margin: 0;
+        padding: 0 16px;
+
+        & .ant-menu-item-icon + span {
+            margin-left: 27px;
+        }
     }
 }

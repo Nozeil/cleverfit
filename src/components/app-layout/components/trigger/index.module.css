@@ -1,0 +1,16 @@
+.shadowBox {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    filter: drop-shadow(2px 0 2px rgba(0, 0, 0, 0.15));
+    transform: translate(100%, -50%);
+}
+
+.polygon {
+    background-color: var(--character-light-primary-inverse);
+    clip-path: polygon(0 0, 0 0, 100% 13%, 100% 87%, 0 100%, 0 100%, 0% 80%, 0% 20%);
+}
+
+.trigger {
+    padding: 26px 3px;
+}

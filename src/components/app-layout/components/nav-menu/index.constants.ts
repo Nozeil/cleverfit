@@ -3,4 +3,6 @@ export const LABELS = {
     WORKOUT: 'Тренировки',
     ACHIEVEMENTS: 'Достижения',
     PROFILE: 'Профиль',
+    EXIT: 'Выход',
+    DIVIDER: 'Divider',
 } as const;

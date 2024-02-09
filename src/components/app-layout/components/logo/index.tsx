@@ -1,12 +1,15 @@
 import { Image } from 'antd';
-import AppLogo from '/svg/logo.svg';
+import LogoSrc from '/svg/logo.svg';
+import CroppedLogoSrc from '/svg/cropped-logo.svg';
 
-import styles from './index.module.css';
+import './index.css';
 
-export const Logo = () => {
-    return (
-        <div className={styles.wrapper}>
-            <Image className={styles.image} src={AppLogo} preview={false} alt='logo' />
-        </div>
-    );
+interface LogoProps {
+    cropped: boolean;
+}
+
+export const Logo = ({ cropped }: LogoProps) => {
+    const src = cropped ? CroppedLogoSrc : LogoSrc;
+
+    return <Image src={src} preview={false} alt='logo' />;
 };
