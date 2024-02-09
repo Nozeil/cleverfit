@@ -92,4 +92,5 @@ body,
 body {
     font-family: var(--font-family);
     color: var(--character-light-title-85);
+    line-height: 1.3;
 }
