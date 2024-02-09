@@ -1,8 +1,8 @@
 import { Divider, Menu } from 'antd';
-import { CalendarOutlined, HeartFilled, TrophyFilled, IdcardOutlined } from '@ant-design/icons';
-import ExitIcon from '@components/icons/exit-icon';
+import { CalendarTwoTone, HeartFilled, TrophyFilled, IdcardTwoTone } from '@ant-design/icons';
+import ExitIcon from '@components/icons/exit';
 
-import { LABELS } from './index.constants';
+import { LABELS, ICONS_COLOR } from './index.constants';
 
 import './index.css';
 
@@ -12,25 +12,25 @@ const menuItems = [
     {
         label: CALENDAR,
         title: CALENDAR,
-        icon: <CalendarOutlined style={{ color: 'var(--primary-light-9)' }} />,
+        icon: <CalendarTwoTone twoToneColor={ICONS_COLOR} />,
         key: CALENDAR,
     },
     {
         label: WORKOUT,
         title: WORKOUT,
-        icon: <HeartFilled style={{ color: 'var(--primary-light-9)' }} />,
+        icon: <HeartFilled style={{ color: ICONS_COLOR }} />,
         key: WORKOUT,
     },
     {
         label: ACHIEVEMENTS,
         title: ACHIEVEMENTS,
-        icon: <TrophyFilled style={{ color: 'var(--primary-light-9)' }} />,
+        icon: <TrophyFilled style={{ color: ICONS_COLOR }} />,
         key: ACHIEVEMENTS,
     },
     {
         label: PROFILE,
         title: PROFILE,
-        icon: <IdcardOutlined style={{ color: 'var(--primary-light-9)' }} />,
+        icon: <IdcardTwoTone twoToneColor={ICONS_COLOR} />,
         key: PROFILE,
     },
     {

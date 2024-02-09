@@ -1,3 +1,15 @@
+.anticon-calendar svg path:first-child {
+    fill: var(--primary-light-9);
+}
+
+.anticon-idcard svg path:nth-child(2) {
+    fill: transparent;
+}
+
+.anticon-idcard svg path:nth-child(3) {
+    fill: var(--primary-light-9);
+}
+
 .ant-divider.ant-divider-horizontal {
     margin: 0;
 }
