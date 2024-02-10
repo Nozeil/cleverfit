@@ -19,7 +19,7 @@ export const AppLayout = () => {
         <Layout className={styles.layout}>
             <Sider collapsed={collapsed} isBreakpoint={isBreakpoint} onBreakpoint={setIsBreakpoint}>
                 <Logo cropped={collapsed} isBreakpoint={isBreakpoint} />
-                <Trigger collapsed={collapsed} onClick={onTrigger} />
+                <Trigger collapsed={collapsed} onClick={onTrigger} isBreakpoint={isBreakpoint} />
                 <NavMenu />
             </Sider>
             <Outlet />
