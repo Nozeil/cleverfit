@@ -1,4 +1,4 @@
-import { Button, Card, Space } from 'antd';
+import { Button, Card } from 'antd';
 
 import { AndroidFilled, AppleFilled } from '@ant-design/icons';
 
@@ -12,10 +12,11 @@ const actions = [
 
 const FooterContent = () => {
     return (
-        <Space className={styles.space} align='end'>
+        <div className={`space ${styles.space}`}>
             <Button block type='link' size='large'>
                 Смотреть отзывы
             </Button>
+
             <Card bordered={false} className={styles.card} actions={actions}>
                 <Card.Meta
                     title={
@@ -30,7 +31,7 @@ const FooterContent = () => {
                     }
                 />
             </Card>
-        </Space>
+        </div>
     );
 };
 

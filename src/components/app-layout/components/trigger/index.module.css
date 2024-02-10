@@ -4,6 +4,7 @@
     right: 1px;
     filter: drop-shadow(2px 0 2px rgba(0, 0, 0, 0.15));
     transform: translate(100%, -50%);
+    z-index: 10;
 }
 
 .polygon {
@@ -13,4 +14,15 @@
 
 .trigger {
     padding: 26px 3px;
+}
+
+@media screen and (max-width: 479px) {
+    .shadowBox {
+        top: 24px;
+        transform: translate(100%, 0);
+    }
+
+    .trigger {
+        padding: 17px 9px;
+    }
 }

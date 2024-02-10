@@ -23,3 +23,10 @@
 .ant-layout-sider + .ant-layout .ant-layout-footer {
     color: inherit;
 }
+
+@media screen and (max-width: 768px) {
+    .ant-layout-sider + .ant-layout .ant-layout-content,
+    .ant-layout-sider + .ant-layout .ant-layout-footer {
+        padding: 0 16px;
+    }
+}

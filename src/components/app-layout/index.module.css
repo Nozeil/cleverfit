@@ -1,10 +1,8 @@
 .layout {
-    height: 100%;
     margin: 0 auto;
     max-width: 1440px;
 
     & .sider {
-        height: 100%;
         box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
     }
 }

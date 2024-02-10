@@ -6,6 +6,7 @@
 
 .ant-card .ant-card-head {
     padding: 0;
+    font-weight: 400;
 }
 
 .ant-card-head .ant-card-head-wrapper {
@@ -31,4 +32,26 @@
 
 .ant-card-body .anticon-idcard svg path:nth-child(3) {
     fill: var(--primary-light-6);
+}
+
+@media screen and (max-width: 834px) {
+    .ant-card-head .ant-card-head-wrapper .ant-card-head-title {
+        text-align: start;
+        white-space: wrap;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .ant-card-head .ant-card-head-wrapper .ant-card-head-title {
+        text-align: center;
+    }
+
+    .ant-space-vertical .ant-row {
+        flex-direction: column;
+        row-gap: 8px;
+    }
+
+    .ant-space-vertical .ant-row .ant-col {
+        max-width: 100%;
+    }
 }

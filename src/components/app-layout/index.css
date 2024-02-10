@@ -1,9 +1,4 @@
 .ant-layout.ant-layout-has-sider {
+    min-height: 100%;
     background: center / cover no-repeat url('/png/main-page-light.png');
-}
-
-.ant-layout-sider > .ant-layout-sider-children {
-    position: relative;
-    display: flex;
-    flex-direction: column;
 }

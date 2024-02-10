@@ -1,0 +1,13 @@
+.ant-layout-sider > .ant-layout-sider-children {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 479px) {
+    .ant-layout .ant-layout-sider {
+        position: fixed;
+        height: 100%;
+        z-index: 10;
+    }
+}

@@ -12,7 +12,7 @@ const HeaderContent = () => {
             </Breadcrumb>
             <Space className={styles.space} align='start'>
                 <Typography.Title className={styles.title}>
-                    {`Приветствуем тебя в CleverFit — приложении,
+                    {`Приветствуем тебя в\u00a0CleverFit\u00a0— приложении, 
                     которое поможет тебе добиться своей мечты!`}
                 </Typography.Title>
                 <Button icon={<SettingOutlined style={{ color: 'black' }} />}>Настройки</Button>

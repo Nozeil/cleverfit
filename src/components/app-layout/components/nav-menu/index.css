@@ -47,3 +47,32 @@
         }
     }
 }
+
+@media screen and (max-width: 479px) {
+    .ant-menu.ant-menu-vertical .ant-menu-item:nth-child(-n + 4) {
+        margin-bottom: 8px;
+    }
+
+    .ant-menu.ant-menu-vertical .ant-menu-item,
+    .ant-menu.ant-menu-vertical .ant-menu-item:last-child {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .ant-menu.ant-menu-vertical .ant-menu-item:last-child {
+        text-align: center;
+    }
+
+    .ant-menu.ant-menu-vertical .ant-menu-title-content {
+        margin: 0;
+    }
+
+    .ant-layout-sider .ant-menu-item .anticon,
+    .ant-menu.ant-menu-inline-collapsed > .ant-menu-item .ant-menu-item-icon {
+        display: none;
+    }
+
+    .ant-menu.ant-menu-vertical .ant-menu-item:last-child .ant-menu-item-icon + span {
+        margin-left: 0;
+    }
+}

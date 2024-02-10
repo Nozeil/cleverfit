@@ -12,3 +12,10 @@
         width: 100%;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .ant-image .ant-image-img {
+        padding: 16px 17px;
+        margin: 0 0 16px;
+    }
+}

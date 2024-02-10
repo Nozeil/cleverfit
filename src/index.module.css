@@ -1,11 +1,41 @@
 :global(.ant-btn-link) {
     color: var(--primary-light-6);
+
+    &:hover,
+    &:focus {
+        color: var(--primary-light-6);
+    }
+
+    &:active {
+        color: var(--primary-light-7);
+    }
+}
+
+:global(.ant-btn-default) {
+    border: none;
+    color: var(--character-light-title-85);
+    background: transparent;
+
+    &::after {
+        display: none;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: var(--character-light-title-85);
+    }
+
+    &:hover,
+    &:focus {
+        background: var(--character-light-table-header);
+    }
+
+    &:active {
+        background: var(--character-light-background);
+    }
 }
 
 :global(.ant-card) {
-  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
-}
-
-:global(.ant-card) {
-  box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
 }
