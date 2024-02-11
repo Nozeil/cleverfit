@@ -3,12 +3,10 @@
     background-color: transparent;
 }
 
-.ant-layout-sider + .ant-layout {
-    & .ant-layout-header,
-    & .ant-layout-content,
-    & .ant-layout-footer {
-        padding: 0 24px;
-    }
+.ant-layout-sider + .ant-layout .ant-layout-header,
+.ant-layout-sider + .ant-layout .ant-layout-content,
+.ant-layout-sider + .ant-layout .ant-layout-footer {
+    padding: 0 24px;
 }
 
 .ant-layout-sider + .ant-layout .ant-layout-header {

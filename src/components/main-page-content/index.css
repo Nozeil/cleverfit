@@ -1,7 +1,5 @@
-.ant-space-item {
-    & .ant-card {
-        line-height: inherit;
-    }
+.ant-space-item .ant-card {
+    line-height: inherit;
 }
 
 .ant-space-item:first-child .ant-card .ant-typography {
