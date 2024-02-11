@@ -2,7 +2,7 @@
     position: absolute;
     top: 50%;
     right: 1px;
-    filter: drop-shadow(2px 0 2px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(3px 0 3px rgba(0, 0, 0, 0.15));
     transform: translate(100%, -50%);
     z-index: 10;
 }
