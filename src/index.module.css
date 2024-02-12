@@ -1,5 +1,24 @@
+:global(.ant-breadcrumb),
+:global(.ant-breadcrumb) li,
+:global(.ant-breadcrumb-link),
+:global(.ant-breadcrumb-separator),
+:global(.ant-typography),
+:global(h1.ant-typography),
+:global(.ant-card),
+:global(.ant-card-head) {
+    color: var(--character-light-title-85);
+    line-height: var(--line-height);
+}
+
+:global(.ant-layout-header),
+:global(.ant-space),
 :global(.ant-btn) {
     line-height: var(--line-height);
+}
+
+:global(.ant-menu),
+:global(.ant-btn-default) {
+    color: var(--character-light-title-85);
 }
 
 :global(.ant-btn-link) {
@@ -17,7 +36,6 @@
 }
 
 :global(.ant-btn-default) {
-    color: var(--character-light-title-85);
     background: transparent;
     border: none;
     box-shadow: none;
@@ -38,12 +56,6 @@
     }
 }
 
-:global(.ant-card),
-:global(.ant-card-head) {
-    color: var(--character-light-title-85);
-    line-height: var(--line-height);
-}
-
 :global(.ant-card) {
     box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
 }
@@ -52,31 +64,6 @@
     fill: transparent;
 }
 
-:global(.ant-layout-header) {
-    line-height: var(--line-height);
-}
-
-:global(.ant-space) {
-    line-height: var(--line-height);
-}
-
-:global(.ant-breadcrumb),
-:global(.ant-breadcrumb) li,
-:global(.ant-breadcrumb-link),
-:global(.ant-breadcrumb-separator) {
-    line-height: var(--line-height);
-    color: var(--character-light-title-85);
-}
-
-:global(.ant-menu) {
-    color: var(--character-light-title-85);
-}
-
 :global(.ant-divider-horizontal) {
     margin: 0;
-}
-:global(.ant-typography),
-:global(h1.ant-typography) {
-    color: var(--character-light-title-85);
-    line-height: var(--line-height);
 }
