@@ -13,7 +13,7 @@
 }
 
 .trigger {
-    padding: 26px 3px;
+    padding: var(--p-trigger);
 }
 
 @media screen and (max-width: 767px) {
@@ -23,6 +23,6 @@
     }
 
     .trigger {
-        padding: 17px 9px;
+        padding: var(--p-trigger-tablet);
     }
 }

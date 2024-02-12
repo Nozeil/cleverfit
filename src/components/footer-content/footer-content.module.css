@@ -4,29 +4,29 @@
     align-items: end;
     gap: 24px;
     width: 100%;
-    margin-bottom: 42px;
+    margin-bottom: var(--mb-footer-space);
 }
 
 .card :global(.ant-card-body) {
-    padding: 0;
+    padding: var(--p-footer-card-body);
 }
 
 .cardMeta:global(.ant-card-meta) {
-    margin: 0;
-    padding: 8px 24px;
+    margin: var(--m-footer-card-meta);
+    padding: var(--p-footer-card-meta);
 }
 
 .btnLink:global(.ant-btn-link) {
-    padding: 10px 15px;
+    padding: var(--p-footer-link-btn);
 }
 
 .cardBtnLink:global(.ant-btn-link) {
-    padding: 0;
+    padding: var(--p-footer-card-link-btn);
     text-align: start;
 }
 
 .card :global(.ant-card-meta-detail) {
-    margin-right: 25px;
+    margin-right: var(--mr-footer-card-meta-detail);
 }
 
 .cardBtnLink:global(.ant-btn-link):disabled {
@@ -34,7 +34,7 @@
 }
 
 .cardActionBtn:global(.ant-btn) {
-    padding: 7px 11px;
+    padding: var(--p-footer-card-action-btn);
 }
 
 .card:global(.ant-card) :global(.ant-card-actions) > li {
@@ -53,6 +53,6 @@
     }
 
     .card :global(.ant-card-meta-detail) {
-        margin-right: 0;
+        margin-right: var(--mr-footer-card-meta-detail-tablet);
     }
 }

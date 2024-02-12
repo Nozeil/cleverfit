@@ -1,6 +1,6 @@
 .space {
     max-width: 752px;
-    margin: 24px 0;
+    margin: var(--m-main-page-content-space);
 }
 
 .card {
@@ -19,6 +19,6 @@
 
 @media screen and (max-width: 768px) {
     .card :global(.ant-card-body) {
-        padding: 16px;
+        padding: var(--p-main-page-content-card-body);
     }
 }
