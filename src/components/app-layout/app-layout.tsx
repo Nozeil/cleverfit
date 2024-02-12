@@ -13,12 +13,13 @@ export const AppLayout = () => {
     const [isBreakpoint, setIsBreakpoint] = useState(false);
 
     const onTrigger = () => setCollapsed((prevCollapsed) => !prevCollapsed);
+    const collapsedAtBreakpoint = isBreakpoint ? !collapsed : collapsed;
 
     return (
         <Layout className={styles.layout}>
-            <Sider collapsed={collapsed} isBreakpoint={isBreakpoint} onBreakpoint={setIsBreakpoint}>
+            <Sider collapsed={collapsedAtBreakpoint} isBreakpoint={isBreakpoint} onBreakpoint={setIsBreakpoint}>
                 <Logo cropped={collapsed} isBreakpoint={isBreakpoint} />
-                <Trigger collapsed={collapsed} onClick={onTrigger} isBreakpoint={isBreakpoint} />
+                <Trigger collapsed={collapsedAtBreakpoint} onClick={onTrigger} isBreakpoint={isBreakpoint} />
                 <NavMenu />
             </Sider>
             <Outlet />
