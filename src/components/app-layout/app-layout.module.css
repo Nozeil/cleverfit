@@ -1,4 +1,6 @@
-.ant-layout.ant-layout-has-sider {
+.layout:global(.ant-layout) {
+    max-width: 1440px;
     min-height: 100%;
+    margin: 0 auto;
     background: center / cover no-repeat url('/png/main-page-light.png');
 }

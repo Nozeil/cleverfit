@@ -1,6 +1,5 @@
-
-import { AppLayout } from '@components/app-layout';
-import { MainPage } from '@pages/main-page';
+import { AppLayout } from '@components/app-layout/app-layout';
+import { MainPage } from '@pages/main-page/main-page';
 
 import {
     createRoutesFromElements,
@@ -17,6 +16,4 @@ const routes = createRoutesFromElements(
 
 const router = createHashRouter(routes);
 
-export const Router = () => {
-    return <RouterProvider router={router} />;
-};
+export const Router = () => <RouterProvider router={router} />;

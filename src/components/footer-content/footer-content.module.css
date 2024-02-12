@@ -1,0 +1,58 @@
+.space {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 24px;
+    width: 100%;
+    margin-bottom: 42px;
+}
+
+.card :global(.ant-card-body) {
+    padding: 0;
+}
+
+.cardMeta:global(.ant-card-meta) {
+    margin: 0;
+    padding: 8px 24px;
+}
+
+.btnLink:global(.ant-btn-link) {
+    padding: 10px 15px;
+}
+
+.cardBtnLink:global(.ant-btn-link) {
+    padding: 0;
+    text-align: start;
+}
+
+.card :global(.ant-card-meta-detail) {
+    margin-right: 25px;
+}
+
+.cardBtnLink:global(.ant-btn-link):disabled {
+    color: var(--character-light-secondary-45);
+}
+
+.cardActionBtn:global(.ant-btn) {
+    padding: 7px 11px;
+}
+
+.card:global(.ant-card) :global(.ant-card-actions) > li {
+    border: none;
+}
+
+@media screen and (max-width: 767px) {
+    .space {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .card {
+        width: 100%;
+        text-align: center;
+    }
+
+    .card :global(.ant-card-meta-detail) {
+        margin-right: 0;
+    }
+}

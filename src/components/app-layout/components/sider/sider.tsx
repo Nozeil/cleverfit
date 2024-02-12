@@ -1,9 +1,8 @@
 import { Layout } from 'antd';
-import type { ReactNode } from 'react';
-import { SIDER_SIZES } from './index.constants';
+import { type ReactNode } from 'react';
+import { SIDER_SIZES } from './sider.constants';
 
-import styles from './index.module.css';
-import './index.css';
+import styles from './sider.module.css';
 
 interface SiderProps {
     isBreakpoint: boolean;
@@ -19,7 +18,7 @@ const Sider = ({ isBreakpoint, onBreakpoint, collapsed, children }: SiderProps) 
 
     return (
         <Layout.Sider
-            breakpoint='xs'
+            breakpoint='md'
             className={styles.sider}
             collapsed={collapsed}
             collapsedWidth={sizes.collapsedWidth}

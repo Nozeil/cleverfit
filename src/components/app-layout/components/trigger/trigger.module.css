@@ -2,9 +2,9 @@
     position: absolute;
     top: 50%;
     right: 1px;
+    z-index: 10;
     filter: drop-shadow(3px 0 3px rgba(0, 0, 0, 0.15));
     transform: translate(100%, -50%);
-    z-index: 10;
 }
 
 .polygon {
@@ -16,7 +16,7 @@
     padding: 26px 3px;
 }
 
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 767px) {
     .shadowBox {
         top: 24px;
         transform: translate(100%, 0);

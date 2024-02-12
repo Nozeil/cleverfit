@@ -1,6 +1,6 @@
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 
-import styles from './index.module.css';
+import styles from './trigger.module.css';
 
 interface TriggerProps {
     isBreakpoint: boolean;
@@ -18,7 +18,7 @@ const Trigger = ({ collapsed, isBreakpoint, onClick }: TriggerProps) => {
             <div className={styles.polygon}>
                 <Icon
                     data-test-id={testId}
-                    className={`trigger ${styles.trigger}`}
+                    className={styles.trigger}
                     onClick={onClick}
                     style={{ color: 'var(--neutral-gray-7)' }}
                 />
