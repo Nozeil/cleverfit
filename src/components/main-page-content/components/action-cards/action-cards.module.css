@@ -1,0 +1,44 @@
+.card:global(.ant-card) :global(.ant-card-head) {
+    padding: var(--p-main-page-content-action-card-head);
+    font-weight: 400;
+}
+
+.card :global(.ant-card-head-wrapper) {
+    padding: var(--p-main-page-content-action-card-head-wrapper);
+}
+
+.card :global(.ant-card-head-title) {
+    padding: var(--p-main-page-content-action-card-head-title);
+    text-align: center;
+}
+
+.card :global(.ant-card-body) {
+    padding: var(--p-main-page-content-action-card-body);
+}
+
+@media screen and (max-width: 834px) {
+    .card :global(.ant-card-head-title) {
+        text-align: start;
+        white-space: pre-wrap;
+    }
+
+    .btn:global(.ant-btn) {
+        padding-top: var(--pt-main-page-content-action-card-btn-tablet-lg);
+        padding-bottom: var(--pb-main-page-content-action-card-btn-tablet-lg);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card :global(.ant-card-head-title) {
+        text-align: center;
+    }
+
+    .row:global(.ant-row) {
+        flex-direction: column;
+        row-gap: 8px;
+    }
+
+    .col:global(.ant-col) {
+        max-width: 100%;
+    }
+}

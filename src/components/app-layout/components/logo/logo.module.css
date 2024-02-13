@@ -1,0 +1,20 @@
+.logo:global(.ant-image-img),
+.logoCropped:global(.ant-image-img) {
+    max-height: 64px;
+    margin: var(--m-logo);
+}
+
+.logo {
+    padding: var(--p-logo);
+}
+
+.logoCropped {
+    padding: var(--p-logo-cropped);
+}
+
+@media screen and (max-width: 767px) {
+    .logo:global(.ant-image-img) {
+        margin: var(--m-logo-tablet);
+        padding:  var(--p-logo-tablet);
+    }
+}

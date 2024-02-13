@@ -1,0 +1,24 @@
+.layout:global(.ant-layout),
+.footer:global(.ant-layout-footer) {
+    background-color: transparent;
+}
+
+.header:global(.ant-layout-header),
+.content:global(.ant-layout-content),
+.footer:global(.ant-layout-footer) {
+    padding: var(--p-layout);
+}
+
+.header:global(.ant-layout-header) {
+    padding-top: var(--pt-layout-header);
+    padding-bottom: var(--pb-layout-header);
+    height: fit-content;
+    background-color: var(--primary-light-1);
+}
+
+@media screen and (max-width: 768px) {
+    .content:global(.ant-layout-content),
+    .footer:global(.ant-layout-footer) {
+        padding: var(--p-layout-tablet);
+    }
+}
