@@ -1,19 +1,15 @@
+import { Route, Routes } from 'react-router-dom';
+import { HistoryRouter } from 'redux-first-history/rr6';
+import { history } from '@redux/configure-store';
 import { AppLayout } from '@components/app-layout/app-layout';
 import { MainPage } from '@pages/main-page/main-page';
 
-import {
-    createRoutesFromElements,
-    Route,
-    createHashRouter,
-    RouterProvider,
-} from 'react-router-dom';
-
-const routes = createRoutesFromElements(
-    <Route element={<AppLayout />}>
-        <Route index path='/' element={<MainPage />} />
-    </Route>,
+const routes = (
+    <Routes>
+        <Route path='main' element={<AppLayout />}>
+            <Route index element={<MainPage />} />
+        </Route>
+    </Routes>
 );
 
-const router = createHashRouter(routes);
-
-export const Router = () => <RouterProvider router={router} />;
+export const Router = () => <HistoryRouter history={history}>{routes}</HistoryRouter>;
