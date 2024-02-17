@@ -1,5 +1,4 @@
 .card:global(.ant-card) :global(.ant-card-head) {
-    padding: var(--p-main-page-content-action-card-head);
     font-weight: 400;
 }
 
@@ -8,7 +7,6 @@
 }
 
 .card :global(.ant-card-head-title) {
-    padding: var(--p-main-page-content-action-card-head-title);
     text-align: center;
 }
 

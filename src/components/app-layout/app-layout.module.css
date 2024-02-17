@@ -1,6 +1,5 @@
-.layout:global(.ant-layout) {
+.layout {
     max-width: 1440px;
-    min-height: 100%;
+    height: 100%;
     margin: var(--m-app-layout);
-    background: center / cover no-repeat url('/png/main-page-light.png');
 }

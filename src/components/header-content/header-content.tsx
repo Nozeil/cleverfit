@@ -13,7 +13,11 @@ const HeaderContent = () => (
                 {`Приветствуем тебя в\u00a0CleverFit\u00a0— приложении, 
                     которое поможет тебе добиться своей мечты!`}
             </Typography.Title>
-            <Button className={styles.btn} icon={<SettingOutlined className={styles.btnIcon} />}>
+            <Button
+                className={styles.btn}
+                type='text'
+                icon={<SettingOutlined className={styles.btnIcon} />}
+            >
                 Настройки
             </Button>
         </Space>

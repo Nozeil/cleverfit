@@ -5,10 +5,10 @@ import { AndroidFilled, AppleFilled } from '@ant-design/icons';
 import styles from './footer-content.module.css';
 
 const actions = [
-    <Button className={styles.cardActionBtn} icon={<AndroidFilled key='android' />}>
+    <Button type='text' className={styles.cardActionBtn} icon={<AndroidFilled key='android' />}>
         Android OS
     </Button>,
-    <Button className={styles.cardActionBtn} icon={<AppleFilled key='apple' />}>
+    <Button type='text' className={styles.cardActionBtn} icon={<AppleFilled key='apple' />}>
         Apple iOS
     </Button>,
 ];
