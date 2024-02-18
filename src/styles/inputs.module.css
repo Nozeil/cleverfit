@@ -1,6 +1,13 @@
+:global(.ant-checkbox-checked) :global(.ant-checkbox-inner),
+:global(.ant-checkbox:hover) :global(.ant-checkbox-inner),
+:global(.ant-checkbox-checked:hover) :global(.ant-checkbox-inner),
+:global(.ant-checkbox-checked::after),
+:global(.ant-checkbox-input:focus) + :global(.ant-checkbox-inner) {
+    border-color: var(--primary-light-6);
+}
+
 :global(.ant-checkbox-checked) :global(.ant-checkbox-inner) {
     background-color: var(--primary-light-6);
-    border-color: var(--primary-light-6);
 }
 
 :global(.ant-input-group-wrapper) {
