@@ -1,0 +1,49 @@
+:root {
+    --p-logo: 14px 46px 17px 29px;
+    --p-logo-cropped: 18px;
+    --p-logo-tablet: 16px 17px;
+    --px-last-menu-item: 0 16px;
+    --p-menu-item-divider: 0;
+    --pl-menu-item-tablet: 8px;
+    --pr-menu-item-tablet: var(--pl-menu-item-tablet);
+    --p-trigger: 26px 3px;
+    --p-trigger-tablet: 17px 9px;
+    --p-footer-card-body: 0;
+    --p-footer-card-meta: 8px 24px;
+    --p-footer-link-btn: 10px 15px;
+    --p-footer-card-link-btn: 0;
+    --p-footer-card-action-btn: 7px 11px;
+    --pt-header-btn: 0;
+    --pb-header-btn: var(--pt-header-btn);
+    --pl-header-btn-tablet-lg: 7px;
+    --p-header-btn-tablet: 0;
+    --p-main-page-content-card-body: 16px;
+    --p-main-page-content-action-card-head-wrapper: 12px 24px;
+    --p-main-page-content-action-card-body: 12px 0;
+    --pt-main-page-content-action-card-btn-tablet-lg: 6px;
+    --pb-main-page-content-action-card-btn-tablet-lg: var(
+        --pt-main-page-content-action-card-btn-tablet-lg
+    );
+    --p-layout: 0 24px;
+    --pt-layout-header: 16px;
+    --pb-layout-header: var(--pt-layout-header);
+    --p-layout-tablet: 0 16px;
+
+    --px-auth-card: 32px;
+    --py-auth-card: 64px;
+    --p-auth-card: var(--py-auth-card) var(--px-auth-card);
+    --px-auth-card-mobile-l: 16px;
+    --py-auth-card-mobile-l: 32px;
+    --p-auth-card-mobile-l: var(--py-auth-card-mobile-l) var(--px-auth-card-mobile-l);
+    --p-auth-card-body: 0;
+    --p-auth-logo: 0 calc(115px - var(--px-auth-card));
+    --p-auth-logo-mobile-l: 0 calc(62.5px - var(--px-auth-card-mobile-l));
+    --p-auth-tab: 0;
+    --p-auth-link: 11px 0;
+    --p-auth-link-mobile-l: 14px 0;
+    --p-auth-input: 10px 12px;
+    --p-auth-input-group-addon: 4px 12px;
+    --pb-auth-form-item-password: 30px;
+    --p-auth-form-forgot-btn: 0;
+    --p-auth-form-forgot-btn-mobile-l: 0 7px;
+}
