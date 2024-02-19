@@ -1,5 +1,7 @@
 import { Card, Space, Image, Tabs } from 'antd';
 import { Link, Outlet, useLocation } from 'react-router-dom';
+import { ROUTES } from '@constants/routes';
+import { AUTH_URLS } from './auth-page.constants';
 import Logo from '/svg/logo.svg';
 
 import styles from './auth-page-content.module.css';
@@ -11,16 +13,16 @@ const items = [
                 Вход
             </Link>
         ),
-        key: '/auth',
+        key: AUTH_URLS.AUTH,
         children: <Outlet />,
     },
     {
         label: (
-            <Link className={styles.link} to='registration'>
+            <Link className={styles.link} to={ROUTES.REGISTRATION}>
                 Регистрация
             </Link>
         ),
-        key: '/auth/registration',
+        key: AUTH_URLS.REGISTRATION,
         children: <Outlet />,
     },
 ];

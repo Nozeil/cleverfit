@@ -7,15 +7,16 @@ import AppLayout from '@components/app-layout/app-layout';
 import AuthPage from '@pages/auth/auth';
 import LoginForm from '@components/auth-forms/login-form/login-form';
 import RegistartionForm from '@components/auth-forms/registration-form/registration-form';
+import { ROUTES } from '@constants/routes';
 
 const routes = (
     <Routes>
         <Route element={<AppLayout />}>
-            <Route path='auth' element={<AuthPage />}>
+            <Route path={ROUTES.AUTH} element={<AuthPage />}>
                 <Route index element={<LoginForm />} />
-                <Route path='registration' element={<RegistartionForm />} />
+                <Route path={ROUTES.REGISTRATION} element={<RegistartionForm />} />
             </Route>
-            <Route path='main' element={<MainPageLayout />}>
+            <Route path={ROUTES.MAIN} element={<MainPageLayout />}>
                 <Route index element={<MainPage />} />
             </Route>
         </Route>
