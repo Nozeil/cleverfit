@@ -1,10 +1,9 @@
 .layout:global(.ant-layout) {
+    position: relative;
     min-height: 100%;
     background: center / cover no-repeat url('/png/enter-page-light.png');
 }
 
 .content:global(.ant-layout-content) {
     display: flex;
-    background: var(--blue-1);
-    backdrop-filter: blur(12px);
 }
