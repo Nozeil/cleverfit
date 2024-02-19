@@ -30,13 +30,19 @@
     --m-auth-card-body-mobile-l: 0;
     --mb-auth-logo: 48px;
     --mb-auth-logo-mobile-l: 32px;
-    --mb-auth-tabs: 24px;
+    --m-login-form-group: 24px 0;
+    --m-registartion-form-group: 32px 0;
+    --m-registartion-form-group-mobile-l: 24px 0;
+    --mb-auth-tabs: 0;
     --m-auth-tab: 0;
-    --mb-auth-form: calc(174px - var(--py-auth-card));
-    --mb-auth-form-mobile-l: calc(124px - var(--py-auth-card-mobile-l));
+    --mb-login-form: calc(174px - var(--py-auth-card));
+    --mb-login-form-mobile-l: calc(124px - var(--py-auth-card-mobile-l));
     --mb-auth-form-item-email: 32px;
-    --mb-auth-form-item-password: 54px;
     --mb-auth-form-login-btn: 16px;
+    --mb-auth-form-item-last: 0;
+    --ml-auth-form-btn-content-mobile-l: 0;
+    --mb-auth-form-password-with-explain: 16px;
+    --mb-auth-form-password-with-explain-mobile-l: 0;
 
     /* Paddings */
     --p-logo: 14px 46px 17px 29px;
@@ -83,9 +89,9 @@
     --p-auth-link-mobile-l: 14px 0;
     --p-auth-input: 10px 12px;
     --p-auth-input-group-addon: 4px 12px;
+    --pb-auth-form-item-password: 30px;
     --p-auth-form-forgot-btn: 0;
     --p-auth-form-forgot-btn-mobile-l: 0 7px;
-
 
     /* Typography */
     --font-family: 'Inter', sans-serif;

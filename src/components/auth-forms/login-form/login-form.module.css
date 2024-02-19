@@ -1,0 +1,13 @@
+.loginForm:global(.ant-form) {
+    margin-bottom: var(--mb-login-form);
+}
+
+.loginFormGroup {
+    margin: var(--m-login-form-group);
+}
+
+@media screen and (max-width: 450px) {
+    .loginForm:global(.ant-form) {
+        margin-bottom: var(--mb-login-form-mobile-l);
+    }
+}

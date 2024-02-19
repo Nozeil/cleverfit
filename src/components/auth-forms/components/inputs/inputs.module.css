@@ -1,0 +1,33 @@
+.input :global(.ant-input):global(.ant-input-lg) {
+    font-size: 14px;
+}
+
+.input :global(.ant-input) {
+    padding: var(--p-auth-input);
+}
+
+.input :global(.ant-input-group-addon) {
+    padding: var(--p-auth-input-group-addon);
+}
+
+.email:global(.ant-form-item) {
+    margin-bottom: var(--mb-auth-form-item-email);
+}
+
+.password:global(.ant-form-item) {
+    padding-bottom: var(--pb-auth-form-item-password);
+}
+
+.password :global(.ant-form-item-explain) {
+    font-size: 12px;
+}
+
+.password:has(:global(.ant-form-item-explain)) {
+    margin-bottom: var(--mb-auth-form-password-with-explain);
+}
+
+@media screen and (max-width: 450px) {
+    .password:has(:global(.ant-form-item-explain)) {
+        margin-bottom: var(--mb-auth-form-password-with-explain-mobile-l);
+    }
+}

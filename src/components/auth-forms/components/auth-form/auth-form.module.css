@@ -1,0 +1,21 @@
+.form:global(.ant-form) :global(.ant-form-item):last-of-type {
+    margin-bottom: var(--mb-auth-form-item-last);
+}
+
+.loginBtnFormItem:global(.ant-form-item) {
+    margin-bottom: var(--mb-auth-form-login-btn);
+}
+
+@media screen and (max-width: 450px) {
+    .btn:global(.ant-btn) {
+        font-size: 14px;
+    }
+
+    .btn:global(.ant-btn) :global(.anticon) {
+        display: none;
+    }
+
+    .btn:global(.ant-btn) :global(.anticon) + span {
+        margin-left: var(--ml-auth-form-btn-content-mobile-l);
+    }
+}
