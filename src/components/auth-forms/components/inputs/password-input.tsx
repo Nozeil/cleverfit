@@ -1,5 +1,6 @@
 import { Form, Input } from 'antd';
 import { passwordPattern } from './regex';
+import { type Rule } from 'antd/lib/form';
 
 import styles from './inputs.module.css';
 
@@ -8,6 +9,7 @@ interface PasswordInputProps {
     message?: string;
     placeholder?: string;
     help?: string;
+    rules?: Rule[];
 }
 
 const PasswordInput = ({
@@ -15,21 +17,25 @@ const PasswordInput = ({
     message = '',
     placeholder = 'Пароль',
     help,
-}: PasswordInputProps) => (
-    <Form.Item
-        className={styles.password}
-        name={name}
-        help={help}
-        rules={[
-            {
-                required: true,
-                pattern: passwordPattern,
-                message,
-            },
-        ]}
-    >
-        <Input.Password className={styles.input} placeholder={placeholder} />
-    </Form.Item>
-);
+    rules: additionalRules,
+}: PasswordInputProps) => {
+    const rules: Rule[] = [
+        {
+            required: true,
+            pattern: passwordPattern,
+            message,
+        },
+    ];
+
+    if (additionalRules) {
+        rules.push(...additionalRules);
+    }
+
+    return (
+        <Form.Item className={styles.password} name={name} help={help} rules={rules}>
+            <Input.Password className={styles.input} placeholder={placeholder} />
+        </Form.Item>
+    );
+};
 
 export default PasswordInput;

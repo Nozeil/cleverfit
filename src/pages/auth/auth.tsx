@@ -8,7 +8,7 @@ import styles from './auth.module.css';
 const { Content } = Layout;
 
 const AuthPage = () => {
-    const isLoading = true;
+    const isLoading = false;
     const loader = isLoading ? <Loader /> : <BackdropBlur />;
 
     return (

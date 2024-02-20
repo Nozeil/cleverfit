@@ -2,6 +2,7 @@ import { ReactNode, useState } from 'react';
 import { Button, Form } from 'antd';
 import { GooglePlusOutlined } from '@ant-design/icons';
 import classNames from 'classnames/bind';
+import type { OnFinishAuth } from '@components/auth-forms/auth-forms.types';
 
 import styles from './auth-form.module.css';
 
@@ -9,12 +10,13 @@ interface AuthFormProps {
     name: string;
     googleButtonText: string;
     children: ReactNode;
+    onFinish: OnFinishAuth;
     className?: string;
 }
 
 const cx = classNames.bind(styles);
 
-const AuthForm = ({ className, name, googleButtonText, children }: AuthFormProps) => {
+const AuthForm = ({ className, name, googleButtonText, children, onFinish }: AuthFormProps) => {
     const [form] = Form.useForm();
     const [isDisabled, setIsDisabled] = useState(false);
     const formClassName = cx(className, styles.form);
@@ -33,6 +35,7 @@ const AuthForm = ({ className, name, googleButtonText, children }: AuthFormProps
             autoComplete='off'
             size='large'
             onFieldsChange={onFieldsChange}
+            onFinish={onFinish}
         >
             {children}
 
