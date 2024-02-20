@@ -1,8 +1,7 @@
 import { Tabs, Image } from 'antd';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import ContentLayout from '@components/auth-page/content-layout/content-layout';
-import { ROUTES } from '@constants/routes';
-import { AUTH_URLS } from './auth-page.constants';
+import { COMPOUND_ROUTES, ROUTES } from '@constants/routes';
 import Logo from '/svg/logo.svg';
 
 import styles from './auth-page-content.module.css';
@@ -14,7 +13,7 @@ const items = [
                 Вход
             </Link>
         ),
-        key: AUTH_URLS.AUTH,
+        key: ROUTES.AUTH,
         children: <Outlet />,
     },
     {
@@ -23,7 +22,7 @@ const items = [
                 Регистрация
             </Link>
         ),
-        key: AUTH_URLS.REGISTRATION,
+        key: COMPOUND_ROUTES.AUTH_REGISTRATION,
         children: <Outlet />,
     },
 ];

@@ -12,6 +12,10 @@
     margin-bottom: 0;
 }
 
+.text:global(.ant-typography) {
+    white-space: pre-wrap;
+}
+
 .btn:global(.ant-btn) {
     font-size: 14px;
 }

@@ -20,7 +20,7 @@ const ResultCard = ({ icon, title, text, btnText, onClick }: ResultCardProps) =>
                 <Typography.Title className={styles.title} level={3}>
                     {title}
                 </Typography.Title>
-                <Typography.Text type='secondary'>{text}</Typography.Text>
+                <Typography.Text className={styles.text} type='secondary'>{text}</Typography.Text>
             </div>
             <Button className={styles.btn} block type='primary' size='large' onClick={onClick}>
                 {btnText}
