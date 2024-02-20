@@ -1,5 +1,6 @@
-import { Card, Space, Image, Tabs } from 'antd';
+import { Tabs, Image } from 'antd';
 import { Link, Outlet, useLocation } from 'react-router-dom';
+import AuthPageContentLayout from '@components/auth-page-layout/auth-page-layout';
 import { ROUTES } from '@constants/routes';
 import { AUTH_URLS } from './auth-page.constants';
 import Logo from '/svg/logo.svg';
@@ -32,23 +33,19 @@ const AuthPageContent = () => {
     const defaultActiveKey = location.pathname;
 
     return (
-        <Space className={styles.space} size={0}>
-            <Card
-                className={styles.card}
-                bordered={false}
-                title={<Image className={styles.logo} src={Logo} preview={false} alt='logo' />}
-            >
-                <Tabs
-                    className={styles.tabs}
-                    defaultActiveKey={defaultActiveKey}
-                    destroyInactiveTabPane
-                    centered
-                    items={items}
-                    size='large'
-                    color='red'
-                />
-            </Card>
-        </Space>
+        <AuthPageContentLayout
+            title={<Image className={styles.logo} src={Logo} preview={false} alt='logo' />}
+        >
+            <Tabs
+                className={styles.tabs}
+                defaultActiveKey={defaultActiveKey}
+                destroyInactiveTabPane
+                centered
+                items={items}
+                size='large'
+                color='red'
+            />
+        </AuthPageContentLayout>
     );
 };
 

@@ -1,32 +1,3 @@
-.space:global(.ant-space) {
-    flex: auto;
-    justify-content: center;
-}
-
-.space :global(.ant-space-item) {
-    width: 100%;
-    max-width: 540px;
-}
-
-.card:global(.ant-card) {
-    padding: var(--p-auth-card);
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
-}
-
-.card :global(.ant-card-head) {
-    margin-bottom: var(--mb-auth-card-head);
-    border-bottom: none;
-}
-
-.card :global(.ant-card-body) {
-    margin: var(--m-auth-card-body);
-    padding: var(--p-auth-card-body);
-}
-
-.card :global(.ant-image) {
-    width: 100%;
-}
-
 .logo:global(.ant-image-img) {
     padding: var(--p-auth-logo);
     margin-bottom: var(--mb-auth-logo);
@@ -72,26 +43,7 @@
     text-align: center;
 }
 
-@media screen and (max-width: 834px) {
-    .space {
-        margin-bottom: var(--mb-auth-space-tablet-l);
-    }
-}
-
 @media screen and (max-width: 450px) {
-    .space {
-        margin-bottom: var(--mb-auth-space-mobile-l);
-    }
-
-    .card:global(.ant-card) {
-        margin: var(--m-auth-card-mobile-l);
-        padding: var(--p-auth-card-mobile-l);
-    }
-
-    .card :global(.ant-card-body) {
-        margin: var(--m-auth-card-body-mobile-l);
-    }
-
     .logo:global(.ant-image-img) {
         padding: var(--p-auth-logo-mobile-l);
         margin-bottom: var(--mb-auth-logo-mobile-l);
