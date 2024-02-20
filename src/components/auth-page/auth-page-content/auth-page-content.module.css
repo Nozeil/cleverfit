@@ -43,7 +43,17 @@
     text-align: center;
 }
 
+@media screen and (max-width: 834px) {
+    .space {
+        margin-bottom: var(--mb-auth-space-tablet-l);
+    }
+}
+
 @media screen and (max-width: 450px) {
+    .space {
+        margin-bottom: var(--mb-auth-space-mobile-l);
+    }
+
     .logo:global(.ant-image-img) {
         padding: var(--p-auth-logo-mobile-l);
         margin-bottom: var(--mb-auth-logo-mobile-l);

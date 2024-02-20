@@ -1,5 +1,5 @@
-import { Layout } from 'antd';
 import { type ReactNode } from 'react';
+import { Layout } from 'antd';
 import { SIDER_SIZES } from './sider.constants';
 
 import styles from './sider.module.css';

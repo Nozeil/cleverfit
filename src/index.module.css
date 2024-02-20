@@ -6,6 +6,7 @@
 :global(.ant-breadcrumb-separator),
 :global(.ant-typography),
 :global(h1.ant-typography),
+:global(h3.ant-typography),
 :global(.ant-card),
 :global(.ant-card-head),
 :global(.ant-input-group-addon),
@@ -101,7 +102,8 @@ a {
     box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
 }
 
-:global(.anticon-idcard) svg path:nth-child(2) {
+:global(.anticon-idcard) svg path:nth-child(2),
+:global(.anticon-warning) svg path:last-child {
     fill: transparent;
 }
 
@@ -109,6 +111,7 @@ a {
     margin: 0;
 }
 
-:global(.ant-card-head), :global(.ant-card-head-title) {
+:global(.ant-card-head),
+:global(.ant-card-head-title) {
     padding: 0;
 }

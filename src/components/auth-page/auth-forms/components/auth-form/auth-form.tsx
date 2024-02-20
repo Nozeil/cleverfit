@@ -1,8 +1,8 @@
-import { ReactNode, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 import { Button, Form } from 'antd';
 import { GooglePlusOutlined } from '@ant-design/icons';
 import classNames from 'classnames/bind';
-import type { OnFinishAuth } from '@components/auth-forms/auth-forms.types';
+import { OnFinishAuth } from '../../auth-forms.types';
 
 import styles from './auth-form.module.css';
 

@@ -1,0 +1,17 @@
+.space:global(.ant-space) {
+    width: 100%;
+    justify-content: center;
+}
+
+.space :global(.ant-space-item) {
+    text-align: center;
+}
+
+.title:global(.ant-typography) {
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.btn:global(.ant-btn) {
+    font-size: 14px;
+}

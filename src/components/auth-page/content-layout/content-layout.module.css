@@ -27,17 +27,7 @@
     width: 100%;
 }
 
-@media screen and (max-width: 834px) {
-    .space {
-        margin-bottom: var(--mb-auth-space-tablet-l);
-    }
-}
-
 @media screen and (max-width: 450px) {
-    .space {
-        margin-bottom: var(--mb-auth-space-mobile-l);
-    }
-
     .card:global(.ant-card) {
         margin: var(--m-auth-card-mobile-l);
         padding: var(--p-auth-card-mobile-l);

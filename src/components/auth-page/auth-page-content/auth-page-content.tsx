@@ -34,6 +34,7 @@ const AuthPageContent = () => {
 
     return (
         <ContentLayout
+            className={styles.space}
             title={<Image className={styles.logo} src={Logo} preview={false} alt='logo' />}
         >
             <Tabs

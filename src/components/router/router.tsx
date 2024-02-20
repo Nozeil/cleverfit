@@ -9,14 +9,23 @@ import LoginForm from '@components/auth-page/auth-forms/login-form/login-form';
 import RegistartionForm from '@components/auth-page/auth-forms/registration-form/registration-form';
 
 import { ROUTES } from '@constants/routes';
+import ErrorLogin from '@components/auth-page/auth-result/error-login';
+import AuthPageContent from '@components/auth-page/auth-page-content/auth-page-content';
 
 const routes = (
     <Routes>
         <Route element={<AppLayout />}>
-            <Route path={ROUTES.AUTH} element={<AuthPage />}>
-                <Route index element={<LoginForm />} />
-                <Route path={ROUTES.REGISTRATION} element={<RegistartionForm />} />
+            <Route element={<AuthPage />}>
+                <Route path={ROUTES.AUTH} element={<AuthPageContent />}>
+                    <Route index element={<LoginForm />} />
+                    <Route path={ROUTES.REGISTRATION} element={<RegistartionForm />} />
+                </Route>
+
+                <Route path={ROUTES.RESULT}>
+                    <Route path={ROUTES.ERROR_LOGIN} element={<ErrorLogin />} />
+                </Route>
             </Route>
+
             <Route path={ROUTES.MAIN} element={<MainPageLayout />}>
                 <Route index element={<MainPage />} />
             </Route>
