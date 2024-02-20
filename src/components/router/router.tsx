@@ -5,8 +5,9 @@ import { MainPage } from '@pages/main-page/main-page';
 import { MainPageLayout } from '@components/main-page-layout/main-page-layout';
 import AppLayout from '@components/app-layout/app-layout';
 import AuthPage from '@pages/auth/auth';
-import LoginForm from '@components/auth-forms/login-form/login-form';
-import RegistartionForm from '@components/auth-forms/registration-form/registration-form';
+import LoginForm from '@components/auth-page/auth-forms/login-form/login-form';
+import RegistartionForm from '@components/auth-page/auth-forms/registration-form/registration-form';
+
 import { ROUTES } from '@constants/routes';
 
 const routes = (

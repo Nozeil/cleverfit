@@ -1,6 +1,6 @@
 import { Tabs, Image } from 'antd';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import AuthPageContentLayout from '@components/auth-page-layout/auth-page-layout';
+import ContentLayout from '@components/auth-page/content-layout/content-layout';
 import { ROUTES } from '@constants/routes';
 import { AUTH_URLS } from './auth-page.constants';
 import Logo from '/svg/logo.svg';
@@ -33,7 +33,7 @@ const AuthPageContent = () => {
     const defaultActiveKey = location.pathname;
 
     return (
-        <AuthPageContentLayout
+        <ContentLayout
             title={<Image className={styles.logo} src={Logo} preview={false} alt='logo' />}
         >
             <Tabs
@@ -45,7 +45,7 @@ const AuthPageContent = () => {
                 size='large'
                 color='red'
             />
-        </AuthPageContentLayout>
+        </ContentLayout>
     );
 };
 

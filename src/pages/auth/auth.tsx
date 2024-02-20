@@ -1,6 +1,6 @@
 import { Layout } from 'antd';
-import AuthPageContent from '@components/auth-page-content/auth-page-content';
-import BackdropBlur from '@components/backdrop-blur/backdrop-blur';
+import AuthPageContent from '@components/auth-page/auth-page-content/auth-page-content';
+import BackdropBlur from '@components/auth-page/backdrop-blur/backdrop-blur';
 import Loader from '@components/loader/loader';
 
 import styles from './auth.module.css';
