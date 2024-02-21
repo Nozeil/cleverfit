@@ -13,11 +13,20 @@ import AuthPageContent from '@components/auth-page/auth-page-content/auth-page-c
 import SuccessRegistration from '@components/auth-page/auth-result/success-registration';
 import ErrorUserExist from '@components/auth-page/auth-result/error-user-exist';
 import ErrorRegistration from '@components/auth-page/auth-result/error-registration';
+import AuthProvider from '@components/auth/auth-provider';
+import AuthRoute from '@components/auth-route';
+import NonAuthRoute from '@components/non-auth-route';
 
 const routes = (
     <Routes>
         <Route element={<AppLayout />}>
-            <Route element={<AuthPage />}>
+            <Route
+                element={
+                    <NonAuthRoute>
+                        <AuthPage />
+                    </NonAuthRoute>
+                }
+            >
                 <Route path={ROUTES.AUTH} element={<AuthPageContent />}>
                     <Route index element={<LoginForm />} />
                     <Route path={ROUTES.REGISTRATION} element={<RegistartionForm />} />
@@ -31,11 +40,22 @@ const routes = (
                 </Route>
             </Route>
 
-            <Route path={ROUTES.MAIN} element={<MainPageLayout />}>
+            <Route
+                path={ROUTES.MAIN}
+                element={
+                    <AuthRoute>
+                        <MainPageLayout />
+                    </AuthRoute>
+                }
+            >
                 <Route index element={<MainPage />} />
             </Route>
         </Route>
     </Routes>
 );
 
-export const Router = () => <HistoryRouter history={history}>{routes}</HistoryRouter>;
+export const Router = () => (
+    <AuthProvider>
+        <HistoryRouter history={history}>{routes}</HistoryRouter>
+    </AuthProvider>
+);

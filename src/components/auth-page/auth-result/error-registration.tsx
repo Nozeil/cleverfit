@@ -9,8 +9,7 @@ const ErrorRegistration = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const onClick = () =>
-        navigate(COMPOUND_ROUTES.AUTH_REGISTRATION, { replace: true, state: location.state });
+    const onClick = () => navigate(COMPOUND_ROUTES.AUTH_REGISTRATION, { state: location.state });
 
     return (
         <ResultCard

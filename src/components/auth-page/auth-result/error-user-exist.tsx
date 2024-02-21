@@ -8,7 +8,7 @@ import styles from './auth-result.module.css';
 const ErrorUserExist = () => {
     const navigate = useNavigate();
 
-    const onClick = () => navigate(COMPOUND_ROUTES.AUTH_REGISTRATION, { replace: true });
+    const onClick = () => navigate(COMPOUND_ROUTES.AUTH_REGISTRATION);
 
     return (
         <ResultCard

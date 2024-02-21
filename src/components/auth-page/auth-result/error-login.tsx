@@ -8,7 +8,7 @@ import styles from './auth-result.module.css';
 const ErrorLogin = () => {
     const navigate = useNavigate();
 
-    const onClick = () => navigate(ROUTES.AUTH, { replace: true });
+    const onClick = () => navigate(ROUTES.AUTH);
 
     return (
         <ResultCard

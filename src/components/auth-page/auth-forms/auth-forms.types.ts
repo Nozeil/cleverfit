@@ -1,7 +1,7 @@
 export interface OnFinishLoginValues {
     email: string;
     password: string;
-    remeber: boolean;
+    remember: boolean;
 }
 
 export interface OnFinishRegistrationValues {

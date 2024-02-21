@@ -19,15 +19,17 @@ const RegistrationForm = () => {
     const navigate = useNavigate();
 
     const onFinish = async (values: OnFinishRegistrationValues) => {
+        const options = { state: { from: location, values } };
+
         try {
             await registerUser({ email: values.email, password: values.password }).unwrap();
 
-            navigate(COMPOUND_ROUTES.RESULT_SUCCESS_REGISTRATION);
+            navigate(COMPOUND_ROUTES.RESULT_SUCCESS_REGISTRATION, options);
         } catch (e) {
             const errorResponse = e as ErrorResponse;
             errorResponse.statusCode === HTTP_STATUS_CODES.CONFLICT
-                ? navigate(COMPOUND_ROUTES.RESULT_ERROR_USER_EXIST)
-                : navigate(COMPOUND_ROUTES.RESULT_ERROR_REGISTRATION, { state: values });
+                ? navigate(COMPOUND_ROUTES.RESULT_ERROR_USER_EXIST, options)
+                : navigate(COMPOUND_ROUTES.RESULT_ERROR_REGISTRATION, options);
         }
     };
 
