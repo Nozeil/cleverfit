@@ -1,0 +1,14 @@
+.group24 {
+    margin: var(--m-group-24);
+}
+
+.group32,
+.group32MobileBreakpoint {
+    margin: var(--m-group-32);
+}
+
+@media screen and (max-width: 450px) {
+    .group32MobileBreakpoint {
+        margin: var(--m-group-32-mobile);
+    }
+}

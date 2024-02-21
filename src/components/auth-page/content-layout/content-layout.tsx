@@ -8,13 +8,14 @@ interface AuthPageLayoutProps {
     children: ReactNode;
     className?: string;
     title?: ReactNode;
+    cardClassName?: string;
 }
 
 const cx = classNames.bind(styles);
 
-const ContentLayout = ({ className, children, title }: AuthPageLayoutProps) => (
+const ContentLayout = ({ className, children, title, cardClassName }: AuthPageLayoutProps) => (
     <Space className={cx(styles.space, className)} size={0}>
-        <Card className={styles.card} bordered={false} title={title}>
+        <Card className={cx(styles.card, cardClassName)} bordered={false} title={title}>
             {children}
         </Card>
     </Space>

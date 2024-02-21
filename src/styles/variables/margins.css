@@ -28,9 +28,9 @@
     --m-auth-card-body-mobile-l: 0;
     --mb-auth-logo: 48px;
     --mb-auth-logo-mobile-l: 32px;
-    --m-login-form-group: 24px 0;
-    --m-registartion-form-group: 32px 0;
-    --m-registartion-form-group-mobile-l: 24px 0;
+    --m-group-24: 24px 0;
+    --m-group-32: 32px 0;
+    --m-group-32-mobile: var(--m-group-24);
     --mb-auth-tabs: 0;
     --m-auth-tab: 0;
     --mb-login-form: calc(174px - var(--py-auth-card));

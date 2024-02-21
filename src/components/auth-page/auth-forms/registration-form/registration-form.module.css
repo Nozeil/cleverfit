@@ -1,9 +1,0 @@
-.registrationFormGroup {
-    margin: var(--m-registartion-form-group);
-}
-
-@media screen and (max-width: 450px) {
-    .registrationFormGroup {
-        margin: var(--m-registartion-form-group-mobile-l);
-    }
-}

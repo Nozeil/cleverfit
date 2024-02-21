@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import { CloseCircleFilled } from '@ant-design/icons';
 import { COMPOUND_ROUTES } from '@constants/routes';
-import ResultCard from './result-card/result-card';
-
-import styles from './auth-result.module.css';
+import ResultCard from '../result-card/result-card';
+import { RESULT_ICON_TYPE_KEYS } from '../auth-page.constants';
+import ResultIcon from '../result-icon/result-icon';
+import ResultButton from './result-button/result-button';
 
 const ErrorUserExist = () => {
     const navigate = useNavigate();
@@ -12,17 +12,14 @@ const ErrorUserExist = () => {
 
     return (
         <ResultCard
-            icon={
-                <CloseCircleFilled
-                    className={styles.icon}
-                    style={{ color: 'var(--character-light-error)', fontSize: '71px' }}
-                />
-            }
+            head={<ResultIcon type={RESULT_ICON_TYPE_KEYS.ERROR} />}
             title='Данные не сохранились'
             text={`Такой e-mail уже записан в системе. Попробуйте зарегистрироваться по другому e-mail.`}
-            btnText='Назад к регистрации'
-            onClick={onClick}
-        />
+        >
+            <ResultButton block onClick={onClick}>
+                Назад к регистрации
+            </ResultButton>
+        </ResultCard>
     );
 };
 

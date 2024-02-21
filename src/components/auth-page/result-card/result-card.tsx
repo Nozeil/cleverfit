@@ -1,30 +1,39 @@
 import { type ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { Space, Typography, Button } from 'antd';
+import { Space, Typography } from 'antd';
 import ContentLayout from '@components/auth-page/content-layout/content-layout';
 import { ROUTES } from '@constants/routes';
+import { RESULT_CARD_TYPE_KEYS } from '../auth-page.constants';
+import type { ResultCardTypeValues } from '../auth-page.types';
 
 import styles from './result-card.module.css';
 
 interface ResultCardProps {
-    icon: ReactNode;
     title: string;
-    text: string;
-    btnText: string;
-    onClick: () => void;
+    text: ReactNode;
+    children: ReactNode;
+    head: ReactNode;
+    type?: ResultCardTypeValues;
 }
 
-const ResultCard = ({ icon, title, text, btnText, onClick }: ResultCardProps) => {
+const { DEFAULT, CARD_PB_56, CARD_PB_56_BREAKPOINT } = RESULT_CARD_TYPE_KEYS;
+
+const ResultCard = ({ head, title, text, type = DEFAULT, children }: ResultCardProps) => {
     const { state } = useLocation();
+    const cardClassName = {
+        [DEFAULT]: '',
+        [CARD_PB_56]: styles.card,
+        [CARD_PB_56_BREAKPOINT]: styles.cardBreakpoint,
+    }[type];
 
     if (!state?.from) {
         return <Navigate to={ROUTES.AUTH} replace />;
     }
 
     return (
-        <ContentLayout>
+        <ContentLayout cardClassName={cardClassName}>
             <Space className={styles.space} direction='vertical' size='large' align='center'>
-                {icon}
+                {head}
                 <div>
                     <Typography.Title className={styles.title} level={3}>
                         {title}
@@ -33,9 +42,7 @@ const ResultCard = ({ icon, title, text, btnText, onClick }: ResultCardProps) =>
                         {text}
                     </Typography.Text>
                 </div>
-                <Button className={styles.btn} block type='primary' size='large' onClick={onClick}>
-                    {btnText}
-                </Button>
+                {children}
             </Space>
         </ContentLayout>
     );

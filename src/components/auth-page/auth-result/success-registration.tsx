@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import { CheckCircleFilled } from '@ant-design/icons';
 import { ROUTES } from '@constants/routes';
-import ResultCard from './result-card/result-card';
-
-import styles from './auth-result.module.css';
+import ResultCard from '../result-card/result-card';
+import ResultIcon from '../result-icon/result-icon';
+import { RESULT_ICON_TYPE_KEYS } from '../auth-page.constants';
+import ResultButton from './result-button/result-button';
 
 const SuccessRegistration = () => {
     const navigate = useNavigate();
@@ -12,18 +12,15 @@ const SuccessRegistration = () => {
 
     return (
         <ResultCard
-            icon={
-                <CheckCircleFilled
-                    className={styles.icon}
-                    style={{ color: 'var(--character-light-success)', fontSize: '71px' }}
-                />
-            }
+            head={<ResultIcon type={RESULT_ICON_TYPE_KEYS.SUCCESS} />}
             title='Регистрация успешна'
             text={`Регистрация прошла успешно. Зайдите
 в приложение, используя свои e-mail и пароль.`}
-            btnText='Войти'
-            onClick={onClick}
-        />
+        >
+            <ResultButton block onClick={onClick}>
+                Войти
+            </ResultButton>
+        </ResultCard>
     );
 };
 

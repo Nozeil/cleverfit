@@ -1,0 +1,32 @@
+.space:global(.ant-space) {
+    width: 100%;
+    justify-content: center;
+}
+
+.space :global(.ant-space-item) {
+    text-align: center;
+}
+
+.title:global(.ant-typography) {
+    margin-bottom: 0;
+}
+
+.title:global(.ant-typography),
+.text:global(.ant-typography) {
+    white-space: pre-wrap;
+}
+
+.card:global(.ant-card),
+.cardBreakpoint:global(.ant-card) {
+    padding: var(--py-auth-card) var(--px-auth-card) 56px;
+}
+
+.card :global(.ant-card-body) {
+    margin: 0;
+}
+
+@media screen and (max-width: 450px) {
+    .cardBreakpoint:global(.ant-card) {
+        padding: var(--p-auth-card-mobile-l);
+    }
+}

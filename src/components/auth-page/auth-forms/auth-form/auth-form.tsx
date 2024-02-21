@@ -2,21 +2,33 @@ import { type ReactNode, useState } from 'react';
 import { Button, Form } from 'antd';
 import { GooglePlusOutlined } from '@ant-design/icons';
 import classNames from 'classnames/bind';
-import { OnFinishAuth } from '../../auth-forms.types';
+import { OnFinishAuth } from '../auth-forms.types';
 
 import styles from './auth-form.module.css';
 
 interface AuthFormProps {
     name: string;
-    googleButtonText: string;
     children: ReactNode;
     onFinish: OnFinishAuth;
     className?: string;
+    submitButtonClassName?: string;
+    submitButtonText?: string;
+    googleButton?: boolean;
+    googleButtonText?: string;
 }
 
 const cx = classNames.bind(styles);
 
-const AuthForm = ({ className, name, googleButtonText, children, onFinish }: AuthFormProps) => {
+const AuthForm = ({
+    className,
+    name,
+    children,
+    onFinish,
+    submitButtonClassName,
+    submitButtonText = 'Войти',
+    googleButtonText,
+    googleButton,
+}: AuthFormProps) => {
     const [form] = Form.useForm();
     const [isDisabled, setIsDisabled] = useState(false);
     const formClassName = cx(className, styles.form);
@@ -41,20 +53,22 @@ const AuthForm = ({ className, name, googleButtonText, children, onFinish }: Aut
 
             <Form.Item className={styles.loginBtnFormItem}>
                 <Button
-                    className={styles.btn}
+                    className={cx(styles.btn, submitButtonClassName)}
                     block
                     type='primary'
                     htmlType='submit'
                     disabled={isDisabled}
                 >
-                    Войти
+                    {submitButtonText}
                 </Button>
             </Form.Item>
-            <Form.Item>
-                <Button className={styles.btn} block icon={<GooglePlusOutlined />}>
-                    {googleButtonText}
-                </Button>
-            </Form.Item>
+            {googleButton && (
+                <Form.Item>
+                    <Button className={styles.btn} block icon={<GooglePlusOutlined />}>
+                        {googleButtonText}
+                    </Button>
+                </Form.Item>
+            )}
         </Form>
     );
 };

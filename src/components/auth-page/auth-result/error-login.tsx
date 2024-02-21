@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import { WarningFilled } from '@ant-design/icons';
-import ResultCard from './result-card/result-card';
 import { ROUTES } from '@constants/routes';
-
-import styles from './auth-result.module.css';
+import ResultCard from '../result-card/result-card';
+import ResultIcon from '../result-icon/result-icon';
+import { RESULT_ICON_TYPE_KEYS } from '../auth-page.constants';
+import ResultButton from './result-button/result-button';
 
 const ErrorLogin = () => {
     const navigate = useNavigate();
@@ -12,17 +12,14 @@ const ErrorLogin = () => {
 
     return (
         <ResultCard
-            icon={
-                <WarningFilled
-                    className={styles.icon}
-                    style={{ color: 'var(--character-light-warning)', fontSize: '71px' }}
-                />
-            }
+            head={<ResultIcon type={RESULT_ICON_TYPE_KEYS.WARNING} />}
             title='Вход не выполнен'
             text='Что-то пошло не так. Попробуйте еще раз'
-            btnText='Повторить'
-            onClick={onClick}
-        />
+        >
+            <ResultButton block onClick={onClick}>
+                Повторить
+            </ResultButton>
+        </ResultCard>
     );
 };
 

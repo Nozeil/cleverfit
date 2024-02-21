@@ -17,4 +17,5 @@
   --neutral-gray-7: #8c8c8c;
   --blue-1: rgba(121, 156, 212, 0.502);
   --input-shadow: 0 0 0 2px rgba(47, 84, 235, 0.2);
+  --input-shadow-error: 0 0 0 2px rgba(255, 77, 79, 0.2);
 }

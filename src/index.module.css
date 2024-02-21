@@ -29,6 +29,10 @@ a {
     color: rgba(0, 0, 0, 0.65);
 }
 
+:global(h3.ant-typography) {
+    font-weight: 500;
+}
+
 :global(.ant-menu),
 :global(.ant-btn-text) {
     color: var(--character-light-title-85);

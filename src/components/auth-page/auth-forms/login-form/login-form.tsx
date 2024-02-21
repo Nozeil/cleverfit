@@ -1,14 +1,16 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import AuthForm from '../components/auth-form/auth-form';
-import EmailInput from '../components/inputs/email-input';
-import PasswordInput from '../components/inputs/password-input';
+import AuthForm from '../auth-form/auth-form';
+import EmailInput from '../../inputs/email-input';
+import PasswordInput from '../../inputs/password-input';
 import PasswordOptions from './password-options/password-options';
 import { useLoginUserMutation } from '@services/api';
 import { COMPOUND_ROUTES, ROUTES } from '@constants/routes';
 import useAuth from '@hooks/useAuth';
+import InputGroup from '@components/auth-page/input-group/input-group';
 import type { OnFinishLoginValues } from '../auth-forms.types';
 
 import styles from './login-form.module.css';
+import { INPUT_GROUP_TYPE_KEYS } from '@components/auth-page/auth-page.constants';
 
 const LoginForm = () => {
     const [loginUser] = useLoginUserMutation();
@@ -26,7 +28,7 @@ const LoginForm = () => {
             }).unwrap();
 
             auth.signin(accessToken, remember, () => navigate(ROUTES.MAIN, options));
-        } catch (e) {
+        } catch  {
             navigate(COMPOUND_ROUTES.RESULT_ERROR_LOGIN, options);
         }
     };
@@ -35,13 +37,14 @@ const LoginForm = () => {
         <AuthForm
             className={styles.loginForm}
             name='login-form'
+            googleButton
             googleButtonText='Войти через Google'
             onFinish={onFinish}
         >
-            <div className={styles.loginFormGroup}>
+            <InputGroup type={INPUT_GROUP_TYPE_KEYS.LG}>
                 <EmailInput />
                 <PasswordInput />
-            </div>
+            </InputGroup>
 
             <PasswordOptions />
         </AuthForm>

@@ -4,8 +4,8 @@ interface BackdropBlurProps {
     zIndex?: number;
 }
 
-const BackdropBlur = ({ zIndex }: BackdropBlurProps) => {
-    return <div className={styles.blur} style={{ zIndex }} />;
-};
+const BackdropBlur = ({ zIndex }: BackdropBlurProps) => (
+    <div className={styles.blur} style={{ zIndex }} />
+);
 
 export default BackdropBlur;

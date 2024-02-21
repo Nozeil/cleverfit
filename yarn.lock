@@ -3739,6 +3739,11 @@ husky@^4.3.8:
     slash "^3.0.0"
     which-pm-runs "^1.0.0"
 
+i@^0.3.7:
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/i/-/i-0.3.7.tgz#2a7437a923d59c14b17243dc63a549af24d85799"
+  integrity sha512-FYz4wlXgkQwIPqhzC5TdNMLSE5+GS1IIDJZY/1ZiEPCT2S3COUVZeT5OW4BmW4r5LHLQuOosSwsvnroG9GR59Q==
+
 iconv-lite@^0.6.3:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.6.3.tgz#a52f80bf38da1952eb5c681790719871a1a72501"
@@ -5772,6 +5777,11 @@ react-router@6.21.1:
   integrity sha512-W0l13YlMTm1YrpVIOpjCADJqEUpz1vm+CMo47RuFX4Ftegwm6KOYsL5G3eiE52jnJpKvzm6uB/vTKTPKM8dmkA==
   dependencies:
     "@remix-run/router" "1.14.1"
+
+react-verification-input@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/react-verification-input/-/react-verification-input-4.1.0.tgz#241f954d0ef376020844fe5c3b679061048a220c"
+  integrity sha512-RUYJjy2ZM9eMbWATIPNzrCfrxbp8vWNiTOFajxHx/DEK5AWMLAVpaQbhBMb68e13T91uGGragvL9LMAUOh2GrA==
 
 react@^18.2.0:
   version "18.2.0"
