@@ -1,19 +1,21 @@
+import { Outlet } from 'react-router-dom';
 import { Layout } from 'antd';
 import BackdropBlur from '@components/auth-page/backdrop-blur/backdrop-blur';
 import Loader from '@components/loader/loader';
+import useIsLoading from '@hooks/useIsLoading';
 
 import styles from './auth.module.css';
-import { Outlet } from 'react-router-dom';
 
 const { Content } = Layout;
 
 const AuthPage = () => {
-    const isLoading = false;
-    const loader = isLoading ? <Loader /> : <BackdropBlur />;
+    const isLoading = useIsLoading();
+
+    const loaderOrBlur = isLoading ? <Loader /> : <BackdropBlur />;
 
     return (
         <Layout className={styles.layout}>
-            {loader}
+            {loaderOrBlur}
             <Content className={styles.content}>
                 <Outlet />
             </Content>
