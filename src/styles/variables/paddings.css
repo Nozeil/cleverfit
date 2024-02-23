@@ -45,4 +45,8 @@
     --pb-auth-form-item-password: 30px;
     --p-auth-form-forgot-btn: 0;
     --p-auth-form-forgot-btn-mobile-l: 0 7px;
+    --p-result-button: 10px 15px;
+    --p-confirm-email-space-item-mobile-l: 0 30px;
+    --p-verification-container-mobile-l: 0 10px;
+    --p-result-icon: 10px 5px;
 }

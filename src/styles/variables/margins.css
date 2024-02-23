@@ -41,4 +41,7 @@
     --ml-auth-form-btn-content-mobile-l: 0;
     --mb-auth-form-password-with-explain: 16px;
     --mb-auth-form-password-with-explain-mobile-l: 0;
+    --m-verification-input-container: 0 auto;
+    --mb-result-card-title: 0;
+    --m-result-card-body: 0;
 }

@@ -8,7 +8,7 @@
 }
 
 .title:global(.ant-typography) {
-    margin-bottom: 0;
+    margin-bottom: var(--mb-result-card-title);
 }
 
 .title:global(.ant-typography),
@@ -22,7 +22,7 @@
 }
 
 .card :global(.ant-card-body) {
-    margin: 0;
+    margin: var(--m-result-card-body);
 }
 
 @media screen and (max-width: 450px) {

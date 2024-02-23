@@ -1,5 +1,5 @@
 @media screen and (max-width: 450px) {
     :global(.ant-space-item):has(> .text) {
-        padding: 0 30px;
+        padding: var(--p-confirm-email-space-item-mobile-l);
     }
 }

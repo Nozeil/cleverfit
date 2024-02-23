@@ -2,7 +2,7 @@
     width: 100%;
     max-width: 300px;
     height: fit-content;
-    margin: 0 auto;
+    margin: var(--m-verification-input-container);
 }
 
 .input,
@@ -40,6 +40,6 @@
 
 @media screen and (max-width: 450px) {
     .container {
-        padding: 0 10px;
+        padding: var(--p-verification-container-mobile-l);
     }
 }
