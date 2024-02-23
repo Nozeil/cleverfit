@@ -108,6 +108,7 @@ const routes = (
                 <Route index element={<MainPage />} />
             </Route>
         </Route>
+        <Route path='*' element={<Navigate to={ROUTES.AUTH} />} />
     </Routes>
 );
 
