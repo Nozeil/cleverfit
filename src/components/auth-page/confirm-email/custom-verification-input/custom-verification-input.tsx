@@ -52,6 +52,7 @@ const CustomVerificationInput = ({ isError, setIsError }: CustomVerificationInpu
             value={input}
             onComplete={onComplete}
             onChange={onChange}
+            inputProps={{ 'data-test-id': 'verification-input' }}
         />
     );
 };

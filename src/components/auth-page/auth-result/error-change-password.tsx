@@ -18,7 +18,7 @@ export const ErrorChangePassword = () => {
             title='Данные не сохранились'
             text={`Что-то пошло не так. Попробуйте ещё раз`}
         >
-            <ResultButton block onClick={onClick}>
+            <ResultButton block onClick={onClick} testId='change-retry-button'>
                 Повторить
             </ResultButton>
         </ResultCard>

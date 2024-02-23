@@ -28,7 +28,7 @@ const LoginForm = () => {
             }).unwrap();
 
             auth.signin(accessToken, remember, () => navigate(ROUTES.MAIN, options));
-        } catch  {
+        } catch {
             navigate(COMPOUND_ROUTES.RESULT_ERROR_LOGIN, options);
         }
     };
@@ -40,10 +40,11 @@ const LoginForm = () => {
             googleButton
             googleButtonText='Войти через Google'
             onFinish={onFinish}
+            submitButtonTestId='login-submit-button'
         >
             <InputGroup type={INPUT_GROUP_TYPE_KEYS.LG}>
-                <EmailInput />
-                <PasswordInput />
+                <EmailInput testId='login-email' />
+                <PasswordInput testId='login-password' />
             </InputGroup>
 
             <PasswordOptions />

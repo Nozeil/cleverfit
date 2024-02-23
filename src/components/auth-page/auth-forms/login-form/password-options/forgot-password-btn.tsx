@@ -53,6 +53,7 @@ const ForgotPasswordBtn = () => {
                         type='link'
                         disabled={disabled}
                         onClick={() => onClick(email)}
+                        data-test-id='login-forgot-button'
                     >
                         Забыли пароль?
                     </Button>

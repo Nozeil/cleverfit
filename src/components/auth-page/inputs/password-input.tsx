@@ -6,6 +6,7 @@ import { type Rule } from 'antd/lib/form';
 import styles from './inputs.module.css';
 
 interface PasswordInputProps {
+    testId: string;
     name?: string;
     message?: string;
     placeholder?: string;
@@ -19,6 +20,7 @@ const PasswordInput = ({
     placeholder = 'Пароль',
     help,
     rules: additionalRules,
+    testId,
 }: PasswordInputProps) => {
     const rules: Rule[] = [
         {
@@ -34,7 +36,11 @@ const PasswordInput = ({
 
     return (
         <Form.Item className={styles.password} name={name} help={help} rules={rules}>
-            <Input.Password className={styles.input} placeholder={placeholder} />
+            <Input.Password
+                className={styles.input}
+                placeholder={placeholder}
+                data-test-id={testId}
+            />
         </Form.Item>
     );
 };

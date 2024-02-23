@@ -4,7 +4,11 @@ import { INPUT_NAMES } from '../auth-page.constants';
 
 import styles from './inputs.module.css';
 
-const EmailInput = () => (
+interface EmailInputProps {
+    testId: string;
+}
+
+const EmailInput = ({ testId }: EmailInputProps) => (
     <Form.Item
         className={styles.email}
         name={INPUT_NAMES.EMAIL}
@@ -16,7 +20,7 @@ const EmailInput = () => (
             },
         ]}
     >
-        <Input className={styles.input} type='email' addonBefore='e-mail:' />
+        <Input className={styles.input} type='email' addonBefore='e-mail:' data-test-id={testId} />
     </Form.Item>
 );
 

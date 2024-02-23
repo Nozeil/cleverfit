@@ -7,7 +7,7 @@ import styles from './loader.module.css';
 const Loader = () => (
     <>
         <BackdropBlur zIndex={10} />
-        <Lottie className={styles.loader} animationData={animationData} />
+        <Lottie className={styles.loader} animationData={animationData} data-test-id='loader' />
     </>
 );
 

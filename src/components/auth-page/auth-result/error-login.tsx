@@ -16,7 +16,7 @@ const ErrorLogin = () => {
             title='Вход не выполнен'
             text='Что-то пошло не так. Попробуйте еще раз'
         >
-            <ResultButton block onClick={onClick}>
+            <ResultButton block onClick={onClick} testId='login-retry-button'>
                 Повторить
             </ResultButton>
         </ResultCard>

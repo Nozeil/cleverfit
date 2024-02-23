@@ -10,6 +10,7 @@ interface AuthFormProps {
     name: string;
     children: ReactNode;
     onFinish: OnFinishAuth;
+    submitButtonTestId: string;
     className?: string;
     submitButtonClassName?: string;
     submitButtonText?: string;
@@ -26,6 +27,7 @@ const AuthForm = ({
     onFinish,
     submitButtonClassName,
     submitButtonText = 'Войти',
+    submitButtonTestId,
     googleButtonText,
     googleButton,
 }: AuthFormProps) => {
@@ -58,6 +60,7 @@ const AuthForm = ({
                     type='primary'
                     htmlType='submit'
                     disabled={isDisabled}
+                    data-test-id={submitButtonTestId}
                 >
                     {submitButtonText}
                 </Button>

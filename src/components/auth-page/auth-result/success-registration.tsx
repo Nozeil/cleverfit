@@ -17,7 +17,7 @@ const SuccessRegistration = () => {
             text={`Регистрация прошла успешно. Зайдите
 в приложение, используя свои e-mail и пароль.`}
         >
-            <ResultButton block onClick={onClick}>
+            <ResultButton block onClick={onClick} testId='registration-enter-button'>
                 Войти
             </ResultButton>
         </ResultCard>

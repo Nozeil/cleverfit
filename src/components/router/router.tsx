@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { HistoryRouter } from 'redux-first-history/rr6';
 import { history } from '@redux/configure-store';
 import { MainPage } from '@pages/main-page/main-page';

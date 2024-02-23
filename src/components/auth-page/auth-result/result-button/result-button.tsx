@@ -5,6 +5,7 @@ import styles from './result-button.module.css';
 interface ResultButtonProps {
     onClick: () => void;
     children: ReactNode;
+    testId: string;
     block?: boolean;
 }
 

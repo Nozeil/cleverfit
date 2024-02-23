@@ -44,10 +44,14 @@ const RegistrationForm = () => {
             googleButton
             googleButtonText='Регистрация через Google'
             onFinish={onFinish}
+            submitButtonTestId='registration-submit-button'
         >
             <InputGroup type={INPUT_GROUP_TYPE_KEYS.XL} mobileBreakpoint>
-                <EmailInput />
-                <PasswordsGroup />
+                <EmailInput testId='registration-email' />
+                <PasswordsGroup
+                    testId_1='registration-password'
+                    testId_2='registration-confirm-password'
+                />
             </InputGroup>
         </AuthForm>
     );

@@ -7,7 +7,7 @@ import styles from './password-options.module.css';
 const PasswordOptions = () => (
     <Form.Item className={styles.checkArea}>
         <Form.Item name={INPUT_NAMES.CHECKBOX_REMEMBER_ME} valuePropName='checked' noStyle>
-            <Checkbox>Запомнить меня</Checkbox>
+            <Checkbox data-test-id='login-remember'>Запомнить меня</Checkbox>
         </Form.Item>
 
         <ForgotPasswordBtn />

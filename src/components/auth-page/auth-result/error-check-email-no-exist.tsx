@@ -18,7 +18,9 @@ export const ErrorCheckEmailNoExist = () => {
             text={`Мы не нашли в базе вашего e-mail. Попробуйте
 войти с другим e-mail.`}
         >
-            <ResultButton onClick={onClick}>Попробовать снова</ResultButton>
+            <ResultButton onClick={onClick} testId='check-retry-button'>
+                Попробовать снова
+            </ResultButton>
         </ResultCard>
     );
 };

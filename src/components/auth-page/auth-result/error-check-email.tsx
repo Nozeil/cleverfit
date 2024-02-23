@@ -27,7 +27,9 @@ export const ErrorCheckEmail = () => {
             title='Что-то пошло не так'
             text='Произошла ошибка, попробуйте отправить форму ещё раз.'
         >
-            <ResultButton onClick={onClick}>Назад</ResultButton>
+            <ResultButton onClick={onClick} testId='check-back-button'>
+                Назад
+            </ResultButton>
         </ResultCard>
     );
 };

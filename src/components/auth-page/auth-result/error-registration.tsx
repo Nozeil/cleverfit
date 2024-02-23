@@ -18,7 +18,7 @@ const ErrorRegistration = () => {
             text={`Что-то пошло не так и ваша регистрация 
 не завершилась. Попробуйте ещё раз.`}
         >
-            <ResultButton block onClick={onClick}>
+            <ResultButton block onClick={onClick} testId='registration-retry-button'>
                 Повторить
             </ResultButton>
         </ResultCard>

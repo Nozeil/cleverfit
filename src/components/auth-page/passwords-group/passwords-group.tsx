@@ -5,11 +5,18 @@ const helpMessage = 'Пароль не менее 8 символов, с заг�
 
 interface PasswordGroupProps {
     placeholder_1?: string;
+    testId_1: string;
+    testId_2: string;
 }
 
-const PasswordsGroup = ({ placeholder_1 }: PasswordGroupProps) => (
+const PasswordsGroup = ({ placeholder_1, testId_1, testId_2 }: PasswordGroupProps) => (
     <>
-        <PasswordInput help={helpMessage} message={helpMessage} placeholder={placeholder_1} />
+        <PasswordInput
+            help={helpMessage}
+            message={helpMessage}
+            placeholder={placeholder_1}
+            testId={testId_1}
+        />
         <PasswordInput
             name={INPUT_NAMES.PASSWORD_CONFIRM}
             placeholder='Повторите пароль'
@@ -23,6 +30,7 @@ const PasswordsGroup = ({ placeholder_1 }: PasswordGroupProps) => (
                     },
                 }),
             ]}
+            testId={testId_2}
         />
     </>
 );

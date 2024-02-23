@@ -45,12 +45,17 @@ const ChangePassword = () => {
                 onFinish={onFinish}
                 submitButtonClassName={styles.btn}
                 submitButtonText='Сохранить'
+                submitButtonTestId='change-submit-button'
             >
                 <Typography.Title level={3} className={styles.title}>
                     Восстановление аккауанта
                 </Typography.Title>
                 <InputGroup type={INPUT_GROUP_TYPE_KEYS.XL}>
-                    <PasswordsGroup placeholder_1='Новый пароль' />
+                    <PasswordsGroup
+                        placeholder_1='Новый пароль'
+                        testId_1='change-password'
+                        testId_2='change-confirm-password'
+                    />
                 </InputGroup>
             </AuthForm>
         </ContentLayout>

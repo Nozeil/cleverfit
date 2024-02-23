@@ -18,7 +18,7 @@ export const SuccessChangePassword = () => {
             text={`Теперь можно войти в аккаунт, используя 
 свой логин и новый пароль`}
         >
-            <ResultButton block onClick={onClick}>
+            <ResultButton block onClick={onClick} testId='change-entry-button'>
                 Вход
             </ResultButton>
         </ResultCard>
