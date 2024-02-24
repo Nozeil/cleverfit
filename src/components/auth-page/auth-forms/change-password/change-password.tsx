@@ -46,6 +46,7 @@ const ChangePassword = () => {
                 submitButtonClassName={styles.btn}
                 submitButtonText='Сохранить'
                 submitButtonTestId='change-submit-button'
+                shouldValidate
             >
                 <Typography.Title level={3} className={styles.title}>
                     Восстановление аккауанта

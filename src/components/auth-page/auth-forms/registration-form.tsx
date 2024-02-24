@@ -6,11 +6,10 @@ import AuthForm from './auth-form/auth-form';
 import EmailInput from '../inputs/email-input';
 import { HTTP_STATUS_CODES } from '@constants/index';
 import PasswordsGroup from '@components/auth-page/passwords-group/passwords-group';
-
-import type { ErrorResponse } from '@models/models';
-import type { OnFinishRegistrationValues } from './auth-forms.types';
 import InputGroup from '../input-group/input-group';
 import { INPUT_GROUP_TYPE_KEYS } from '../auth-page.constants';
+import type { ErrorResponse } from '@models/models';
+import type { OnFinishRegistrationValues } from './auth-forms.types';
 
 const RegistrationForm = () => {
     const [registerUser] = useRegisterUserMutation();
@@ -26,14 +25,17 @@ const RegistrationForm = () => {
             navigate(COMPOUND_ROUTES.RESULT_SUCCESS_REGISTRATION, options);
         } catch (e) {
             const errorResponse = e as ErrorResponse;
-            errorResponse.statusCode === HTTP_STATUS_CODES.CONFLICT
-                ? navigate(COMPOUND_ROUTES.RESULT_ERROR_USER_EXIST, options)
-                : navigate(COMPOUND_ROUTES.RESULT_ERROR_REGISTRATION, options);
+
+            const route =
+                errorResponse.status === HTTP_STATUS_CODES.CONFLICT
+                    ? COMPOUND_ROUTES.RESULT_ERROR_USER_EXIST
+                    : COMPOUND_ROUTES.RESULT_ERROR_REGISTRATION;
+            navigate(route, options);
         }
     };
 
     useEffect(() => {
-        if (location?.state?.values) {
+        if (location.state?.values) {
             onFinish(location?.state?.values);
         }
     }, []);
@@ -45,6 +47,7 @@ const RegistrationForm = () => {
             googleButtonText='Регистрация через Google'
             onFinish={onFinish}
             submitButtonTestId='registration-submit-button'
+            shouldValidate
         >
             <InputGroup type={INPUT_GROUP_TYPE_KEYS.XL} mobileBreakpoint>
                 <EmailInput testId='registration-email' />

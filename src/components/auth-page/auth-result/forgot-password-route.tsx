@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { type ReactNode, useLayoutEffect, useRef } from 'react';
 import { ROUTES } from '@constants/routes';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { Navigate, useLocation } from 'react-router-dom';
@@ -11,15 +11,20 @@ interface ForgotPasswordRouteProps {
 const ForgotPasswordRoute = ({ children, prevRoute }: ForgotPasswordRouteProps) => {
     const router = useAppSelector((store) => store.router);
     const location = useLocation();
+    const hasAccess = useRef(false);
 
-    if (
-        router.previousLocations?.at(-1)?.location?.pathname !== prevRoute &&
-        router.location?.pathname === location.pathname
-    ) {
-        return <Navigate to={ROUTES.AUTH} />;
-    }
+    useLayoutEffect(() => {
+        if (
+            router.previousLocations?.at(-1)?.location?.pathname !== prevRoute &&
+            router.location?.pathname === location.pathname
+        ) {
+            hasAccess.current = true;
+        }
+    }, []);
 
-    return children;
+    const content = hasAccess ? children : <Navigate to={ROUTES.AUTH} state={location.state} />;
+
+    return content;
 };
 
 export default ForgotPasswordRoute;

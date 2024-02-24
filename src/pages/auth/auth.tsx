@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Layout } from 'antd';
 import BackdropBlur from '@components/auth-page/backdrop-blur/backdrop-blur';
@@ -14,12 +15,14 @@ const AuthPage = () => {
     const loaderOrBlur = isLoading ? <Loader /> : <BackdropBlur />;
 
     return (
-        <Layout className={styles.layout}>
-            {loaderOrBlur}
-            <Content className={styles.content}>
-                <Outlet />
-            </Content>
-        </Layout>
+        <Suspense fallback={<Loader />}>
+            <Layout className={styles.layout}>
+                {loaderOrBlur}
+                <Content className={styles.content}>
+                    <Outlet />
+                </Content>
+            </Layout>
+        </Suspense>
     );
 };
 

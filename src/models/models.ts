@@ -1,8 +1,8 @@
 export interface ErrorResponse {
-    statusCode: number;
-    error: string;
-    message: string;
+    status: number;
+    data: { statusCode: number; error: string; message: string };
 }
+
 export interface AuthUserBody {
     email: string;
     password: string;

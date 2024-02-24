@@ -15,28 +15,32 @@ const ForgotPasswordBtn = () => {
     const location = useLocation();
 
     const onClick = async (email: string) => {
-        const optionsWithEmail = { state: { from: location, email } };
-        try {
-            await checkEmail({ email }).unwrap();
-            navigate(COMPOUND_ROUTES.AUTH_CONFIRM_EMAIL, optionsWithEmail);
-        } catch (e) {
-            const { statusCode, message } = e as ErrorResponse;
+        if (email) {
+            const optionsWithEmail = { state: { from: location, email } };
 
-            if (
-                statusCode === HTTP_STATUS_CODES.NOT_FOUND &&
-                message === ERROR_MESSAGES.EMAIL_NOT_FOUND
-            ) {
-                navigate(COMPOUND_ROUTES.RESULT_ERROR_CHECK_EMAIL_NO_EXIST, {
-                    state: { from: location },
-                });
+            try {
+                await checkEmail({ email }).unwrap();
+                navigate(COMPOUND_ROUTES.AUTH_CONFIRM_EMAIL, optionsWithEmail);
+            } catch (e) {
+                const { status, data } = e as ErrorResponse;
+
+                if (
+                    status === HTTP_STATUS_CODES.NOT_FOUND &&
+                    data.message === ERROR_MESSAGES.EMAIL_NOT_FOUND
+                ) {
+                    navigate(COMPOUND_ROUTES.RESULT_ERROR_CHECK_EMAIL_NO_EXIST, {
+                        state: { from: location },
+                    });
+                } else {
+                    navigate(COMPOUND_ROUTES.RESULT_ERROR_CHECK_EMAIL, optionsWithEmail);
+                }
             }
-
-            navigate(COMPOUND_ROUTES.RESULT_ERROR_CHECK_EMAIL, optionsWithEmail);
         }
     };
 
     useEffect(() => {
-        if (location?.state?.email) {
+        if (location.state?.email) {
+            console.log(location);
             onClick(location.state.email);
         }
     }, []);
@@ -45,7 +49,7 @@ const ForgotPasswordBtn = () => {
         <Form.Item shouldUpdate noStyle>
             {({ getFieldError, getFieldValue }) => {
                 const email = getFieldValue(INPUT_NAMES.EMAIL);
-                const disabled = !!getFieldError(INPUT_NAMES.EMAIL).length || !email;
+                const disabled = !!getFieldError(INPUT_NAMES.EMAIL).length && email;
 
                 return (
                     <Button

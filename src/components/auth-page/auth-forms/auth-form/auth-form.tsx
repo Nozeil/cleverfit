@@ -16,6 +16,7 @@ interface AuthFormProps {
     submitButtonText?: string;
     googleButton?: boolean;
     googleButtonText?: string;
+    shouldValidate?: boolean;
 }
 
 const cx = classNames.bind(styles);
@@ -30,14 +31,17 @@ const AuthForm = ({
     submitButtonTestId,
     googleButtonText,
     googleButton,
+    shouldValidate,
 }: AuthFormProps) => {
     const [form] = Form.useForm();
     const [isDisabled, setIsDisabled] = useState(false);
     const formClassName = cx(className, styles.form);
 
     const onFieldsChange = () => {
-        const hasErrors = form.getFieldsError().some(({ errors }) => errors.length);
-        setIsDisabled(hasErrors);
+        if (shouldValidate) {
+            const hasErrors = form.getFieldsError().some(({ errors }) => errors.length);
+            setIsDisabled(hasErrors);
+        }
     };
 
     return (

@@ -6,15 +6,16 @@ import styles from './inputs.module.css';
 
 interface EmailInputProps {
     testId: string;
+    required?: boolean
 }
 
-const EmailInput = ({ testId }: EmailInputProps) => (
+const EmailInput = ({ testId, required }: EmailInputProps) => (
     <Form.Item
         className={styles.email}
         name={INPUT_NAMES.EMAIL}
         rules={[
             {
-                required: true,
+                required: required,
                 pattern: emailPattern,
                 message: '',
             },

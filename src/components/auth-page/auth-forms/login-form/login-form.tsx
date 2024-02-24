@@ -43,7 +43,7 @@ const LoginForm = () => {
             submitButtonTestId='login-submit-button'
         >
             <InputGroup type={INPUT_GROUP_TYPE_KEYS.LG}>
-                <EmailInput testId='login-email' />
+                <EmailInput required testId='login-email' />
                 <PasswordInput testId='login-password' />
             </InputGroup>
 

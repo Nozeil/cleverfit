@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react';
 import { Button } from 'antd';
+
 import styles from './result-button.module.css';
 
 interface ResultButtonProps {
@@ -9,9 +10,16 @@ interface ResultButtonProps {
     block?: boolean;
 }
 
-const ResultButton = ({ onClick, children, block }: ResultButtonProps) => {
+const ResultButton = ({ onClick, children, block, testId }: ResultButtonProps) => {
     return (
-        <Button className={styles.btn} block={block} type='primary' size='large' onClick={onClick}>
+        <Button
+            className={styles.btn}
+            block={block}
+            type='primary'
+            size='large'
+            onClick={onClick}
+            data-test-id={testId}
+        >
             {children}
         </Button>
     );
