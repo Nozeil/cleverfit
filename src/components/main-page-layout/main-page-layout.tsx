@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Layout } from 'antd';
 import { Outlet } from 'react-router-dom';
 import { Logo } from './components/logo/logo';
-import NavMenu from './components/nav-menu/nav-menu';
-import Trigger from './components/trigger/trigger';
-import Sider from './components/sider/sider';
+import { NavMenu } from './components/nav-menu/nav-menu';
+import { Trigger } from './components/trigger/trigger';
+import { Sider } from './components/sider/sider';
 
 import styles from './main-page-layout.module.css';
 

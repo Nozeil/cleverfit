@@ -1,13 +1,13 @@
 import { type ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 import { ROUTES } from '@constants/routes';
-import useAuth from '@hooks/useAuth';
+import { useAuth } from '@hooks/useAuth';
 
 interface AuthRouteProps {
     children: ReactNode;
 }
 
-const AuthRoute = ({ children }: AuthRouteProps) => {
+export const AuthRoute = ({ children }: AuthRouteProps) => {
     const auth = useAuth();
 
     if (!auth.token) {
@@ -16,5 +16,3 @@ const AuthRoute = ({ children }: AuthRouteProps) => {
 
     return children;
 };
-
-export default AuthRoute;

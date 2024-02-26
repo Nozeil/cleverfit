@@ -6,10 +6,10 @@ import styles from './inputs.module.css';
 
 interface EmailInputProps {
     testId: string;
-    required?: boolean
+    required?: boolean;
 }
 
-const EmailInput = ({ testId, required }: EmailInputProps) => (
+export const EmailInput = ({ testId, required }: EmailInputProps) => (
     <Form.Item
         className={styles.email}
         name={INPUT_NAMES.EMAIL}
@@ -24,5 +24,3 @@ const EmailInput = ({ testId, required }: EmailInputProps) => (
         <Input className={styles.input} type='email' addonBefore='e-mail:' data-test-id={testId} />
     </Form.Item>
 );
-
-export default EmailInput;

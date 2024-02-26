@@ -1,11 +1,11 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { COMPOUND_ROUTES } from '@constants/routes';
-import ResultCard from '../result-card/result-card';
+import { ResultCard } from '../result-card/result-card';
 import { RESULT_ICON_TYPE_KEYS } from '../auth-page.constants';
-import ResultIcon from '../result-icon/result-icon';
-import ResultButton from './result-button/result-button';
+import { ResultIcon } from '../result-icon/result-icon';
+import { ResultButton } from './result-button/result-button';
 
-const ErrorRegistration = () => {
+export const ErrorRegistration = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -24,5 +24,3 @@ const ErrorRegistration = () => {
         </ResultCard>
     );
 };
-
-export default ErrorRegistration;

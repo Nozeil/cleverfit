@@ -11,7 +11,7 @@ interface SiderProps {
     children: ReactNode;
 }
 
-const Sider = ({ isBreakpoint, onBreakpoint, collapsed, children }: SiderProps) => {
+export const Sider = ({ isBreakpoint, onBreakpoint, collapsed, children }: SiderProps) => {
     const sizes = isBreakpoint
         ? { width: SIDER_SIZES.WIDTH_XS, collapsedWidth: SIDER_SIZES.COLLAPSED_WIDTH_XS }
         : { width: SIDER_SIZES.WIDTH, collapsedWidth: SIDER_SIZES.COLLAPSED_WIDTH };
@@ -32,5 +32,3 @@ const Sider = ({ isBreakpoint, onBreakpoint, collapsed, children }: SiderProps) 
         </Layout.Sider>
     );
 };
-
-export default Sider;

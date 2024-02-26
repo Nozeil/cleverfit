@@ -14,7 +14,7 @@ interface PasswordInputProps {
     rules?: Rule[];
 }
 
-const PasswordInput = ({
+export const PasswordInput = ({
     name = INPUT_NAMES.PASSWORD,
     message = '',
     placeholder = 'Пароль',
@@ -44,5 +44,3 @@ const PasswordInput = ({
         </Form.Item>
     );
 };
-
-export default PasswordInput;

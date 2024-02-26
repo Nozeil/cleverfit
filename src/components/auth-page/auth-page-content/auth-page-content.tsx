@@ -1,6 +1,6 @@
 import { Tabs, Image } from 'antd';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import ContentLayout from '@components/auth-page/content-layout/content-layout';
+import { ContentLayout } from '@components/auth-page/content-layout/content-layout';
 import { COMPOUND_ROUTES, ROUTES } from '@constants/routes';
 import Logo from '/svg/logo.svg';
 
@@ -27,7 +27,7 @@ const items = [
     },
 ];
 
-const AuthPageContent = () => {
+export const AuthPageContent = () => {
     const location = useLocation();
     const defaultActiveKey = location.pathname;
 
@@ -48,5 +48,3 @@ const AuthPageContent = () => {
         </ContentLayout>
     );
 };
-
-export default AuthPageContent;

@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { COMPOUND_ROUTES } from '@constants/routes';
-import ResultCard from '../result-card/result-card';
+import { ResultCard } from '../result-card/result-card';
 import { RESULT_ICON_TYPE_KEYS } from '../auth-page.constants';
-import ResultIcon from '../result-icon/result-icon';
-import ResultButton from './result-button/result-button';
+import { ResultIcon } from '../result-icon/result-icon';
+import { ResultButton } from './result-button/result-button';
 
-const ErrorUserExist = () => {
+export const ErrorUserExist = () => {
     const navigate = useNavigate();
 
     const onClick = () => navigate(COMPOUND_ROUTES.AUTH_REGISTRATION);
@@ -22,5 +22,3 @@ const ErrorUserExist = () => {
         </ResultCard>
     );
 };
-
-export default ErrorUserExist;

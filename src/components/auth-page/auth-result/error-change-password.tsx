@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { RESULT_CARD_TYPE_KEYS, RESULT_ICON_TYPE_KEYS } from '../auth-page.constants';
-import ResultCard from '../result-card/result-card';
-import ResultIcon from '../result-icon/result-icon';
-import ResultButton from './result-button/result-button';
+import { ResultCard } from '../result-card/result-card';
+import { ResultIcon } from '../result-icon/result-icon';
+import { ResultButton } from './result-button/result-button';
 import { COMPOUND_ROUTES } from '@constants/routes';
 
 export const ErrorChangePassword = () => {

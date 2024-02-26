@@ -8,7 +8,7 @@ interface TriggerProps {
     onClick: () => void;
 }
 
-const Trigger = ({ collapsed, isBreakpoint, onClick }: TriggerProps) => {
+export const Trigger = ({ collapsed, isBreakpoint, onClick }: TriggerProps) => {
     const Icon = collapsed ? MenuUnfoldOutlined : MenuFoldOutlined;
     const testIds = { desktop: 'sider-switch', mobile: 'sider-switch-mobile' };
     const testId = isBreakpoint ? testIds.mobile : testIds.desktop;
@@ -26,5 +26,3 @@ const Trigger = ({ collapsed, isBreakpoint, onClick }: TriggerProps) => {
         </div>
     );
 };
-
-export default Trigger;

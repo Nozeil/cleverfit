@@ -2,7 +2,7 @@ import { Divider, Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { CalendarTwoTone, HeartFilled, TrophyFilled, IdcardTwoTone } from '@ant-design/icons';
 import ExitIcon from '@assets/icons/exit.svg?react';
-import useAuth from '@hooks/useAuth';
+import { useAuth } from '@hooks/useAuth';
 import { ROUTES } from '@constants/routes';
 import { LABELS, ICONS_COLOR } from './nav-menu.constants';
 
@@ -49,7 +49,7 @@ const menuItems = [
     },
 ];
 
-const NavMenu = () => {
+export const NavMenu = () => {
     const auth = useAuth();
     const navigate = useNavigate();
 
@@ -65,5 +65,3 @@ const NavMenu = () => {
         />
     );
 };
-
-export default NavMenu;

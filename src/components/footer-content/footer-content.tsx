@@ -13,7 +13,7 @@ const actions = [
     </Button>,
 ];
 
-const FooterContent = () => (
+export const FooterContent = () => (
     <div className={styles.space}>
         <Button className={styles.btnLink} type='link' size='large'>
             Смотреть отзывы
@@ -36,5 +36,3 @@ const FooterContent = () => (
         </Card>
     </div>
 );
-
-export default FooterContent;

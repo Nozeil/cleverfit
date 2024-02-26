@@ -11,7 +11,7 @@ interface CustomVerificationInputProps {
     setIsError: (isError: boolean) => void;
 }
 
-const CustomVerificationInput = ({ isError, setIsError }: CustomVerificationInputProps) => {
+export const CustomVerificationInput = ({ isError, setIsError }: CustomVerificationInputProps) => {
     const [input, setInput] = useState('');
     const [confirmEmail] = useConfirmEmailMutation();
     const navigate = useNavigate();
@@ -56,5 +56,3 @@ const CustomVerificationInput = ({ isError, setIsError }: CustomVerificationInpu
         />
     );
 };
-
-export default CustomVerificationInput;

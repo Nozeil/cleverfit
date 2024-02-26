@@ -4,7 +4,7 @@ import type { AuthProviderProps, Signin, Signout } from './auth.types';
 
 const STORAGE_KEY = 'accessToken';
 
-const AuthProvider = ({ children }: AuthProviderProps) => {
+export const AuthProvider = ({ children }: AuthProviderProps) => {
     const [token, setToken] = useState(
         localStorage.getItem(STORAGE_KEY) || sessionStorage.getItem(STORAGE_KEY),
     );
@@ -28,5 +28,3 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
-
-export default AuthProvider;

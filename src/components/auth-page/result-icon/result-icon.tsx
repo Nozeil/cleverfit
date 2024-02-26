@@ -15,7 +15,7 @@ interface ResultIconProps {
 
 const { ERROR, SUCCESS, WARNING, EXCLAMATION } = RESULT_ICON_TYPE_KEYS;
 
-const ResultIcon = ({ type }: ResultIconProps) => {
+export const ResultIcon = ({ type }: ResultIconProps) => {
     const fontSize = '71px';
     const icons = {
         [ERROR]: (
@@ -46,5 +46,3 @@ const ResultIcon = ({ type }: ResultIconProps) => {
 
     return icons[type];
 };
-
-export default ResultIcon;

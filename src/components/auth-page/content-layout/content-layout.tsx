@@ -13,12 +13,15 @@ interface AuthPageLayoutProps {
 
 const cx = classNames.bind(styles);
 
-const ContentLayout = ({ className, children, title, cardClassName }: AuthPageLayoutProps) => (
+export const ContentLayout = ({
+    className,
+    children,
+    title,
+    cardClassName,
+}: AuthPageLayoutProps) => (
     <Space className={cx(styles.space, className)} size={0}>
         <Card className={cx(styles.card, cardClassName)} bordered={false} title={title}>
             {children}
         </Card>
     </Space>
 );
-
-export default ContentLayout;

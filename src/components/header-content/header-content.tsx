@@ -3,7 +3,7 @@ import { SettingOutlined } from '@ant-design/icons';
 
 import styles from './header-content.module.css';
 
-const HeaderContent = () => (
+export const HeaderContent = () => (
     <>
         <Breadcrumb className={styles.breadcrumb}>
             <Breadcrumb.Item>Главная</Breadcrumb.Item>
@@ -23,5 +23,3 @@ const HeaderContent = () => (
         </Space>
     </>
 );
-
-export default HeaderContent;

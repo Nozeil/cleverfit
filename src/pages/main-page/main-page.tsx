@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
 import { Layout } from 'antd';
-import HeaderContent from '@components/header-content/header-content';
-import MainPageContent from '@components/main-page-content/main-page-content';
-import Loader from '@components/loader/loader';
-import FooterContent from '@components/footer-content/footer-content';
+import { HeaderContent } from '@components/header-content/header-content';
+import { MainPageContent } from '@components/main-page-content/main-page-content';
+import { Loader } from '@components/loader/loader';
+import { FooterContent } from '@components/footer-content/footer-content';
 
 import styles from './main-page.module.css';
 

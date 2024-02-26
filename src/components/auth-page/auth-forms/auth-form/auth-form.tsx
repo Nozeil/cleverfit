@@ -21,7 +21,7 @@ interface AuthFormProps {
 
 const cx = classNames.bind(styles);
 
-const AuthForm = ({
+export const AuthForm = ({
     className,
     name,
     children,
@@ -79,5 +79,3 @@ const AuthForm = ({
         </Form>
     );
 };
-
-export default AuthForm;

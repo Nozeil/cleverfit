@@ -2,7 +2,7 @@ import { useAppSelector } from './typed-react-redux-hooks';
 
 const status = 'pending';
 
-const useIsLoading = () => {
+export const useIsLoading = () => {
     const api = useAppSelector((state) => state.api);
 
     const isQueryPending = Object.values(api.queries).some((query) => query?.status === status);
@@ -12,5 +12,3 @@ const useIsLoading = () => {
 
     return isQueryPending || isMutatitonPending;
 };
-
-export default useIsLoading;

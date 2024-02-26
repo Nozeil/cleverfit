@@ -9,7 +9,7 @@ import { COMPOUND_ROUTES } from '@constants/routes';
 
 import styles from './password-options.module.css';
 
-const ForgotPasswordBtn = () => {
+export const ForgotPasswordBtn = () => {
     const [checkEmail] = useCheckEmailMutation();
     const navigate = useNavigate();
     const location = useLocation();
@@ -66,5 +66,3 @@ const ForgotPasswordBtn = () => {
         </Form.Item>
     );
 };
-
-export default ForgotPasswordBtn;

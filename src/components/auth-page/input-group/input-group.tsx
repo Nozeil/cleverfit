@@ -10,7 +10,7 @@ interface InputGroupProps {
     mobileBreakpoint?: boolean;
 }
 
-const InputGroup = ({ children, type, mobileBreakpoint }: InputGroupProps) => {
+export const InputGroup = ({ children, type, mobileBreakpoint }: InputGroupProps) => {
     const classNames = mobileBreakpoint
         ? {
               [INPUT_GROUP_TYPE_KEYS.XL]: styles.group32MobileBreakpoint,
@@ -23,5 +23,3 @@ const InputGroup = ({ children, type, mobileBreakpoint }: InputGroupProps) => {
 
     return <div className={className}>{children}</div>;
 };
-
-export default InputGroup;

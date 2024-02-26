@@ -1,13 +1,13 @@
 import { type ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 import { ROUTES } from '@constants/routes';
-import useAuth from '@hooks/useAuth';
+import { useAuth } from '@hooks/useAuth';
 
 interface NonAuthRouteProps {
     children: ReactNode;
 }
 
-const NonAuthRoute = ({ children }: NonAuthRouteProps) => {
+export const NonAuthRoute = ({ children }: NonAuthRouteProps) => {
     const auth = useAuth();
 
     if (auth.token) {
@@ -16,5 +16,3 @@ const NonAuthRoute = ({ children }: NonAuthRouteProps) => {
 
     return children;
 };
-
-export default NonAuthRoute;

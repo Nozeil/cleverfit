@@ -10,7 +10,7 @@ interface ResultButtonProps {
     block?: boolean;
 }
 
-const ResultButton = ({ onClick, children, block, testId }: ResultButtonProps) => {
+export const ResultButton = ({ onClick, children, block, testId }: ResultButtonProps) => {
     return (
         <Button
             className={styles.btn}
@@ -24,5 +24,3 @@ const ResultButton = ({ onClick, children, block, testId }: ResultButtonProps) =
         </Button>
     );
 };
-
-export default ResultButton;

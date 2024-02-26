@@ -1,6 +1,6 @@
 import { Row } from 'antd';
 import { CalendarTwoTone, HeartFilled, IdcardTwoTone } from '@ant-design/icons';
-import ActionCard from './action-card';
+import { ActionCard } from './action-card';
 
 import type { ActionCardProps } from './action-cards.types';
 
@@ -25,7 +25,7 @@ const cards: ActionCardProps[] = [
     },
 ];
 
-const ActionCards = () => (
+export const ActionCards = () => (
     <Row className={styles.row} gutter={16}>
         {cards.map((card) => (
             <ActionCard
@@ -37,5 +37,3 @@ const ActionCards = () => (
         ))}
     </Row>
 );
-
-export default ActionCards;

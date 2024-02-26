@@ -8,7 +8,7 @@ interface ForgotPasswordRouteProps {
     prevRoute: string;
 }
 
-const ForgotPasswordRoute = ({ children, prevRoute }: ForgotPasswordRouteProps) => {
+export const ForgotPasswordRoute = ({ children, prevRoute }: ForgotPasswordRouteProps) => {
     const router = useAppSelector((store) => store.router);
     const location = useLocation();
     const hasAccess = useRef(false);
@@ -26,5 +26,3 @@ const ForgotPasswordRoute = ({ children, prevRoute }: ForgotPasswordRouteProps) 
 
     return content;
 };
-
-export default ForgotPasswordRoute;

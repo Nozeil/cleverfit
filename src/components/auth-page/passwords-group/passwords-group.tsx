@@ -1,5 +1,5 @@
 import { INPUT_NAMES } from '../auth-page.constants';
-import PasswordInput from '../inputs/password-input';
+import { PasswordInput } from '../inputs/password-input';
 
 const helpMessage = 'Пароль не менее 8 символов, с заглавной буквой и цифрой';
 
@@ -9,7 +9,7 @@ interface PasswordGroupProps {
     testId_2: string;
 }
 
-const PasswordsGroup = ({ placeholder_1, testId_1, testId_2 }: PasswordGroupProps) => (
+export const PasswordsGroup = ({ placeholder_1, testId_1, testId_2 }: PasswordGroupProps) => (
     <>
         <PasswordInput
             help={helpMessage}
@@ -34,5 +34,3 @@ const PasswordsGroup = ({ placeholder_1, testId_1, testId_2 }: PasswordGroupProp
         />
     </>
 );
-
-export default PasswordsGroup;
