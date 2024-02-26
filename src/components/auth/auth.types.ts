@@ -1,8 +1,12 @@
-import { type ReactNode } from "react";
+import { type ReactNode } from 'react';
 
-export type Signin = (accessToken: string, remember: boolean, callback: () => void) => void;
+export interface Signin {
+    (accessToken: string, remember: boolean, callback: () => void): void;
+}
 
-export type Signout = (callback: () => void) => void;
+export interface Signout {
+    (callback: () => void): void;
+}
 
 export interface ContextDefaultValue {
     token: string | null;
@@ -11,5 +15,5 @@ export interface ContextDefaultValue {
 }
 
 export interface AuthProviderProps {
-  children: ReactNode;
+    children: ReactNode;
 }

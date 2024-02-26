@@ -1,12 +1,12 @@
 import { type ReactNode } from 'react';
-import { InputGroupTypeValues } from '../auth-page.types';
+import { type TypeValues } from '../auth-page.types';
+import { INPUT_GROUP_TYPE_KEYS } from '../auth-page.constants';
 
 import styles from './input-group.module.css';
-import { INPUT_GROUP_TYPE_KEYS } from '../auth-page.constants';
 
 interface InputGroupProps {
     children: ReactNode;
-    type: InputGroupTypeValues;
+    type: TypeValues['inputGroup'];
     mobileBreakpoint?: boolean;
 }
 

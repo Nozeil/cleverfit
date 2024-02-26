@@ -4,11 +4,8 @@ import {
     RESULT_ICON_TYPE_KEYS,
 } from './auth-page.constants';
 
-export type ResultCardTypeValues =
-    (typeof RESULT_CARD_TYPE_KEYS)[keyof typeof RESULT_CARD_TYPE_KEYS];
-
-export type ResultIconTypeValues =
-    (typeof RESULT_ICON_TYPE_KEYS)[keyof typeof RESULT_ICON_TYPE_KEYS];
-
-export type InputGroupTypeValues =
-    (typeof INPUT_GROUP_TYPE_KEYS)[keyof typeof INPUT_GROUP_TYPE_KEYS];
+export interface TypeValues {
+    resultCard: (typeof RESULT_CARD_TYPE_KEYS)[keyof typeof RESULT_CARD_TYPE_KEYS];
+    resultIcon: (typeof RESULT_ICON_TYPE_KEYS)[keyof typeof RESULT_ICON_TYPE_KEYS];
+    inputGroup: (typeof INPUT_GROUP_TYPE_KEYS)[keyof typeof INPUT_GROUP_TYPE_KEYS];
+}
