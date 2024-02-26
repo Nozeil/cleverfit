@@ -1,5 +1,5 @@
 .icon {
-    width: 80px;
-    height: 80px;
+    width: var(--result-icon-width);
+    height: var(--result-icon-height);
     padding: var(--p-result-icon);
 }

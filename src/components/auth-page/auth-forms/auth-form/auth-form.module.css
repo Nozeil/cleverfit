@@ -8,7 +8,7 @@
 
 @media screen and (max-width: 450px) {
     .btn:global(.ant-btn) {
-        font-size: 14px;
+        font-size: var(--text-sm);
     }
 
     .btn:global(.ant-btn) :global(.anticon) {

@@ -1,5 +1,5 @@
 .sider:global(.ant-layout-sider) {
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-md);
 }
 
 .sider > :global(.ant-layout-sider-children) {

@@ -5,12 +5,12 @@
 
 .space :global(.ant-space-item) {
     width: 100%;
-    max-width: 540px;
+    max-width: var(--auth-card-max-w);
 }
 
 .card:global(.ant-card) {
     padding: var(--p-auth-card);
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-md);
 }
 
 .card :global(.ant-card-head) {

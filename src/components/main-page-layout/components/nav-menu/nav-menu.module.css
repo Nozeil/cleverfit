@@ -6,9 +6,9 @@
 }
 
 .menu:global(.ant-menu) > :global(.ant-menu-item) {
-    height: 42px;
+    height: var(--menu-item-h);
     margin-top: var(--mt-menu-item);
-    line-height: 42px;
+    line-height: var(--menu-item-line-height);
 }
 
 .menu:global(.ant-menu) > :global(.ant-menu-item:not(:last-child)) {
@@ -21,7 +21,7 @@
 }
 
 .menu:global(.ant-menu) > :global(.ant-menu-item:nth-last-child(2)) {
-    height: 1px;
+    height: var(--divider-h);
     margin: var(--m-menu-item-divider);
     padding: var(--p-menu-item-divider);
     pointer-events: none;

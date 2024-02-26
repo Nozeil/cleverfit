@@ -1,5 +1,5 @@
 .card:global(.ant-card) :global(.ant-card-head) {
-    font-weight: 400;
+    font-weight: var(--font-normal);
 }
 
 .card :global(.ant-card-head-wrapper) {
@@ -33,7 +33,7 @@
 
     .row:global(.ant-row) {
         flex-direction: column;
-        row-gap: 8px;
+        row-gap: var(--gap-x-8);
     }
 
     .col:global(.ant-col) {

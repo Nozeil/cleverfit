@@ -2,6 +2,11 @@
 @import url('./styles/variables/paddings.css');
 @import url('./styles/variables/typography.css');
 @import url('./styles/variables/colors.css');
+@import url('./styles/variables/sizes.css');
+@import url('./styles/variables/durations.css');
+@import url('./styles/variables/shadows.css');
+@import url('./styles/variables/drop-shadows.css');
+@import url('./styles/variables/layout.css');
 
 html,
 body,
@@ -15,6 +20,6 @@ body {
 
 @keyframes waveEffect {
     100% {
-        box-shadow: 0 0 0 8px var(--primary-light-5);
+        box-shadow: var(--wave-effect-shadow);
     }
 }

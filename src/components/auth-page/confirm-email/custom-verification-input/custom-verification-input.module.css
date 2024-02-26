@@ -1,23 +1,23 @@
 .container {
     width: 100%;
-    max-width: 300px;
+    max-width: var(--verification-input-max-w);
     height: fit-content;
     margin: var(--m-verification-input-container);
 }
 
 .input,
 .inputError {
-    width: 40px;
-    height: 40px;
-    font-size: 14px;
+    width: var(--verification-input-width);
+    height: var(--verification-input-height);
+    font-size: var(--text-sm);
     color: inherit;
-    line-height: 40px;
+    line-height: var(--verification-input-line-height);
     background: var(--character-light-primary-inverse);
-    border-width: 1px;
+    border-width: var(--border-1);
     border-style: solid;
-    border-radius: 2px;
+    border-radius: var(--rounded-sm);
     outline: none;
-    transition: 0.3s;
+    transition: var(--duration-3);
 }
 
 .input {

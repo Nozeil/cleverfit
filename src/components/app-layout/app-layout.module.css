@@ -1,5 +1,5 @@
 .layout {
-    max-width: 1440px;
+    max-width: var(--app-max-w);
     height: 100%;
     margin: var(--m-app-layout);
 }

@@ -60,7 +60,7 @@
     }
 
     .tabs:global(.ant-tabs) :global(.ant-tabs-nav) :global(.ant-tabs-tab) {
-        font-size: 14px;
+        font-size: var(--text-sm);
     }
 
     .link {

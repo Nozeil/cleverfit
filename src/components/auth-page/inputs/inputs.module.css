@@ -1,5 +1,5 @@
 .input :global(.ant-input):global(.ant-input-lg) {
-    font-size: 14px;
+    font-size: var(--text-sm);
 }
 
 .input :global(.ant-input) {
@@ -19,7 +19,7 @@
 }
 
 .password :global(.ant-form-item-explain) {
-    font-size: 12px;
+    font-size: var(--text-xs);
 }
 
 .password:has(:global(.ant-form-item-explain)) {

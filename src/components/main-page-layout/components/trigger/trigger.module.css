@@ -1,9 +1,9 @@
 .shadowBox {
     position: absolute;
     top: 50%;
-    right: 1px;
+    right: var(--trigger-right);
     z-index: 10;
-    filter: drop-shadow(3px 0 3px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(var(--drop-shadow-md));
     transform: translate(100%, -50%);
 }
 
@@ -18,7 +18,7 @@
 
 @media screen and (max-width: 767px) {
     .shadowBox {
-        top: 24px;
+        top: var(--trigger-top-tablet);
         transform: translate(100%, 0);
     }
 

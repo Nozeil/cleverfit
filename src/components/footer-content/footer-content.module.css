@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: end;
-    gap: 24px;
+    gap: var(--gap-24);
     width: 100%;
     margin-bottom: var(--mb-footer-space);
 }

@@ -1,0 +1,21 @@
+:root {
+    --app-max-w: 1440px;
+    --main-page-content-max-w: 752px;
+    --auth-card-max-w: 540px;
+    --main-page-logo-max-h: 64px;
+    --menu-item-h: 42px;
+    --blur-value: 12px;
+    --verification-input-max-w: 300px;
+    --verification-input-width: 40px;
+    --verification-input-height: var(--verification-input-width);
+    --rounded-sm: 2px;
+    --border-1: 1px;
+    --result-icon-width: 80px;
+    --result-icon-height: var(--result-icon-width);
+    --gap-x-8: 8px;
+    --gap-24: 24px;
+    --header-btn-w-tablet: 32px;
+    --header-btn-h-tablet: var(--header-btn-w-tablet);
+    --loader-w: 150px;
+    --loader-h: var(--loader-w);
+}
