@@ -1,0 +1,45 @@
+.container {
+    width: 100%;
+    max-width: var(--verification-input-max-w);
+    height: fit-content;
+    margin: var(--m-verification-input-container);
+}
+
+.input,
+.inputError {
+    width: var(--verification-input-width);
+    height: var(--verification-input-height);
+    font-size: var(--text-sm);
+    color: inherit;
+    line-height: var(--verification-input-line-height);
+    background: var(--character-light-primary-inverse);
+    border-width: var(--border-1);
+    border-style: solid;
+    border-radius: var(--rounded-sm);
+    outline: none;
+    transition: var(--duration-3);
+}
+
+.input {
+    border-color: var(--character-light-border);
+}
+
+.inputError {
+    border-color: var(--character-light-error);
+}
+
+.inputSelected {
+    border-color: var(--primary-light-5);
+    box-shadow: var(--input-shadow);
+}
+
+.inputSelectedError {
+    border-color: var(--character-light-error);
+    box-shadow: var(--input-shadow-error);
+}
+
+@media screen and (max-width: 450px) {
+    .container {
+        padding: var(--p-verification-container-mobile-l);
+    }
+}

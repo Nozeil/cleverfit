@@ -1,0 +1,4 @@
+.btn:global(.ant-btn) {
+    font-size: var(--text-sm);
+    padding: var(--p-result-button);
+}

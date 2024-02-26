@@ -2,7 +2,7 @@ import { Card, Typography } from 'antd';
 
 import styles from '../main-page-content.module.css';
 
-const BenefitsCard = () => (
+export const BenefitsCard = () => (
     <Card className={styles.card} bordered={false}>
         <Typography.Text className={styles.benefitsText}>
             {`С\u00a0CleverFit ты сможешь:\u00a0
@@ -13,5 +13,3 @@ const BenefitsCard = () => (
         </Typography.Text>
     </Card>
 );
-
-export default BenefitsCard;

@@ -1,7 +1,7 @@
 import path from 'path';
 
 import react from '@vitejs/plugin-react';
-import svgr from "vite-plugin-svgr";
+import svgr from 'vite-plugin-svgr';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
@@ -21,6 +21,9 @@ export default defineConfig({
             '@redux': path.resolve(__dirname, 'src/redux'),
             '@types': path.resolve(__dirname, 'src/types'),
             '@utils': path.resolve(__dirname, 'src/utils'),
+            '@services': path.resolve(__dirname, 'src/services'),
+            '@models': path.resolve(__dirname, 'src/models'),
+            '@lotties': path.resolve(__dirname, 'src/lotties'),
         },
     },
 });

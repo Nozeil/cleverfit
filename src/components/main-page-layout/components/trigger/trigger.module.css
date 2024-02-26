@@ -1,0 +1,28 @@
+.shadowBox {
+    position: absolute;
+    top: 50%;
+    right: var(--trigger-right);
+    z-index: 10;
+    filter: drop-shadow(var(--drop-shadow-md));
+    transform: translate(100%, -50%);
+}
+
+.polygon {
+    background-color: var(--character-light-primary-inverse);
+    clip-path: polygon(0 0, 0 0, 100% 13%, 100% 87%, 0 100%, 0 100%, 0% 80%, 0% 20%);
+}
+
+.trigger {
+    padding: var(--p-trigger);
+}
+
+@media screen and (max-width: 767px) {
+    .shadowBox {
+        top: var(--trigger-top-tablet);
+        transform: translate(100%, 0);
+    }
+
+    .trigger {
+        padding: var(--p-trigger-tablet);
+    }
+}

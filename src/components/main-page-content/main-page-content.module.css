@@ -1,5 +1,5 @@
 .space {
-    max-width: 752px;
+    max-width: var(--main-page-content-max-w);
     margin: var(--m-main-page-content-space);
 }
 
@@ -8,13 +8,13 @@
 }
 
 .benefitsText:global(.ant-typography) {
-    font-size: 1rem;
+    font-size: var(--text-base);
     color: var(--primary-light-9);
 }
 
 .taglineText:global(.ant-typography) {
-    font-size: 20px;
-    font-weight: 500;
+    font-size: var(--text-xl);
+    font-weight: var(--font-medium);
 }
 
 @media screen and (max-width: 768px) {

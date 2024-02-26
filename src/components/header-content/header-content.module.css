@@ -26,8 +26,8 @@
 
 @media screen and (max-width: 834px) {
     .title:global(.ant-typography) {
-        font-size: 24px;
-        font-weight: 500;
+        font-size: var(--text-2xl);
+        font-weight: var(--font-medium);
     }
 
     .btnIcon:global(.anticon) {
@@ -49,16 +49,16 @@
     }
 
     .title:global(.ant-typography) {
-        font-size: 20px;
+        font-size: var(--text-xl);
     }
 
     .btn:global(.ant-btn) {
-        width: 32px;
-        height: 32px;
+        width: var(--header-btn-w-tablet);
+        height: var(--header-btn-h-tablet);
         padding: var(--p-header-btn-tablet);
-        border: 1px solid var(--character-light-border);
-        border-radius: 100px;
-        box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+        border: var(--border-1) solid var(--character-light-border);
+        border-radius: 50%;
+        box-shadow: var(--shadow);
     }
 
     .btn:global(.ant-btn) > .btnIcon + span {

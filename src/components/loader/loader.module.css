@@ -1,0 +1,9 @@
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    width: var(--loader-w);
+    height: var(--loader-h);
+    transform: translate(-50%, -50%);
+}

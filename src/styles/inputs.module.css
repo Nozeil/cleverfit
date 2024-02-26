@@ -1,0 +1,115 @@
+:global(.ant-checkbox-checked) :global(.ant-checkbox-inner),
+:global(.ant-checkbox:hover) :global(.ant-checkbox-inner),
+:global(.ant-checkbox-checked:hover) :global(.ant-checkbox-inner),
+:global(.ant-checkbox-checked:after),
+:global(.ant-checkbox-input:focus) + :global(.ant-checkbox-inner) {
+    border-color: var(--primary-light-6);
+}
+
+:global(.ant-checkbox-checked) :global(.ant-checkbox-inner) {
+    background-color: var(--primary-light-6);
+}
+
+:global(.ant-input-group-wrapper) {
+    border: 1px solid var(--character-light-border);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+:global(.ant-input[type='email']:not(.ant-input-disabled):not(.ant-input-borderless)) {
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+
+    &:hover,
+    &:focus {
+        border-color: var(--character-light-border);
+        box-shadow: none;
+    }
+}
+
+:global(.ant-input-group-addon) {
+    border: none;
+}
+
+:global(.ant-input-group-wrapper):has(
+        :global(
+                .ant-input:not(.ant-input-disabled):not(.ant-input-borderless):not(
+                        .ant-input-status-error
+                    ).ant-input[type='email']
+            ):hover
+    ),
+:global(.ant-input-group-wrapper):has(
+        :global(
+                .ant-input:not(.ant-input-disabled):not(.ant-input-borderless):not(
+                        .ant-input-status-error
+                    ).ant-input[type='email']
+            ):focus
+    ) {
+    border: 1px solid var(--primary-light-5);
+}
+
+:global(.ant-input-group-wrapper-status-error) :global(.ant-input-group-addon) {
+    color: var(--character-light-title-85);
+}
+
+:global(.ant-input-group-wrapper-status-error)
+    :global(
+        .ant-input-status-error:not(.ant-input-disabled):not(
+                .ant-input-borderless
+            ).ant-input[type='email']
+    ) {
+    border-color: var(--character-light-border);
+    box-shadow: none;
+}
+
+:global(.ant-input-group-wrapper-status-error):has(
+        :global(
+                .ant-input-status-error:not(.ant-input-disabled):not(
+                        .ant-input-borderless
+                    ).ant-input[type='email']
+            )
+    ) {
+    border: 1px solid var(--character-light-error);
+}
+
+:global(.ant-input-group-wrapper):has(
+        :global(
+                .ant-input:not(.ant-input-disabled):not(
+                        .ant-input-borderless
+                    ).ant-input[type='email']
+            ):focus
+    ) {
+    box-shadow: var(--input-shadow);
+}
+
+:global(.ant-input-group-wrapper-status-error):has(
+        :global(
+                .ant-input-status-error:not(.ant-input-disabled):not(
+                        .ant-input-borderless
+                    ).ant-input[type='email']
+            ):focus
+    ) {
+    box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
+}
+
+:global(.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled)) {
+    &:hover {
+        border-color: var(--primary-light-5);
+    }
+
+    &:focus {
+        border-color: var(--primary-light-5);
+        box-shadow: var(--input-shadow);
+    }
+}
+
+:global(.ant-input-affix-wrapper-focused),
+:global(.ant-input-affix-wrapper-status-success):has(:global(.anticon-eye)) {
+    border-color: var(--primary-light-5);
+    box-shadow: var(--input-shadow);
+}
+
+:global(.ant-input-affix-wrapper-status-success) :global(.anticon-eye) {
+    color: var(--primary-light-6);
+}
