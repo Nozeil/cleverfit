@@ -1,5 +1,5 @@
-import { Breadcrumb, Button, Space, Typography } from 'antd';
 import { SettingOutlined } from '@ant-design/icons';
+import { Breadcrumb, Button, Space, Typography } from 'antd';
 
 import styles from './header-content.module.css';
 

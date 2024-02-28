@@ -1,11 +1,11 @@
-import { type ReactNode } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
-import { Space, Typography } from 'antd';
 import { ContentLayout } from '@components/auth-page/content-layout/content-layout';
 import { ROUTES } from '@constants/routes';
+import { Space, Typography } from 'antd';
+import { type ReactNode } from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
+
 import { RESULT_CARD_TYPE_KEYS } from '../auth-page.constants';
 import type { TypeValues } from '../auth-page.types';
-
 import styles from './result-card.module.css';
 
 interface ResultCardProps {

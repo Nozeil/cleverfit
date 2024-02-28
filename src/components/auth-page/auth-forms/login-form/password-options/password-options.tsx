@@ -1,7 +1,7 @@
-import { Form, Checkbox } from 'antd';
-import { ForgotPasswordBtn } from './forgot-password-btn';
 import { INPUT_NAMES } from '@components/auth-page/auth-page.constants';
+import { Checkbox,Form } from 'antd';
 
+import { ForgotPasswordBtn } from './forgot-password-btn';
 import styles from './password-options.module.css';
 
 export const PasswordOptions = () => (

@@ -1,10 +1,9 @@
-import { Row } from 'antd';
 import { CalendarTwoTone, HeartFilled, IdcardTwoTone } from '@ant-design/icons';
+import { Row } from 'antd';
+
 import { ActionCard } from './action-card';
-
-import type { ActionCardProps } from './action-cards.types';
-
 import styles from './action-cards.module.css';
+import type { ActionCardProps } from './action-cards.types';
 
 const color = 'var(--primary-light-6)';
 const cards: ActionCardProps[] = [

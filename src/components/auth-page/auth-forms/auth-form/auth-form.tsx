@@ -1,9 +1,9 @@
-import { type ReactNode, useState } from 'react';
-import { Button, Form } from 'antd';
 import { GooglePlusOutlined } from '@ant-design/icons';
+import { Button, Form } from 'antd';
 import classNames from 'classnames/bind';
-import { OnFinishAuth } from '../auth-forms.types';
+import { type ReactNode, useState } from 'react';
 
+import { OnFinishAuth } from '../auth-forms.types';
 import styles from './auth-form.module.css';
 
 interface AuthFormProps {

@@ -1,12 +1,12 @@
+import { Typography } from 'antd';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ResultCard } from '../result-card/result-card';
-import { RESULT_CARD_TYPE_KEYS, RESULT_ICON_TYPE_KEYS } from '../auth-page.constants';
-import { CustomVerificationInput } from './custom-verification-input/custom-verification-input';
-import { ResultIcon } from '../result-icon/result-icon';
-import { Typography } from 'antd';
 
+import { RESULT_CARD_TYPE_KEYS, RESULT_ICON_TYPE_KEYS } from '../auth-page.constants';
+import { ResultCard } from '../result-card/result-card';
+import { ResultIcon } from '../result-icon/result-icon';
 import styles from './confirm-email.module.css';
+import { CustomVerificationInput } from './custom-verification-input/custom-verification-input';
 
 export const ConfirmEmail = () => {
     const [isError, setIsError] = useState(false);

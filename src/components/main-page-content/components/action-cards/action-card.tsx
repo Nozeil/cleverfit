@@ -1,7 +1,7 @@
-import { Col, Card, Button } from 'antd';
-import type { ActionCardProps } from './action-cards.types';
+import { Button,Card, Col } from 'antd';
 
 import styles from './action-cards.module.css';
+import type { ActionCardProps } from './action-cards.types';
 
 export const ActionCard = ({ title, buttonIcon, buttonContent }: ActionCardProps) => (
     <Col className={styles.col} span={8}>

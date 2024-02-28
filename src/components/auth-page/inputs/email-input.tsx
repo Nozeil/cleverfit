@@ -1,8 +1,8 @@
-import { Input, Form } from 'antd';
-import { emailPattern } from './regex';
-import { INPUT_NAMES } from '../auth-page.constants';
+import { Form,Input } from 'antd';
 
+import { INPUT_NAMES } from '../auth-page.constants';
 import styles from './inputs.module.css';
+import { emailPattern } from './regex';
 
 interface EmailInputProps {
     testId: string;

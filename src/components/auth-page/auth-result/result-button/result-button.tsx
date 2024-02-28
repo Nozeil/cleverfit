@@ -1,5 +1,5 @@
-import { type ReactNode } from 'react';
 import { Button } from 'antd';
+import { type ReactNode } from 'react';
 
 import styles from './result-button.module.css';
 

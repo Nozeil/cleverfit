@@ -1,4 +1,5 @@
 import { Image } from 'antd';
+
 import LogoBase from '/svg/logo.svg';
 import LogoCropped from '/svg/logo-cropped.svg';
 

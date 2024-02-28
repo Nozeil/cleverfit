@@ -1,9 +1,9 @@
-import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
-import { Layout } from 'antd';
 import { BackdropBlur } from '@components/auth-page/backdrop-blur/backdrop-blur';
 import { Loader } from '@components/loader/loader';
 import { useIsLoading } from '@hooks/useIsLoading';
+import { Layout } from 'antd';
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 
 import styles from './auth.module.css';
 

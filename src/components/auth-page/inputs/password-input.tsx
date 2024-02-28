@@ -1,9 +1,9 @@
 import { Form, Input } from 'antd';
-import { passwordPattern } from './regex';
-import { INPUT_NAMES } from '../auth-page.constants';
 import { type Rule } from 'antd/lib/form';
 
+import { INPUT_NAMES } from '../auth-page.constants';
 import styles from './inputs.module.css';
+import { passwordPattern } from './regex';
 
 interface PasswordInputProps {
     testId: string;

@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { AuthContext } from './auth-context';
+
 import type { AuthProviderProps, Signin, Signout } from './auth.types';
+import { AuthContext } from './auth-context';
 
 const STORAGE_KEY = 'accessToken';
 

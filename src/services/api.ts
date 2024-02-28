@@ -1,4 +1,3 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type {
     AuthUserBody,
     ChangePasswordBody,
@@ -9,6 +8,7 @@ import type {
     ConfirmEmailResponse,
     LoginResponse,
 } from '@models/models';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const BASE_URL = 'https://marathon-api.clevertec.ru/';
 

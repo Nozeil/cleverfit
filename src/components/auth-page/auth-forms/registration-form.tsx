@@ -1,14 +1,15 @@
+import { PasswordsGroup } from '@components/auth-page/passwords-group/passwords-group';
+import { HTTP_STATUS_CODES } from '@constants/index';
+import { COMPOUND_ROUTES } from '@constants/routes';
+import type { ErrorResponse } from '@models/models';
+import { useRegisterUserMutation } from '@services/api';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useRegisterUserMutation } from '@services/api';
-import { COMPOUND_ROUTES } from '@constants/routes';
-import { AuthForm } from './auth-form/auth-form';
-import { EmailInput } from '../inputs/email-input';
-import { HTTP_STATUS_CODES } from '@constants/index';
-import { PasswordsGroup } from '@components/auth-page/passwords-group/passwords-group';
-import { InputGroup } from '../input-group/input-group';
+
 import { INPUT_GROUP_TYPE_KEYS } from '../auth-page.constants';
-import type { ErrorResponse } from '@models/models';
+import { InputGroup } from '../input-group/input-group';
+import { EmailInput } from '../inputs/email-input';
+import { AuthForm } from './auth-form/auth-form';
 import type { OnFinishRegistrationValues } from './auth-forms.types';
 
 export const RegistrationForm = () => {

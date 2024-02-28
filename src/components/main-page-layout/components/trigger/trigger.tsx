@@ -1,4 +1,4 @@
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import { MenuFoldOutlined,MenuUnfoldOutlined } from '@ant-design/icons';
 
 import styles from './trigger.module.css';
 

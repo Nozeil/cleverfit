@@ -1,11 +1,11 @@
+import { CalendarTwoTone, HeartFilled, IdcardTwoTone,TrophyFilled } from '@ant-design/icons';
+import ExitIcon from '@assets/icons/exit.svg?react';
+import { ROUTES } from '@constants/routes';
+import { useAuth } from '@hooks/useAuth';
 import { Divider, Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { CalendarTwoTone, HeartFilled, TrophyFilled, IdcardTwoTone } from '@ant-design/icons';
-import ExitIcon from '@assets/icons/exit.svg?react';
-import { useAuth } from '@hooks/useAuth';
-import { ROUTES } from '@constants/routes';
-import { LABELS, ICONS_COLOR } from './nav-menu.constants';
 
+import { ICONS_COLOR,LABELS } from './nav-menu.constants';
 import styles from './nav-menu.module.css';
 
 const { CALENDAR, WORKOUT, ACHIEVEMENTS, PROFILE, EXIT, DIVIDER } = LABELS;

@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
-import { createReduxHistoryContext } from 'redux-first-history';
-import { createBrowserHistory } from 'history';
 import { api } from '@services/api';
+import { createBrowserHistory } from 'history';
+import { combineReducers } from 'redux';
+import { createReduxHistoryContext } from 'redux-first-history';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),

@@ -1,6 +1,6 @@
-import Lottie from 'lottie-react';
-import animationData from '@lotties/loader.json';
 import { BackdropBlur } from '@components/auth-page/backdrop-blur/backdrop-blur';
+import animationData from '@lotties/loader.json';
+import Lottie from 'lottie-react';
 
 import styles from './loader.module.css';
 

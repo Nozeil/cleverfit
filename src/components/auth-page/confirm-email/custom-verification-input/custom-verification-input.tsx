@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import VerificationInput from 'react-verification-input';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useConfirmEmailMutation } from '@services/api';
 import { COMPOUND_ROUTES } from '@constants/routes';
+import { useConfirmEmailMutation } from '@services/api';
+import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import VerificationInput from 'react-verification-input';
 
 import styles from './custom-verification-input.module.css';
 

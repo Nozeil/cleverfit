@@ -1,6 +1,6 @@
-import { type ReactNode, useLayoutEffect, useRef } from 'react';
 import { ROUTES } from '@constants/routes';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { type ReactNode, useLayoutEffect, useRef } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
 interface ForgotPasswordRouteProps {
