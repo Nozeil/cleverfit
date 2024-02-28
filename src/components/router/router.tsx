@@ -23,6 +23,7 @@ import { ChangePassword } from '@components/auth-page/auth-forms/change-password
 import { ErrorChangePassword } from '@components/auth-page/auth-result/error-change-password';
 import { SuccessChangePassword } from '@components/auth-page/auth-result/success-change-password';
 import { ForgotPasswordRoute } from '@components/auth-page/auth-result/forgot-password-route';
+import { FeedbacksPage } from '@pages/feedbacks/feedbacks-page';
 
 const routes = (
     <Routes>
@@ -106,6 +107,16 @@ const routes = (
                 }
             >
                 <Route index element={<MainPage />} />
+            </Route>
+            <Route
+                path={ROUTES.FEEDBACKS}
+                element={
+                    <AuthRoute>
+                        <MainPageLayout />
+                    </AuthRoute>
+                }
+            >
+                <Route index element={<FeedbacksPage />} />
             </Route>
         </Route>
         <Route path='*' element={<Navigate to={ROUTES.AUTH} />} />
