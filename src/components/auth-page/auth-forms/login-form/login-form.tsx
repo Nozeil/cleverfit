@@ -16,7 +16,7 @@ export const LoginForm = () => {
     const [loginUser] = useLoginUserMutation();
     const navigate = useNavigate();
     const location = useLocation();
-    const auth = useAuth();
+    const { signin } = useAuth();
 
     const onFinish = async ({ email, password, remember }: OnFinishLoginValues) => {
         const options = { state: { from: location } };
@@ -27,7 +27,7 @@ export const LoginForm = () => {
                 password,
             }).unwrap();
 
-            auth.signin(accessToken, remember, () => navigate(ROUTES.MAIN, options));
+            signin(accessToken, remember, () => navigate(ROUTES.MAIN, options));
         } catch {
             navigate(COMPOUND_ROUTES.RESULT_ERROR_LOGIN, options);
         }

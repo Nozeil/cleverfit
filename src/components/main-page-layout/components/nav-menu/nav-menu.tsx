@@ -1,11 +1,11 @@
-import { CalendarTwoTone, HeartFilled, IdcardTwoTone,TrophyFilled } from '@ant-design/icons';
+import { CalendarTwoTone, HeartFilled, IdcardTwoTone, TrophyFilled } from '@ant-design/icons';
 import ExitIcon from '@assets/icons/exit.svg?react';
 import { ROUTES } from '@constants/routes';
 import { useAuth } from '@hooks/useAuth';
 import { Divider, Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
-import { ICONS_COLOR,LABELS } from './nav-menu.constants';
+import { ICONS_COLOR, LABELS } from './nav-menu.constants';
 import styles from './nav-menu.module.css';
 
 const { CALENDAR, WORKOUT, ACHIEVEMENTS, PROFILE, EXIT, DIVIDER } = LABELS;
@@ -50,7 +50,7 @@ const menuItems = [
 ];
 
 export const NavMenu = () => {
-    const auth = useAuth();
+    const { signout } = useAuth();
     const navigate = useNavigate();
 
     return (
@@ -59,7 +59,7 @@ export const NavMenu = () => {
             items={menuItems}
             onClick={({ key }) => {
                 if (key === EXIT) {
-                    auth.signout(() => navigate(ROUTES.AUTH));
+                    signout(() => navigate(ROUTES.AUTH));
                 }
             }}
         />

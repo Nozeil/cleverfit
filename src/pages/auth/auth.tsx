@@ -12,12 +12,10 @@ const { Content } = Layout;
 export const AuthPage = () => {
     const isLoading = useIsLoading();
 
-    const loaderOrBlur = isLoading ? <Loader /> : <BackdropBlur />;
-
     return (
         <Suspense fallback={<Loader />}>
             <Layout className={styles.layout}>
-                {loaderOrBlur}
+                {!isLoading && <BackdropBlur />}
                 <Content className={styles.content}>
                     <Outlet />
                 </Content>

@@ -15,9 +15,11 @@ import { SuccessChangePassword } from '@components/auth-page/auth-result/success
 import { SuccessRegistration } from '@components/auth-page/auth-result/success-registration';
 import { ConfirmEmail } from '@components/auth-page/confirm-email/confirm-email';
 import { AuthRoute } from '@components/auth-route';
+import { Loader } from '@components/loader/loader';
 import { MainPageLayout } from '@components/main-page-layout/main-page-layout';
 import { NonAuthRoute } from '@components/non-auth-route';
 import { COMPOUND_ROUTES, ROUTES } from '@constants/routes';
+import { useIsLoading } from '@hooks/useIsLoading';
 import { AuthPage } from '@pages/auth/auth';
 import { FeedbacksPage } from '@pages/feedbacks/feedbacks-page';
 import { MainPage } from '@pages/main-page/main-page';
@@ -123,8 +125,13 @@ const routes = (
     </Routes>
 );
 
-export const Router = () => (
-    <AuthProvider>
-        <HistoryRouter history={history}>{routes}</HistoryRouter>
-    </AuthProvider>
-);
+export const Router = () => {
+    const isLoading = useIsLoading();
+
+    return (
+        <AuthProvider>
+            <HistoryRouter history={history}>{routes}</HistoryRouter>
+            {isLoading && <Loader />}
+        </AuthProvider>
+    );
+};

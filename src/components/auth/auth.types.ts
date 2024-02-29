@@ -5,7 +5,7 @@ export interface Signin {
 }
 
 export interface Signout {
-    (callback: () => void): void;
+    (callback?: () => void): void;
 }
 
 export interface ContextDefaultValue {

@@ -9,11 +9,23 @@ import type {
     LoginResponse,
 } from '@models/models';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { checkAccessToken } from '@utils/utils';
 
 const BASE_URL = 'https://marathon-api.clevertec.ru/';
 
 export const api = createApi({
-    baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: BASE_URL,
+        prepareHeaders: (headers) => {
+            const token = checkAccessToken();
+
+            if (token) {
+                headers.set('Authorization', `Bearer ${token}`);
+            }
+
+            return headers;
+        },
+    }),
     endpoints: (builder) => ({
         registerUser: builder.mutation<void, AuthUserBody>({
             query: (body) => ({
@@ -52,6 +64,11 @@ export const api = createApi({
                 credentials: 'include',
             }),
         }),
+        getFeedbacks: builder.query<ChangePasswordResponse, void>({
+            query: () => ({
+                url: '/feedback',
+            }),
+        }),
     }),
 });
 
@@ -61,4 +78,5 @@ export const {
     useCheckEmailMutation,
     useConfirmEmailMutation,
     useChangePasswordMutation,
+    useGetFeedbacksQuery,
 } = api;

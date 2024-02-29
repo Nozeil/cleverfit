@@ -8,9 +8,9 @@ interface NonAuthRouteProps {
 }
 
 export const NonAuthRoute = ({ children }: NonAuthRouteProps) => {
-    const auth = useAuth();
+    const { token } = useAuth();
 
-    if (auth.token) {
+    if (token) {
         return <Navigate to={ROUTES.MAIN} />;
     }
 

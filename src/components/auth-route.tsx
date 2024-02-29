@@ -8,9 +8,9 @@ interface AuthRouteProps {
 }
 
 export const AuthRoute = ({ children }: AuthRouteProps) => {
-    const auth = useAuth();
+    const { token } = useAuth();
 
-    if (!auth.token) {
+    if (!token) {
         return <Navigate to={ROUTES.AUTH} />;
     }
 

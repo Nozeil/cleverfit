@@ -1,6 +1,7 @@
 import { AndroidFilled, AppleFilled } from '@ant-design/icons';
 import { Button, Card } from 'antd';
 
+import { FeedbacksButton } from './feedbacks-btn/feedbacks-btn';
 import styles from './footer-content.module.css';
 
 const actions = [
@@ -14,9 +15,7 @@ const actions = [
 
 export const FooterContent = () => (
     <div className={styles.space}>
-        <Button className={styles.btnLink} type='link' size='large'>
-            Смотреть отзывы
-        </Button>
+        <FeedbacksButton />
 
         <Card bordered={false} className={styles.card} actions={actions}>
             <Card.Meta

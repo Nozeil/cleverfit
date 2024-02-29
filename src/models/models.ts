@@ -39,3 +39,12 @@ export interface ChangePasswordBody {
 export interface ChangePasswordResponse {
     message: string;
 }
+
+export interface GetFeedbacksResponse {
+    id: string;
+    fullName: string | null;
+    imageSrc: string | null;
+    message: string;
+    rating: number;
+    createdAt: string;
+}
