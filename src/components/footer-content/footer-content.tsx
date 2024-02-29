@@ -1,7 +1,6 @@
 import { AndroidFilled, AppleFilled } from '@ant-design/icons';
-import { CustomModal } from '@components/custom-modal';
-import { ResultButton } from '@components/result-button/result-button';
-import { Button, Card, Result } from 'antd';
+import { ModalWithResult500 } from '@components/modal-with-result-500';
+import { Button, Card } from 'antd';
 import { useState } from 'react';
 
 import { FeedbacksButton } from './feedbacks-btn/feedbacks-btn';
@@ -21,19 +20,9 @@ export const FooterContent = () => {
 
     return (
         <div className={styles.space}>
+            <ModalWithResult500 open={isModalOpen} onClick={() => setModalOpen(false)} />
+
             <FeedbacksButton onAnyError={() => setModalOpen(true)} />
-            <CustomModal open={isModalOpen}>
-                <Result
-                    status='500'
-                    title='Что-то пошло не так'
-                    subTitle='Произошла ошибка, &nbsp;попробуйте ещё раз.'
-                    extra={
-                        <ResultButton onClick={() => setModalOpen(false)} testId=''>
-                            Назад
-                        </ResultButton>
-                    }
-                />
-            </CustomModal>
 
             <Card bordered={false} className={styles.card} actions={actions}>
                 <Card.Meta
