@@ -18,4 +18,5 @@
     --header-btn-h-tablet: var(--header-btn-w-tablet);
     --loader-w: 150px;
     --loader-h: var(--loader-w);
+    --empty-feedbacks-subtitle-max-w: 521px;
 }

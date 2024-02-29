@@ -1,3 +1,5 @@
+import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { selectSider, toogleCollapsed } from '@redux/slices/sider-slice';
 import { Layout } from 'antd';
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
@@ -9,10 +11,11 @@ import { Trigger } from './components/trigger/trigger';
 import styles from './main-page-layout.module.css';
 
 export const MainPageLayout = () => {
-    const [collapsed, setCollapsed] = useState(false);
+    const collapsed = useAppSelector(selectSider);
+    const dispatch = useAppDispatch();
     const [isBreakpoint, setIsBreakpoint] = useState(false);
 
-    const onTrigger = () => setCollapsed((prevCollapsed) => !prevCollapsed);
+    const onTrigger = () => dispatch(toogleCollapsed());
     const collapsedAtBreakpoint = isBreakpoint ? !collapsed : collapsed;
 
     return (

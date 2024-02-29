@@ -6,11 +6,14 @@ import { useGetFeedbacksQuery } from '@services/api';
 import { useEffect, useState } from 'react';
 import { ErrorResponse, useNavigate } from 'react-router-dom';
 
+import { EmptyFeedbacks } from './empty-feedbacks/empty-feedbacks';
+
 export const FeedbacksContent = () => {
     const { data, error, isError } = useGetFeedbacksQuery();
     const [isModalOpen, setModalOpen] = useState(false);
     const { signout } = useAuth();
     const navigate = useNavigate();
+    let content;
 
     useEffect(() => {
         if (isError) {
@@ -19,7 +22,11 @@ export const FeedbacksContent = () => {
         }
     }, [error, isError, signout]);
 
-    const content = isError ? null : <div>Feedbacks</div>;
+    if (isError) {
+        content = null;
+    }
+
+    content = <EmptyFeedbacks />;
 
     return (
         <>

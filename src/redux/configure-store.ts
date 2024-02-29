@@ -4,6 +4,8 @@ import { createBrowserHistory } from 'history';
 import { combineReducers } from 'redux';
 import { createReduxHistoryContext } from 'redux-first-history';
 
+import { siderReducer } from './slices/sider-slice';
+
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),
     savePreviousLocations: 1,
@@ -12,6 +14,7 @@ const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHisto
 export const store = configureStore({
     reducer: combineReducers({
         router: routerReducer,
+        sider: siderReducer,
         [api.reducerPath]: api.reducer,
     }),
     middleware: (getDefaultMiddleware) =>

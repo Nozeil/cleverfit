@@ -51,4 +51,11 @@
     --p-verification-container-mobile-l: 0 10px;
     --p-result-icon: 10px 5px;
     --p-result-500: var(--py-auth-card) var(--px-auth-card) 56px;
+
+    --px-empty-feedbacks-card: 0 32px;
+    --py-empty-feedbacks-card: 56px;
+    --py-empty-feedbacks-card-collapsed: 75.5px;
+    --p-empty-feedback-card-body: 0;
+    --p-empty-feedback-btn: 11px 16px;
+    --py-empty-feedbacks-card-tablet: 48px;
 }
