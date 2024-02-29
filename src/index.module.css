@@ -5,7 +5,6 @@
 :global(.ant-breadcrumb),
 :global(.ant-breadcrumb) li,
 :global(.ant-breadcrumb-link),
-:global(.ant-breadcrumb-separator),
 :global(.ant-typography),
 :global(h1.ant-typography),
 :global(h3.ant-typography),
@@ -25,6 +24,7 @@
 :global(.ant-btn),
 :global(.ant-input),
 :global(.ant-result-subtitle),
+:global(.ant-breadcrumb-separator),
 a {
     line-height: var(--line-height);
 }

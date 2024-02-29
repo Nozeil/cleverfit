@@ -1,6 +1,5 @@
 .space {
     max-width: var(--main-page-content-max-w);
-    margin: var(--m-main-page-content-space);
 }
 
 .card {

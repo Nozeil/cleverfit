@@ -1,3 +1,5 @@
+import { HeaderContent } from '@components/feedbacks-page/header-content';
+import { PageLayout } from '@components/page-layout/page-layout';
 import { HTTP_STATUS_CODES } from '@constants/index';
 import { useAuth } from '@hooks/useAuth';
 import type { ErrorResponse } from '@models/models';
@@ -18,5 +20,5 @@ export const FeedbacksPage = () => {
         }
     }, [error, isError, signout]);
 
-    return <div style={{ background: 'red' }}>Feedbacks</div>;
+    return <PageLayout headerContent={<HeaderContent />} />;
 };

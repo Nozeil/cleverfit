@@ -24,10 +24,11 @@
     --pb-main-page-content-action-card-btn-tablet-lg: var(
         --pt-main-page-content-action-card-btn-tablet-lg
     );
-    --p-layout: 0 24px;
-    --pt-layout-header: 16px;
-    --pb-layout-header: var(--pt-layout-header);
-    --p-layout-tablet: 0 16px;
+
+    --p-header: 16px 24px;
+    --p-layout: 24px;
+    --p-footer: 0 24px;
+    --px-layout-tablet: 16px;
     --px-auth-card: 32px;
     --py-auth-card: 64px;
     --p-auth-card: var(--py-auth-card) var(--px-auth-card);
