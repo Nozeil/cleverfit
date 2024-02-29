@@ -4,12 +4,12 @@ import { type ReactNode } from 'react';
 import { SIDER_SIZES } from './sider.constants';
 import styles from './sider.module.css';
 
-interface SiderProps {
+type SiderProps = {
     isBreakpoint: boolean;
     onBreakpoint: (broken: boolean) => void;
     collapsed: boolean;
     children: ReactNode;
-}
+};
 
 export const Sider = ({ isBreakpoint, onBreakpoint, collapsed, children }: SiderProps) => {
     const sizes = isBreakpoint

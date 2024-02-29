@@ -3,7 +3,7 @@ import { useAuth } from '@hooks/useAuth';
 import { type ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 
-interface NonAuthRouteProps {
+type NonAuthRouteProps = {
     children: ReactNode;
 }
 

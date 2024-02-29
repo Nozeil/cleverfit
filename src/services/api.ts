@@ -6,6 +6,7 @@ import type {
     CheckEmailResponse,
     ConfirmEmailBody,
     ConfirmEmailResponse,
+    GetFeedbacksResponse,
     LoginResponse,
 } from '@models/models';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
@@ -64,7 +65,7 @@ export const api = createApi({
                 credentials: 'include',
             }),
         }),
-        getFeedbacks: builder.query<ChangePasswordResponse, void>({
+        getFeedbacks: builder.query<GetFeedbacksResponse, void>({
             query: () => ({
                 url: '/feedback',
             }),

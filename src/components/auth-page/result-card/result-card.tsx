@@ -8,13 +8,13 @@ import { RESULT_CARD_TYPE_KEYS } from '../auth-page.constants';
 import type { TypeValues } from '../auth-page.types';
 import styles from './result-card.module.css';
 
-interface ResultCardProps {
+type ResultCardProps = {
     title: string;
     text: ReactNode;
     children: ReactNode;
     head: ReactNode;
     type?: TypeValues['resultCard'];
-}
+};
 
 const { DEFAULT, CARD_PB_56, CARD_PB_56_BREAKPOINT } = RESULT_CARD_TYPE_KEYS;
 

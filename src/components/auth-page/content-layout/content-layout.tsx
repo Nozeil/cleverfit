@@ -4,12 +4,12 @@ import { type ReactNode } from 'react';
 
 import styles from './content-layout.module.css';
 
-interface AuthPageLayoutProps {
+type AuthPageLayoutProps = {
     children: ReactNode;
     className?: string;
     title?: ReactNode;
     cardClassName?: string;
-}
+};
 
 const cx = classNames.bind(styles);
 

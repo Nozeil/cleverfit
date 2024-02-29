@@ -6,7 +6,7 @@ import { type ReactNode, useState } from 'react';
 import { OnFinishAuth } from '../auth-forms.types';
 import styles from './auth-form.module.css';
 
-interface AuthFormProps {
+type AuthFormProps = {
     name: string;
     children: ReactNode;
     onFinish: OnFinishAuth;
@@ -17,7 +17,7 @@ interface AuthFormProps {
     googleButton?: boolean;
     googleButtonText?: string;
     shouldValidate?: boolean;
-}
+};
 
 const cx = classNames.bind(styles);
 

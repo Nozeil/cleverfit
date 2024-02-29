@@ -5,14 +5,14 @@ import { INPUT_NAMES } from '../auth-page.constants';
 import styles from './inputs.module.css';
 import { passwordPattern } from './regex';
 
-interface PasswordInputProps {
+type PasswordInputProps = {
     testId: string;
     name?: string;
     message?: string;
     placeholder?: string;
     help?: string;
     rules?: Rule[];
-}
+};
 
 export const PasswordInput = ({
     name = INPUT_NAMES.PASSWORD,

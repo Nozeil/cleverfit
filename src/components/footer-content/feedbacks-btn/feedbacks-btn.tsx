@@ -9,9 +9,9 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from './feedbacks-btn.module.css';
 
-interface FeedbacksButtonProps {
+type FeedbacksButtonProps = {
     onAnyError: () => void;
-}
+};
 
 export const FeedbacksButton = ({ onAnyError }: FeedbacksButtonProps) => {
     const [skip, setSkip] = useState(true);

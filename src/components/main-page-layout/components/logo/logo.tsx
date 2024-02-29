@@ -5,10 +5,10 @@ import LogoCropped from '/svg/logo-cropped.svg';
 
 import styles from './logo.module.css';
 
-interface LogoProps {
+type LogoProps = {
     isBreakpoint: boolean;
     cropped: boolean;
-}
+};
 
 export const Logo = ({ cropped, isBreakpoint }: LogoProps) => {
     const imageProps = { className: styles.logo, src: LogoBase };

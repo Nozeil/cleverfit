@@ -1,12 +1,12 @@
-import { MenuFoldOutlined,MenuUnfoldOutlined } from '@ant-design/icons';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 
 import styles from './trigger.module.css';
 
-interface TriggerProps {
+type TriggerProps = {
     isBreakpoint: boolean;
     collapsed: boolean;
     onClick: () => void;
-}
+};
 
 export const Trigger = ({ collapsed, isBreakpoint, onClick }: TriggerProps) => {
     const Icon = collapsed ? MenuUnfoldOutlined : MenuFoldOutlined;

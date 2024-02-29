@@ -6,10 +6,10 @@ import VerificationInput from 'react-verification-input';
 
 import styles from './custom-verification-input.module.css';
 
-interface CustomVerificationInputProps {
+type CustomVerificationInputProps = {
     isError: boolean;
     setIsError: (isError: boolean) => void;
-}
+};
 
 export const CustomVerificationInput = ({ isError, setIsError }: CustomVerificationInputProps) => {
     const [input, setInput] = useState('');

@@ -1,19 +1,19 @@
-export interface OnFinishLoginValues {
+export type OnFinishLoginValues = {
     email: string;
     password: string;
     remember: boolean;
-}
+};
 
-export interface OnFinishRegistrationValues {
+export type OnFinishRegistrationValues = {
     email: string;
     password: string;
     'password-confirm': string;
-}
+};
 
-export interface OnFinishChangePasswordValues {
+export type OnFinishChangePasswordValues = {
     password: string;
     'password-confirm': string;
-}
+};
 
 export type OnFinishAuth = (
     values: OnFinishLoginValues & OnFinishRegistrationValues & OnFinishChangePasswordValues,

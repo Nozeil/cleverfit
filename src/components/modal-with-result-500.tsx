@@ -3,10 +3,10 @@ import { Result } from 'antd';
 import { CustomModal } from './custom-modal';
 import { ResultButton } from './result-button/result-button';
 
-interface ModalWithResult500Props {
+type ModalWithResult500Props = {
     open: boolean;
     onClick: () => void;
-}
+};
 
 export const ModalWithResult500 = ({ open, onClick }: ModalWithResult500Props) => {
     return (

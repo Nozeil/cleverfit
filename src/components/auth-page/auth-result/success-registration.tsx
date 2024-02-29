@@ -1,10 +1,10 @@
 import { ROUTES } from '@constants/routes';
 import { useNavigate } from 'react-router-dom';
 
+import { ResultButton } from '../../result-button/result-button';
 import { RESULT_ICON_TYPE_KEYS } from '../auth-page.constants';
 import { ResultCard } from '../result-card/result-card';
 import { ResultIcon } from '../result-icon/result-icon';
-import { ResultButton } from '../../result-button/result-button';
 
 export const SuccessRegistration = () => {
     const navigate = useNavigate();

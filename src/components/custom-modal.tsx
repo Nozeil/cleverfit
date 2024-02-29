@@ -1,10 +1,10 @@
 import { Modal } from 'antd';
 import { type ReactNode } from 'react';
 
-interface CustomModalProps {
+type CustomModalProps = {
     open: boolean;
     children: ReactNode;
-}
+};
 
 export const CustomModal = ({ open, children }: CustomModalProps) => {
     return (

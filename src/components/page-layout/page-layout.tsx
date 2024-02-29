@@ -4,11 +4,11 @@ import { type ReactNode, Suspense } from 'react';
 
 import styles from './page-layout.module.css';
 
-interface PageLayoutProps {
+type PageLayoutProps = {
     headerContent?: ReactNode;
     mainContent?: ReactNode;
     footerContent?: ReactNode;
-}
+};
 
 const { Header, Content, Footer } = Layout;
 
