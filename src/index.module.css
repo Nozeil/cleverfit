@@ -1,4 +1,6 @@
-@import url('./styles/inputs.module.css');
+@import url('./styles/components/inputs.module.css');
+@import url('./styles/components/modal.module.css');
+@import url('./styles/components/result.module.css');
 
 :global(.ant-breadcrumb),
 :global(.ant-breadcrumb) li,
@@ -12,7 +14,8 @@
 :global(.ant-input-group-addon),
 :global(.ant-input),
 :global(.ant-tabs),
-:global(.ant-checkbox-wrapper) {
+:global(.ant-checkbox-wrapper),
+:global(.ant-result-title) {
     color: var(--character-light-title-85);
     line-height: var(--line-height);
 }
@@ -21,6 +24,7 @@
 :global(.ant-space),
 :global(.ant-btn),
 :global(.ant-input),
+:global(.ant-result-subtitle),
 a {
     line-height: var(--line-height);
 }
@@ -102,7 +106,8 @@ a {
     }
 }
 
-:global(.ant-card) {
+:global(.ant-card),
+:global(.ant-modal-content) {
     box-shadow: var(--shadow);
 }
 

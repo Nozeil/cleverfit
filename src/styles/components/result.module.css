@@ -1,0 +1,9 @@
+:global(.ant-result-500) {
+    padding: var(--p-result-500);
+}
+
+@media screen and (max-width: 767px) {
+    :global(.ant-result-subtitle) {
+        padding: 0 20px;
+    }
+}

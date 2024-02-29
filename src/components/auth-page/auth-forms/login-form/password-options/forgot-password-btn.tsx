@@ -40,7 +40,6 @@ export const ForgotPasswordBtn = () => {
 
     useEffect(() => {
         if (location.state?.email) {
-            console.log(location);
             onClick(location.state.email);
         }
     }, []);

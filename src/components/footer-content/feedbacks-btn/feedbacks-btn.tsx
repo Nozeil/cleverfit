@@ -9,22 +9,28 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from './feedbacks-btn.module.css';
 
-export const FeedbacksButton = () => {
+interface FeedbacksButtonProps {
+    onAnyError: () => void;
+}
+
+export const FeedbacksButton = ({ onAnyError }: FeedbacksButtonProps) => {
     const [skip, setSkip] = useState(true);
-    const { error } = useGetFeedbacksQuery(undefined, { skip });
+    const { error, isError, isSuccess } = useGetFeedbacksQuery(undefined, { skip });
     const navigate = useNavigate();
     const { signout } = useAuth();
 
     const onClick = () => setSkip(false);
 
     useEffect(() => {
-        if (error) {
-            const e = error as ErrorResponse;
-            if (e.status === HTTP_STATUS_CODES.FORBIDDEN) {
-                signout(() => navigate(ROUTES.AUTH));
-            }
+        if (isSuccess) {
+            navigate(ROUTES.FEEDBACKS);
         }
-    }, [skip, error, signout, navigate]);
+
+        if (isError) {
+            const e = error as ErrorResponse;
+            e.status === HTTP_STATUS_CODES.FORBIDDEN ? signout() : onAnyError();
+        }
+    }, [skip, error, signout, navigate, onAnyError, isSuccess, isError]);
 
     return (
         <Button className={styles.btn} onClick={onClick} type='link' size='large'>

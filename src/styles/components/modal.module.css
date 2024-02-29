@@ -1,0 +1,14 @@
+:global(.ant-modal-mask) {
+    backdrop-filter: blur(var(--blur-value));
+    background-color: var(--blue-1);
+}
+
+:global(.ant-modal-body) {
+    padding: 0;
+}
+
+@media screen and (max-width: 767px) {
+    :global(.ant-modal) {
+        max-width: calc(100vw - 32px);
+    }
+}

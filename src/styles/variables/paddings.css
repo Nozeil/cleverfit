@@ -49,4 +49,5 @@
     --p-confirm-email-space-item-mobile-l: 0 30px;
     --p-verification-container-mobile-l: 0 10px;
     --p-result-icon: 10px 5px;
+    --p-result-500: var(--py-auth-card) var(--px-auth-card) 56px;
 }
