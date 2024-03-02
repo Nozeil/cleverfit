@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-export type ActionCardProps {
+export type ActionCardProps = {
     title: string;
     buttonIcon: ReactNode;
     buttonContent: string;

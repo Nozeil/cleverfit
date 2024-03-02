@@ -1,0 +1,12 @@
+:global(.ant-rate),
+:global(.ant-rate-star) {
+    line-height: 0;
+}
+
+:global(.ant-rate) {
+    color: var(--character-light-warning);
+}
+
+:global(.ant-rate-star:not(:last-child)) {
+    margin-right: 4px;
+}

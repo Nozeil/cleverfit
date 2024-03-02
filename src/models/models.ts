@@ -40,7 +40,7 @@ export type ChangePasswordResponse = {
     message: string;
 };
 
-type Feedback = {
+export type Feedback = {
     id: string;
     fullName: string | null;
     imageSrc: string | null;

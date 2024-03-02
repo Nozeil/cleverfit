@@ -1,6 +1,9 @@
 @import url('./styles/components/inputs.module.css');
 @import url('./styles/components/modal.module.css');
 @import url('./styles/components/result.module.css');
+@import url('./styles/components/avatar.module.css');
+@import url('./styles/components/rate.module.css');
+@import url('./styles/components/typography.module.css');
 
 :global(.ant-breadcrumb),
 :global(.ant-breadcrumb) li,
@@ -8,6 +11,7 @@
 :global(.ant-typography),
 :global(h1.ant-typography),
 :global(h3.ant-typography),
+:global(h5.ant-typography),
 :global(.ant-card),
 :global(.ant-card-head),
 :global(.ant-input-group-addon),
@@ -25,6 +29,7 @@
 :global(.ant-input),
 :global(.ant-result-subtitle),
 :global(.ant-breadcrumb-separator),
+:global(.ant-list-item-meta-description),
 a {
     line-height: var(--line-height);
 }

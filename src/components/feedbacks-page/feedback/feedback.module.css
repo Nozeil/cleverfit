@@ -1,0 +1,44 @@
+.card :global(.ant-card-body) {
+    padding: 16px;
+    box-shadow: var(--shadow-md);
+}
+
+.meta:global(.ant-list-item-meta) :global(.ant-list-item-meta-avatar) {
+    width: 174px;
+    margin-right: 12px;
+}
+
+.meta:global(.ant-list-item-meta) :global(.ant-list-item-meta-content) {
+    width: 100%;
+}
+
+.avatar:global(.ant-avatar) {
+    flex-shrink: 0;
+}
+
+.title:global(.ant-typography) {
+    margin-bottom: 0;
+    font-weight: var(--font-medium);
+    text-align: center;
+    word-spacing: 10000px;
+}
+
+.rate:global(.ant-rate) {
+    font-size: var(--text-base);
+}
+
+.date:global(.ant-typography) {
+    font-size: var(--text-xs);
+    letter-spacing: -1px;
+}
+
+@media screen and (max-width: 575px) {
+    .meta {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .title:global(.ant-typography) {
+        text-align: start;
+    }
+}

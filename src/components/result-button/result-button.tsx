@@ -10,17 +10,15 @@ type ResultButtonProps = {
     block?: boolean;
 };
 
-export const ResultButton = ({ onClick, children, block, testId }: ResultButtonProps) => {
-    return (
-        <Button
-            className={styles.btn}
-            block={block}
-            type='primary'
-            size='large'
-            onClick={onClick}
-            data-test-id={testId}
-        >
-            {children}
-        </Button>
-    );
-};
+export const ResultButton = ({ onClick, children, block, testId }: ResultButtonProps) => (
+    <Button
+        className={styles.btn}
+        block={block}
+        type='primary'
+        size='large'
+        onClick={onClick}
+        data-test-id={testId}
+    >
+        {children}
+    </Button>
+);

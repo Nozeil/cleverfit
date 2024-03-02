@@ -30,7 +30,7 @@ export const FeedbacksButton = ({ onAnyError }: FeedbacksButtonProps) => {
             const e = error as ErrorResponse;
             e.status === HTTP_STATUS_CODES.FORBIDDEN ? signout() : onAnyError();
         }
-    }, [skip, error, signout, navigate, onAnyError, isSuccess, isError]);
+    }, [error, signout, navigate, onAnyError, isSuccess, isError]);
 
     return (
         <Button className={styles.btn} onClick={onClick} type='link' size='large'>
