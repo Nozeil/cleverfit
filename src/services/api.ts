@@ -80,4 +80,5 @@ export const {
     useConfirmEmailMutation,
     useChangePasswordMutation,
     useGetFeedbacksQuery,
+    useLazyGetFeedbacksQuery,
 } = api;

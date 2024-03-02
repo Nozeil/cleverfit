@@ -3,7 +3,12 @@ import { Button } from 'antd';
 
 import styles from './feedback-content.module.css';
 
-export const ListFooter = () => (
+type ListFooterProps = {
+    expendBtnText: string;
+    expendOnClick: () => void;
+};
+
+export const ListFooter = ({ expendBtnText, expendOnClick }: ListFooterProps) => (
     <Flex
         className={styles.flex}
         direction={{ sm: 'row', xs: 'column' }}
@@ -13,8 +18,8 @@ export const ListFooter = () => (
         <Button block className={styles.btn} type='primary' size='large'>
             Написать отзыв
         </Button>
-        <Button block type='link' size='large'>
-            Развернуть все отзывы
+        <Button block type='link' size='large' onClick={expendOnClick}>
+            {expendBtnText}
         </Button>
     </Flex>
 );

@@ -1,5 +1,15 @@
+.listContainer,
+.listContainerFull {
+    min-height: 100%;
+}
+
 .list:global(.ant-list-grid) :global(.ant-list-item) {
     margin-bottom: 20px;
+}
+
+.listContainerFull :global(.ant-spin-nested-loading) {
+    overflow-y: hidden;
+    scrollbar-width: none;
 }
 
 .flex {

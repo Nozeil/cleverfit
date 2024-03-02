@@ -2,9 +2,9 @@ import { HTTP_STATUS_CODES } from '@constants/index';
 import { ROUTES } from '@constants/routes';
 import { useAuth } from '@hooks/useAuth';
 import type { ErrorResponse } from '@models/models';
-import { useGetFeedbacksQuery } from '@services/api';
+import { useLazyGetFeedbacksQuery } from '@services/api';
 import { Button } from 'antd';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './feedbacks-btn.module.css';
@@ -14,12 +14,11 @@ type FeedbacksButtonProps = {
 };
 
 export const FeedbacksButton = ({ onAnyError }: FeedbacksButtonProps) => {
-    const [skip, setSkip] = useState(true);
-    const { error, isError, isSuccess } = useGetFeedbacksQuery(undefined, { skip });
+    const [trigger, { isSuccess, isError, error }] = useLazyGetFeedbacksQuery();
     const navigate = useNavigate();
     const { signout } = useAuth();
 
-    const onClick = () => setSkip(false);
+    const onClick = () => trigger(undefined, true);
 
     useEffect(() => {
         if (isSuccess) {
