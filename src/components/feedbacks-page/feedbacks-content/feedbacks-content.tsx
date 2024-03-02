@@ -8,10 +8,10 @@ import { useEffect, useMemo, useState } from 'react';
 import { ErrorResponse, useNavigate } from 'react-router-dom';
 
 import { EmptyFeedbacks } from '../empty-feedbacks/empty-feedbacks';
-import { Feedback } from '../feedback/feedback';
+import { Feedback } from './feedback/feedback';
 import styles from './feedback-content.module.css';
 import { ListContainer } from './list-container';
-import { ListFooter } from './list-footer';
+import { ListFooter } from './list-footer/list-footer';
 
 export const FeedbacksContent = () => {
     const { data, error, isError } = useGetFeedbacksQuery();

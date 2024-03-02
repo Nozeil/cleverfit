@@ -18,7 +18,9 @@
 :global(.ant-input),
 :global(.ant-tabs),
 :global(.ant-checkbox-wrapper),
-:global(.ant-result-title) {
+:global(.ant-result-title),
+:global(.ant-modal-title),
+:global(textarea.ant-input) {
     color: var(--character-light-title-85);
     line-height: var(--line-height);
 }

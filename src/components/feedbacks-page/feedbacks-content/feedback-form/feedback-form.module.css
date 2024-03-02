@@ -1,0 +1,16 @@
+.rate:global(.ant-rate) :global(.ant-rate-star-second) {
+    font-size: var(--text-2xl);
+    color: var(--character-light-warning);
+}
+
+.formItem:global(.ant-form-item) {
+    margin-bottom: 16px;
+}
+
+.formItem :global(.ant-form-item-control-input) {
+    min-height: auto;
+}
+
+.textarea:global(.ant-input) {
+    min-height: 46px;
+}

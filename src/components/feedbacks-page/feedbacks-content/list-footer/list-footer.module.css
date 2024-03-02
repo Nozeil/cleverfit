@@ -1,0 +1,38 @@
+.btn:global(.ant-btn) {
+    font-size: var(--text-sm);
+}
+
+.flex {
+    width: fit-content;
+    margin-top: 100px;
+}
+
+.modal:global(.ant-modal) :global(.ant-modal-footer) {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.modal :global(.ant-modal-body) {
+    padding: 24px;
+}
+
+@media screen and (max-width: 575px) {
+    .flex {
+        margin-top: 22px;
+        width: 100%;
+    }
+
+    .modal :global(.ant-modal-header) {
+        padding: 16px;
+    }
+
+    .modal:global(.ant-modal) :global(.ant-modal-body),
+    .modal:global(.ant-modal) :global(.ant-modal-footer) {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .btn:global(.ant-btn) {
+        width: 100%;
+    }
+}

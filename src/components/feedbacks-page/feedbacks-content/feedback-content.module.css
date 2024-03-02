@@ -12,11 +12,6 @@
     scrollbar-width: none;
 }
 
-.flex {
-    width: fit-content;
-    margin-top: 100px;
-}
-
 .btn:global(.ant-btn) {
     font-size: var(--text-sm);
 }
@@ -24,10 +19,5 @@
 @media screen and (max-width: 575px) {
     .list:global(.ant-list-grid) :global(.ant-list-item) {
         margin-bottom: 16px;
-    }
-
-    .flex {
-        margin-top: 22px;
-        width: 100%;
     }
 }
