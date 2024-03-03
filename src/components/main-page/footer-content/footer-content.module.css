@@ -41,6 +41,10 @@
     border: none;
 }
 
+.btn:global(.ant-btn-link) {
+    padding: var(--p-footer-link-btn);
+  }
+
 @media screen and (max-width: 767px) {
     .space {
         flex-direction: column-reverse;

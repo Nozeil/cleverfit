@@ -4,6 +4,7 @@ import { createBrowserHistory } from 'history';
 import { combineReducers } from 'redux';
 import { createReduxHistoryContext } from 'redux-first-history';
 
+import { authReducer } from './slices/auth-slice';
 import { siderReducer } from './slices/sider-slice';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
@@ -15,6 +16,7 @@ export const store = configureStore({
     reducer: combineReducers({
         router: routerReducer,
         sider: siderReducer,
+        auth: authReducer,
         [api.reducerPath]: api.reducer,
     }),
     middleware: (getDefaultMiddleware) =>

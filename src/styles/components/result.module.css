@@ -15,8 +15,12 @@
 }
 
 @media screen and (max-width: 767px) {
-    :global(.ant-result-subtitle) {
+    :global(.ant-result-500) :global(.ant-result-subtitle) {
         padding: var(--p-ant-result-subtitle);
+    }
+
+    :global(.ant-result-error) :global(.ant-result-subtitle) {
+        white-space: nowrap;
     }
 }
 

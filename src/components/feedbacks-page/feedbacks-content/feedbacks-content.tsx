@@ -1,4 +1,4 @@
-import { ModalWithResult500 } from '@components/modal-with-result-500';
+import { ModalWithResult500 } from '@components/feedbacks-page/feedbacks-content/modal-with-result-500';
 import { HTTP_STATUS_CODES } from '@constants/index';
 import { ROUTES } from '@constants/routes';
 import { useAuth } from '@hooks/useAuth';

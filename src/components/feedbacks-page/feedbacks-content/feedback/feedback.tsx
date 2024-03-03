@@ -39,7 +39,11 @@ export const Feedback = ({ createdAt, fullName, imageSrc, message, rating }: Fee
                     </Flex>
                 }
                 description={
-                    <Flex direction='column' gap={{ sm: 'gap12', xs: 'gap14' }}>
+                    <Flex
+                        className={styles.flex}
+                        direction='column'
+                        gap={{ sm: 'gap12', xs: 'gap14' }}
+                    >
                         <Space size={12}>
                             <Rate
                                 className={styles.rate}

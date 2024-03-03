@@ -1,7 +1,6 @@
+import { ResultButton } from '@components/result-button/result-button';
 import { WIDTH_540 } from '@constants/index';
 import { Modal, Result } from 'antd';
-
-import { ResultButton } from './result-button/result-button';
 
 type ModalWithResult500Props = {
     open: boolean;
@@ -14,11 +13,7 @@ export const ModalWithResult500 = ({ open, onClick }: ModalWithResult500Props) =
             status='500'
             title='Что-то пошло не так'
             subTitle='Произошла ошибка, &nbsp;попробуйте ещё раз.'
-            extra={
-                <ResultButton onClick={onClick}>
-                    Назад
-                </ResultButton>
-            }
+            extra={<ResultButton onClick={onClick}>Назад</ResultButton>}
         />
     </Modal>
 );

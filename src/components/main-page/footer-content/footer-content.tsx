@@ -1,9 +1,8 @@
 import { AndroidFilled, AppleFilled } from '@ant-design/icons';
-import { ModalWithResult500 } from '@components/modal-with-result-500';
+import { ROUTES } from '@constants/routes';
 import { Button, Card } from 'antd';
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { FeedbacksButton } from './feedbacks-btn/feedbacks-btn';
 import styles from './footer-content.module.css';
 
 const actions = [
@@ -16,13 +15,21 @@ const actions = [
 ];
 
 export const FooterContent = () => {
-    const [isModalOpen, setModalOpen] = useState(false);
+    const navigate = useNavigate();
+
+    const onClick = () => navigate(ROUTES.FEEDBACKS);
 
     return (
         <div className={styles.space}>
-            <ModalWithResult500 open={isModalOpen} onClick={() => setModalOpen(false)} />
-
-            <FeedbacksButton onAnyError={() => setModalOpen(true)} />
+            <Button
+                className={styles.btn}
+                onClick={onClick}
+                type='link'
+                size='large'
+                data-test-id='see-reviews'
+            >
+                Смотреть отзывы
+            </Button>
 
             <Card bordered={false} className={styles.card} actions={actions}>
                 <Card.Meta
