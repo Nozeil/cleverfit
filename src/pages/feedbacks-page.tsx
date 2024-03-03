@@ -1,7 +1,7 @@
 import { FeedbacksContent } from '@components/feedbacks-page/feedbacks-content/feedbacks-content';
 import { HeaderContent } from '@components/feedbacks-page/header-content';
-import { PageLayout } from '@components/page-layout/page-layout';
+import { PageTemplate } from '@components/page-template/page-template';
 
 export const FeedbacksPage = () => (
-    <PageLayout headerContent={<HeaderContent />} mainContent={<FeedbacksContent />} />
+    <PageTemplate headerContent={<HeaderContent />} mainContent={<FeedbacksContent />} />
 );

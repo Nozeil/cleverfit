@@ -17,8 +17,8 @@ import { ConfirmEmail } from '@components/auth-page/confirm-email/confirm-email'
 import { AuthRoute } from '@components/auth-route';
 import { CheckGoogleAuthRoute } from '@components/check-google-auth-route';
 import { Loader } from '@components/loader/loader';
-import { MainPageLayout } from '@components/main-page-layout/main-page-layout';
 import { NonAuthRoute } from '@components/non-auth-route';
+import { PageLayout } from '@components/page-layout/page-layout';
 import { COMPOUND_ROUTES, ROUTES } from '@constants/routes';
 import { useIsLoading } from '@hooks/useIsLoading';
 import { AuthPage } from '@pages/auth/auth';
@@ -105,7 +105,7 @@ const routes = (
                 path={ROUTES.MAIN}
                 element={
                     <AuthRoute>
-                        <MainPageLayout />
+                        <PageLayout />
                     </AuthRoute>
                 }
             >
@@ -115,7 +115,7 @@ const routes = (
                 path={ROUTES.FEEDBACKS}
                 element={
                     <AuthRoute>
-                        <MainPageLayout />
+                        <PageLayout />
                     </AuthRoute>
                 }
             >
