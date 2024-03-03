@@ -13,7 +13,7 @@ import type {
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { checkAccessToken } from '@utils/utils';
 
-const BASE_URL = 'https://marathon-api.clevertec.ru/';
+import { BASE_URL } from './api.constants';
 
 export const api = createApi({
     baseQuery: fetchBaseQuery({

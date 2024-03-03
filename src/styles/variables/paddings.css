@@ -7,7 +7,6 @@
     --p-16: 16px;
     --p-12: 12px;
     --p-8: 8px;
-
     --p-64-86: var(--p-64) var(--p-86);
     --p-64-32: var(--p-64) var(--p-32);
     --p-64-32-56: var(--p-64-32) var(--p-56);
@@ -15,7 +14,6 @@
     --p-16-24: var(--p-16) var(--p-24);
     --p-12-24: var(--p-12) var(--p-24);
     --p-8-24: var(--p-8) var(--p-24);
-
     --p-logo: 14px 46px 17px 29px;
     --p-logo-cropped: 18px;
     --p-logo-tablet: var(--p-16) 17px;
@@ -41,7 +39,6 @@
     --pb-main-page-content-action-card-btn-tablet-lg: var(
         --pt-main-page-content-action-card-btn-tablet-lg
     );
-
     --p-header: var(--p-16-24);
     --p-layout: var(--p-24);
     --p-footer: 0 var(--p-24);
@@ -72,7 +69,6 @@
     --p-result-success-mobile-l: var(--p-32-16);
     --p-result-error: var(--p-64-86);
     --p-result-error-mobile-l: var(--p-32-16);
-
     --px-empty-feedbacks-card: 0 var(--p-32);
     --py-empty-feedbacks-card: 56px;
     --py-empty-feedbacks-card-collapsed: 75.5px;

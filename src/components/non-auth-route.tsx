@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom';
 
 type NonAuthRouteProps = {
     children: ReactNode;
-}
+};
 
 export const NonAuthRoute = ({ children }: NonAuthRouteProps) => {
     const { token } = useAuth();

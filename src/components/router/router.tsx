@@ -15,6 +15,7 @@ import { SuccessChangePassword } from '@components/auth-page/auth-result/success
 import { SuccessRegistration } from '@components/auth-page/auth-result/success-registration';
 import { ConfirmEmail } from '@components/auth-page/confirm-email/confirm-email';
 import { AuthRoute } from '@components/auth-route';
+import { CheckGoogleAuthRoute } from '@components/check-google-auth-route';
 import { Loader } from '@components/loader/loader';
 import { MainPageLayout } from '@components/main-page-layout/main-page-layout';
 import { NonAuthRoute } from '@components/non-auth-route';
@@ -24,7 +25,7 @@ import { AuthPage } from '@pages/auth/auth';
 import { FeedbacksPage } from '@pages/feedbacks-page';
 import { MainPage } from '@pages/main-page';
 import { history } from '@redux/configure-store';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { HistoryRouter } from 'redux-first-history/rr6';
 
 const routes = (
@@ -121,7 +122,7 @@ const routes = (
                 <Route index element={<FeedbacksPage />} />
             </Route>
         </Route>
-        <Route path='*' element={<Navigate to={ROUTES.AUTH} />} />
+        <Route path='*' element={<CheckGoogleAuthRoute />} />
     </Routes>
 );
 

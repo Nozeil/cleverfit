@@ -4,6 +4,7 @@
 }
 
 .meta:global(.ant-list-item-meta) :global(.ant-list-item-meta-avatar) {
+    flex-shrink: 0;
     width: 174px;
     margin-right: 12px;
 }

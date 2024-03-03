@@ -27,7 +27,7 @@ export const LoginForm = () => {
                 password,
             }).unwrap();
 
-            signin(accessToken, remember, () => navigate(ROUTES.MAIN, options));
+            signin(accessToken, () => navigate(ROUTES.MAIN, options), remember);
         } catch {
             navigate(COMPOUND_ROUTES.RESULT_ERROR_LOGIN, options);
         }

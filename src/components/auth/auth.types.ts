@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 
-export type Signin = (accessToken: string, remember: boolean, callback: () => void) => void;
+export type Signin = (accessToken: string, callback: () => void, remember?: boolean) => void;
 
 export type Signout = (callback?: () => void) => void;
 

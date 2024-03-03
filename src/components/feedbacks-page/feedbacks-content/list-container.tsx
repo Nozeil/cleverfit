@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, useRef } from 'react';
+import { type ReactNode, useLayoutEffect, useRef } from 'react';
 
 import styles from './feedback-content.module.css';
 
@@ -14,7 +14,7 @@ export const ListContainer = ({ showAll, children }: ListContainerProps) => {
     const container = listContainterRef.current;
     const containerHeight = container?.offsetHeight;
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const footerHeight =
             container?.querySelector<HTMLDivElement>('.ant-list-footer')?.offsetHeight;
         const cards = container?.querySelector<HTMLDivElement>('.ant-spin-nested-loading');

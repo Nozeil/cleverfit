@@ -8,7 +8,7 @@ import { AuthContext } from './auth-context';
 export const AuthProvider = ({ children }: AuthProviderProps) => {
     const [token, setToken] = useState(checkAccessToken());
 
-    const signin: Signin = (accessToken, remember, callback) => {
+    const signin: Signin = (accessToken, callback, remember) => {
         remember
             ? localStorage.setItem(STORAGE_TOKEN_KEY, accessToken)
             : sessionStorage.setItem(STORAGE_TOKEN_KEY, accessToken);

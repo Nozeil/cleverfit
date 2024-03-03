@@ -34,7 +34,7 @@ export const Feedback = ({ createdAt, fullName, imageSrc, message, rating }: Fee
                         />
 
                         <Typography.Title className={styles.title} level={5}>
-                            {fullName}
+                            {fullName ?? 'Пользователь'}
                         </Typography.Title>
                     </Flex>
                 }

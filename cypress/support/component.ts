@@ -27,7 +27,7 @@ import { mount } from 'cypress/react18';
 // with a <reference path="./component" /> at the top of your spec.
 declare global {
     namespace Cypress {
-        type Chainable {
+        interface Chainable {
             mount: typeof mount;
         }
     }

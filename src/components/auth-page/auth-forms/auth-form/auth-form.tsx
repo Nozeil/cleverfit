@@ -1,4 +1,5 @@
 import { GooglePlusOutlined } from '@ant-design/icons';
+import { BASE_URL } from '@services/api.constants';
 import { Button, Form } from 'antd';
 import classNames from 'classnames/bind';
 import { type ReactNode, useState } from 'react';
@@ -16,6 +17,7 @@ type AuthFormProps = {
     submitButtonText?: string;
     googleButton?: boolean;
     googleButtonText?: string;
+    googleButtonOnClick?: () => void;
     shouldValidate?: boolean;
 };
 
@@ -71,7 +73,12 @@ export const AuthForm = ({
             </Form.Item>
             {googleButton && (
                 <Form.Item>
-                    <Button className={styles.btn} block icon={<GooglePlusOutlined />}>
+                    <Button
+                        className={styles.btn}
+                        block
+                        icon={<GooglePlusOutlined />}
+                        onClick={() => (window.location.href = `${BASE_URL}auth/google`)}
+                    >
                         {googleButtonText}
                     </Button>
                 </Form.Item>
