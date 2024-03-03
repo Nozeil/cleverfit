@@ -2,8 +2,30 @@
     padding: var(--p-result-500);
 }
 
+:global(.ant-result-success) {
+    padding: var(--p-result-success);
+}
+
+:global(.ant-result-error) {
+    padding: var(--p-result-error);
+}
+
+:global(.ant-result) :global(.ant-result-icon) {
+    padding: 4px 0;
+}
+
 @media screen and (max-width: 767px) {
     :global(.ant-result-subtitle) {
         padding: 0 20px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    :global(.ant-result-success) {
+        padding: var(--p-result-success-mobile-l);
+    }
+
+    :global(.ant-result-error) {
+        padding: var(--p-result-error-mobile-l);
     }
 }

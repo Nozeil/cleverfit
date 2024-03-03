@@ -2,11 +2,6 @@
     font-size: var(--text-sm);
 }
 
-.flex {
-    width: fit-content;
-    margin-top: 100px;
-}
-
 .modal:global(.ant-modal) :global(.ant-modal-footer) {
     padding-left: 24px;
     padding-right: 24px;
@@ -16,7 +11,7 @@
     padding: 24px;
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 767px) {
     .flex {
         margin-top: 22px;
         width: 100%;

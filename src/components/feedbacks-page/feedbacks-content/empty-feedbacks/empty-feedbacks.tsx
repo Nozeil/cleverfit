@@ -1,7 +1,8 @@
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { selectSider } from '@redux/slices/sider-slice';
-import { Button, Card, Space, Typography } from 'antd';
+import { Card, Space, Typography } from 'antd';
 
+import { ButtonGroupWithModal } from '../button-group-with-modal/button-group-with-modal';
 import styles from './empty-feedbacks.module.css';
 
 export const EmptyFeedbacks = () => {
@@ -23,9 +24,7 @@ export const EmptyFeedbacks = () => {
                         </Typography.Paragraph>
                     </Space>
                 </Card>
-                <Button className={styles.btn} type='primary' size='large'>
-                    Написать отзыв
-                </Button>
+                <ButtonGroupWithModal />
             </Space>
         </Space>
     );

@@ -8,13 +8,20 @@ type ResultButtonProps = {
     children: ReactNode;
     testId: string;
     block?: boolean;
+    type?: 'primary' | 'default';
 };
 
-export const ResultButton = ({ onClick, children, block, testId }: ResultButtonProps) => (
+export const ResultButton = ({
+    onClick,
+    children,
+    block,
+    testId,
+    type = 'primary',
+}: ResultButtonProps) => (
     <Button
         className={styles.btn}
         block={block}
-        type='primary'
+        type={type}
         size='large'
         onClick={onClick}
         data-test-id={testId}

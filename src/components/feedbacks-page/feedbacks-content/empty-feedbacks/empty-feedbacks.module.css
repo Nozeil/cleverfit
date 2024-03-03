@@ -40,11 +40,6 @@
     white-space: pre-wrap;
 }
 
-.btn:global(.ant-btn) {
-    padding: var(--p-empty-feedback-btn);
-    font-size: var(--text-sm);
-}
-
 @media screen and (max-width: 767px) {
     .space:global(.ant-space) {
         align-items: start;
@@ -58,10 +53,6 @@
     .cardCollapsed:global(.ant-card) {
         padding-top: var(--py-empty-feedbacks-card-tablet);
         padding-bottom: var(--py-empty-feedbacks-card-tablet);
-    }
-
-    .btn:global(.ant-btn) {
-        width: 100%;
-        margin-top: var(--mt-empty-feedback-btn-tablet);
+        margin-bottom: var(--mb-empty-feedbacks-card-tablet);
     }
 }

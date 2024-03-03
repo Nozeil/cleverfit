@@ -50,3 +50,8 @@ export type Feedback = {
 };
 
 export type GetFeedbacksResponse = Feedback[];
+
+export type CreateFeedbackBody = {
+    message: string;
+    rating: number;
+};

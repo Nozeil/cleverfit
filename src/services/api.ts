@@ -6,6 +6,7 @@ import type {
     CheckEmailResponse,
     ConfirmEmailBody,
     ConfirmEmailResponse,
+    CreateFeedbackBody,
     GetFeedbacksResponse,
     LoginResponse,
 } from '@models/models';
@@ -27,6 +28,7 @@ export const api = createApi({
             return headers;
         },
     }),
+    tagTypes: ['Feedback'],
     endpoints: (builder) => ({
         registerUser: builder.mutation<void, AuthUserBody>({
             query: (body) => ({
@@ -69,6 +71,15 @@ export const api = createApi({
             query: () => ({
                 url: '/feedback',
             }),
+            providesTags: ['Feedback'],
+        }),
+        createFeedback: builder.mutation<void, CreateFeedbackBody>({
+            query: (body) => ({
+                url: '/feedback',
+                method: 'POST',
+                body,
+            }),
+            invalidatesTags: ['Feedback'],
         }),
     }),
 });
@@ -81,4 +92,5 @@ export const {
     useChangePasswordMutation,
     useGetFeedbacksQuery,
     useLazyGetFeedbacksQuery,
+    useCreateFeedbackMutation,
 } = api;

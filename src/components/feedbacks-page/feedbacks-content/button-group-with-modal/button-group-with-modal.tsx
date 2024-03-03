@@ -1,20 +1,31 @@
 import { CloseOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
+import { WIDTH_540 } from '@constants/index';
 import { Button, Modal } from 'antd';
 import { useState } from 'react';
 
 import { FORM_NAME } from '../feedback-content.constants';
 import { FeedbackForm } from '../feedback-form/feedback-form';
-import styles from './list-footer.module.css';
+import styles from './button-group-with-modal.module.css';
 
-type ListFooterProps = {
-    expendBtnText: string;
-    expendOnClick: () => void;
+type ButtonGroupWithModalProps = {
+    buttonGroupClassName?: string;
+    expendButton?: boolean;
+    expendBtnText?: string;
+    expendOnClick?: () => void;
 };
 
-export const ListFooter = ({ expendBtnText, expendOnClick }: ListFooterProps) => {
+export const ButtonGroupWithModal = ({
+    buttonGroupClassName,
+    expendButton,
+    expendBtnText,
+    expendOnClick,
+}: ButtonGroupWithModalProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
 
     return (
         <>
@@ -22,7 +33,7 @@ export const ListFooter = ({ expendBtnText, expendOnClick }: ListFooterProps) =>
                 className={styles.modal}
                 open={isModalOpen}
                 centered
-                width={540}
+                width={WIDTH_540}
                 title='Ваш отзыв'
                 closeIcon={<CloseOutlined style={{ fontSize: 14 }} />}
                 footer={
@@ -37,13 +48,18 @@ export const ListFooter = ({ expendBtnText, expendOnClick }: ListFooterProps) =>
                         Опубликовать
                     </Button>
                 }
-                onCancel={() => setIsModalOpen(false)}
+                onCancel={closeModal}
+                zIndex={10}
             >
-                <FeedbackForm disableSubmit={(disabled) => setIsSubmitDisabled(disabled)} />
+                <FeedbackForm
+                    disableSubmit={(disabled) => setIsSubmitDisabled(disabled)}
+                    openModal={openModal}
+                    closeModal={closeModal}
+                />
             </Modal>
 
             <Flex
-                className={styles.flex}
+                className={buttonGroupClassName}
                 direction={{ sm: 'row', xs: 'column' }}
                 align='alignCenter'
                 gap={{ sm: 'gap8', xs: 'gap16' }}
@@ -53,15 +69,16 @@ export const ListFooter = ({ expendBtnText, expendOnClick }: ListFooterProps) =>
                     className={styles.btn}
                     type='primary'
                     size='large'
-                    onClick={() => {
-                        setIsModalOpen(true);
-                    }}
+                    onClick={openModal}
                 >
                     Написать отзыв
                 </Button>
-                <Button block type='link' size='large' onClick={expendOnClick}>
-                    {expendBtnText}
-                </Button>
+
+                {expendButton && (
+                    <Button block type='link' size='large' onClick={expendOnClick}>
+                        {expendBtnText}
+                    </Button>
+                )}
             </Flex>
         </>
     );

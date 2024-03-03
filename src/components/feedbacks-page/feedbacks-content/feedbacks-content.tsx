@@ -7,11 +7,11 @@ import { List } from 'antd';
 import { useEffect, useMemo, useState } from 'react';
 import { ErrorResponse, useNavigate } from 'react-router-dom';
 
-import { EmptyFeedbacks } from '../empty-feedbacks/empty-feedbacks';
+import { ButtonGroupWithModal } from './button-group-with-modal/button-group-with-modal';
+import { EmptyFeedbacks } from './empty-feedbacks/empty-feedbacks';
 import { Feedback } from './feedback/feedback';
 import styles from './feedback-content.module.css';
 import { ListContainer } from './list-container';
-import { ListFooter } from './list-footer/list-footer';
 
 export const FeedbacksContent = () => {
     const { data, error, isError } = useGetFeedbacksQuery();
@@ -49,7 +49,9 @@ export const FeedbacksContent = () => {
                 <List
                     className={styles.list}
                     footer={
-                        <ListFooter
+                        <ButtonGroupWithModal
+                            buttonGroupClassName={styles.flex}
+                            expendButton
                             expendBtnText={expendBtnText}
                             expendOnClick={() => toggleShowAll((prevShowAll) => !prevShowAll)}
                         />

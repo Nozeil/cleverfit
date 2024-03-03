@@ -9,3 +9,5 @@ export const ERROR_MESSAGES = {
 } as const;
 
 export const STORAGE_TOKEN_KEY = 'accessToken';
+
+export const WIDTH_540 = 540;

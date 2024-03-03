@@ -1,3 +1,4 @@
+import { WIDTH_540 } from '@constants/index';
 import { Modal, Result } from 'antd';
 
 import { ResultButton } from './result-button/result-button';
@@ -8,7 +9,7 @@ type ModalWithResult500Props = {
 };
 
 export const ModalWithResult500 = ({ open, onClick }: ModalWithResult500Props) => (
-    <Modal open={open} closable={false} centered width={540} footer={null}>
+    <Modal open={open} closable={false} centered width={WIDTH_540} footer={null}>
         <Result
             status='500'
             title='Что-то пошло не так'
