@@ -1,37 +1,42 @@
 import { CloseOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
 import { WIDTH_540 } from '@constants/index';
+import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import {
+    closeFeedbackModal,
+    isFeedbackModalOpenSelector,
+    openFeedbackModal,
+} from '@redux/slices/feedback-modal';
 import { Button, Modal } from 'antd';
-import { useState } from 'react';
+import { type ReactNode } from 'react';
 
 import { FORM_NAME } from '../feedback-content.constants';
-import { FeedbackForm } from '../feedback-form/feedback-form';
 import styles from './button-group-with-modal.module.css';
 
 type ButtonGroupWithModalProps = {
+    children: ReactNode;
+    disabled: boolean;
     buttonGroupClassName?: string;
-    expendButton?: boolean;
-    expendBtnText?: string;
-    expendOnClick?: () => void;
+    expendButton?: ReactNode;
 };
 
 export const ButtonGroupWithModal = ({
+    children,
+    disabled,
     buttonGroupClassName,
     expendButton,
-    expendBtnText,
-    expendOnClick,
 }: ButtonGroupWithModalProps) => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+    const isOpen = useAppSelector(isFeedbackModalOpenSelector);
+    const dispatch = useAppDispatch();
 
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
+    const openModal = () => dispatch(openFeedbackModal());
+    const closeModal = () => dispatch(closeFeedbackModal());
 
     return (
         <>
             <Modal
                 className={styles.modal}
-                open={isModalOpen}
+                open={isOpen}
                 centered
                 width={WIDTH_540}
                 title='Ваш отзыв'
@@ -43,7 +48,7 @@ export const ButtonGroupWithModal = ({
                         type='primary'
                         size='large'
                         htmlType='submit'
-                        disabled={isSubmitDisabled}
+                        disabled={disabled}
                         data-test-id='new-review-submit-button'
                     >
                         Опубликовать
@@ -52,11 +57,7 @@ export const ButtonGroupWithModal = ({
                 onCancel={closeModal}
                 zIndex={10}
             >
-                <FeedbackForm
-                    disableSubmit={(disabled) => setIsSubmitDisabled(disabled)}
-                    openModal={openModal}
-                    closeModal={closeModal}
-                />
+                {children}
             </Modal>
 
             <Flex
@@ -76,17 +77,7 @@ export const ButtonGroupWithModal = ({
                     Написать отзыв
                 </Button>
 
-                {expendButton && (
-                    <Button
-                        block
-                        type='link'
-                        size='large'
-                        onClick={expendOnClick}
-                        data-test-id='all-reviews-button'
-                    >
-                        {expendBtnText}
-                    </Button>
-                )}
+                {expendButton}
             </Flex>
         </>
     );

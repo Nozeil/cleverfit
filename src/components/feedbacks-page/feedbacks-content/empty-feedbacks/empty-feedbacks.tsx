@@ -1,11 +1,15 @@
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { selectSider } from '@redux/slices/sider-slice';
+import { selectSider } from '@redux/slices/sider';
 import { Card, Space, Typography } from 'antd';
+import { ReactNode } from 'react';
 
-import { ButtonGroupWithModal } from '../button-group-with-modal/button-group-with-modal';
 import styles from './empty-feedbacks.module.css';
 
-export const EmptyFeedbacks = () => {
+type EmptyFeedbackProps = {
+    children: ReactNode;
+};
+
+export const EmptyFeedbacks = ({ children }: EmptyFeedbackProps) => {
     const collapsed = useAppSelector(selectSider);
     const cardClassName = collapsed ? styles.cardCollapsed : styles.card;
 
@@ -24,7 +28,7 @@ export const EmptyFeedbacks = () => {
                         </Typography.Paragraph>
                     </Space>
                 </Card>
-                <ButtonGroupWithModal />
+                {children}
             </Space>
         </Space>
     );

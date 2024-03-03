@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { selectSider, toogleCollapsed } from '@redux/slices/sider-slice';
+import { selectSider, toogleCollapsed } from '@redux/slices/sider';
 import { Layout } from 'antd';
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';

@@ -1,85 +1,54 @@
-import { ModalWithResult500 } from '@components/feedbacks-page/feedbacks-content/modal-with-result-500';
-import { HTTP_STATUS_CODES } from '@constants/index';
-import { ROUTES } from '@constants/routes';
-import { useAuth } from '@hooks/useAuth';
-import { useGetFeedbacksQuery } from '@services/api';
-import { List } from 'antd';
-import { useEffect, useMemo, useState } from 'react';
-import { ErrorResponse, useNavigate } from 'react-router-dom';
+import { Button } from 'antd';
+import { useState } from 'react';
 
 import { ButtonGroupWithModal } from './button-group-with-modal/button-group-with-modal';
-import { EmptyFeedbacks } from './empty-feedbacks/empty-feedbacks';
-import { Feedback } from './feedback/feedback';
 import styles from './feedback-content.module.css';
-import { ListContainer } from './list-container';
+import { FeedbackForm } from './feedback-form/feedback-form';
+import { FeedbacksList } from './feedbacks-list';
+import { ModalError } from './modal-error/modal-error';
+import { ModalSuccess } from './modal-success';
 
 export const FeedbacksContent = () => {
-    const { data, error, isError } = useGetFeedbacksQuery();
-    const [isModalOpen, setModalOpen] = useState(false);
     const [showAll, toggleShowAll] = useState(false);
-    const { signout } = useAuth();
-    const navigate = useNavigate();
-
-    let content;
-
-    const feedbacks = useMemo(() => {
-        const dataCopy = data?.slice();
-
-        const sortedFeedbacks = dataCopy?.sort((feedback1, feedback2) =>
-            feedback2.createdAt.localeCompare(feedback1.createdAt),
-        );
-
-        return showAll ? sortedFeedbacks : sortedFeedbacks?.slice(0, 4);
-    }, [data, showAll]);
-
-    useEffect(() => {
-        if (isError) {
-            const e = error as ErrorResponse;
-            e.status === HTTP_STATUS_CODES.FORBIDDEN ? signout() : setModalOpen(true);
-        }
-    }, [error, isError, signout]);
+    const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
 
     const expendBtnText = showAll ? 'Свернуть все отзывы' : 'Развернуть все отзывы';
 
-    if (isError) {
-        content = null;
-    } else {
-        content = data?.length ? (
-            <ListContainer showAll={showAll}>
-                <List
-                    className={styles.list}
-                    footer={
-                        <ButtonGroupWithModal
-                            buttonGroupClassName={styles.flex}
-                            expendButton
-                            expendBtnText={expendBtnText}
-                            expendOnClick={() => toggleShowAll((prevShowAll) => !prevShowAll)}
-                        />
-                    }
-                    grid={{ column: 1 }}
-                    split={false}
-                    dataSource={feedbacks}
-                    renderItem={({ id, rating, message, fullName, imageSrc, createdAt }) => (
-                        <Feedback
-                            key={id}
-                            rating={rating}
-                            message={message}
-                            fullName={fullName}
-                            imageSrc={imageSrc}
-                            createdAt={createdAt}
-                        />
-                    )}
-                />
-            </ListContainer>
-        ) : (
-            <EmptyFeedbacks />
-        );
-    }
-
     return (
         <>
-            <ModalWithResult500 open={isModalOpen} onClick={() => navigate(ROUTES.MAIN)} />
-            {content}
+            <ModalSuccess />
+            <ModalError />
+
+            <FeedbacksList
+                showAll={showAll}
+                empty={
+                    <ButtonGroupWithModal
+                        disabled={isSubmitDisabled}
+                        buttonGroupClassName={styles.flex}
+                    >
+                        <FeedbackForm disableSubmit={(disabled) => setIsSubmitDisabled(disabled)} />
+                    </ButtonGroupWithModal>
+                }
+                footer={
+                    <ButtonGroupWithModal
+                        disabled={isSubmitDisabled}
+                        buttonGroupClassName={styles.flex}
+                        expendButton={
+                            <Button
+                                block
+                                type='link'
+                                size='large'
+                                onClick={() => toggleShowAll((prevShowAll) => !prevShowAll)}
+                                data-test-id='all-reviews-button'
+                            >
+                                {expendBtnText}
+                            </Button>
+                        }
+                    >
+                        <FeedbackForm disableSubmit={(disabled) => setIsSubmitDisabled(disabled)} />
+                    </ButtonGroupWithModal>
+                }
+            />
         </>
     );
 };

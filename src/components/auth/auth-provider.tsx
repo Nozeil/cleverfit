@@ -1,6 +1,6 @@
 import { STORAGE_TOKEN_KEY } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { selectAuthToken, setToken } from '@redux/slices/auth-slice';
+import { selectAuthToken, setToken } from '@redux/slices/auth';
 
 import type { AuthProviderProps, Signin, Signout } from './auth.types';
 import { AuthContext } from './auth-context';
