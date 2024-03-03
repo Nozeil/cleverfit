@@ -22,10 +22,10 @@ export const ModalError = ({ open, onClose, onRepeat }: ModalErrorProps) => (
             subTitle='Что-то пошло не так. Попробуйте ещё раз.'
             extra={
                 <Space className={styles.space}>
-                    <ResultButton block onClick={onRepeat} testId=''>
+                    <ResultButton block onClick={onRepeat} testId='write-review-not-saved-modal'>
                         Написать отзыв
                     </ResultButton>
-                    <ResultButton block type='default' onClick={onClose} testId=''>
+                    <ResultButton block type='default' onClick={onClose}>
                         Закрыть
                     </ResultButton>
                 </Space>

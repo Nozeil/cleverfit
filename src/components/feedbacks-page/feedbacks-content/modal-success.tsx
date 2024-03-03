@@ -13,7 +13,7 @@ export const ModalSuccess = ({ open, onClick }: ModalSuccessProps) => (
             status='success'
             title={<Typography.Title level={3}>Отзыв успешно опубликован</Typography.Title>}
             extra={
-                <ResultButton block onClick={onClick} testId=''>
+                <ResultButton block onClick={onClick}>
                     Отлично
                 </ResultButton>
             }

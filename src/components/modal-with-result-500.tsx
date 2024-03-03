@@ -15,7 +15,7 @@ export const ModalWithResult500 = ({ open, onClick }: ModalWithResult500Props) =
             title='Что-то пошло не так'
             subTitle='Произошла ошибка, &nbsp;попробуйте ещё раз.'
             extra={
-                <ResultButton onClick={onClick} testId=''>
+                <ResultButton onClick={onClick}>
                     Назад
                 </ResultButton>
             }

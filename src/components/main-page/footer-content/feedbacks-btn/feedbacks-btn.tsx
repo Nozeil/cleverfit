@@ -32,7 +32,13 @@ export const FeedbacksButton = ({ onAnyError }: FeedbacksButtonProps) => {
     }, [error, signout, navigate, onAnyError, isSuccess, isError]);
 
     return (
-        <Button className={styles.btn} onClick={onClick} type='link' size='large'>
+        <Button
+            className={styles.btn}
+            onClick={onClick}
+            type='link'
+            size='large'
+            data-test-id='see-reviews'
+        >
             Смотреть отзывы
         </Button>
     );

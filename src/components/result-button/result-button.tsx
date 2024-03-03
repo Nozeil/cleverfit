@@ -6,7 +6,7 @@ import styles from './result-button.module.css';
 type ResultButtonProps = {
     onClick: () => void;
     children: ReactNode;
-    testId: string;
+    testId?: string;
     block?: boolean;
     type?: 'primary' | 'default';
 };

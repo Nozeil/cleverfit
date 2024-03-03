@@ -44,6 +44,7 @@ export const ButtonGroupWithModal = ({
                         size='large'
                         htmlType='submit'
                         disabled={isSubmitDisabled}
+                        data-test-id='new-review-submit-button'
                     >
                         Опубликовать
                     </Button>
@@ -70,12 +71,19 @@ export const ButtonGroupWithModal = ({
                     type='primary'
                     size='large'
                     onClick={openModal}
+                    data-test-id='write-review'
                 >
                     Написать отзыв
                 </Button>
 
                 {expendButton && (
-                    <Button block type='link' size='large' onClick={expendOnClick}>
+                    <Button
+                        block
+                        type='link'
+                        size='large'
+                        onClick={expendOnClick}
+                        data-test-id='all-reviews-button'
+                    >
                         {expendBtnText}
                     </Button>
                 )}
