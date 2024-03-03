@@ -8,5 +8,5 @@
 }
 
 :global(.ant-rate-star:not(:last-child)) {
-    margin-right: 4px;
+    margin-right: var(--mr-rate-item);
 }

@@ -3,28 +3,23 @@
 }
 
 .modal:global(.ant-modal) :global(.ant-modal-footer) {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: var(--p-create-feedback-modal);
+    padding-right: var(--p-create-feedback-modal);
 }
 
 .modal :global(.ant-modal-body) {
-    padding: 24px;
+    padding: var(--p-create-feedback-modal);
 }
 
 @media screen and (max-width: 767px) {
-    .flex {
-        margin-top: 22px;
-        width: 100%;
-    }
-
     .modal :global(.ant-modal-header) {
-        padding: 16px;
+        padding: var(--p-create-feedback-modal-tablet);
     }
 
     .modal:global(.ant-modal) :global(.ant-modal-body),
     .modal:global(.ant-modal) :global(.ant-modal-footer) {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: var(--p-create-feedback-modal-tablet);
+        padding-right: var(--p-create-feedback-modal-tablet);
     }
 
     .btn:global(.ant-btn) {

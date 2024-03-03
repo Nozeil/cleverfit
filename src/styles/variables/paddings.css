@@ -74,4 +74,9 @@
     --py-empty-feedbacks-card-collapsed: 75.5px;
     --p-empty-feedback-card-body: 0;
     --py-empty-feedbacks-card-tablet: 48px;
+    --p-create-feedback-modal: var(--p-24);
+    --p-create-feedback-modal-tablet: var(--p-16);
+    --p-feedback-card-padding: var(--p-16);
+    --p-ant-result-icon: 4px 0;
+    --p-ant-result-subtitle: 0 20px;
 }

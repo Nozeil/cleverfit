@@ -35,33 +35,33 @@
 }
 
 .gap4 {
-    gap: 4px;
+    gap: var(--gap-4);
 }
 
 .gap8 {
-    gap: 8px;
+    gap: var(--gap-8);
 }
 
 .gap12 {
-    gap: 12px;
+    gap: var(--gap-12);
 }
 
 .gap14 {
-    gap: 14px;
+    gap: var(--gap-14);
 }
 
 .gap16 {
-    gap: 16px;
+    gap: var(--gap-16);
 }
 
 .gap18 {
-  gap: 18px
+    gap: var(--gap-18);
 }
 
 .gap20 {
-  gap: 20px
+    gap: var(--gap-20);
 }
 
 .gap24 {
-  gap: 24px;
+    gap: var(--gap-24);
 }

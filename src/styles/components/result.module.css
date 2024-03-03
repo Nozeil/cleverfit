@@ -11,12 +11,12 @@
 }
 
 :global(.ant-result) :global(.ant-result-icon) {
-    padding: 4px 0;
+    padding: var(--p-ant-result-icon);
 }
 
 @media screen and (max-width: 767px) {
     :global(.ant-result-subtitle) {
-        padding: 0 20px;
+        padding: var(--p-ant-result-subtitle);
     }
 }
 

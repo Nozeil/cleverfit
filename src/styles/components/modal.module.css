@@ -3,8 +3,8 @@
 }
 
 :global(.ant-modal-close-x) {
-    width: 64px;
-    height: 64px;
+    width: var(--modal-close-icon-wh);
+    height: var(--modal-close-icon-wh);
 }
 
 :global(.ant-modal-mask) {
@@ -18,11 +18,11 @@
 
 @media screen and (max-width: 767px) {
     :global(.ant-modal) {
-        max-width: calc(100vw - 32px);
+        max-width: calc(100vw - var(--modal-lr-offset));
     }
 
     :global(.ant-modal-close-x) {
-        width: 48px;
-        height: 48px;
+        width: var(--modal-close-icon-tablet-wh);
+        height: var(--modal-close-icon-tablet-wh);
     }
 }

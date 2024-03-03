@@ -18,7 +18,7 @@
 
 .card:global(.ant-card),
 .cardBreakpoint:global(.ant-card) {
-    padding: var(--py-auth-card) var(--px-auth-card) 56px;
+    padding: var(--p-64-32-56);
 }
 
 .card :global(.ant-card-body) {
