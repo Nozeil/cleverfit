@@ -1,4 +1,3 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type {
     AuthUserBody,
     ChangePasswordBody,
@@ -7,13 +6,31 @@ import type {
     CheckEmailResponse,
     ConfirmEmailBody,
     ConfirmEmailResponse,
+    CreateFeedbackBody,
+    GetFeedbacksResponse,
     LoginResponse,
 } from '@models/models';
+import { RootState } from '@redux/configure-store';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { getAccessToken } from '@utils/utils';
 
-const BASE_URL = 'https://marathon-api.clevertec.ru/';
+import { BASE_URL } from './api.constants';
 
 export const api = createApi({
-    baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: BASE_URL,
+        prepareHeaders: (headers, { getState }) => {
+            const state = getState() as RootState;
+            const token = getAccessToken() || state.auth.token;
+
+            if (token) {
+                headers.set('Authorization', `Bearer ${token}`);
+            }
+
+            return headers;
+        },
+    }),
+    tagTypes: ['Feedback'],
     endpoints: (builder) => ({
         registerUser: builder.mutation<void, AuthUserBody>({
             query: (body) => ({
@@ -52,6 +69,20 @@ export const api = createApi({
                 credentials: 'include',
             }),
         }),
+        getFeedbacks: builder.query<GetFeedbacksResponse, void>({
+            query: () => ({
+                url: '/feedback',
+            }),
+            providesTags: ['Feedback'],
+        }),
+        createFeedback: builder.mutation<void, CreateFeedbackBody>({
+            query: (body) => ({
+                url: '/feedback',
+                method: 'POST',
+                body,
+            }),
+            invalidatesTags: ['Feedback'],
+        }),
     }),
 });
 
@@ -61,4 +92,6 @@ export const {
     useCheckEmailMutation,
     useConfirmEmailMutation,
     useChangePasswordMutation,
+    useGetFeedbacksQuery,
+    useCreateFeedbackMutation,
 } = api;

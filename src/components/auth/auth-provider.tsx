@@ -1,27 +1,30 @@
-import { useState } from 'react';
-import { AuthContext } from './auth-context';
-import type { AuthProviderProps, Signin, Signout } from './auth.types';
+import { STORAGE_TOKEN_KEY } from '@constants/index';
+import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { selectAuthToken, setToken } from '@redux/slices/auth';
 
-const STORAGE_KEY = 'accessToken';
+import type { AuthProviderProps, Signin, Signout } from './auth.types';
+import { AuthContext } from './auth-context';
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-    const [token, setToken] = useState(
-        localStorage.getItem(STORAGE_KEY) || sessionStorage.getItem(STORAGE_KEY),
-    );
+    const token = useAppSelector(selectAuthToken);
+    const dispatch = useAppDispatch();
 
-    const signin: Signin = (accessToken, remember, callback) => {
-        remember
-            ? localStorage.setItem(STORAGE_KEY, accessToken)
-            : sessionStorage.setItem(STORAGE_KEY, accessToken);
-        setToken(accessToken);
+    const signin: Signin = (accessToken, callback, remember) => {
+        if (remember) {
+            localStorage.setItem(STORAGE_TOKEN_KEY, accessToken);
+        }
+
+        dispatch(setToken(accessToken));
         callback();
     };
 
     const signout: Signout = (callback) => {
-        localStorage.removeItem(STORAGE_KEY);
-        sessionStorage.removeItem(STORAGE_KEY);
-        setToken(null);
-        callback();
+        localStorage.removeItem(STORAGE_TOKEN_KEY);
+        dispatch(setToken(null));
+
+        if (callback) {
+            callback();
+        }
     };
 
     const value = { token, signin, signout };

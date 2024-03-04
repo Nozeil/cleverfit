@@ -1,18 +1,26 @@
-@import url('./styles/inputs.module.css');
+@import url('./styles/components/inputs.module.css');
+@import url('./styles/components/modal.module.css');
+@import url('./styles/components/result.module.css');
+@import url('./styles/components/avatar.module.css');
+@import url('./styles/components/rate.module.css');
+@import url('./styles/components/typography.module.css');
 
 :global(.ant-breadcrumb),
 :global(.ant-breadcrumb) li,
 :global(.ant-breadcrumb-link),
-:global(.ant-breadcrumb-separator),
 :global(.ant-typography),
 :global(h1.ant-typography),
 :global(h3.ant-typography),
+:global(h5.ant-typography),
 :global(.ant-card),
 :global(.ant-card-head),
 :global(.ant-input-group-addon),
 :global(.ant-input),
 :global(.ant-tabs),
-:global(.ant-checkbox-wrapper) {
+:global(.ant-checkbox-wrapper),
+:global(.ant-result-title),
+:global(.ant-modal-title),
+:global(textarea.ant-input) {
     color: var(--character-light-title-85);
     line-height: var(--line-height);
 }
@@ -21,6 +29,9 @@
 :global(.ant-space),
 :global(.ant-btn),
 :global(.ant-input),
+:global(.ant-result-subtitle),
+:global(.ant-breadcrumb-separator),
+:global(.ant-list-item-meta-description),
 a {
     line-height: var(--line-height);
 }
@@ -102,7 +113,8 @@ a {
     }
 }
 
-:global(.ant-card) {
+:global(.ant-card),
+:global(.ant-modal-content) {
     box-shadow: var(--shadow);
 }
 

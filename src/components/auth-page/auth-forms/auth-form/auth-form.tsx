@@ -1,12 +1,13 @@
-import { type ReactNode, useState } from 'react';
-import { Button, Form } from 'antd';
 import { GooglePlusOutlined } from '@ant-design/icons';
+import { BASE_URL } from '@services/api.constants';
+import { Button, Form } from 'antd';
 import classNames from 'classnames/bind';
-import { OnFinishAuth } from '../auth-forms.types';
+import { type ReactNode, useState } from 'react';
 
+import { OnFinishAuth } from '../auth-forms.types';
 import styles from './auth-form.module.css';
 
-interface AuthFormProps {
+type AuthFormProps = {
     name: string;
     children: ReactNode;
     onFinish: OnFinishAuth;
@@ -16,8 +17,9 @@ interface AuthFormProps {
     submitButtonText?: string;
     googleButton?: boolean;
     googleButtonText?: string;
+    googleButtonOnClick?: () => void;
     shouldValidate?: boolean;
-}
+};
 
 const cx = classNames.bind(styles);
 
@@ -49,7 +51,7 @@ export const AuthForm = ({
             className={formClassName}
             form={form}
             name={name}
-            initialValues={{ remember: true }}
+            initialValues={{ remember: false }}
             autoComplete='off'
             size='large'
             onFieldsChange={onFieldsChange}
@@ -71,7 +73,12 @@ export const AuthForm = ({
             </Form.Item>
             {googleButton && (
                 <Form.Item>
-                    <Button className={styles.btn} block icon={<GooglePlusOutlined />}>
+                    <Button
+                        className={styles.btn}
+                        block
+                        icon={<GooglePlusOutlined />}
+                        onClick={() => (window.location.href = `${BASE_URL}auth/google`)}
+                    >
                         {googleButtonText}
                     </Button>
                 </Form.Item>

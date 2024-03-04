@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
-import { Button, Form } from 'antd';
 import { INPUT_NAMES } from '@components/auth-page/auth-page.constants';
-import { useCheckEmailMutation } from '@services/api';
-import { ErrorResponse } from '@models/models';
 import { ERROR_MESSAGES, HTTP_STATUS_CODES } from '@constants/index';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { COMPOUND_ROUTES } from '@constants/routes';
+import { ErrorResponse } from '@models/models';
+import { useCheckEmailMutation } from '@services/api';
+import { Button, Form } from 'antd';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import styles from './password-options.module.css';
 
@@ -40,7 +40,6 @@ export const ForgotPasswordBtn = () => {
 
     useEffect(() => {
         if (location.state?.email) {
-            console.log(location);
             onClick(location.state.email);
         }
     }, []);

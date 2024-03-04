@@ -19,7 +19,6 @@
     --ml-header-btn-content: 10px;
     --ml-header-btn-content-tablet-lg: 0;
     --mb-breadcrumb-tablet: 0;
-    --m-main-page-content-space: 24px 0;
     --mb-auth-space-tablet-l: 52px;
     --mb-auth-space-mobile-l: 8px;
     --m-auth-card-mobile-l: 0 16px;
@@ -44,4 +43,15 @@
     --m-verification-input-container: 0 auto;
     --mb-result-card-title: 0;
     --m-result-card-body: 0;
+    --mb-empty-feedbacks-space: 18px;
+    --mb-empty-feedbacks-subtitle: 0;
+    --mb-empty-feedbacks-card-tablet: 26px;
+    --mb-feedback-list-item: 20px;
+    --mt-feedback-button-group: 100px;
+    --mt-feedback-button-group-tablet: 22px;
+    --mb-feedback-list-item-mobile-xl: 16px;
+    --mr-feedback-card-avatar: 12px;
+    --mb-feedback-title: 0;
+    --mb-feedback-form: 16px;
+    --mr-rate-item: 4px;
 }

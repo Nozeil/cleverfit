@@ -4,14 +4,14 @@ import {
     ExclamationCircleFilled,
     WarningFilled,
 } from '@ant-design/icons';
-import type { TypeValues } from '../auth-page.types';
-import { RESULT_ICON_TYPE_KEYS } from '../auth-page.constants';
 
+import { RESULT_ICON_TYPE_KEYS } from '../auth-page.constants';
+import type { TypeValues } from '../auth-page.types';
 import styles from './result-icon.module.css';
 
-interface ResultIconProps {
+type ResultIconProps = {
     type: TypeValues['resultIcon'];
-}
+};
 
 const { ERROR, SUCCESS, WARNING, EXCLAMATION } = RESULT_ICON_TYPE_KEYS;
 

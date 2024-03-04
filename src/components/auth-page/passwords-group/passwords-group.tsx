@@ -3,11 +3,11 @@ import { PasswordInput } from '../inputs/password-input';
 
 const helpMessage = 'Пароль не менее 8 символов, с заглавной буквой и цифрой';
 
-interface PasswordGroupProps {
+type PasswordGroupProps = {
     placeholder_1?: string;
     testId_1: string;
     testId_2: string;
-}
+};
 
 export const PasswordsGroup = ({ placeholder_1, testId_1, testId_2 }: PasswordGroupProps) => (
     <>

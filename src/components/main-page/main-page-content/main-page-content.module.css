@@ -1,0 +1,23 @@
+.space {
+    max-width: var(--main-page-content-max-w);
+}
+
+.card {
+    white-space: pre-line;
+}
+
+.benefitsText:global(.ant-typography) {
+    font-size: var(--text-base);
+    color: var(--primary-light-9);
+}
+
+.taglineText:global(.ant-typography) {
+    font-size: var(--text-xl);
+    font-weight: var(--font-medium);
+}
+
+@media screen and (max-width: 768px) {
+    .card :global(.ant-card-body) {
+        padding: var(--p-main-page-content-card-body);
+    }
+}

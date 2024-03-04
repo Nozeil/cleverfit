@@ -1,16 +1,16 @@
-import { type ReactNode } from 'react';
-import { Navigate } from 'react-router-dom';
 import { ROUTES } from '@constants/routes';
 import { useAuth } from '@hooks/useAuth';
+import { type ReactNode } from 'react';
+import { Navigate } from 'react-router-dom';
 
-interface AuthRouteProps {
+type AuthRouteProps = {
     children: ReactNode;
-}
+};
 
 export const AuthRoute = ({ children }: AuthRouteProps) => {
-    const auth = useAuth();
+    const { token } = useAuth();
 
-    if (!auth.token) {
+    if (!token) {
         return <Navigate to={ROUTES.AUTH} />;
     }
 

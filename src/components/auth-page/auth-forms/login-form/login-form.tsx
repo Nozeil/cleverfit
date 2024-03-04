@@ -1,22 +1,22 @@
-import { useLocation, useNavigate } from 'react-router-dom';
-import { AuthForm } from '../auth-form/auth-form';
-import { EmailInput } from '../../inputs/email-input';
-import { PasswordInput } from '../../inputs/password-input';
-import { PasswordOptions } from './password-options/password-options';
-import { useLoginUserMutation } from '@services/api';
+import { INPUT_GROUP_TYPE_KEYS } from '@components/auth-page/auth-page.constants';
+import { InputGroup } from '@components/auth-page/input-group/input-group';
 import { COMPOUND_ROUTES, ROUTES } from '@constants/routes';
 import { useAuth } from '@hooks/useAuth';
-import { InputGroup } from '@components/auth-page/input-group/input-group';
-import type { OnFinishLoginValues } from '../auth-forms.types';
+import { useLoginUserMutation } from '@services/api';
+import { useLocation, useNavigate } from 'react-router-dom';
 
+import { EmailInput } from '../../inputs/email-input';
+import { PasswordInput } from '../../inputs/password-input';
+import { AuthForm } from '../auth-form/auth-form';
+import type { OnFinishLoginValues } from '../auth-forms.types';
 import styles from './login-form.module.css';
-import { INPUT_GROUP_TYPE_KEYS } from '@components/auth-page/auth-page.constants';
+import { PasswordOptions } from './password-options/password-options';
 
 export const LoginForm = () => {
     const [loginUser] = useLoginUserMutation();
     const navigate = useNavigate();
     const location = useLocation();
-    const auth = useAuth();
+    const { signin } = useAuth();
 
     const onFinish = async ({ email, password, remember }: OnFinishLoginValues) => {
         const options = { state: { from: location } };
@@ -27,7 +27,7 @@ export const LoginForm = () => {
                 password,
             }).unwrap();
 
-            auth.signin(accessToken, remember, () => navigate(ROUTES.MAIN, options));
+            signin(accessToken, () => navigate(ROUTES.MAIN, options), remember);
         } catch {
             navigate(COMPOUND_ROUTES.RESULT_ERROR_LOGIN, options);
         }

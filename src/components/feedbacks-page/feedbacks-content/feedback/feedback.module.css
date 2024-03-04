@@ -1,0 +1,49 @@
+.card :global(.ant-card-body) {
+    padding: var(--p-feedback-card-padding);
+    box-shadow: var(--shadow-md);
+}
+
+.meta:global(.ant-list-item-meta) :global(.ant-list-item-meta-avatar) {
+    flex-shrink: 0;
+    width: var(--feedback-card-avatar-w);
+    margin-right: var(--mr-feedback-card-avatar);
+}
+
+.meta:global(.ant-list-item-meta) :global(.ant-list-item-meta-content) {
+    width: 100%;
+}
+
+.avatar:global(.ant-avatar) {
+    flex-shrink: 0;
+}
+
+.title:global(.ant-typography) {
+    margin-bottom: var(--mb-feedback-title);
+    font-weight: var(--font-medium);
+    text-align: center;
+    word-spacing: var(--feedback-title-word-spacing);
+}
+
+.rate:global(.ant-rate) {
+    font-size: var(--text-base);
+}
+
+.date:global(.ant-typography) {
+    font-size: var(--text-xs);
+    letter-spacing: var(--feedback-date-letter-spacing);
+}
+
+.flex {
+    word-break: break-all;
+}
+
+@media screen and (max-width: 575px) {
+    .meta {
+        flex-direction: column;
+        gap: var(--gap-10);
+    }
+
+    .title:global(.ant-typography) {
+        text-align: start;
+    }
+}

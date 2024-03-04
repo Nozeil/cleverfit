@@ -1,8 +1,14 @@
-import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
-import { createReduxHistoryContext } from 'redux-first-history';
-import { createBrowserHistory } from 'history';
 import { api } from '@services/api';
+import { createBrowserHistory } from 'history';
+import { combineReducers } from 'redux';
+import { createReduxHistoryContext } from 'redux-first-history';
+
+import { authReducer } from './slices/auth';
+import { errorFeedbackModalReducer } from './slices/error-feedback-modal';
+import { feedbackModalReducer } from './slices/feedback-modal';
+import { siderReducer } from './slices/sider';
+import { successFeedbackModalReducer } from './slices/success-feedback-modal';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),
@@ -12,6 +18,11 @@ const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHisto
 export const store = configureStore({
     reducer: combineReducers({
         router: routerReducer,
+        sider: siderReducer,
+        auth: authReducer,
+        feedbackModal: feedbackModalReducer,
+        successFeedbackModal: successFeedbackModalReducer,
+        errorFeedbackModal: errorFeedbackModalReducer,
         [api.reducerPath]: api.reducer,
     }),
     middleware: (getDefaultMiddleware) =>

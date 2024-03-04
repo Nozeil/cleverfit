@@ -1,19 +1,15 @@
 import { type ReactNode } from 'react';
 
-export interface Signin {
-    (accessToken: string, remember: boolean, callback: () => void): void;
-}
+export type Signin = (accessToken: string, callback: () => void, remember?: boolean) => void;
 
-export interface Signout {
-    (callback: () => void): void;
-}
+export type Signout = (callback?: () => void) => void;
 
-export interface ContextDefaultValue {
+export type ContextDefaultValue = {
     token: string | null;
     signin: Signin;
     signout: Signout;
-}
+};
 
-export interface AuthProviderProps {
+export type AuthProviderProps = {
     children: ReactNode;
-}
+};

@@ -1,41 +1,57 @@
-export interface ErrorResponse {
+export type ErrorResponse = {
     status: number;
     data: { statusCode: number; error: string; message: string };
-}
+};
 
-export interface AuthUserBody {
+export type AuthUserBody = {
     email: string;
     password: string;
-}
+};
 
-export interface LoginResponse {
+export type LoginResponse = {
     accessToken: string;
-}
+};
 
-export interface CheckEmailBody {
+export type CheckEmailBody = {
     email: string;
-}
+};
 
-export interface CheckEmailResponse {
+export type CheckEmailResponse = {
     email: string;
     message: string;
-}
+};
 
-export interface ConfirmEmailBody {
+export type ConfirmEmailBody = {
     email: string;
     code: string;
-}
+};
 
-export interface ConfirmEmailResponse {
+export type ConfirmEmailResponse = {
     email: string;
     message: string;
-}
+};
 
-export interface ChangePasswordBody {
+export type ChangePasswordBody = {
     password: string;
     confirmPassword: string;
-}
+};
 
-export interface ChangePasswordResponse {
+export type ChangePasswordResponse = {
     message: string;
-}
+};
+
+export type Feedback = {
+    id: string;
+    fullName: string | null;
+    imageSrc: string | null;
+    message: string;
+    rating: number;
+    createdAt: string;
+};
+
+export type GetFeedbacksResponse = Feedback[];
+
+export type CreateFeedbackBody = {
+    message: string;
+    rating: number;
+};
