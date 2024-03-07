@@ -1,7 +1,6 @@
 import { CalendarTwoTone, HeartFilled, IdcardTwoTone } from '@ant-design/icons';
-import { ROUTES } from '@constants/routes';
+import { useCalendarHandler } from '@hooks/useCalendarHandler';
 import { Row } from 'antd';
-import { useNavigate } from 'react-router-dom';
 
 import { ActionCard } from './action-card';
 import styles from './action-cards.module.css';
@@ -10,7 +9,7 @@ import type { ActionCardProps } from './action-cards.types';
 const color = 'var(--primary-light-6)';
 
 export const ActionCards = () => {
-    const navigate = useNavigate();
+    const calendarHandler = useCalendarHandler();
 
     const cards: ActionCardProps[] = [
         {
@@ -22,7 +21,7 @@ export const ActionCards = () => {
             title: 'Назначить календарь',
             buttonIcon: <CalendarTwoTone twoToneColor={[color, color]} />,
             buttonContent: 'Календарь',
-            onClick: () => navigate(ROUTES.CALENDAR),
+            onClick: () => calendarHandler(),
         },
         {
             title: 'Заполнить профиль',
