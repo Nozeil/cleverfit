@@ -1,3 +1,4 @@
+import { HeaderContent } from '@components/calendar-page/header-content';
 import { PageTemplate } from '@components/page-template/page-template';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { resetSelectedKeys, setSelectedKey } from '@redux/slices/nav-menu/nav-menu';
@@ -14,5 +15,5 @@ export const CalendarPage = () => {
         };
     }, [dispatch]);
 
-    return <PageTemplate />;
+    return <PageTemplate headerContent={<HeaderContent />} />;
 };
