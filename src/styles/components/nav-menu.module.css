@@ -1,0 +1,8 @@
+:global(.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected) {
+    background-color: var(--primary-light-1);
+}
+
+:global(.ant-menu-light .ant-menu-item:hover),
+:global(.ant-menu-item-selected) {
+    color: var(--primary-light-5);
+}

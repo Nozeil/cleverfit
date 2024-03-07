@@ -3,6 +3,7 @@ export const ROUTES = {
     REGISTRATION: 'registration',
     MAIN: '/main',
     FEEDBACKS: '/feedbacks',
+    CALENDAR: '/calendar',
     RESULT: '/result',
     ERROR_LOGIN: 'error-login',
     SUCCESS_REGISTRATION: 'success',

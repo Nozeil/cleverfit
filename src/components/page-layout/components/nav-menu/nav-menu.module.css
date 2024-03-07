@@ -20,11 +20,8 @@
     padding: var(--px-last-menu-item);
 }
 
-.menu:global(.ant-menu) > :global(.ant-menu-item:nth-last-child(2)) {
-    height: var(--divider-h);
+.menu:global(.ant-menu) > :global(.ant-menu-item-divider) {
     margin: var(--m-menu-item-divider);
-    padding: var(--p-menu-item-divider);
-    pointer-events: none;
 }
 
 .menu:global(.ant-menu) :global(.ant-menu-item:last-child) :global(.ant-menu-title-content) {

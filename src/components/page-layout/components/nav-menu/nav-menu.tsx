@@ -2,7 +2,7 @@ import { CalendarTwoTone, HeartFilled, IdcardTwoTone, TrophyFilled } from '@ant-
 import ExitIcon from '@assets/icons/exit.svg?react';
 import { ROUTES } from '@constants/routes';
 import { useAuth } from '@hooks/useAuth';
-import { Divider, Menu } from 'antd';
+import { Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
 import { ICONS_COLOR, LABELS } from './nav-menu.constants';
@@ -36,7 +36,7 @@ const menuItems = [
         key: PROFILE,
     },
     {
-        icon: <Divider />,
+        type: 'divider',
         key: DIVIDER,
     },
     {
@@ -56,8 +56,13 @@ export const NavMenu = () => {
     return (
         <Menu
             className={styles.menu}
+            mode='inline'
             items={menuItems}
+            inlineIndent={16}
             onClick={({ key }) => {
+                if (key === CALENDAR) {
+                    navigate(ROUTES.CALENDAR);
+                }
                 if (key === EXIT) {
                     signout(() => navigate(ROUTES.AUTH));
                 }
