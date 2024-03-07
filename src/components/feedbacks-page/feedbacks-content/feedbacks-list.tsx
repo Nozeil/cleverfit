@@ -1,7 +1,7 @@
 import { HTTP_STATUS_CODES } from '@constants/index';
 import { ROUTES } from '@constants/routes';
 import { useAuth } from '@hooks/useAuth';
-import { useGetFeedbacksQuery } from '@services/api';
+import { useGetFeedbacksQuery } from '@services/endpoints/feedbacks';
 import { List } from 'antd';
 import { type ReactNode, useEffect, useMemo, useState } from 'react';
 import { ErrorResponse, useNavigate } from 'react-router-dom';

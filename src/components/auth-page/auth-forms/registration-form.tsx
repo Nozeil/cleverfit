@@ -2,7 +2,7 @@ import { PasswordsGroup } from '@components/auth-page/passwords-group/passwords-
 import { HTTP_STATUS_CODES } from '@constants/index';
 import { COMPOUND_ROUTES } from '@constants/routes';
 import type { ErrorResponse } from '@models/models';
-import { useRegisterUserMutation } from '@services/api';
+import { useRegisterUserMutation } from '@services/endpoints/auth';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 

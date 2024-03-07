@@ -3,7 +3,7 @@ import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { openErrorFeedbackModal } from '@redux/slices/error-feedback-modal';
 import { closeFeedbackModal } from '@redux/slices/feedback-modal';
 import { openSuccessFeedbackModal } from '@redux/slices/success-feedback-modal';
-import { useCreateFeedbackMutation } from '@services/api';
+import { useCreateFeedbackMutation } from '@services/endpoints/feedbacks';
 import { Form, Input, Rate } from 'antd';
 
 import { FORM_NAME } from '../feedback-content.constants';
