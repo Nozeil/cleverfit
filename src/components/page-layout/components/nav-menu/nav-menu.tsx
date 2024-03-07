@@ -6,11 +6,13 @@ import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { useAuth } from '@hooks/useAuth';
 import { useCalendarHandler } from '@hooks/useCalendarHandler';
 import { selectedKeysSelector } from '@redux/slices/nav-menu/nav-menu';
-import { Menu } from 'antd';
+import { Grid, Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
 import { ICONS_COLOR } from './nav-menu.constants';
 import styles from './nav-menu.module.css';
+
+const { useBreakpoint } = Grid;
 
 const { CALENDAR, WORKOUT, ACHIEVEMENTS, PROFILE, EXIT, DIVIDER } = NAV_MENU_LABELS;
 
@@ -59,11 +61,14 @@ export const NavMenu = () => {
     const navigate = useNavigate();
     const calendarHandler = useCalendarHandler();
 
+    const { md } = useBreakpoint();
+    const mode = md ? 'inline' : 'vertical';
+
     return (
         <Menu
             selectedKeys={selectedKeys}
             className={styles.menu}
-            mode='inline'
+            mode={mode}
             items={menuItems}
             inlineIndent={16}
             onClick={({ key }) => {

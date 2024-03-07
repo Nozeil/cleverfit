@@ -17,9 +17,8 @@
     --p-logo: 14px 46px 17px 29px;
     --p-logo-cropped: 18px;
     --p-logo-tablet: var(--p-16) 17px;
-    --px-last-menu-item: 0 var(--p-16);
-    --pl-menu-item-tablet: 8px;
-    --pr-menu-item-tablet: var(--pl-menu-item-tablet);
+    --p-menu-item-tablet: 0;
+    --p-menu-item-title-content-tablet: 0 var(--p-8);
     --p-trigger: 26px 3px;
     --p-trigger-tablet: 17px 9px;
     --p-footer-card-body: 0;
