@@ -14,12 +14,7 @@ export const HeaderSettingsRow = ({ children }: HeaderSettingsRowProps) => {
     return (
         <Row className={styles.row} justify={justify} align='top' wrap={false}>
             {children}
-
-            <Button
-                className={styles.btn}
-                type='text'
-                icon={<SettingOutlined className={styles.btnIcon} />}
-            >
+            <Button className={styles.btn} icon={<SettingOutlined className={styles.btnIcon} />}>
                 Настройки
             </Button>
         </Row>

@@ -4,7 +4,6 @@
     align-items: end;
     gap: var(--gap-24);
     width: 100%;
-    margin-bottom: var(--mb-footer-space);
 }
 
 .card :global(.ant-card-body) {
@@ -43,7 +42,7 @@
 
 .btn:global(.ant-btn-link) {
     padding: var(--p-footer-link-btn);
-  }
+}
 
 @media screen and (max-width: 767px) {
     .space {

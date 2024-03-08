@@ -5,6 +5,9 @@
 @import url('./styles/components/rate.module.css');
 @import url('./styles/components/typography.module.css');
 @import url('./styles/components/nav-menu.module.css');
+@import url('./styles/components/calendar.module.css');
+@import url('./styles/components/dropdown.module.css');
+@import url('./styles/components/radio-buttons.module.css');
 
 :global(.ant-breadcrumb),
 :global(.ant-breadcrumb) li,

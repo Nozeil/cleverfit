@@ -22,7 +22,7 @@ import { PageLayout } from '@components/page-layout/page-layout';
 import { COMPOUND_ROUTES, ROUTES } from '@constants/routes';
 import { useIsLoading } from '@hooks/useIsLoading';
 import { AuthPage } from '@pages/auth/auth';
-import { CalendarPage } from '@pages/calendar-page';
+import { CalendarPage } from '@pages/calendar-page/calendar-page';
 import { FeedbacksPage } from '@pages/feedbacks-page';
 import { MainPage } from '@pages/main-page';
 import { history } from '@redux/configure-store';
