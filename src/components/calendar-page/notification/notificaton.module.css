@@ -1,0 +1,12 @@
+.space:global(.ant-space) {
+    padding: 16px 24px;
+}
+
+.title:global(.ant-typography) {
+    font-weight: var(--font-normal);
+}
+
+.btn:global(.ant-btn) {
+    height: 28px;
+    margin-top: 8px;
+}

@@ -1,5 +1,6 @@
 import { CloseOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
+import { ModalWithShadowMd } from '@components/modal-with-shadow-md/modal-with-shadow-md';
 import { WIDTH_540 } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
@@ -7,7 +8,7 @@ import {
     isFeedbackModalOpenSelector,
     openFeedbackModal,
 } from '@redux/slices/feedback-modal';
-import { Button, Modal } from 'antd';
+import { Button } from 'antd';
 import { type ReactNode } from 'react';
 
 import { FORM_NAME } from '../feedback-content.constants';
@@ -34,13 +35,14 @@ export const ButtonGroupWithModal = ({
 
     return (
         <>
-            <Modal
+            <ModalWithShadowMd
                 className={styles.modal}
                 open={isOpen}
                 centered
                 width={WIDTH_540}
                 title='Ваш отзыв'
                 closeIcon={<CloseOutlined style={{ fontSize: 14 }} />}
+                maskStyle={{ backgroundColor: 'var(--blue-1)' }}
                 footer={
                     <Button
                         form={FORM_NAME}
@@ -58,7 +60,7 @@ export const ButtonGroupWithModal = ({
                 zIndex={10}
             >
                 {children}
-            </Modal>
+            </ModalWithShadowMd>
 
             <Flex
                 className={buttonGroupClassName}

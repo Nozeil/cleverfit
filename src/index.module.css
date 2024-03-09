@@ -117,8 +117,7 @@ a {
     }
 }
 
-:global(.ant-card),
-:global(.ant-modal-content) {
+:global(.ant-card) {
     box-shadow: var(--shadow);
 }
 

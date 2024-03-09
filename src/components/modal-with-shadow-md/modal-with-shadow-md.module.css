@@ -1,0 +1,4 @@
+.modal:global(.ant-modal),
+.modal:global(.ant-modal) :global(.ant-modal-content) {
+    box-shadow: var(--shadow-md);
+}
