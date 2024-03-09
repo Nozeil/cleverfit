@@ -9,8 +9,10 @@ const { useBreakpoint } = Grid;
 
 export const CalendarContent = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const { data, isError, refetch } = useGetTrainingListQuery();
+    const [selectedDate, setSelectedDate] = useState<moment.Moment>();
 
+    const { data, isError, refetch } = useGetTrainingListQuery();
+    
     const { sm } = useBreakpoint();
 
     useEffect(() => {
@@ -29,7 +31,13 @@ export const CalendarContent = () => {
     return (
         <>
             <Notification isOpen={isOpen} close={close} refresh={refresh} />
-            <Calendar locale={locale} fullscreen={sm} />
+            <Calendar
+                locale={locale}
+                fullscreen={sm}
+                onSelect={(date) => {
+                    console.log(date);
+                }}
+            />
         </>
     );
 };
