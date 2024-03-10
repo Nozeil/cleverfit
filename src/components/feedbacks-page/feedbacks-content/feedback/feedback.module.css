@@ -30,7 +30,7 @@
 
 .date:global(.ant-typography) {
     font-size: var(--text-xs);
-    letter-spacing: var(--feedback-date-letter-spacing);
+    letter-spacing: var(--date-letter-spacing);
 }
 
 .flex {

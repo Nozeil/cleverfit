@@ -11,6 +11,7 @@ import { feedbackModalReducer } from './slices/feedback-modal';
 import { navMenuReducer } from './slices/nav-menu/nav-menu';
 import { siderReducer } from './slices/sider';
 import { successFeedbackModalReducer } from './slices/success-feedback-modal';
+import { trainingModalReducer } from './slices/training-modal';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),
@@ -27,6 +28,7 @@ export const store = configureStore({
         errorFeedbackModal: errorFeedbackModalReducer,
         error500Modal: error500ModalReducer,
         navMenu: navMenuReducer,
+        trainingModal: trainingModalReducer,
         [api.reducerPath]: api.reducer,
     }),
     middleware: (getDefaultMiddleware) =>

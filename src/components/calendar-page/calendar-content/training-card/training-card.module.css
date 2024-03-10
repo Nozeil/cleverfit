@@ -1,0 +1,44 @@
+.card:global(.ant-card) {
+    position: absolute;
+    z-index: 5;
+    width: 264px;
+    box-shadow: var(--shadow-md);
+    cursor: default;
+}
+
+.card :global(.ant-card-body),
+.card :global(.ant-card-actions) {
+    padding: 0 12px;
+}
+
+.cardHead {
+    padding: 16px 0;
+}
+
+.title:global(.ant-typography) {
+    font-size: var(--text-sm);
+    font-weight: var(--font-bold);
+}
+
+.date {
+    letter-spacing: var(--date-letter-spacing);
+}
+
+.subtitle {
+    font-size: var(--text-sm);
+}
+
+.iconBtn:global(.ant-btn) {
+    width: 20px;
+    height: 20px;
+}
+
+.actionBtn:global(.ant-btn) {
+    font-size: var(--text-sm);
+}
+
+@media screen and (max-width: 575px) {
+    .card:global(.ant-card) {
+        width: 100%;
+    }
+}

@@ -4,7 +4,7 @@ import { type ReactNode } from 'react';
 type Breakpoints = Partial<Record<Breakpoint, boolean>>;
 
 export type Direction = 'row' | 'column';
-export type Justify = 'justifyStart' | 'justifyCenter' | 'justifyEnd';
+export type Justify = 'justifyStart' | 'justifyCenter' | 'justifyEnd' | 'justifyBetween';
 export type Align = 'alignStart' | 'alignCenter' | 'alignEnd';
 export type Gap = 'gap4' | 'gap8' | 'gap12' | 'gap14' | 'gap16' | 'gap18' | 'gap20' | 'gap24';
 
