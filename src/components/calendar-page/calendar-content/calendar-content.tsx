@@ -26,7 +26,7 @@ export const CalendarContent = () => {
     const isTrainingModalOpen = useAppSelector(isTrainingModalOpenSelector);
     const dispatch = useAppDispatch();
 
-    const { data, isError, refetch } = useGetTrainingListQuery();
+    const { isError, refetch } = useGetTrainingListQuery();
 
     useEffect(() => {
         if (isError) {

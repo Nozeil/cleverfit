@@ -11,15 +11,6 @@
     line-height: 26px;
 }
 
-:global(.ant-select-single .ant-select-selector .ant-select-selection-item),
-:global(.ant-select-single .ant-select-selector .ant-select-selection-placeholder) {
-    line-height: 28px;
-}
-
-:global(.ant-select-arrow) {
-    color: var(--character-light-title-85);
-}
-
 :global(.ant-select:not(.ant-select-disabled):hover .ant-select-selector) {
     border-color: var(--primary-light-6);
 }

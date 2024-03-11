@@ -3,7 +3,7 @@
     z-index: 5;
     width: 264px;
     box-shadow: var(--shadow-md);
-    cursor: default;
+    cursor: auto;
 }
 
 .card :global(.ant-card-body),
@@ -37,7 +37,31 @@
     font-size: var(--text-sm);
 }
 
-@media screen and (max-width: 575px) {
+.cardTitleWrapper {
+    padding-right: 12px;
+    padding-left: 8px;
+}
+
+.select:global(.ant-select) {
+    flex-grow: 1;
+    padding: 12.5px 0;
+    text-align: start;
+}
+
+.select:not(.ant-select-customize-input) :global(.ant-select-selector) {
+    padding: 0 12px;
+    border-color: transparent;
+}
+
+.select :global(.ant-select-selector .ant-select-selection-item) {
+    line-height: 26px;
+}
+
+.select:global(.ant-select-show-arrow .ant-select-selection-item) {
+    padding-right: 36px;
+}
+
+@media screen and (max-width: 480px) {
     .card:global(.ant-card) {
         width: 100%;
     }

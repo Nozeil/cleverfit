@@ -1,3 +1,14 @@
+:global(.ant-picker-calendar-header)
+    :global(.ant-select-single .ant-select-selector .ant-select-selection-item),
+:global(.ant-picker-calendar-header)
+    :global(.ant-select-single .ant-select-selector .ant-select-selection-placeholder) {
+    line-height: 28px;
+}
+
+:global(.ant-picker-calendar-header) :global(.ant-select-arrow) {
+    color: var(--character-light-title-85);
+}
+
 :global(.ant-picker-calendar),
 :global(.ant-picker-body),
 :global(
