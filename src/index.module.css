@@ -15,11 +15,11 @@
 :global(.ant-typography),
 :global(h1.ant-typography),
 :global(h3.ant-typography),
+:global(h4.ant-typography),
 :global(h5.ant-typography),
 :global(.ant-card),
 :global(.ant-card-head),
 :global(.ant-input-group-addon),
-:global(.ant-input),
 :global(.ant-tabs),
 :global(.ant-checkbox-wrapper),
 :global(.ant-result-title),
@@ -36,6 +36,7 @@
 :global(.ant-result-subtitle),
 :global(.ant-breadcrumb-separator),
 :global(.ant-list-item-meta-description),
+:global(.ant-badge),
 a {
     line-height: var(--line-height);
 }

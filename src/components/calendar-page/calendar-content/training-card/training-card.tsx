@@ -7,14 +7,22 @@ import { useGetTrainingListQuery } from '@services/endpoints/catalogs';
 import { Button, Card, Empty, Select, Typography } from 'antd';
 import { type CSSProperties, useState } from 'react';
 
+import type { PickedDate, PickedTraining } from '../calendar-content.types';
 import styles from './training-card.module.css';
 
 type TrainingCardProps = {
-    date: { iso: string; formated: string };
+    date: PickedDate;
     style?: CSSProperties;
+    addExerciseBtnHandler: () => void;
+    onTrainingSelect: (training: PickedTraining) => void;
 };
 
-export const TrainingCard = ({ date, style }: TrainingCardProps) => {
+export const TrainingCard = ({
+    date,
+    style,
+    addExerciseBtnHandler,
+    onTrainingSelect,
+}: TrainingCardProps) => {
     const [isAddTraining, setIsAddTraining] = useState(false);
     const [isExerciseBtnBlocked, setIsExerciseBtnBlocked] = useState(true);
 
@@ -35,7 +43,14 @@ export const TrainingCard = ({ date, style }: TrainingCardProps) => {
                     value: dataItem.name,
                     label: dataItem.name,
                 }))}
-                onSelect={() => setIsExerciseBtnBlocked(false)}
+                onSelect={(value) => {
+                    setIsExerciseBtnBlocked(false);
+                    const training = data?.find((dataItem) => dataItem.name === value);
+
+                    if (training) {
+                        onTrainingSelect({ name: value, key: training.key });
+                    }
+                }}
             />
         </Flex>
     );
@@ -48,7 +63,7 @@ export const TrainingCard = ({ date, style }: TrainingCardProps) => {
                       type='default'
                       onClick={() => {
                           if (!isExerciseBtnBlocked) {
-                              console.log('click');
+                              addExerciseBtnHandler();
                           }
                       }}
                   >
@@ -74,44 +89,46 @@ export const TrainingCard = ({ date, style }: TrainingCardProps) => {
     const emptyHeight = isAddTraining ? 91 : 64;
 
     return (
-        <Card
-            className={styles.card}
-            bordered={false}
-            style={style}
-            title={title}
-            actions={actions}
-        >
-            {!isAddTraining && (
-                <Flex className={styles.cardHead} justify='justifyBetween'>
-                    <Flex direction='column' gap='gap4'>
-                        <Typography.Text className={styles.title}>
-                            Тренировки на <span className={styles.date}>{formated}</span>
-                        </Typography.Text>
-                        <Typography.Text className={styles.subtitle} disabled>
-                            Нет активных тренировок
-                        </Typography.Text>
-                    </Flex>
+        <>
+            <Card
+                className={styles.card}
+                bordered={false}
+                style={style}
+                title={title}
+                actions={actions}
+            >
+                {!isAddTraining && (
+                    <Flex className={styles.cardHead} justify='justifyBetween'>
+                        <Flex direction='column' gap='gap4'>
+                            <Typography.Text className={styles.title}>
+                                Тренировки на <span className={styles.date}>{formated}</span>
+                            </Typography.Text>
+                            <Typography.Text className={styles.subtitle} disabled>
+                                Нет активных тренировок
+                            </Typography.Text>
+                        </Flex>
 
-                    <Button
-                        className={styles.iconBtn}
-                        type='text'
-                        onClick={closeModal}
-                        icon={
-                            <CloseOutlined
-                                style={{
-                                    color: 'var(--character-light-title-85)',
-                                    fontSize: 12,
-                                }}
-                            />
-                        }
-                    />
-                </Flex>
-            )}
-            <Empty
-                description=''
-                image={<EmptyIcon />}
-                imageStyle={{ height: emptyHeight, marginBottom: 0 }}
-            />
-        </Card>
+                        <Button
+                            className={styles.iconBtn}
+                            type='text'
+                            onClick={closeModal}
+                            icon={
+                                <CloseOutlined
+                                    style={{
+                                        color: 'var(--character-light-title-85)',
+                                        fontSize: 12,
+                                    }}
+                                />
+                            }
+                        />
+                    </Flex>
+                )}
+                <Empty
+                    description=''
+                    image={<EmptyIcon />}
+                    imageStyle={{ height: emptyHeight, marginBottom: 0 }}
+                />
+            </Card>
+        </>
     );
 };

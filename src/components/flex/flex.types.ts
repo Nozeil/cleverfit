@@ -6,7 +6,18 @@ type Breakpoints = Partial<Record<Breakpoint, boolean>>;
 export type Direction = 'row' | 'column';
 export type Justify = 'justifyStart' | 'justifyCenter' | 'justifyEnd' | 'justifyBetween';
 export type Align = 'alignStart' | 'alignCenter' | 'alignEnd';
-export type Gap = 'gap4' | 'gap8' | 'gap12' | 'gap14' | 'gap16' | 'gap18' | 'gap20' | 'gap24';
+export type Gap =
+    | 'gap4'
+    | 'gap8'
+    | 'gap6'
+    | 'gap10'
+    | 'gap12'
+    | 'gap14'
+    | 'gap16'
+    | 'gap18'
+    | 'gap20'
+    | 'gap24'
+    | 'gap32';
 
 type DirectionWithBreakpoint = Direction | Partial<Record<Breakpoint, Direction>>;
 type JustifyWithBreakpoint = Justify | Partial<Record<Breakpoint, Justify>>;

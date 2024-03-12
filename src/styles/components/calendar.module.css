@@ -1,3 +1,16 @@
+:global(.ant-select-single:not(.ant-select-customize-input) .ant-select-selector),
+:global(.ant-picker-calendar-header .ant-picker-calendar-year-select),
+:global(.ant-picker-calendar-header .ant-picker-calendar-month-select),
+:global(
+        .ant-select-single:not(.ant-select-customize-input)
+            .ant-select-selector
+            .ant-select-selection-search-input
+    ) {
+    height: 28px;
+    color: var(--character-light-title-85);
+    line-height: 26px;
+}
+
 :global(.ant-picker-calendar-header)
     :global(.ant-select-single .ant-select-selector .ant-select-selection-item),
 :global(.ant-picker-calendar-header)
@@ -99,6 +112,28 @@
 }
 
 @media screen and (max-width: 575px) {
+    :global(
+            .ant-picker-calendar-header
+                .ant-select-single:not(.ant-select-customize-input)
+                .ant-select-selector
+        ),
+    :global(.ant-picker-calendar-header .ant-picker-calendar-year-select),
+    :global(.ant-picker-calendar-header .ant-picker-calendar-month-select),
+    :global(
+            .ant-picker-calendar-header
+                .ant-select-single:not(.ant-select-customize-input)
+                .ant-select-selector
+                .ant-select-selection-search-input
+        ),
+    :global(
+            .ant-picker-calendar-header
+                .ant-select-single.ant-select-sm:not(.ant-select-customize-input)
+                .ant-select-selector
+        ) {
+        height: 20px;
+        line-height: 18px;
+    }
+
     :global(.ant-picker-calendar),
     :global(.ant-picker-body),
     :global(

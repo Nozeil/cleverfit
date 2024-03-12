@@ -3,8 +3,11 @@
 :global(.ant-checkbox-checked:hover) :global(.ant-checkbox-inner),
 :global(.ant-checkbox-checked:after),
 :global(.ant-checkbox-input:focus) + :global(.ant-checkbox-inner),
-textarea:global(.ant-input):hover,
-textarea:global(.ant-input):focus {
+:global(.ant-input):hover,
+:global(.ant-input):focus,
+:global(.ant-input-number):hover,
+:global(.ant-input-number):focus,
+:global(.ant-input-number-focused) {
     border-color: var(--primary-light-6);
 }
 
@@ -82,7 +85,9 @@ textarea:global(.ant-input):focus {
                     ).ant-input[type='email']
             ):focus
     ),
-textarea:global(.ant-input):focus {
+:global(.ant-input):focus,
+:global(.ant-input-number-focused),
+:global(.ant-input-number):focus {
     box-shadow: var(--input-shadow);
 }
 

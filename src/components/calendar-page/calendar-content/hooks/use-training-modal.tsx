@@ -1,9 +1,5 @@
-import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import {
-    closeTrainingModal,
-    isTrainingModalOpenSelector,
-    openTrainingModal,
-} from '@redux/slices/training-modal';
+import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
+import { closeTrainingModal, openTrainingModal } from '@redux/slices/training-modal';
 import { type MouseEventHandler, useEffect, useRef, useState } from 'react';
 
 import type { Coords } from './use-training-modal.types';
@@ -17,7 +13,6 @@ export const useTrainingModal = (
         left: 0,
     });
     const dispatch = useAppDispatch();
-    const isOpen = useAppSelector(isTrainingModalOpenSelector);
     const container = useRef<HTMLElement | null>(null);
 
     useEffect(() => {

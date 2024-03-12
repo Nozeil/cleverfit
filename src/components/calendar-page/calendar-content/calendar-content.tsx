@@ -3,20 +3,25 @@ import { closeTrainingModal, isTrainingModalOpenSelector } from '@redux/slices/t
 import { useGetTrainingListQuery } from '@services/endpoints/catalogs';
 import { Calendar, Grid } from 'antd';
 import moment from 'moment';
-import { type MouseEventHandler, useEffect, useRef, useState } from 'react';
+import { type MouseEventHandler, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import { Notification } from '../notification/notification';
 import styles from './calendar-content.module.css';
+import { PickedTraining } from './calendar-content.types';
 import { useTrainingModal } from './hooks/use-training-modal';
 import { locale } from './locale';
+import { SidePanel } from './side-panel/side-panel';
 import { TrainingCard } from './training-card/training-card';
 
 const { useBreakpoint } = Grid;
 
 export const CalendarContent = () => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+    const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
+    const [choosenTrainingType, setChoosenTrainingType] = useState({ name: '', key: '' });
     const [date, setDate] = useState({ iso: '', formated: '' });
+
     const calendarWrapperRef = useRef<HTMLDivElement>(null);
     const { sm } = useBreakpoint();
     const { coords, container, handleTrainingModalOpen } = useTrainingModal(
@@ -30,28 +35,48 @@ export const CalendarContent = () => {
 
     useEffect(() => {
         if (isError) {
-            setIsOpen(true);
+            setIsNotificationOpen(true);
         }
     }, [isError]);
 
-    const close = () => setIsOpen(false);
+    const closeNotification = () => setIsNotificationOpen(false);
 
     const refresh = () => {
-        close();
+        closeNotification();
         refetch();
     };
 
+    const openSidePanel = () => setIsSidePanelOpen(true);
+    const closeSidePanel = useCallback(() => setIsSidePanelOpen(false), []);
+
     return (
         <>
-            <Notification isOpen={isOpen} close={close} refresh={refresh} />
+            <SidePanel
+                isOpen={isSidePanelOpen}
+                trainingType={choosenTrainingType}
+                close={closeSidePanel}
+                date={date}
+            />
+            <Notification isOpen={isNotificationOpen} close={closeNotification} refresh={refresh} />
             <div ref={calendarWrapperRef} className={styles.calendarWrapper}>
                 {isTrainingModalOpen &&
                     container &&
-                    createPortal(<TrainingCard date={date} style={{ ...coords }} />, container)}
+                    createPortal(
+                        <TrainingCard
+                            date={date}
+                            style={{ ...coords }}
+                            addExerciseBtnHandler={openSidePanel}
+                            onTrainingSelect={(training: PickedTraining) =>
+                                setChoosenTrainingType(training)
+                            }
+                        />,
+                        container,
+                    )}
                 <Calendar
                     locale={locale}
                     fullscreen={sm}
                     onPanelChange={() => dispatch(closeTrainingModal())}
+                    onSelect={() => closeSidePanel()}
                     dateCellRender={(date) => {
                         const onClick: MouseEventHandler<HTMLDivElement> = (e) => {
                             dispatch(closeTrainingModal());
