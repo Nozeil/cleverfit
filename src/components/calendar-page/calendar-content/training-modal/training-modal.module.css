@@ -1,17 +1,28 @@
-.card:global(.ant-card) {
+.modal {
     position: absolute;
     z-index: 5;
     width: 264px;
-    box-shadow: var(--shadow-md);
     cursor: auto;
 }
 
-.card :global(.ant-card-body),
+.card:global(.ant-card) {
+    box-shadow: var(--shadow-md);
+}
+
+.card :global(.ant-card-body) {
+    padding: 0;
+    min-height: 136px;
+}
+
 .card :global(.ant-card-actions) {
     padding: 0 12px;
 }
 
 .cardHead {
+    padding: 16px 12px;
+}
+
+.trainings {
     padding: 16px 0;
 }
 
@@ -59,6 +70,37 @@
 
 .select:global(.ant-select-show-arrow .ant-select-selection-item) {
     padding-right: 36px;
+}
+
+.exercisesWrapper {
+    max-height: 200px;
+    margin: 16px 0;
+    padding: 0 12px;
+    text-align: start;
+    overflow-y: auto;
+}
+
+.exercise {
+    color: var(--character-light-secondary-45);
+}
+
+.trainingWrapper,
+.exercisesWrapper {
+    padding: 2px 12px;
+    width: 100%;
+    transition: var(--duration-3);
+}
+
+.trainingWrapper:hover {
+    background-color: var(--character-light-background);
+}
+
+.editIcon {
+    cursor: pointer;
+}
+
+.modalOkBtn {
+    height: 40px;
 }
 
 @media screen and (max-width: 480px) {

@@ -103,12 +103,13 @@
     line-height: 23px;
 }
 
-:global(.ant-picker-calendar-date-value) {
-    line-height: var(--line-height);
+:global(.ant-picker-calendar-full .ant-picker-panel .ant-picker-calendar-date-value) {
+    line-height: 20px;
 }
 
 :global(.ant-picker-calendar-full .ant-picker-panel .ant-picker-calendar-date-content) {
-    height: 113px;
+    height: 119px;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 575px) {

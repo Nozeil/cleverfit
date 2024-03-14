@@ -17,6 +17,7 @@ export type Gap =
     | 'gap18'
     | 'gap20'
     | 'gap24'
+    | 'gap26'
     | 'gap32';
 
 type DirectionWithBreakpoint = Direction | Partial<Record<Breakpoint, Direction>>;

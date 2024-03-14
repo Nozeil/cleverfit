@@ -23,5 +23,6 @@ export const errorFeedbackModalSlice = createSlice({
 });
 
 export const { closeErrorFeedbackModal, openErrorFeedbackModal } = errorFeedbackModalSlice.actions;
-export const isErrorFeedbackModalOpenSelector = (state: RootState) => state.errorFeedbackModal.isOpen;
+export const isErrorFeedbackModalOpenSelector = (state: RootState) =>
+    state.errorFeedbackModal.isOpen;
 export const errorFeedbackModalReducer = errorFeedbackModalSlice.reducer;

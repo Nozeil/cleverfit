@@ -12,8 +12,12 @@
     padding-left: 32px;
 }
 
-.head {
+.contentHead {
     margin-bottom: 16px;
+}
+
+.contentBody {
+    height: calc(100% - 42px);
 }
 
 .title:global(.ant-typography) {

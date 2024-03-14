@@ -22,6 +22,8 @@ export const successFeedbackModalSlice = createSlice({
     },
 });
 
-export const { closeSuccessFeedbackModal, openSuccessFeedbackModal } = successFeedbackModalSlice.actions;
-export const isSuccessFeedbackModalOpenSelector = (state: RootState) => state.successFeedbackModal.isOpen;
+export const { closeSuccessFeedbackModal, openSuccessFeedbackModal } =
+    successFeedbackModalSlice.actions;
+export const isSuccessFeedbackModalOpenSelector = (state: RootState) =>
+    state.successFeedbackModal.isOpen;
 export const successFeedbackModalReducer = successFeedbackModalSlice.reducer;

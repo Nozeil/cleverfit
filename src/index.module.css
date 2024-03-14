@@ -37,6 +37,8 @@
 :global(.ant-breadcrumb-separator),
 :global(.ant-list-item-meta-description),
 :global(.ant-badge),
+:global(.ant-modal-confirm-body .ant-modal-confirm-title),
+:global(.ant-modal-confirm-body .ant-modal-confirm-content),
 a {
     line-height: var(--line-height);
 }

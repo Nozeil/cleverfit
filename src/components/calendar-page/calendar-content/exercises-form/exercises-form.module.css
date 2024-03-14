@@ -1,0 +1,15 @@
+.form {
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.btnWrapper {
+    padding: 7px 12px;
+    border-radius: 0px 0px 6px 6px;
+    background-color: var(--character-light-dividers);
+}
+
+.btn:global(.ant-btn) {
+    padding: 2px 0;
+    text-align: start;
+}

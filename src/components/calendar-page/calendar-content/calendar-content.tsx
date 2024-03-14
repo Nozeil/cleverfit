@@ -1,26 +1,34 @@
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { closeTrainingModal, isTrainingModalOpenSelector } from '@redux/slices/training-modal';
+import { clearExerciseIds } from '@redux/slices/exercises-form/exercises-form';
+import {
+    clearExercises,
+    closeTrainingModal,
+    isTrainingModalOpenSelector,
+} from '@redux/slices/training-modal/training-modal';
 import { useGetTrainingListQuery } from '@services/endpoints/catalogs';
-import { Calendar, Grid } from 'antd';
+import { Calendar, Form, Grid } from 'antd';
 import moment from 'moment';
 import { type MouseEventHandler, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { Notification } from '../notification/notification';
 import styles from './calendar-content.module.css';
-import { PickedTraining } from './calendar-content.types';
+import { CellContent } from './cell-content/cell-content';
+import { ExercisesForm } from './exercises-form/exercises-form';
 import { useTrainingModal } from './hooks/use-training-modal';
 import { locale } from './locale';
+import { Notification } from './notification/notification';
 import { SidePanel } from './side-panel/side-panel';
-import { TrainingCard } from './training-card/training-card';
+import { TrainingModal } from './training-modal/training-modal';
 
 const { useBreakpoint } = Grid;
 
 export const CalendarContent = () => {
     const [isNotificationOpen, setIsNotificationOpen] = useState(false);
     const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
-    const [choosenTrainingType, setChoosenTrainingType] = useState({ name: '', key: '' });
+    const [choosenTrainingType, setChoosenTrainingType] = useState('');
     const [date, setDate] = useState({ iso: '', formated: '' });
+    const [isExerciseBtnBlocked, setIsExerciseBtnBlocked] = useState(true);
+    const [form] = Form.useForm();
 
     const calendarWrapperRef = useRef<HTMLDivElement>(null);
     const { sm } = useBreakpoint();
@@ -47,11 +55,25 @@ export const CalendarContent = () => {
     };
 
     const openSidePanel = () => setIsSidePanelOpen(true);
-    const closeSidePanel = useCallback(() => setIsSidePanelOpen(false), []);
+    const closeSidePanel = useCallback(() => {
+        form.submit();
+        setIsSidePanelOpen(false);
+    }, [form]);
+
+    const resetExercisesAndForm = () => {
+        form.resetFields();
+
+        setChoosenTrainingType('');
+        setIsExerciseBtnBlocked(true);
+
+        dispatch(clearExercises());
+        dispatch(clearExerciseIds());
+    };
 
     return (
         <>
             <SidePanel
+                form={<ExercisesForm form={form} />}
                 isOpen={isSidePanelOpen}
                 trainingType={choosenTrainingType}
                 close={closeSidePanel}
@@ -62,13 +84,17 @@ export const CalendarContent = () => {
                 {isTrainingModalOpen &&
                     container &&
                     createPortal(
-                        <TrainingCard
+                        <TrainingModal
                             date={date}
+                            trainingType={choosenTrainingType}
+                            isExerciseBtnBlocked={isExerciseBtnBlocked}
                             style={{ ...coords }}
+                            resetExercisesAndForm={resetExercisesAndForm}
                             addExerciseBtnHandler={openSidePanel}
-                            onTrainingSelect={(training: PickedTraining) =>
-                                setChoosenTrainingType(training)
-                            }
+                            onTrainingSelect={(training: string) => {
+                                setIsExerciseBtnBlocked(false);
+                                setChoosenTrainingType(training);
+                            }}
                         />,
                         container,
                     )}
@@ -76,8 +102,14 @@ export const CalendarContent = () => {
                     locale={locale}
                     fullscreen={sm}
                     onPanelChange={() => dispatch(closeTrainingModal())}
-                    onSelect={() => closeSidePanel()}
+                    onSelect={resetExercisesAndForm}
                     dateCellRender={(date) => {
+                        const iso = date
+                            .utcOffset(0)
+                            .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
+                            .utc()
+                            .toISOString();
+
                         const onClick: MouseEventHandler<HTMLDivElement> = (e) => {
                             dispatch(closeTrainingModal());
 
@@ -89,13 +121,14 @@ export const CalendarContent = () => {
                             }
 
                             setDate({
-                                iso: date.utc().toISOString(),
+                                iso,
                                 formated: date.format('DD.MM.YYYY'),
                             });
+
                             handleTrainingModalOpen(e);
                         };
 
-                        return <div className={styles.cellMask} onClick={onClick} />;
+                        return <CellContent breakpoint={sm} iso={iso} onClick={onClick} />;
                     }}
                 />
             </div>

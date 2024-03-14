@@ -1,5 +1,5 @@
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
-import { closeTrainingModal, openTrainingModal } from '@redux/slices/training-modal';
+import { closeTrainingModal, openTrainingModal } from '@redux/slices/training-modal/training-modal';
 import { type MouseEventHandler, useEffect, useRef, useState } from 'react';
 
 import type { Coords } from './use-training-modal.types';

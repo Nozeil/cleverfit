@@ -56,8 +56,17 @@ export type CreateFeedbackBody = {
     rating: number;
 };
 
-type Training = {
-    _id: string;
+export type TrainingExercise = {
+    name: string;
+    replays: number;
+    weight: number;
+    approaches: number;
+    isImplementation: boolean;
+};
+
+export type TrainingExercises = TrainingExercise[];
+
+type NewTraining = {
     name: string;
     date: string;
     isImplementation: boolean;
@@ -68,19 +77,19 @@ type Training = {
         jointTraining: boolean;
         participants: string[];
     };
+    exercises: TrainingExercises;
+};
+
+export type TrainingResponse = NewTraining & {
+    _id: string;
     exercises: [
         {
             _id: string;
-            name: string;
-            replays: number;
-            weight: number;
-            approaches: number;
-            isImplementation: boolean;
         },
     ];
 };
 
-export type GetTrainingResponse = Training[];
+export type GetTrainingResponse = TrainingResponse[];
 
 export type GetTrainingQueryParams = {
     name?: string;
@@ -92,3 +101,6 @@ type TrainingListItem = {
 };
 
 export type TrainingListResponse = TrainingListItem[];
+
+export type CreateTrainingResponse = TrainingResponse;
+export type CreateTrainingBody = Omit<NewTraining, 'userId'>;

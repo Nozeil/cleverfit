@@ -23,6 +23,5 @@ export const error500ModalSlice = createSlice({
 });
 
 export const { closeError500Modal, openError500Modal } = error500ModalSlice.actions;
-export const isError500ModalOpenSelector = (state: RootState) =>
-    state.error500Modal.isOpen;
+export const isError500ModalOpenSelector = (state: RootState) => state.error500Modal.isOpen;
 export const error500ModalReducer = error500ModalSlice.reducer;
