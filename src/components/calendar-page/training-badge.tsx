@@ -6,7 +6,6 @@ type TrainingBadgeParams = {
 };
 
 export const TrainingBadge = ({ text, className }: TrainingBadgeParams) => {
-
     const colors: { [x: string]: string } = {
         Ноги: 'var(--character-light-error)',
         Руки: 'var(--tranie-cyan)',

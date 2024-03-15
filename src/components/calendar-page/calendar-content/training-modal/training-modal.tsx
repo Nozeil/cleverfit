@@ -1,8 +1,13 @@
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { closeTrainingModal, exercisesSelector } from '@redux/slices/training-modal/training-modal';
-import { useCreateTrainingMutation } from '@services/endpoints/training';
+import {
+    closeTrainingModal,
+    removeFormExerciseById,
+    resetFormExercises,
+    trainingModalSelector,
+} from '@redux/slices/training-modal/training-modal';
+import { useCreateTrainingMutation, useUpdateTrainingMutation } from '@services/endpoints/training';
 import { Button, Modal } from 'antd';
-import { type CSSProperties, useState } from 'react';
+import { type CSSProperties } from 'react';
 
 import type { PickedDate } from '../calendar-content.types';
 import { ExercisesCard } from './exercises-card';
@@ -11,36 +16,40 @@ import { TrainingsCard } from './trainings-card';
 
 type TrainingModalProps = {
     date: PickedDate;
-    trainingType: string;
-    isExerciseBtnBlocked: boolean;
     resetExercisesAndForm: () => void;
+    resetForm: () => void;
     addExerciseBtnHandler: () => void;
-    onTrainingSelect: (training: string) => void;
     style?: CSSProperties;
 };
 
 export const TrainingModal = ({
     date,
-    trainingType,
-    isExerciseBtnBlocked,
     style,
+    resetForm,
     resetExercisesAndForm,
     addExerciseBtnHandler,
-    onTrainingSelect,
 }: TrainingModalProps) => {
-    const [createTraining, { isLoading }] = useCreateTrainingMutation();
+    const [createTraining, { isLoading: isCreateLoading }] = useCreateTrainingMutation();
+    const [updateTraining, { isLoading: isUpdateLoading }] = useUpdateTrainingMutation();
+
+    const isLoading = isCreateLoading || isUpdateLoading;
+
+    const {
+        isExercises,
+        isExerciseBtnLocked,
+        trainingType,
+        exercises,
+        formExercises,
+        exercisesFormMode,
+    } = useAppSelector(trainingModalSelector);
     const dispatch = useAppDispatch();
-
-    const exercises = useAppSelector(exercisesSelector);
-
-    const [isAddTraining, setIsAddTraining] = useState(false);
 
     const { iso, formated } = date;
 
     const onSaveExerciseBtnClick = async () => {
         try {
             const body = {
-                name: trainingType,
+                name: trainingType.name,
                 date: iso,
                 isImplementation: false,
                 parameters: {
@@ -49,10 +58,21 @@ export const TrainingModal = ({
                     jointTraining: false,
                     participants: [],
                 },
-                exercises,
+                exercises: exercises.map(
+                    ({ name, approaches, isImplementation, replays, weight }) => ({
+                        name,
+                        approaches,
+                        isImplementation,
+                        replays,
+                        weight,
+                    }),
+                ),
             };
-            await createTraining(body).unwrap();
-            setIsAddTraining(false);
+            if (exercisesFormMode === 'new') {
+                await createTraining(body).unwrap();
+            } else if (exercisesFormMode === 'edit') {
+                await updateTraining({ body, id: trainingType.id }).unwrap();
+            }
         } catch {
             Modal.error({
                 title: 'При сохранении данных произошла ошибка',
@@ -76,10 +96,9 @@ export const TrainingModal = ({
 
     const onArrowLeftClick = () => {
         resetExercisesAndForm();
-        setIsAddTraining(false);
     };
 
-    const content = isAddTraining ? (
+    const content = isExercises ? (
         <ExercisesCard
             saveButton={
                 <Button
@@ -92,20 +111,19 @@ export const TrainingModal = ({
                     Сохранить
                 </Button>
             }
+            resetForm={resetForm}
             onArrowLeftClick={onArrowLeftClick}
-            onSelect={onTrainingSelect}
             onAddExerciseBtnClick={() => {
-                if (!isExerciseBtnBlocked) {
+                if (!isExerciseBtnLocked) {
+                    if (!formExercises.length) {
+                        dispatch(resetFormExercises());
+                    }
                     addExerciseBtnHandler();
                 }
             }}
         />
     ) : (
-        <TrainingsCard
-            date={<span className={styles.date}>{formated}</span>}
-            iso={iso}
-            onBtnClick={() => setIsAddTraining(true)}
-        />
+        <TrainingsCard date={<span className={styles.date}>{formated}</span>} iso={iso} />
     );
 
     return (

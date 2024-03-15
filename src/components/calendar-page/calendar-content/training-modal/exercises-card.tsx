@@ -1,34 +1,46 @@
 import { ArrowLeftOutlined, EditOutlined } from '@ant-design/icons';
 import EmptyIcon from '@assets/icons/empty.svg?react';
 import { Flex } from '@components/flex/flex';
-import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { trainingModalSelector } from '@redux/slices/training-modal/training-modal';
+import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import {
+    clearExercises,
+    resetFormExercises,
+    setExerciseFormMode,
+    setFormExercises,
+    setReceivedExercises,
+    setTrainingType,
+    trainingModalSelector,
+    unlockExerciseBtn,
+} from '@redux/slices/training-modal/training-modal';
 import { useGetTrainingListQuery } from '@services/endpoints/catalogs';
 import { Button, Card, Empty, Row, Select, Typography } from 'antd';
-import { type ReactNode, useMemo } from 'react';
+import { type ReactNode, useEffect, useMemo } from 'react';
 
 import styles from './training-modal.module.css';
 
 type ExercisesCardProps = {
     saveButton: ReactNode;
+    resetForm: () => void;
     onArrowLeftClick: () => void;
-    onSelect: (value: string) => void;
     onAddExerciseBtnClick: () => void;
 };
 
 export const ExercisesCard = ({
     saveButton,
+    resetForm,
     onArrowLeftClick,
-    onSelect,
     onAddExerciseBtnClick,
 }: ExercisesCardProps) => {
     const { data } = useGetTrainingListQuery();
-    const { exercises, trainingTypes } = useAppSelector(trainingModalSelector);
+    const { exercises, trainingTypes, trainingType, trainings } =
+        useAppSelector(trainingModalSelector);
+
+    const dispatch = useAppDispatch();
 
     const content = exercises.length ? (
         <Flex className={styles.exercisesWrapper} direction='column' gap='gap12'>
             {exercises.map((exercise) => (
-                <Row key={exercise.id} justify='space-between'>
+                <Row key={exercise._id} justify='space-between'>
                     <Typography.Text className={styles.exercise}>{exercise.name}</Typography.Text>
                     <EditOutlined
                         style={{ color: 'var(--primary-light-6)' }}
@@ -40,7 +52,6 @@ export const ExercisesCard = ({
     ) : (
         <Empty description='' image={<EmptyIcon />} imageStyle={{ height: 91, marginBottom: 0 }} />
     );
-
     const options = useMemo(
         () =>
             data
@@ -52,6 +63,12 @@ export const ExercisesCard = ({
         [data, trainingTypes],
     );
 
+    useEffect(() => {
+        if (trainingType) {
+            dispatch(unlockExerciseBtn());
+        }
+    }, [dispatch, trainingType]);
+
     return (
         <Card
             className={styles.card}
@@ -62,9 +79,29 @@ export const ExercisesCard = ({
                     <Select
                         className={styles.select}
                         size='middle'
-                        defaultValue='Выбор типа тренировки'
+                        defaultValue={
+                            trainingType.name ? trainingType.name : 'Выбор типа тренировки'
+                        }
                         options={options}
-                        onSelect={onSelect}
+                        onSelect={(value) => {
+                            const training = trainings.find((training) => training.name === value);
+
+                            resetForm();
+
+                            dispatch(resetFormExercises());
+                            dispatch(clearExercises());
+
+                            if (training) {
+                                dispatch(
+                                    setTrainingType({ name: training.name, id: training._id }),
+                                );
+                                dispatch(setExerciseFormMode('edit'));
+                                dispatch(setReceivedExercises(training.exercises));
+                                dispatch(setFormExercises());
+                            } else {
+                                dispatch(setExerciseFormMode('new'));
+                            }
+                        }}
                     />
                 </Flex>
             }

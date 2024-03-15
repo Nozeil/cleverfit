@@ -7,7 +7,6 @@ import { createReduxHistoryContext } from 'redux-first-history';
 import { authReducer } from './slices/auth';
 import { error500ModalReducer } from './slices/error-500-modal';
 import { errorFeedbackModalReducer } from './slices/error-feedback-modal';
-import { exercisesFormReducer } from './slices/exercises-form/exercises-form';
 import { feedbackModalReducer } from './slices/feedback-modal';
 import { navMenuReducer } from './slices/nav-menu/nav-menu';
 import { siderReducer } from './slices/sider';
@@ -30,7 +29,6 @@ export const store = configureStore({
         error500Modal: error500ModalReducer,
         navMenu: navMenuReducer,
         trainingModal: trainingModalReducer,
-        exercisesForm: exercisesFormReducer,
         [api.reducerPath]: api.reducer,
     }),
     middleware: (getDefaultMiddleware) =>

@@ -20,6 +20,10 @@
     height: calc(100% - 42px);
 }
 
+.contentBodyHeader {
+    margin-bottom: 8px;
+}
+
 .title:global(.ant-typography) {
     flex-grow: 1;
     margin: 0;

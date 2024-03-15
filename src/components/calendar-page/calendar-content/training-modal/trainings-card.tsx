@@ -3,7 +3,15 @@ import EmptyIcon from '@assets/icons/empty.svg?react';
 import { TrainingBadge } from '@components/calendar-page/training-badge';
 import { Flex } from '@components/flex/flex';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
-import { addTrainingTypes, closeTrainingModal } from '@redux/slices/training-modal/training-modal';
+import {
+    closeTrainingModal,
+    setExerciseFormMode,
+    setFormExercises,
+    setReceivedExercises,
+    setTrainings,
+    switchToExercises,
+} from '@redux/slices/training-modal/training-modal';
+import { useGetTrainingListQuery } from '@services/endpoints/catalogs';
 import { useGetTrainingQuery } from '@services/endpoints/training';
 import { Button, Card, Empty, Row, Typography } from 'antd';
 import { type ReactNode, useMemo } from 'react';
@@ -13,10 +21,10 @@ import styles from './training-modal.module.css';
 type TrainingsCardProps = {
     date: ReactNode;
     iso: string;
-    onBtnClick: () => void;
 };
 
-export const TrainingsCard = ({ date, iso, onBtnClick }: TrainingsCardProps) => {
+export const TrainingsCard = ({ date, iso }: TrainingsCardProps) => {
+    const { data: trainingList } = useGetTrainingListQuery();
     const { data } = useGetTrainingQuery(
         { name: undefined },
         {
@@ -42,7 +50,25 @@ export const TrainingsCard = ({ date, iso, onBtnClick }: TrainingsCardProps) => 
                     <EditOutlined
                         className={styles.editIcon}
                         style={{ color: 'var(--primary-light-6)' }}
-                        onClick={() => console.log(training)}
+                        onClick={() => {
+                            dispatch(
+                                setTrainings({
+                                    trainingType: { name: training.name, id: training._id },
+                                    trainings,
+                                }),
+                            );
+                            dispatch(setReceivedExercises(training.exercises));
+                            dispatch(setExerciseFormMode('edit'));
+                            dispatch(setFormExercises());
+
+                            if (trainingTypes) {
+                                dispatch(
+                                    switchToExercises(
+                                        trainingTypes.filter((type) => type !== training.name),
+                                    ),
+                                );
+                            }
+                        }}
                     />
                 </Row>
             ))}
@@ -61,12 +87,13 @@ export const TrainingsCard = ({ date, iso, onBtnClick }: TrainingsCardProps) => 
                     block
                     type='primary'
                     size='large'
+                    disabled={trainingList?.length === trainingTypes?.length}
                     onClick={() => {
                         if (trainingTypes) {
-                            dispatch(addTrainingTypes(trainingTypes));
+                            dispatch(switchToExercises(trainingTypes));
                         }
 
-                        onBtnClick();
+                        dispatch(setExerciseFormMode('new'));
                     }}
                 >
                     {btnContent}

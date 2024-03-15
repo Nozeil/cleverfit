@@ -1,6 +1,7 @@
-.input:global(.ant-input) {
+.input:global(.ant-input),
+.input :global(.ant-input) {
     flex-grow: 1;
-    line-height: 22px;
+    line-height: 24px;
 }
 
 .input :global(.ant-input-number-group-addon) {

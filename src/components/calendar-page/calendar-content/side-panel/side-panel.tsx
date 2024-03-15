@@ -1,5 +1,7 @@
-import { CloseOutlined, PlusOutlined } from '@ant-design/icons';
+import { CloseOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
+import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { trainingModalSelector } from '@redux/slices/training-modal/training-modal';
 import { Button, Drawer, Grid, Typography } from 'antd';
 import { type ReactNode, useEffect } from 'react';
 
@@ -11,14 +13,18 @@ type SidePanelProps = {
     date: PickedDate;
     form: ReactNode;
     isOpen: boolean;
-    trainingType: string;
     close: () => void;
 };
 
 const { useBreakpoint } = Grid;
 
-export const SidePanel = ({ date, form, isOpen, trainingType, close }: SidePanelProps) => {
+export const SidePanel = ({ date, form, isOpen, close }: SidePanelProps) => {
+    const { trainingType, exercisesFormMode } = useAppSelector(trainingModalSelector);
     const { xs } = useBreakpoint();
+    const content: { title: string; icon: ReactNode } = {
+        title: 'Просмотр упражнений',
+        icon: null,
+    };
 
     const onClose = () => close();
 
@@ -29,6 +35,14 @@ export const SidePanel = ({ date, form, isOpen, trainingType, close }: SidePanel
     const drawerProps: { placement: 'bottom' | 'right'; height: number } = xs
         ? { placement: 'bottom', height: 555 }
         : { placement: 'right', height: 378 };
+
+    if (exercisesFormMode === 'new') {
+        content.title = 'Добавление упражнений';
+        content.icon = <PlusOutlined />;
+    } else if (exercisesFormMode === 'edit') {
+        content.title = 'Редактирование';
+        content.icon = <EditOutlined />;
+    }
 
     return (
         <Drawer
@@ -41,9 +55,9 @@ export const SidePanel = ({ date, form, isOpen, trainingType, close }: SidePanel
             {...drawerProps}
         >
             <Flex className={styles.contentHead} gap='gap10' align='alignCenter'>
-                <PlusOutlined />
+                {content.icon}
                 <Typography.Title className={styles.title} level={4}>
-                    Добавление упражнений
+                    {content.title}
                 </Typography.Title>
                 <Button
                     className={styles.closeBtn}
@@ -54,9 +68,13 @@ export const SidePanel = ({ date, form, isOpen, trainingType, close }: SidePanel
                     onClick={onClose}
                 />
             </Flex>
-            <Flex className={styles.contentBody} direction='column' gap='gap26'>
-                <Flex justify='justifyBetween' align='alignCenter'>
-                    <TrainingBadge className={styles.badge} text={trainingType} />
+            <Flex className={styles.contentBody} direction='column' gap='gap24'>
+                <Flex
+                    className={styles.contentBodyHeader}
+                    justify='justifyBetween'
+                    align='alignCenter'
+                >
+                    <TrainingBadge className={styles.badge} text={trainingType.name} />
                     <Typography.Text className={styles.date}>{date.formated}</Typography.Text>
                 </Flex>
 

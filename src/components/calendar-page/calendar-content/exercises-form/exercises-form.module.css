@@ -3,13 +3,27 @@
     overflow-y: auto;
 }
 
-.btnWrapper {
+.btnsWrapper {
     padding: 7px 12px;
+}
+
+.btnsWrapperEditMode {
+    padding: 7px 45px 7px 26px;
+}
+
+.btnsWrapper,
+.btnsWrapperEditMode {
     border-radius: 0px 0px 6px 6px;
     background-color: var(--character-light-dividers);
 }
 
 .btn:global(.ant-btn) {
+    height: fit-content;
     padding: 2px 0;
+    font-size: var(--text-sm);
     text-align: start;
+}
+
+.btn:global(.ant-btn):hover {
+    background-color: inherit;
 }

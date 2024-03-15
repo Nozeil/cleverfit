@@ -1,9 +1,9 @@
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { clearExerciseIds } from '@redux/slices/exercises-form/exercises-form';
 import {
-    clearExercises,
     closeTrainingModal,
     isTrainingModalOpenSelector,
+    resetExercises,
+    resetFormExercises,
 } from '@redux/slices/training-modal/training-modal';
 import { useGetTrainingListQuery } from '@services/endpoints/catalogs';
 import { Calendar, Form, Grid } from 'antd';
@@ -25,9 +25,8 @@ const { useBreakpoint } = Grid;
 export const CalendarContent = () => {
     const [isNotificationOpen, setIsNotificationOpen] = useState(false);
     const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
-    const [choosenTrainingType, setChoosenTrainingType] = useState('');
     const [date, setDate] = useState({ iso: '', formated: '' });
-    const [isExerciseBtnBlocked, setIsExerciseBtnBlocked] = useState(true);
+
     const [form] = Form.useForm();
 
     const calendarWrapperRef = useRef<HTMLDivElement>(null);
@@ -63,11 +62,8 @@ export const CalendarContent = () => {
     const resetExercisesAndForm = () => {
         form.resetFields();
 
-        setChoosenTrainingType('');
-        setIsExerciseBtnBlocked(true);
-
-        dispatch(clearExercises());
-        dispatch(clearExerciseIds());
+        dispatch(resetFormExercises());
+        dispatch(resetExercises());
     };
 
     return (
@@ -75,7 +71,6 @@ export const CalendarContent = () => {
             <SidePanel
                 form={<ExercisesForm form={form} />}
                 isOpen={isSidePanelOpen}
-                trainingType={choosenTrainingType}
                 close={closeSidePanel}
                 date={date}
             />
@@ -86,15 +81,10 @@ export const CalendarContent = () => {
                     createPortal(
                         <TrainingModal
                             date={date}
-                            trainingType={choosenTrainingType}
-                            isExerciseBtnBlocked={isExerciseBtnBlocked}
                             style={{ ...coords }}
+                            resetForm={() => form.resetFields()}
                             resetExercisesAndForm={resetExercisesAndForm}
                             addExerciseBtnHandler={openSidePanel}
-                            onTrainingSelect={(training: string) => {
-                                setIsExerciseBtnBlocked(false);
-                                setChoosenTrainingType(training);
-                            }}
                         />,
                         container,
                     )}

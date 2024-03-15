@@ -64,8 +64,6 @@ export type TrainingExercise = {
     isImplementation: boolean;
 };
 
-export type TrainingExercises = TrainingExercise[];
-
 type NewTraining = {
     name: string;
     date: string;
@@ -77,16 +75,14 @@ type NewTraining = {
         jointTraining: boolean;
         participants: string[];
     };
-    exercises: TrainingExercises;
+    exercises: TrainingExercise[];
 };
 
 export type TrainingResponse = NewTraining & {
     _id: string;
-    exercises: [
-        {
-            _id: string;
-        },
-    ];
+    exercises: (TrainingExercise & {
+        _id: string;
+    })[];
 };
 
 export type GetTrainingResponse = TrainingResponse[];
@@ -103,4 +99,5 @@ type TrainingListItem = {
 export type TrainingListResponse = TrainingListItem[];
 
 export type CreateTrainingResponse = TrainingResponse;
-export type CreateTrainingBody = Omit<NewTraining, 'userId'>;
+export type TrainingBody = Omit<NewTraining, 'userId'>;
+export type UpdateTrainingArgs = { id: string; body: TrainingBody };
