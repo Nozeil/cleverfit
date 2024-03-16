@@ -1,10 +1,8 @@
 import { TrainingBadge } from '@components/calendar-page/training-badge';
 import { Flex } from '@components/flex/flex';
-import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { routerSelector } from '@redux/router-selector';
-import { useGetTrainingQuery } from '@services/endpoints/training';
 import { type MouseEventHandler, useMemo } from 'react';
 
+import { useGetTrainingQueryWithSkip } from '../hooks/use-get-training-with-skip';
 import styles from './cell-content.module.css';
 
 type CellContentProps = {
@@ -14,13 +12,7 @@ type CellContentProps = {
 };
 
 export const CellContent = ({ breakpoint, iso, onClick }: CellContentProps) => {
-    const { previousLocations } = useAppSelector(routerSelector);
-    const { data } = useGetTrainingQuery(
-        { name: undefined },
-        {
-            /* skip: previousLocations?.at(-1)?.location?.pathname !== ROUTES.MAIN, */
-        },
-    );
+    const { data } = useGetTrainingQueryWithSkip();
 
     const trainings = useMemo(() => data?.filter((training) => training.date === iso), [data, iso]);
 

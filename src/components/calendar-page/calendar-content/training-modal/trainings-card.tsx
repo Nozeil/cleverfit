@@ -14,10 +14,10 @@ import {
     trainingModalIsPast,
 } from '@redux/slices/training-modal/training-modal';
 import { useGetTrainingListQuery } from '@services/endpoints/catalogs';
-import { useGetTrainingQuery } from '@services/endpoints/training';
 import { Button, Card, Empty, Row, Typography } from 'antd';
 import { type ReactNode, useMemo } from 'react';
 
+import { useGetTrainingQueryWithSkip } from '../hooks/use-get-training-with-skip';
 import styles from './training-modal.module.css';
 
 type TrainingsCardProps = {
@@ -27,13 +27,9 @@ type TrainingsCardProps = {
 
 export const TrainingsCard = ({ date, iso }: TrainingsCardProps) => {
     const isPast = useAppSelector(trainingModalIsPast);
+
     const { data: trainingList } = useGetTrainingListQuery();
-    const { data } = useGetTrainingQuery(
-        { name: undefined },
-        {
-            /* skip: previousLocations?.at(-1)?.location?.pathname !== ROUTES.MAIN, */
-        },
-    );
+    const { data } = useGetTrainingQueryWithSkip();
     const dispatch = useAppDispatch();
     const closeModal = () => dispatch(closeTrainingModal());
 

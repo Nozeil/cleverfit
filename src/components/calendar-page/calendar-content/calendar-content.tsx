@@ -17,6 +17,7 @@ import { createPortal } from 'react-dom';
 import styles from './calendar-content.module.css';
 import { CellContent } from './cell-content/cell-content';
 import { ExercisesForm } from './exercises-form/exercises-form';
+import { useGetTrainingQueryWithSkip } from './hooks/use-get-training-with-skip';
 import { useTrainingModal } from './hooks/use-training-modal';
 import { locale } from './locale';
 import { Notification } from './notification/notification';
@@ -26,6 +27,7 @@ import { TrainingModal } from './training-modal/training-modal';
 const { useBreakpoint } = Grid;
 
 export const CalendarContent = () => {
+    const { data } = useGetTrainingQueryWithSkip();
     const [isNotificationOpen, setIsNotificationOpen] = useState(false);
     const [date, setDate] = useState({ iso: '', formated: '' });
 
@@ -69,11 +71,7 @@ export const CalendarContent = () => {
 
     return (
         <>
-            <SidePanel
-                form={<ExercisesForm form={form} />}
-                close={closeSidePanel}
-                date={date}
-            />
+            <SidePanel form={<ExercisesForm form={form} />} close={closeSidePanel} date={date} />
             <Notification isOpen={isNotificationOpen} close={closeNotification} refresh={refresh} />
             <div ref={calendarWrapperRef} className={styles.calendarWrapper}>
                 {isTrainingModalOpen &&
@@ -87,42 +85,46 @@ export const CalendarContent = () => {
                         />,
                         container,
                     )}
-                <Calendar
-                    locale={locale}
-                    fullscreen={sm}
-                    onPanelChange={() => dispatch(closeTrainingModal())}
-                    onSelect={resetExercisesAndForm}
-                    dateCellRender={(date) => {
-                        const iso = date
-                            .utcOffset(0)
-                            .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
-                            .utc()
-                            .toISOString();
+                {data ? (
+                    <Calendar
+                        locale={locale}
+                        fullscreen={sm}
+                        onPanelChange={() => dispatch(closeTrainingModal())}
+                        onSelect={resetExercisesAndForm}
+                        dateCellRender={(date) => {
+                            const iso = date
+                                .utcOffset(0)
+                                .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
+                                .utc()
+                                .toISOString();
 
-                        const onClick: MouseEventHandler<HTMLDivElement> = (e) => {
-                            dispatch(closeTrainingModal());
+                            const onClick: MouseEventHandler<HTMLDivElement> = (e) => {
+                                dispatch(closeTrainingModal());
 
-                            const setIsPast = date.isBefore() ? setIsPastTrue : setIsPastFalse;
-                            dispatch(setIsPast());
+                                const setIsPast = date.isBefore() ? setIsPastTrue : setIsPastFalse;
+                                dispatch(setIsPast());
 
-                            const currMonth = moment().month();
-                            const pickedMonth = date.month();
+                                const currMonth = moment().month();
+                                const pickedMonth = date.month();
 
-                            if (pickedMonth !== currMonth && sm) {
-                                e.stopPropagation();
-                            }
+                                if (pickedMonth !== currMonth && sm) {
+                                    e.stopPropagation();
+                                }
 
-                            setDate({
-                                iso,
-                                formated: date.format('DD.MM.YYYY'),
-                            });
+                                setDate({
+                                    iso,
+                                    formated: date.format('DD.MM.YYYY'),
+                                });
 
-                            handleTrainingModalOpen(e);
-                        };
+                                handleTrainingModalOpen(e);
+                            };
 
-                        return <CellContent breakpoint={sm} iso={iso} onClick={onClick} />;
-                    }}
-                />
+                            return <CellContent breakpoint={sm} iso={iso} onClick={onClick} />;
+                        }}
+                    />
+                ) : (
+                    <Calendar locale={locale} fullscreen={sm} />
+                )}
             </div>
         </>
     );
