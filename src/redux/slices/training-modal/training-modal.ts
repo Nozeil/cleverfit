@@ -1,5 +1,6 @@
 import { type RootState } from '@redux/configure-store';
 import { createSlice } from '@reduxjs/toolkit';
+import { v4 as uuidv4 } from 'uuid';
 
 import type {
     AddExerciseAction,
@@ -26,7 +27,7 @@ type TrainingModalState = {
     isOpen: boolean;
     isExercises: boolean;
     isExerciseBtnLocked: boolean;
-    exerciseId: number;
+    exerciseId: string;
     exercises: Exercises;
     formExercises: FormExercises;
     receivedExercises: Exercises;
@@ -40,7 +41,7 @@ const initialState: TrainingModalState = {
     isOpen: false,
     isExercises: false,
     isExerciseBtnLocked: true,
-    exerciseId: 0,
+    exerciseId: uuidv4(),
     exercises: [],
     formExercises: [],
     receivedExercises: [],
@@ -69,9 +70,6 @@ export const trainingModalSlice = createSlice({
             state.isExercises = true;
             state.trainingTypes = action.payload;
         },
-        lockExerciseBtn: (state) => {
-            state.isExerciseBtnLocked = true;
-        },
         unlockExerciseBtn: (state) => {
             state.isExerciseBtnLocked = false;
         },
@@ -96,12 +94,12 @@ export const trainingModalSlice = createSlice({
         },
         addEmptyFormExercise: (state) => {
             const exercise = {
-                _id: ++state.exerciseId,
+                _id: uuidv4(),
             };
             state.formExercises = [...state.formExercises, exercise];
         },
         resetFormExercises: (state) => {
-            state.exerciseId = 0;
+            state.exerciseId = uuidv4();
             const exercise = {
                 _id: state.exerciseId,
             };
@@ -149,7 +147,6 @@ export const {
     openTrainingModal,
     switchToExercises,
     setTrainingType,
-    lockExerciseBtn,
     unlockExerciseBtn,
     setExercises,
     setReceivedExercises,

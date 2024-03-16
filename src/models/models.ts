@@ -87,10 +87,6 @@ export type TrainingResponse = NewTraining & {
 
 export type GetTrainingResponse = TrainingResponse[];
 
-export type GetTrainingQueryParams = {
-    name?: string;
-};
-
 type TrainingListItem = {
     name: string;
     key: string;

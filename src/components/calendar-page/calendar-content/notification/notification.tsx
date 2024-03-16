@@ -23,17 +23,24 @@ export const Notification = ({ isOpen, close, refresh }: NotificationProps) => (
             <Space size='middle' align='start'>
                 <CloseCircleOutlined style={{ color: 'var(--primary-light-6)', fontSize: 24 }} />
                 <div>
-                    <Typography.Title className={styles.title} level={5}>
+                    <Typography.Title
+                        className={styles.title}
+                        level={5}
+                        data-test-id='modal-error-user-training-title'
+                    >
                         При открытии данных произошла ошибка
                     </Typography.Title>
-                    <Typography.Text className={styles.title} disabled>
+                    <Typography.Text
+                        className={styles.title}
+                        disabled
+                        data-test-id='modal-error-user-training-subtitle'
+                    >
                         Попробуйте ещё раз.
                     </Typography.Text>
                 </div>
                 <Button
                     type='text'
                     size='small'
-                    onClick={close}
                     icon={
                         <CloseOutlined
                             style={{
@@ -42,9 +49,16 @@ export const Notification = ({ isOpen, close, refresh }: NotificationProps) => (
                             }}
                         />
                     }
+                    onClick={close}
+                    data-test-id='modal-error-user-training-button-close'
                 />
             </Space>
-            <Button className={styles.btn} onClick={refresh} type='primary'>
+            <Button
+                className={styles.btn}
+                onClick={refresh}
+                type='primary'
+                data-test-id='modal-error-user-training-button'
+            >
                 Обновить
             </Button>
         </Space>

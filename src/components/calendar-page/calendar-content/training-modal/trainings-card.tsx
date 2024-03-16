@@ -29,68 +29,66 @@ export const TrainingsCard = ({ date, iso }: TrainingsCardProps) => {
     const isPast = useAppSelector(trainingModalIsPast);
 
     const { data: trainingList } = useGetTrainingListQuery();
-    const { data } = useGetTrainingQueryWithSkip();
+    const { filteredTrainings } = useGetTrainingQueryWithSkip(iso);
     const dispatch = useAppDispatch();
     const closeModal = () => dispatch(closeTrainingModal());
 
-    const trainings = useMemo(() => data?.filter((training) => training.date === iso), [data, iso]);
     const trainingTypes = useMemo(
-        () => trainings?.map(({ name, isImplementation }) => ({ name, isImplementation })),
-        [trainings],
+        () => filteredTrainings?.map(({ name, isImplementation }) => ({ name, isImplementation })),
+        [filteredTrainings],
     );
 
-    const areTrainingsEmpty = !trainings?.length;
+    const areTrainingsEmpty = !filteredTrainings?.length;
 
     const content = areTrainingsEmpty ? (
         <Empty description='' image={<EmptyIcon />} imageStyle={{ height: 64, marginBottom: 0 }} />
     ) : (
         <Flex className={styles.trainings} direction='column' align='alignStart' gap='gap4'>
-            {trainings?.map((training) => (
-                <Row className={styles.trainingWrapper} key={training._id} justify='space-between'>
-                    <TrainingBadge
-                        className={training.isImplementation ? styles.badgeDisabled : undefined}
-                        text={training.name}
-                    />
-                    <EditOutlined
-                        className={styles.editIcon}
-                        style={{
-                            color: training.isImplementation
-                                ? 'var(--character-light-disable-25)'
-                                : 'var(--primary-light-6)',
-                        }}
-                        onClick={() => {
-                            dispatch(
-                                setTrainings({
-                                    trainingType: { name: training.name, id: training._id },
-                                    trainings,
-                                }),
-                            );
-                            dispatch(setReceivedExercises(training.exercises));
-                            dispatch(setFormExercises());
+            {filteredTrainings?.map(({ _id, isImplementation, name, exercises }, index) => {
+                return (
+                    <Row className={styles.trainingWrapper} key={_id} justify='space-between'>
+                        <TrainingBadge
+                            className={isImplementation ? styles.badgeDisabled : undefined}
+                            text={name}
+                        />
+                        <Button
+                            data-test-id={`modal-update-training-edit-button${index}`}
+                            className={styles.editBtn}
+                            disabled={isImplementation}
+                            icon={<EditOutlined />}
+                            onClick={() => {
+                                dispatch(
+                                    setTrainings({
+                                        trainingType: {
+                                            name,
+                                            id: _id,
+                                        },
+                                        trainings: filteredTrainings,
+                                    }),
+                                );
+                                dispatch(setReceivedExercises(exercises));
+                                dispatch(setFormExercises());
 
-                            if (training.isImplementation) {
-                                dispatch(setExerciseFormMode('view'));
-                                dispatch(openCalendarSidePanel());
-                            } else {
-                                dispatch(setExerciseFormMode('edit'));
+                                if (isImplementation) {
+                                    dispatch(setExerciseFormMode('view'));
+                                    dispatch(openCalendarSidePanel());
+                                } else {
+                                    dispatch(setExerciseFormMode('edit'));
 
-                                if (trainingTypes) {
-                                    const paylaod = isPast
-                                        ? trainingTypes.filter((type) => type.isImplementation)
-                                        : trainingTypes.filter(
-                                              (type) => type.name !== training.name,
-                                          );
-                                    dispatch(switchToExercises(paylaod));
+                                    if (trainingTypes) {
+                                        const paylaod = isPast
+                                            ? trainingTypes.filter((type) => type.isImplementation)
+                                            : trainingTypes.filter((type) => type.name !== name);
+                                        dispatch(switchToExercises(paylaod));
+                                    }
                                 }
-                            }
-                        }}
-                    />
-                </Row>
-            ))}
+                            }}
+                        />
+                    </Row>
+                );
+            })}
         </Flex>
     );
-
-    const btnContent = areTrainingsEmpty ? 'Создать тренировку' : 'Добавить тренировку';
 
     return (
         <Card
@@ -111,9 +109,10 @@ export const TrainingsCard = ({ date, iso }: TrainingsCardProps) => {
                         dispatch(setExerciseFormMode('new'));
                     }}
                 >
-                    {btnContent}
+                    Создать тренировку
                 </Button>,
             ]}
+            data-test-id='modal-create-training'
         >
             <Flex className={styles.cardHead} justify='justifyBetween'>
                 <Flex direction='column' gap='gap4'>
@@ -137,6 +136,7 @@ export const TrainingsCard = ({ date, iso }: TrainingsCardProps) => {
                             }}
                         />
                     }
+                    data-test-id='modal-create-training-button-close'
                 />
             </Flex>
             {content}

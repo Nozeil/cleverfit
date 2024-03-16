@@ -30,13 +30,8 @@ export const TrainingModal = ({
 
     const isLoading = isCreateLoading || isUpdateLoading;
 
-    const {
-        isExercises,
-        trainingType,
-        exercises,
-        exercisesFormMode,
-        isPast,
-    } = useAppSelector(trainingModalSelector);
+    const { isExercises, trainingType, exercises, exercisesFormMode, isPast } =
+        useAppSelector(trainingModalSelector);
     const dispatch = useAppDispatch();
 
     const { iso, formated } = date;
@@ -72,11 +67,19 @@ export const TrainingModal = ({
             }
         } catch {
             Modal.error({
-                title: 'При сохранении данных произошла ошибка',
-                content: 'Придётся попробовать ещё раз',
+                title: (
+                    <span data-test-id='modal-error-user-training-title'>
+                        При сохранении данных произошла ошибка
+                    </span>
+                ),
+                content: (
+                    <span data-test-id='modal-error-user-training-subtitle'>
+                        Придётся попробовать ещё раз
+                    </span>
+                ),
                 centered: true,
                 autoFocusButton: null,
-                okText: 'Закрыть',
+                okText: <span data-test-id='modal-error-user-training-button'>Закрыть</span>,
                 okButtonProps: {
                     className: styles.modalOkBtn,
                 },
@@ -95,6 +98,8 @@ export const TrainingModal = ({
         resetExercisesAndForm();
     };
 
+    const saveBtnContent = isPast ? 'Сохранить изменения' : 'Сохранить';
+
     const content = isExercises ? (
         <ExercisesCard
             saveButton={
@@ -105,7 +110,7 @@ export const TrainingModal = ({
                     onClick={onSaveExerciseBtnClick}
                     loading={isLoading}
                 >
-                    Сохранить
+                    {saveBtnContent}
                 </Button>
             }
             resetForm={resetForm}

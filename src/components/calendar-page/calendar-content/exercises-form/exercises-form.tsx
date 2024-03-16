@@ -39,7 +39,7 @@ export const ExercisesForm = ({ form }: ExercisesFormProps) => {
                 type='link'
                 onClick={() => dispatch(addEmptyFormExercise())}
             >
-                Добавить еще
+                Добавить ещё
             </Button>
         );
     } else if (exercisesFormMode === 'edit') {
@@ -53,7 +53,7 @@ export const ExercisesForm = ({ form }: ExercisesFormProps) => {
                     type='link'
                     onClick={() => dispatch(addEmptyFormExercise())}
                 >
-                    Добавить еще
+                    Добавить ещё
                 </Button>
                 <Button
                     className={styles.btn}
@@ -68,7 +68,7 @@ export const ExercisesForm = ({ form }: ExercisesFormProps) => {
                             .filter((field) => field.shouldDelete)
                             .map((field) => field.id);
 
-                        if (fields.length === ids.length) {
+                        if (fields.length !== ids.length) {
                             setIsDeleteBtnDisabled(true);
                         }
 
@@ -118,7 +118,7 @@ export const ExercisesForm = ({ form }: ExercisesFormProps) => {
                 }}
             >
                 <Space direction='vertical' size='large' className={styles.exercisesWrapper}>
-                    {formExercises.map(({ _id, name, approaches, replays, weight }) => (
+                    {formExercises.map(({ _id, name, approaches, replays, weight }, index) => (
                         <Exercise
                             key={_id}
                             id={_id}
@@ -126,6 +126,7 @@ export const ExercisesForm = ({ form }: ExercisesFormProps) => {
                             approaches={approaches}
                             replays={replays}
                             weight={weight}
+                            testIdIndex={index}
                         />
                     ))}
                 </Space>

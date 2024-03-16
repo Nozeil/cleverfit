@@ -2,15 +2,28 @@ import { ROUTES } from '@constants/routes';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { routerSelector } from '@redux/router-selector';
 import { useGetTrainingQuery } from '@services/endpoints/training';
+import moment from 'moment';
+import { useMemo } from 'react';
 
-export const useGetTrainingQueryWithSkip = () => {
+export const useGetTrainingQueryWithSkip = (iso?: string) => {
     const { previousLocations } = useAppSelector(routerSelector);
-    const result = useGetTrainingQuery(
-        { name: undefined },
-        {
-            skip: previousLocations?.at(-1)?.location?.pathname !== ROUTES.MAIN,
-        },
+    const result = useGetTrainingQuery(undefined, {
+        skip: previousLocations?.at(-1)?.location?.pathname !== ROUTES.MAIN,
+    });
+
+    const filteredTrainings = useMemo(
+        () =>
+            result.data?.filter(({ date }) => {
+                const momentDate = moment(date)
+                    .utcOffset(0)
+                    .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
+                    .utc()
+                    .toISOString();
+
+                return momentDate === iso;
+            }),
+        [result.data, iso],
     );
 
-    return result;
+    return { result, filteredTrainings };
 };

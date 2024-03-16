@@ -21,6 +21,7 @@ export const ModalWithResult500 = ({ onClick }: ModalWithResult500Props) => {
             width={WIDTH_540}
             footer={null}
             maskStyle={{ backgroundColor: 'var(--blue-1)' }}
+            data-test-id='modal-no-review'
         >
             <Result
                 status='500'

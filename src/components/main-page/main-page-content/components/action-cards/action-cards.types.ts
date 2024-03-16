@@ -4,5 +4,6 @@ export type ActionCardProps = {
     title: string;
     buttonIcon: ReactNode;
     buttonContent: string;
+    testId?: string;
     onClick?: () => void;
 }

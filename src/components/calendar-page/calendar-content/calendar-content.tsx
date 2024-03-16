@@ -17,7 +17,6 @@ import { createPortal } from 'react-dom';
 import styles from './calendar-content.module.css';
 import { CellContent } from './cell-content/cell-content';
 import { ExercisesForm } from './exercises-form/exercises-form';
-import { useGetTrainingQueryWithSkip } from './hooks/use-get-training-with-skip';
 import { useTrainingModal } from './hooks/use-training-modal';
 import { locale } from './locale';
 import { Notification } from './notification/notification';
@@ -27,9 +26,11 @@ import { TrainingModal } from './training-modal/training-modal';
 const { useBreakpoint } = Grid;
 
 export const CalendarContent = () => {
-    const { data } = useGetTrainingQueryWithSkip();
+    const { isError, refetch } = useGetTrainingListQuery();
     const [isNotificationOpen, setIsNotificationOpen] = useState(false);
     const [date, setDate] = useState({ iso: '', formated: '' });
+    const isTrainingModalOpen = useAppSelector(isTrainingModalOpenSelector);
+    const dispatch = useAppDispatch();
 
     const [form] = Form.useForm();
 
@@ -39,18 +40,16 @@ export const CalendarContent = () => {
         calendarWrapperRef.current,
         sm,
     );
-    const isTrainingModalOpen = useAppSelector(isTrainingModalOpenSelector);
-    const dispatch = useAppDispatch();
 
-    const { isError, refetch } = useGetTrainingListQuery();
+    const closeNotification = () => setIsNotificationOpen(false);
 
     useEffect(() => {
         if (isError) {
             setIsNotificationOpen(true);
+        } else {
+            closeNotification();
         }
     }, [isError]);
-
-    const closeNotification = () => setIsNotificationOpen(false);
 
     const refresh = () => {
         closeNotification();
@@ -85,7 +84,9 @@ export const CalendarContent = () => {
                         />,
                         container,
                     )}
-                {data ? (
+                {isError ? (
+                    <Calendar locale={locale} fullscreen={sm} />
+                ) : (
                     <Calendar
                         locale={locale}
                         fullscreen={sm}
@@ -102,6 +103,7 @@ export const CalendarContent = () => {
                                 dispatch(closeTrainingModal());
 
                                 const setIsPast = date.isBefore() ? setIsPastTrue : setIsPastFalse;
+
                                 dispatch(setIsPast());
 
                                 const currMonth = moment().month();
@@ -122,8 +124,6 @@ export const CalendarContent = () => {
                             return <CellContent breakpoint={sm} iso={iso} onClick={onClick} />;
                         }}
                     />
-                ) : (
-                    <Calendar locale={locale} fullscreen={sm} />
                 )}
             </div>
         </>

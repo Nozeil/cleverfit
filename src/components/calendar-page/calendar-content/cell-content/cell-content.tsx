@@ -1,6 +1,6 @@
 import { TrainingBadge } from '@components/calendar-page/training-badge';
 import { Flex } from '@components/flex/flex';
-import { type MouseEventHandler, useMemo } from 'react';
+import { type MouseEventHandler } from 'react';
 
 import { useGetTrainingQueryWithSkip } from '../hooks/use-get-training-with-skip';
 import styles from './cell-content.module.css';
@@ -12,20 +12,18 @@ type CellContentProps = {
 };
 
 export const CellContent = ({ breakpoint, iso, onClick }: CellContentProps) => {
-    const { data } = useGetTrainingQueryWithSkip();
-
-    const trainings = useMemo(() => data?.filter((training) => training.date === iso), [data, iso]);
+    const { filteredTrainings } = useGetTrainingQueryWithSkip(iso);
 
     const clickHandler: MouseEventHandler<HTMLDivElement> = (e) => onClick(e);
 
-    const wrapperClassName = trainings?.length ? styles.wrapper : undefined;
+    const wrapperClassName = filteredTrainings?.length ? styles.wrapper : undefined;
 
     return (
         <>
             <div className={styles.cellMask} onClick={clickHandler} />
             <Flex className={wrapperClassName} direction='column'>
                 {breakpoint &&
-                    trainings?.map((training) => (
+                    filteredTrainings?.map((training) => (
                         <TrainingBadge
                             key={training._id}
                             className={styles.badge}

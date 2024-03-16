@@ -1,4 +1,7 @@
-import { ArrowLeftOutlined, EditOutlined } from '@ant-design/icons';
+import {
+    ArrowLeftOutlined,
+    EditOutlined,
+} from '@ant-design/icons';
 import EmptyIcon from '@assets/icons/empty.svg?react';
 import { Flex } from '@components/flex/flex';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
@@ -39,21 +42,21 @@ export const ExercisesCard = ({ saveButton, resetForm, onArrowLeftClick }: Exerc
 
     const dispatch = useAppDispatch();
     const onAddExerciseClick = () => {
-        if (!isExerciseBtnLocked) {
-            if (!formExercises.length) {
-                dispatch(resetFormExercises());
-            }
-            dispatch(openCalendarSidePanel());
+        if (!formExercises.length) {
+            dispatch(resetFormExercises());
         }
+
+        dispatch(openCalendarSidePanel());
     };
 
     const content = exercises.length ? (
         <Flex className={styles.exercisesWrapper} direction='column' gap='gap12'>
-            {exercises.map((exercise) => (
+            {exercises.map((exercise, index) => (
                 <Row key={exercise._id} justify='space-between'>
                     <Typography.Text className={styles.exercise}>{exercise.name}</Typography.Text>
                     <EditOutlined
                         style={{ color: 'var(--primary-light-6)' }}
+                        data-test-id={`modal-update-training-edit-button${index}`}
                         onClick={onAddExerciseClick}
                     />
                 </Row>
@@ -76,7 +79,7 @@ export const ExercisesCard = ({ saveButton, resetForm, onArrowLeftClick }: Exerc
     }, [data, isPast, trainingTypes]);
 
     useEffect(() => {
-        if (trainingType) {
+        if (trainingType.name) {
             dispatch(unlockExerciseBtn());
         }
     }, [dispatch, trainingType]);
@@ -87,8 +90,12 @@ export const ExercisesCard = ({ saveButton, resetForm, onArrowLeftClick }: Exerc
             bordered={false}
             title={
                 <Flex className={styles.cardTitleWrapper}>
-                    <ArrowLeftOutlined onClick={onArrowLeftClick} />
+                    <ArrowLeftOutlined
+                        onClick={onArrowLeftClick}
+                        data-test-id='modal-exercise-training-button-close'
+                    />
                     <Select
+                        data-test-id='modal-create-exercise-select'
                         className={styles.select}
                         size='middle'
                         defaultValue={
@@ -117,12 +124,18 @@ export const ExercisesCard = ({ saveButton, resetForm, onArrowLeftClick }: Exerc
             }
             actions={[
                 <Flex direction='column' gap='gap8'>
-                    <Button block type='default' onClick={onAddExerciseClick}>
+                    <Button
+                        block
+                        type='default'
+                        onClick={onAddExerciseClick}
+                        disabled={isExerciseBtnLocked}
+                    >
                         Добавить упражнения
                     </Button>
                     {saveButton}
                 </Flex>,
             ]}
+            data-test-id='modal-create-exercise'
         >
             {content}
         </Card>

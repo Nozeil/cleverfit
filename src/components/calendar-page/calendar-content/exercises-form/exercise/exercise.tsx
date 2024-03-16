@@ -9,15 +9,15 @@ const { useBreakpoint } = Grid;
 
 type ExerciseProps = {
     id: string | number;
+    testIdIndex: number;
     name?: string;
     replays?: number;
     weight?: number;
     approaches?: number;
     isImplementation?: boolean;
-
 };
 
-export const Exercise = ({ id, name, replays, weight, approaches,  }: ExerciseProps) => {
+export const Exercise = ({ id, name, replays, weight, approaches, testIdIndex }: ExerciseProps) => {
     const { exercisesFormMode } = useAppSelector(trainingModalSelector);
     const { xs } = useBreakpoint();
 
@@ -37,10 +37,13 @@ export const Exercise = ({ id, name, replays, weight, approaches,  }: ExercisePr
                     addonAfter={
                         exercisesFormMode === 'new' ? null : (
                             <Form.Item name={[id, 'shouldDelete']} noStyle valuePropName='checked'>
-                                <Checkbox />
+                                <Checkbox
+                                    data-test-id={`modal-drawer-right-checkbox-exercise${testIdIndex}`}
+                                />
                             </Form.Item>
                         )
                     }
+                    data-test-id={`modal-drawer-right-input-exercise${testIdIndex}`}
                 />
             </Form.Item>
             <Row gutter={gutter} wrap={false}>
@@ -53,6 +56,7 @@ export const Exercise = ({ id, name, replays, weight, approaches,  }: ExercisePr
                                 addonBefore={<PlusOutlined />}
                                 placeholder='1'
                                 min={1}
+                                data-test-id={`modal-drawer-right-input-approach${testIdIndex}`}
                             />
                         </Form.Item>
                     </Row>
@@ -64,7 +68,12 @@ export const Exercise = ({ id, name, replays, weight, approaches,  }: ExercisePr
                                 <Typography.Text className={styles.text}>Вес, кг</Typography.Text>
 
                                 <Form.Item name={[id, 'weight']} initialValue={weight} noStyle>
-                                    <InputNumber className={styles.input} placeholder='0' min={0} />
+                                    <InputNumber
+                                        className={styles.input}
+                                        placeholder='0'
+                                        min={0}
+                                        data-test-id={`modal-drawer-right-input-weight${testIdIndex}`}
+                                    />
                                 </Form.Item>
                             </Row>
                         </Col>
@@ -84,7 +93,12 @@ export const Exercise = ({ id, name, replays, weight, approaches,  }: ExercisePr
                                 </Typography.Text>
 
                                 <Form.Item name={[id, 'replays']} initialValue={replays} noStyle>
-                                    <InputNumber className={styles.input} placeholder='3' min={1} />
+                                    <InputNumber
+                                        className={styles.input}
+                                        placeholder='3'
+                                        min={1}
+                                        data-test-id={`modal-drawer-right-input-quantity${testIdIndex}`}
+                                    />
                                 </Form.Item>
                             </Row>
                         </Col>

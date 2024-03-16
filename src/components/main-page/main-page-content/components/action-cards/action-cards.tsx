@@ -21,6 +21,7 @@ export const ActionCards = () => {
             title: 'Назначить календарь',
             buttonIcon: <CalendarTwoTone twoToneColor={[color, color]} />,
             buttonContent: 'Календарь',
+            testId: 'menu-button-calendar',
             onClick: () => calendarHandler(),
         },
         {
@@ -32,12 +33,13 @@ export const ActionCards = () => {
 
     return (
         <Row className={styles.row} gutter={16}>
-            {cards.map(({ title, buttonIcon, buttonContent, onClick }) => (
+            {cards.map(({ title, buttonIcon, buttonContent, testId, onClick }) => (
                 <ActionCard
                     key={title}
                     title={title}
                     buttonIcon={buttonIcon}
                     buttonContent={buttonContent}
+                    testId={testId}
                     onClick={onClick}
                 />
             ))}

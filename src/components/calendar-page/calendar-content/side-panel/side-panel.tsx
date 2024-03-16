@@ -53,6 +53,7 @@ export const SidePanel = ({ date, form, close }: SidePanelProps) => {
             width={408}
             maskStyle={{ backgroundColor: 'transparent' }}
             onClose={onClose}
+            data-test-id='modal-drawer-right'
             {...drawerProps}
         >
             <Flex className={styles.contentHead} gap='gap10' align='alignCenter'>
@@ -66,6 +67,7 @@ export const SidePanel = ({ date, form, close }: SidePanelProps) => {
                     icon={
                         <CloseOutlined style={{ color: 'var(--character-light-secondary-45)' }} />
                     }
+                    data-test-id='modal-drawer-right-button-close'
                     onClick={onClose}
                 />
             </Flex>

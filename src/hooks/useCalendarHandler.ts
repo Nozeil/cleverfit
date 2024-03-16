@@ -12,7 +12,7 @@ export const useCalendarHandler = () => {
 
     const handler = async () => {
         try {
-            await getTraining({ name: undefined }, true).unwrap();
+            await getTraining(undefined, true).unwrap();
             navigate(ROUTES.CALENDAR);
         } catch {
             dispatch(openError500Modal());
