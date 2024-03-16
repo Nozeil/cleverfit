@@ -94,9 +94,7 @@ export const CalendarContent = () => {
                         onSelect={resetExercisesAndForm}
                         dateCellRender={(date) => {
                             const iso = date
-                                .utcOffset(0)
                                 .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
-                                .utc()
                                 .toISOString();
 
                             const onClick: MouseEventHandler<HTMLDivElement> = (e) => {

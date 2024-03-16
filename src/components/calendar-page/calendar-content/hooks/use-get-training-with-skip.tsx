@@ -15,9 +15,7 @@ export const useGetTrainingQueryWithSkip = (iso?: string) => {
         () =>
             result.data?.filter(({ date }) => {
                 const momentDate = moment(date)
-                    .utcOffset(0)
                     .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
-                    .utc()
                     .toISOString();
 
                 return momentDate === iso;
