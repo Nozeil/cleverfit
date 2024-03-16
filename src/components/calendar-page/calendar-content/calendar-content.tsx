@@ -1,9 +1,12 @@
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { closeCalendarSidePanel } from '@redux/slices/calendar-side-panel';
 import {
     closeTrainingModal,
     isTrainingModalOpenSelector,
     resetExercises,
     resetFormExercises,
+    setIsPastFalse,
+    setIsPastTrue,
 } from '@redux/slices/training-modal/training-modal';
 import { useGetTrainingListQuery } from '@services/endpoints/catalogs';
 import { Calendar, Form, Grid } from 'antd';
@@ -24,7 +27,6 @@ const { useBreakpoint } = Grid;
 
 export const CalendarContent = () => {
     const [isNotificationOpen, setIsNotificationOpen] = useState(false);
-    const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
     const [date, setDate] = useState({ iso: '', formated: '' });
 
     const [form] = Form.useForm();
@@ -53,11 +55,10 @@ export const CalendarContent = () => {
         refetch();
     };
 
-    const openSidePanel = () => setIsSidePanelOpen(true);
     const closeSidePanel = useCallback(() => {
         form.submit();
-        setIsSidePanelOpen(false);
-    }, [form]);
+        dispatch(closeCalendarSidePanel());
+    }, [dispatch, form]);
 
     const resetExercisesAndForm = () => {
         form.resetFields();
@@ -70,7 +71,6 @@ export const CalendarContent = () => {
         <>
             <SidePanel
                 form={<ExercisesForm form={form} />}
-                isOpen={isSidePanelOpen}
                 close={closeSidePanel}
                 date={date}
             />
@@ -84,7 +84,6 @@ export const CalendarContent = () => {
                             style={{ ...coords }}
                             resetForm={() => form.resetFields()}
                             resetExercisesAndForm={resetExercisesAndForm}
-                            addExerciseBtnHandler={openSidePanel}
                         />,
                         container,
                     )}
@@ -102,6 +101,9 @@ export const CalendarContent = () => {
 
                         const onClick: MouseEventHandler<HTMLDivElement> = (e) => {
                             dispatch(closeTrainingModal());
+
+                            const setIsPast = date.isBefore() ? setIsPastTrue : setIsPastFalse;
+                            dispatch(setIsPast());
 
                             const currMonth = moment().month();
                             const pickedMonth = date.month();

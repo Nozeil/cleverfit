@@ -1,7 +1,6 @@
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
     closeTrainingModal,
-    resetFormExercises,
     trainingModalSelector,
 } from '@redux/slices/training-modal/training-modal';
 import { useCreateTrainingMutation, useUpdateTrainingMutation } from '@services/endpoints/training';
@@ -17,7 +16,6 @@ type TrainingModalProps = {
     date: PickedDate;
     resetExercisesAndForm: () => void;
     resetForm: () => void;
-    addExerciseBtnHandler: () => void;
     style?: CSSProperties;
 };
 
@@ -26,7 +24,6 @@ export const TrainingModal = ({
     style,
     resetForm,
     resetExercisesAndForm,
-    addExerciseBtnHandler,
 }: TrainingModalProps) => {
     const [createTraining, { isLoading: isCreateLoading }] = useCreateTrainingMutation();
     const [updateTraining, { isLoading: isUpdateLoading }] = useUpdateTrainingMutation();
@@ -35,11 +32,10 @@ export const TrainingModal = ({
 
     const {
         isExercises,
-        isExerciseBtnLocked,
         trainingType,
         exercises,
-        formExercises,
         exercisesFormMode,
+        isPast,
     } = useAppSelector(trainingModalSelector);
     const dispatch = useAppDispatch();
 
@@ -50,7 +46,7 @@ export const TrainingModal = ({
             const body = {
                 name: trainingType.name,
                 date: iso,
-                isImplementation: false,
+                isImplementation: isPast,
                 parameters: {
                     repeat: false,
                     period: 7,
@@ -105,7 +101,7 @@ export const TrainingModal = ({
                 <Button
                     block
                     type='link'
-                    disabled={!exercises.length}
+                    disabled={!exercises.length && exercisesFormMode === 'new'}
                     onClick={onSaveExerciseBtnClick}
                     loading={isLoading}
                 >
@@ -114,14 +110,6 @@ export const TrainingModal = ({
             }
             resetForm={resetForm}
             onArrowLeftClick={onArrowLeftClick}
-            onAddExerciseBtnClick={() => {
-                if (!isExerciseBtnLocked) {
-                    if (!formExercises.length) {
-                        dispatch(resetFormExercises());
-                    }
-                    addExerciseBtnHandler();
-                }
-            }}
         />
     ) : (
         <TrainingsCard date={<span className={styles.date}>{formated}</span>} iso={iso} />

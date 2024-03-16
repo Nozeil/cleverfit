@@ -5,6 +5,7 @@ import { combineReducers } from 'redux';
 import { createReduxHistoryContext } from 'redux-first-history';
 
 import { authReducer } from './slices/auth';
+import { calendarSidePanelReducer } from './slices/calendar-side-panel';
 import { error500ModalReducer } from './slices/error-500-modal';
 import { errorFeedbackModalReducer } from './slices/error-feedback-modal';
 import { feedbackModalReducer } from './slices/feedback-modal';
@@ -29,6 +30,7 @@ export const store = configureStore({
         error500Modal: error500ModalReducer,
         navMenu: navMenuReducer,
         trainingModal: trainingModalReducer,
+        calendarSidePanel: calendarSidePanelReducer,
         [api.reducerPath]: api.reducer,
     }),
     middleware: (getDefaultMiddleware) =>

@@ -2,6 +2,7 @@ import { ArrowLeftOutlined, EditOutlined } from '@ant-design/icons';
 import EmptyIcon from '@assets/icons/empty.svg?react';
 import { Flex } from '@components/flex/flex';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { openCalendarSidePanel } from '@redux/slices/calendar-side-panel';
 import {
     clearExercises,
     resetFormExercises,
@@ -22,20 +23,29 @@ type ExercisesCardProps = {
     saveButton: ReactNode;
     resetForm: () => void;
     onArrowLeftClick: () => void;
-    onAddExerciseBtnClick: () => void;
 };
 
-export const ExercisesCard = ({
-    saveButton,
-    resetForm,
-    onArrowLeftClick,
-    onAddExerciseBtnClick,
-}: ExercisesCardProps) => {
+export const ExercisesCard = ({ saveButton, resetForm, onArrowLeftClick }: ExercisesCardProps) => {
     const { data } = useGetTrainingListQuery();
-    const { exercises, trainingTypes, trainingType, trainings } =
-        useAppSelector(trainingModalSelector);
+    const {
+        isPast,
+        exercises,
+        trainingTypes,
+        trainingType,
+        trainings,
+        formExercises,
+        isExerciseBtnLocked,
+    } = useAppSelector(trainingModalSelector);
 
     const dispatch = useAppDispatch();
+    const onAddExerciseClick = () => {
+        if (!isExerciseBtnLocked) {
+            if (!formExercises.length) {
+                dispatch(resetFormExercises());
+            }
+            dispatch(openCalendarSidePanel());
+        }
+    };
 
     const content = exercises.length ? (
         <Flex className={styles.exercisesWrapper} direction='column' gap='gap12'>
@@ -44,7 +54,7 @@ export const ExercisesCard = ({
                     <Typography.Text className={styles.exercise}>{exercise.name}</Typography.Text>
                     <EditOutlined
                         style={{ color: 'var(--primary-light-6)' }}
-                        onClick={onAddExerciseBtnClick}
+                        onClick={onAddExerciseClick}
                     />
                 </Row>
             ))}
@@ -52,16 +62,18 @@ export const ExercisesCard = ({
     ) : (
         <Empty description='' image={<EmptyIcon />} imageStyle={{ height: 91, marginBottom: 0 }} />
     );
-    const options = useMemo(
-        () =>
-            data
-                ?.filter(({ name }) => !trainingTypes.includes(name))
-                .map(({ name }) => ({
-                    value: name,
-                    label: name,
-                })),
-        [data, trainingTypes],
-    );
+    const options = useMemo(() => {
+        let options;
+
+        if (!isPast) {
+            options = data?.filter(({ name }) => !trainingTypes.some((type) => type.name === name));
+        }
+
+        return options?.map(({ name }) => ({
+            value: name,
+            label: name,
+        }));
+    }, [data, isPast, trainingTypes]);
 
     useEffect(() => {
         if (trainingType) {
@@ -105,7 +117,7 @@ export const ExercisesCard = ({
             }
             actions={[
                 <Flex direction='column' gap='gap8'>
-                    <Button block type='default' onClick={onAddExerciseBtnClick}>
+                    <Button block type='default' onClick={onAddExerciseClick}>
                         Добавить упражнения
                     </Button>
                     {saveButton}

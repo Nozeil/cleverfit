@@ -16,11 +16,13 @@ import type {
     SetTrainingTypeAction,
     Trainings,
     TrainingType,
+    TrainingTypesWithImplementation,
 } from './training-modal.types';
 
 type TrainingModalState = {
     exercisesFormMode: FormModes;
     trainingType: TrainingType;
+    isPast: boolean;
     isOpen: boolean;
     isExercises: boolean;
     isExerciseBtnLocked: boolean;
@@ -28,12 +30,13 @@ type TrainingModalState = {
     exercises: Exercises;
     formExercises: FormExercises;
     receivedExercises: Exercises;
-    trainingTypes: string[];
+    trainingTypes: TrainingTypesWithImplementation;
     trainings: Trainings;
 };
 
 const initialState: TrainingModalState = {
     exercisesFormMode: 'new',
+    isPast: false,
     isOpen: false,
     isExercises: false,
     isExerciseBtnLocked: true,
@@ -50,6 +53,12 @@ export const trainingModalSlice = createSlice({
     name: 'trainingModal',
     initialState,
     reducers: {
+        setIsPastTrue: (state) => {
+            state.isPast = true;
+        },
+        setIsPastFalse: (state) => {
+            state.isPast = false;
+        },
         openTrainingModal: (state) => {
             state.isOpen = true;
         },
@@ -134,6 +143,8 @@ export const trainingModalSlice = createSlice({
 });
 
 export const {
+    setIsPastFalse,
+    setIsPastTrue,
     closeTrainingModal,
     openTrainingModal,
     switchToExercises,
@@ -155,4 +166,5 @@ export const {
 } = trainingModalSlice.actions;
 export const isTrainingModalOpenSelector = (state: RootState) => state.trainingModal.isOpen;
 export const trainingModalSelector = (state: RootState) => state.trainingModal;
+export const trainingModalIsPast = (state: RootState) => state.trainingModal.isPast;
 export const trainingModalReducer = trainingModalSlice.reducer;

@@ -1,6 +1,8 @@
 import { type TrainingExercise, TrainingResponse } from '@models/models';
 import { type PayloadAction } from '@reduxjs/toolkit';
 
+export type TrainingTypesWithImplementation = Pick<TrainingResponse, 'name' | 'isImplementation'>[];
+
 type Exercise = TrainingExercise & { _id: number | string };
 
 export type Exercises = Exercise[];
@@ -15,7 +17,7 @@ export type SetFormExercisesAction = PayloadAction<Exercises | undefined>;
 
 export type AddTrainingsAction = PayloadAction<Trainings>;
 
-export type AddTrainingTypesAction = PayloadAction<string[]>;
+export type AddTrainingTypesAction = PayloadAction<TrainingTypesWithImplementation>;
 
 export type TrainingType = { name: string; id?: string };
 

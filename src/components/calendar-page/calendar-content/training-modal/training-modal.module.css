@@ -103,6 +103,10 @@
     height: 40px;
 }
 
+.badgeDisabled :global(.ant-badge-status-text) {
+    color: var(--character-light-disable-25);
+}
+
 @media screen and (max-width: 480px) {
     .card:global(.ant-card) {
         width: 100%;

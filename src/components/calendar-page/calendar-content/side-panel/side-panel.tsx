@@ -1,6 +1,7 @@
 import { CloseOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { isCalendarSidePanelOpenSelector } from '@redux/slices/calendar-side-panel';
 import { trainingModalSelector } from '@redux/slices/training-modal/training-modal';
 import { Button, Drawer, Grid, Typography } from 'antd';
 import { type ReactNode, useEffect } from 'react';
@@ -12,13 +13,13 @@ import styles from './side-panel.module.css';
 type SidePanelProps = {
     date: PickedDate;
     form: ReactNode;
-    isOpen: boolean;
     close: () => void;
 };
 
 const { useBreakpoint } = Grid;
 
-export const SidePanel = ({ date, form, isOpen, close }: SidePanelProps) => {
+export const SidePanel = ({ date, form, close }: SidePanelProps) => {
+    const isCalendarSidePanelOpen = useAppSelector(isCalendarSidePanelOpenSelector);
     const { trainingType, exercisesFormMode } = useAppSelector(trainingModalSelector);
     const { xs } = useBreakpoint();
     const content: { title: string; icon: ReactNode } = {
@@ -47,7 +48,7 @@ export const SidePanel = ({ date, form, isOpen, close }: SidePanelProps) => {
     return (
         <Drawer
             className={styles.drawer}
-            open={isOpen}
+            open={isCalendarSidePanelOpen}
             closable={false}
             width={408}
             maskStyle={{ backgroundColor: 'transparent' }}

@@ -2,7 +2,8 @@ import { CloseOutlined, EditOutlined } from '@ant-design/icons';
 import EmptyIcon from '@assets/icons/empty.svg?react';
 import { TrainingBadge } from '@components/calendar-page/training-badge';
 import { Flex } from '@components/flex/flex';
-import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
+import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { openCalendarSidePanel } from '@redux/slices/calendar-side-panel';
 import {
     closeTrainingModal,
     setExerciseFormMode,
@@ -10,6 +11,7 @@ import {
     setReceivedExercises,
     setTrainings,
     switchToExercises,
+    trainingModalIsPast,
 } from '@redux/slices/training-modal/training-modal';
 import { useGetTrainingListQuery } from '@services/endpoints/catalogs';
 import { useGetTrainingQuery } from '@services/endpoints/training';
@@ -24,6 +26,7 @@ type TrainingsCardProps = {
 };
 
 export const TrainingsCard = ({ date, iso }: TrainingsCardProps) => {
+    const isPast = useAppSelector(trainingModalIsPast);
     const { data: trainingList } = useGetTrainingListQuery();
     const { data } = useGetTrainingQuery(
         { name: undefined },
@@ -35,8 +38,10 @@ export const TrainingsCard = ({ date, iso }: TrainingsCardProps) => {
     const closeModal = () => dispatch(closeTrainingModal());
 
     const trainings = useMemo(() => data?.filter((training) => training.date === iso), [data, iso]);
-
-    const trainingTypes = useMemo(() => trainings?.map((training) => training.name), [trainings]);
+    const trainingTypes = useMemo(
+        () => trainings?.map(({ name, isImplementation }) => ({ name, isImplementation })),
+        [trainings],
+    );
 
     const areTrainingsEmpty = !trainings?.length;
 
@@ -46,10 +51,17 @@ export const TrainingsCard = ({ date, iso }: TrainingsCardProps) => {
         <Flex className={styles.trainings} direction='column' align='alignStart' gap='gap4'>
             {trainings?.map((training) => (
                 <Row className={styles.trainingWrapper} key={training._id} justify='space-between'>
-                    <TrainingBadge className={styles.badge} text={training.name} />
+                    <TrainingBadge
+                        className={training.isImplementation ? styles.badgeDisabled : undefined}
+                        text={training.name}
+                    />
                     <EditOutlined
                         className={styles.editIcon}
-                        style={{ color: 'var(--primary-light-6)' }}
+                        style={{
+                            color: training.isImplementation
+                                ? 'var(--character-light-disable-25)'
+                                : 'var(--primary-light-6)',
+                        }}
                         onClick={() => {
                             dispatch(
                                 setTrainings({
@@ -58,15 +70,22 @@ export const TrainingsCard = ({ date, iso }: TrainingsCardProps) => {
                                 }),
                             );
                             dispatch(setReceivedExercises(training.exercises));
-                            dispatch(setExerciseFormMode('edit'));
                             dispatch(setFormExercises());
 
-                            if (trainingTypes) {
-                                dispatch(
-                                    switchToExercises(
-                                        trainingTypes.filter((type) => type !== training.name),
-                                    ),
-                                );
+                            if (training.isImplementation) {
+                                dispatch(setExerciseFormMode('view'));
+                                dispatch(openCalendarSidePanel());
+                            } else {
+                                dispatch(setExerciseFormMode('edit'));
+
+                                if (trainingTypes) {
+                                    const paylaod = isPast
+                                        ? trainingTypes.filter((type) => type.isImplementation)
+                                        : trainingTypes.filter(
+                                              (type) => type.name !== training.name,
+                                          );
+                                    dispatch(switchToExercises(paylaod));
+                                }
                             }
                         }}
                     />
@@ -87,7 +106,7 @@ export const TrainingsCard = ({ date, iso }: TrainingsCardProps) => {
                     block
                     type='primary'
                     size='large'
-                    disabled={trainingList?.length === trainingTypes?.length}
+                    disabled={trainingList?.length === trainingTypes?.length || isPast}
                     onClick={() => {
                         if (trainingTypes) {
                             dispatch(switchToExercises(trainingTypes));
