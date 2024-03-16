@@ -1,7 +1,6 @@
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
     closeTrainingModal,
-    removeFormExerciseById,
     resetFormExercises,
     trainingModalSelector,
 } from '@redux/slices/training-modal/training-modal';
@@ -71,7 +70,9 @@ export const TrainingModal = ({
             if (exercisesFormMode === 'new') {
                 await createTraining(body).unwrap();
             } else if (exercisesFormMode === 'edit') {
-                await updateTraining({ body, id: trainingType.id }).unwrap();
+                if (trainingType.id) {
+                    await updateTraining({ body, id: trainingType.id }).unwrap();
+                }
             }
         } catch {
             Modal.error({

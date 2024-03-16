@@ -90,11 +90,9 @@ export const ExercisesCard = ({
 
                             dispatch(resetFormExercises());
                             dispatch(clearExercises());
+                            dispatch(setTrainingType({ name: value, id: training?._id }));
 
                             if (training) {
-                                dispatch(
-                                    setTrainingType({ name: training.name, id: training._id }),
-                                );
                                 dispatch(setExerciseFormMode('edit'));
                                 dispatch(setReceivedExercises(training.exercises));
                                 dispatch(setFormExercises());

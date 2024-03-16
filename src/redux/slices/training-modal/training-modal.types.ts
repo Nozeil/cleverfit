@@ -17,7 +17,7 @@ export type AddTrainingsAction = PayloadAction<Trainings>;
 
 export type AddTrainingTypesAction = PayloadAction<string[]>;
 
-export type TrainingType = { name: string; id: string };
+export type TrainingType = { name: string; id?: string };
 
 export type SetTrainingTypeAction = PayloadAction<TrainingType>;
 
