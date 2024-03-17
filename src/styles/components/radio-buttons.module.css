@@ -1,6 +1,6 @@
 :global(.ant-radio-button-wrapper) {
-    height: 28px;
-    line-height: 26px;
+    height: var(--h-28);
+    line-height: var(--line-height-26);
 }
 
 :global(.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)),
@@ -24,13 +24,13 @@
 
 @media screen and (max-width: 575px) {
     :global(.ant-picker-calendar-header .ant-picker-calendar-mode-switch) {
-        margin-top: 0;
-        margin-left: 8px;
+        margin-top: var(--mt-calendar-mode-switch-mobile-l);
+        margin-left: var(--ml-calendar-mode-switch-mobile-l);
     }
 
     :global(.ant-radio-group-small .ant-radio-button-wrapper) {
-        height: 20px;
-        line-height: 18px;
+        height: var(--h-20);
+        line-height: var(--line-height-18);
     }
 
     :global(.ant-picker-calendar-header .ant-picker-calendar-mode-switch) {

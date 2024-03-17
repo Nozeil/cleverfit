@@ -4,36 +4,36 @@
 
 .drawer :global(.ant-drawer-content),
 .drawer :global(.ant-drawer-content-wrapper) {
-    border-radius: 8px 0 0 8px;
+    border-radius: var(--rounded-right-8);
 }
 
 .drawer :global(.ant-drawer-body) {
-    padding-right: 32px;
-    padding-left: 32px;
+    padding-right: var(--px-drawer-body);
+    padding-left: var(--px-drawer-body);
 }
 
 .contentHead {
-    margin-bottom: 16px;
+    margin-bottom: var(--mb-side-panel-content-head);
 }
 
 .contentBody {
-    height: calc(100% - 42px);
+    height: calc(100% - var(--h-side-panel-content-head));
 }
 
 .contentBodyHeader {
-    margin-bottom: 8px;
+    margin-bottom: var(--mb-side-panel-content-body-header);
 }
 
 .title:global(.ant-typography) {
     flex-grow: 1;
-    margin: 0;
+    margin: var(--m-side-panel-title);
     font-weight: var(--font-medium);
 }
 
 .closeBtn:global(.ant-btn) {
-    width: 14px;
-    height: 14px;
-    padding: 0;
+    width: var(--w-side-panel-close-btn);
+    height: var(--h-side-panel-close-btn);
+    padding: var(--p-side-panel-close-btn);
 }
 
 .badge :global(.ant-badge-status-text),
@@ -44,12 +44,12 @@
 
 @media screen and (max-width: 576px) {
     .drawer :global(.ant-drawer-body) {
-        padding-right: 16px;
-        padding-left: 16px;
+        padding-right: var(--px-side-panel-drawer-mobile-l);
+        padding-left: var(--px-side-panel-drawer-mobile-l);
     }
 
     .drawer :global(.ant-drawer-content),
     .drawer :global(.ant-drawer-content-wrapper) {
-        border-radius: 24px 24px 0 0;
+        border-radius: var(--rounded-top-24);
     }
 }

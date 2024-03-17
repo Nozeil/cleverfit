@@ -54,4 +54,10 @@
     --mb-feedback-title: 0;
     --mb-feedback-form: 16px;
     --mr-rate-item: 4px;
+    --mt-calendar-mode-switch-mobile-l: 0;
+    --ml-calendar-mode-switch-mobile-l: 8px;
+    --m-training-modal-exercises-wrapper: 16px 0;
+    --mb-side-panel-content-head: 16px;
+    --mb-side-panel-content-body-header: 8px;
+    --m-side-panel-title: 0;
 }

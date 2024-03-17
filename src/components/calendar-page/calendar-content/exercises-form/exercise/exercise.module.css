@@ -1,17 +1,17 @@
 .input:global(.ant-input),
 .input :global(.ant-input) {
     flex-grow: 1;
-    line-height: 24px;
+    line-height: var(--line-height-24);
 }
 
 .input :global(.ant-input-number-group-addon) {
-    padding: 0 13px;
-    font-size: 8px;
+    padding: var(--p-exercise-input);
+    font-size: var(--text-8);
 }
 
 .x {
-    padding: 0 2px;
-    line-height: 24px;
+    padding: var(--p-exercise-x);
+    line-height: var(--line-height-24);
 }
 
 .xRow {
@@ -20,7 +20,7 @@
 
 .text:global(.ant-typography) {
     width: 100%;
-    padding: 4.5px 9px 4.5px 7px;
+    padding: var(--p-exercise-text);
     font-size: var(--text-xs);
     background-color: var(--character-light-dividers);
 }

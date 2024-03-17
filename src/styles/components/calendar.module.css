@@ -6,16 +6,16 @@
             .ant-select-selector
             .ant-select-selection-search-input
     ) {
-    height: 28px;
+    height: var(--h-28);
     color: var(--character-light-title-85);
-    line-height: 26px;
+    line-height: var(--line-height-26);
 }
 
 :global(.ant-picker-calendar-header)
     :global(.ant-select-single .ant-select-selector .ant-select-selection-item),
 :global(.ant-picker-calendar-header)
     :global(.ant-select-single .ant-select-selector .ant-select-selection-placeholder) {
-    line-height: 28px;
+    line-height: var(--line-height-28);
 }
 
 :global(.ant-picker-calendar-header) :global(.ant-select-arrow) {
@@ -95,20 +95,20 @@
 }
 
 :global(.ant-picker-calendar .ant-picker-panel .ant-picker-body) {
-    padding: 0;
+    padding: var(--p-picker-body);
 }
 
 :global(.ant-picker-calendar-full .ant-picker-panel .ant-picker-body th) {
-    padding-bottom: 0;
-    line-height: 23px;
+    padding-bottom: var(--pb-calendar-th);
+    line-height: var(--line-height-23);
 }
 
 :global(.ant-picker-calendar-full .ant-picker-panel .ant-picker-calendar-date-value) {
-    line-height: 20px;
+    line-height: var(--line-height-20);
 }
 
 :global(.ant-picker-calendar-full .ant-picker-panel .ant-picker-calendar-date-content) {
-    height: 119px;
+    height: var(--h-picker-calenadar-date-content);
     overflow: hidden;
 }
 
@@ -131,8 +131,8 @@
                 .ant-select-single.ant-select-sm:not(.ant-select-customize-input)
                 .ant-select-selector
         ) {
-        height: 20px;
-        line-height: 18px;
+        height: var(--h-20);
+        line-height: var(--line-height-18);
     }
 
     :global(.ant-picker-calendar),
@@ -170,7 +170,7 @@
     }
 
     :global(.ant-picker-panel) {
-        padding: 8px 5px 8px;
+        padding: var(--p-picker-panel-mobile-l);
     }
 
     :global(.ant-picker-calendar-mini .ant-picker-content) {
@@ -178,15 +178,15 @@
     }
 
     :global(.ant-picker-content tr) {
-        height: 30px;
+        height: var(--h-30);
     }
 
     :global(.ant-picker-cell) {
-        padding: 0;
+        padding: var(--p-picker-cell-mobile-l);
     }
 
     :global(.ant-picker-calendar-date-value) {
-        line-height: 24px;
+        line-height: var(--line-height-24);
     }
 
     :global(.ant-picker-cell:hover:not(.ant-picker-cell-in-view) .ant-picker-cell-inner),
@@ -199,11 +199,11 @@
                 .ant-picker-cell-inner
         ),
     :global(.ant-picker-cell .ant-picker-cell-inner) {
-        min-width: 37px;
+        min-width: var(--mw-picker-cell-mobile-l);
     }
 
     :global(.ant-picker-cell-today.ant-picker-cell-selected::before) {
-        border-radius: 0;
+        border-radius: var(--rounded-none);
         background-color: var(--primary-light-1);
     }
 

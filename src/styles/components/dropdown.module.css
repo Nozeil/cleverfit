@@ -24,13 +24,13 @@
             .ant-select-single.ant-select-sm:not(.ant-select-customize-input).ant-select-show-arrow
                 .ant-select-selection-placeholder
         ) {
-        padding-right: 18px;
+        padding-right: var(--pr-selection-item-mobile-l);
     }
 
     :global(
             .ant-select-single.ant-select-sm:not(.ant-select-customize-input) .ant-select-selector
         ) {
-        padding: 0 12px;
+        padding: var(--p-select-selector-mobile-l);
     }
 
     :global(.ant-picker-calendar-header .ant-picker-calendar-year-select),
@@ -52,6 +52,6 @@
                 .ant-select-selector
                 .ant-select-selection-placeholder
         ) {
-        line-height: 18px;
+        line-height: var(--line-height-18);
     }
 }

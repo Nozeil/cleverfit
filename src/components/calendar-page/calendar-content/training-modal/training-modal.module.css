@@ -1,7 +1,7 @@
 .modal {
     position: absolute;
-    z-index: 5;
-    width: 264px;
+    z-index: var(--z-5);
+    width: var(--w-training-modal);
     cursor: auto;
 }
 
@@ -10,20 +10,20 @@
 }
 
 .card :global(.ant-card-body) {
-    padding: 0;
-    min-height: 136px;
+    padding: var(--p-training-card-body);
+    min-height: var(--mh-training-card-body);
 }
 
 .card :global(.ant-card-actions) {
-    padding: 0 12px;
+    padding: var(--p-training-card-actions);
 }
 
 .cardHead {
-    padding: 16px 12px;
+    padding: var(--p-training-card-body-head);
 }
 
 .trainings {
-    padding: 16px 0;
+    padding: var(--p-trainings);
 }
 
 .title:global(.ant-typography) {
@@ -40,8 +40,8 @@
 }
 
 .iconBtn:global(.ant-btn) {
-    width: 20px;
-    height: 20px;
+    width: var(--w-training-modal-icon-btn);
+    height: var(--h-training-modal-icon-btn);
 }
 
 .actionBtn:global(.ant-btn) {
@@ -49,33 +49,32 @@
 }
 
 .cardTitleWrapper {
-    padding-right: 12px;
-    padding-left: 8px;
+    padding-right: var(--pr-training-modal-card-title-wrapper);
+    padding-left: var(--pl-training-modal-card-title-wrapper);
 }
 
 .select:global(.ant-select) {
     flex-grow: 1;
-    padding: 12.5px 0;
+    padding: var(--p-training-modal-select);
     text-align: start;
 }
 
 .select:not(.ant-select-customize-input) :global(.ant-select-selector) {
-    padding: 0 12px;
+    padding: var(--p-training-modal-select-selector);
     border-color: transparent;
 }
 
 .select :global(.ant-select-selector .ant-select-selection-item) {
-    line-height: 26px;
+    line-height: var(--line-height-26);
 }
 
 .select:global(.ant-select-show-arrow .ant-select-selection-item) {
-    padding-right: 36px;
+    padding-right: var(--pr-training-modal-selection-item);
 }
 
 .exercisesWrapper {
-    max-height: 200px;
-    margin: 16px 0;
-    padding: 0 12px;
+    max-height: var(--mh-training-modal-exercises-wrapper);
+    margin: var(--m-training-modal-exercises-wrapper);
     text-align: start;
     overflow-y: auto;
 }
@@ -86,7 +85,7 @@
 
 .trainingWrapper,
 .exercisesWrapper {
-    padding: 2px 12px;
+    padding: var(--p-training-modal-trainings-exercises-wrapper);
     width: 100%;
     transition: var(--duration-3);
 }
@@ -98,8 +97,8 @@
 .editBtn:global(.ant-btn) {
     width: fit-content;
     height: fit-content;
-    padding: 0;
-    border: 0;
+    padding: var(--p-training-modal-edit-btn);
+    border: var(--border-none);
     background-color: transparent;
 }
 
@@ -112,7 +111,7 @@
 }
 
 .modalOkBtn {
-    height: 40px;
+    height: var(--h-40s);
 }
 
 .badgeDisabled :global(.ant-badge-status-text) {

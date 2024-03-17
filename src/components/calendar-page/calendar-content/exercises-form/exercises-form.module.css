@@ -4,22 +4,22 @@
 }
 
 .btnsWrapper {
-    padding: 7px 12px;
+    padding: var(--p-exercises-form-btns-wrapper);
 }
 
 .btnsWrapperEditMode {
-    padding: 7px 45px 7px 26px;
+    padding: var(--p-exercises-form-btns-wrapper-edit-mode);
 }
 
 .btnsWrapper,
 .btnsWrapperEditMode {
-    border-radius: 0px 0px 6px 6px;
+    border-radius: var(--rounded-bottom-6);
     background-color: var(--character-light-dividers);
 }
 
 .btn:global(.ant-btn) {
     height: fit-content;
-    padding: 2px 0;
+    padding: var(--p-exercises-form-btn);
     font-size: var(--text-sm);
     text-align: start;
 }

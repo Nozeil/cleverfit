@@ -1,13 +1,12 @@
 .mainContent:global(.ant-layout-content) {
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-top: var(--pt-calendar-page-main-content);
     background-color: var(--primary-light-1);
 }
 
 @media screen and (max-width: 768px) {
     .mainContent:global(.ant-layout-content) {
         padding: var(--p-layout);
-        padding-top: 3px;
+        padding-top: var(--pt-calendar-page-main-content-tablet);
     }
 }
 
