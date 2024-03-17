@@ -5,6 +5,7 @@ import {
 } from '@redux/slices/training-modal/training-modal';
 import { useCreateTrainingMutation, useUpdateTrainingMutation } from '@services/endpoints/training';
 import { Button, Modal } from 'antd';
+import moment, { localeData, utc } from 'moment';
 import { type CSSProperties } from 'react';
 
 import { ExercisesCard } from './exercises-card';
@@ -29,9 +30,11 @@ export const TrainingModal = ({ style, resetForm, resetExercisesAndForm }: Train
 
     const onSaveExerciseBtnClick = async () => {
         try {
+            const localDate = moment(date.iso).toLocaleString();
+            
             const body = {
                 name: trainingType.name,
-                date: date.iso,
+                date: moment(localDate).format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]'),
                 isImplementation: isPast,
                 parameters: {
                     repeat: false,
