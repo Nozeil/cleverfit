@@ -7,40 +7,31 @@ import { useCreateTrainingMutation, useUpdateTrainingMutation } from '@services/
 import { Button, Modal } from 'antd';
 import { type CSSProperties } from 'react';
 
-import type { PickedDate } from '../calendar-content.types';
 import { ExercisesCard } from './exercises-card';
 import styles from './training-modal.module.css';
-import { TrainingsCard } from './trainings-card';
+import { TrainingsCard } from './trainings-card/trainings-card';
 
 type TrainingModalProps = {
-    date: PickedDate;
     resetExercisesAndForm: () => void;
     resetForm: () => void;
     style?: CSSProperties;
 };
 
-export const TrainingModal = ({
-    date,
-    style,
-    resetForm,
-    resetExercisesAndForm,
-}: TrainingModalProps) => {
+export const TrainingModal = ({ style, resetForm, resetExercisesAndForm }: TrainingModalProps) => {
     const [createTraining, { isLoading: isCreateLoading }] = useCreateTrainingMutation();
     const [updateTraining, { isLoading: isUpdateLoading }] = useUpdateTrainingMutation();
 
-    const isLoading = isCreateLoading || isUpdateLoading;
-
-    const { isExercises, trainingType, exercises, exercisesFormMode, isPast } =
+    const { isExercises, trainingType, exercises, exercisesFormMode, isPast, date } =
         useAppSelector(trainingModalSelector);
     const dispatch = useAppDispatch();
 
-    const { iso, formated } = date;
+    const isLoading = isCreateLoading || isUpdateLoading;
 
     const onSaveExerciseBtnClick = async () => {
         try {
             const body = {
                 name: trainingType.name,
-                date: iso,
+                date: date.iso,
                 isImplementation: isPast,
                 parameters: {
                     repeat: false,
@@ -94,10 +85,6 @@ export const TrainingModal = ({
         }
     };
 
-    const onArrowLeftClick = () => {
-        resetExercisesAndForm();
-    };
-
     const saveBtnContent = isPast ? 'Сохранить изменения' : 'Сохранить';
 
     const content = isExercises ? (
@@ -114,10 +101,10 @@ export const TrainingModal = ({
                 </Button>
             }
             resetForm={resetForm}
-            onArrowLeftClick={onArrowLeftClick}
+            onArrowLeftClick={resetExercisesAndForm}
         />
     ) : (
-        <TrainingsCard date={<span className={styles.date}>{formated}</span>} iso={iso} />
+        <TrainingsCard />
     );
 
     return (

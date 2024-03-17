@@ -14,13 +14,11 @@ type CellContentProps = {
 export const CellContent = ({ breakpoint, iso, onClick }: CellContentProps) => {
     const { filteredTrainings } = useGetTrainingQueryWithSkip(iso);
 
-    const clickHandler: MouseEventHandler<HTMLDivElement> = (e) => onClick(e);
-
     const wrapperClassName = filteredTrainings?.length ? styles.wrapper : undefined;
 
     return (
         <>
-            <div className={styles.cellMask} onClick={clickHandler} />
+            <div className={styles.cellMask} onClick={onClick} />
             <Flex className={wrapperClassName} direction='column'>
                 {breakpoint &&
                     filteredTrainings?.map((training) => (

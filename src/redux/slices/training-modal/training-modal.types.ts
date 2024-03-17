@@ -39,3 +39,7 @@ export type RemoveFormExercisesByIdsAction = PayloadAction<(string | number)[]>;
 export type FormModes = 'edit' | 'view' | 'new';
 
 export type SetFormModeAction = PayloadAction<FormModes>;
+
+export type TrainingModalDate = { iso: string; formated: string };
+
+export type SetTrainingModalDateAction = PayloadAction<TrainingModalDate>;

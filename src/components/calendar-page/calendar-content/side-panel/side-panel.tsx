@@ -1,4 +1,4 @@
-import { CloseOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
+import { CloseOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { isCalendarSidePanelOpenSelector } from '@redux/slices/calendar-side-panel';
@@ -7,27 +7,21 @@ import { Button, Drawer, Grid, Typography } from 'antd';
 import { type ReactNode, useEffect } from 'react';
 
 import { TrainingBadge } from '../../training-badge';
-import type { PickedDate } from '../calendar-content.types';
+import { useSidePanelContent } from './hooks/use-side-panel-content';
 import styles from './side-panel.module.css';
 
 type SidePanelProps = {
-    date: PickedDate;
     form: ReactNode;
     close: () => void;
 };
 
 const { useBreakpoint } = Grid;
 
-export const SidePanel = ({ date, form, close }: SidePanelProps) => {
+export const SidePanel = ({ form, close }: SidePanelProps) => {
     const isCalendarSidePanelOpen = useAppSelector(isCalendarSidePanelOpenSelector);
-    const { trainingType, exercisesFormMode } = useAppSelector(trainingModalSelector);
+    const { trainingType, date } = useAppSelector(trainingModalSelector);
     const { xs } = useBreakpoint();
-    const content: { title: string; icon: ReactNode } = {
-        title: 'Просмотр упражнений',
-        icon: null,
-    };
-
-    const onClose = () => close();
+    const content = useSidePanelContent();
 
     useEffect(() => {
         close();
@@ -37,14 +31,6 @@ export const SidePanel = ({ date, form, close }: SidePanelProps) => {
         ? { placement: 'bottom', height: 555 }
         : { placement: 'right', height: 378 };
 
-    if (exercisesFormMode === 'new') {
-        content.title = 'Добавление упражнений';
-        content.icon = <PlusOutlined />;
-    } else if (exercisesFormMode === 'edit') {
-        content.title = 'Редактирование';
-        content.icon = <EditOutlined />;
-    }
-
     return (
         <Drawer
             className={styles.drawer}
@@ -52,7 +38,7 @@ export const SidePanel = ({ date, form, close }: SidePanelProps) => {
             closable={false}
             width={408}
             maskStyle={{ backgroundColor: 'transparent' }}
-            onClose={onClose}
+            onClose={close}
             data-test-id='modal-drawer-right'
             {...drawerProps}
         >
@@ -68,9 +54,10 @@ export const SidePanel = ({ date, form, close }: SidePanelProps) => {
                         <CloseOutlined style={{ color: 'var(--character-light-secondary-45)' }} />
                     }
                     data-test-id='modal-drawer-right-button-close'
-                    onClick={onClose}
+                    onClick={close}
                 />
             </Flex>
+
             <Flex className={styles.contentBody} direction='column' gap='gap24'>
                 <Flex
                     className={styles.contentBodyHeader}
