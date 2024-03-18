@@ -24,6 +24,14 @@ export const TrainingsCard = () => {
 
     const areTrainingsEmpty = !trainingQueryResult.filteredTrainings?.length;
 
+    const onCreateTraining = () => {
+        if (trainingTypes) {
+            dispatch(switchToExercises(trainingTypes));
+        }
+
+        dispatch(setExerciseFormMode('new'));
+    };
+
     return (
         <Card
             className={styles.card}
@@ -35,13 +43,7 @@ export const TrainingsCard = () => {
                     type='primary'
                     size='large'
                     disabled={trainingList?.length === trainingTypes?.length || isPast}
-                    onClick={() => {
-                        if (trainingTypes) {
-                            dispatch(switchToExercises(trainingTypes));
-                        }
-
-                        dispatch(setExerciseFormMode('new'));
-                    }}
+                    onClick={onCreateTraining}
                 >
                     Создать тренировку
                 </Button>,

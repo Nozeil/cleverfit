@@ -11,7 +11,6 @@ import type {
     RemoveFormExerciseByIdAction,
     RemoveFormExercisesByIdsAction,
     SetExercisesAction,
-    SetFormExercisesAction,
     SetFormModeAction,
     SetTrainingModalDateAction,
     SetTrainingsAction,
@@ -91,10 +90,8 @@ export const trainingModalSlice = createSlice({
         addExercise: (state, action: AddExerciseAction) => {
             state.exercises = [...state.exercises, action.payload];
         },
-        setFormExercises: (state, action: SetFormExercisesAction) => {
-            state.formExercises = action.payload
-                ? [...state.receivedExercises, ...action.payload]
-                : [...state.receivedExercises];
+        setFormExercises: (state) => {
+            state.formExercises = state.receivedExercises;
         },
         addEmptyFormExercise: (state) => {
             const exercise = {
@@ -172,6 +169,10 @@ export const {
 export const isTrainingModalOpenSelector = (state: RootState) => state.trainingModal.isOpen;
 export const trainingModalSelector = (state: RootState) => state.trainingModal;
 export const trainingModalIsPast = (state: RootState) => state.trainingModal.isPast;
+export const trainingModalFormModeSelector = (state: RootState) =>
+    state.trainingModal.exercisesFormMode;
+export const trainingModalFormExercisesSelector = (state: RootState) =>
+    state.trainingModal.formExercises;
 export const trainingModalDateSelector = (state: RootState) => state.trainingModal.date;
 
 export const trainingModalReducer = trainingModalSlice.reducer;

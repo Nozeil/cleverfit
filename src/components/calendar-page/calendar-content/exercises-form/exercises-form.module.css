@@ -2,29 +2,3 @@
     overflow: hidden;
     overflow-y: auto;
 }
-
-.btnsWrapper {
-    padding: var(--p-exercises-form-btns-wrapper);
-}
-
-.btnsWrapperEditMode {
-    padding: var(--p-exercises-form-btns-wrapper-edit-mode);
-}
-
-.btnsWrapper,
-.btnsWrapperEditMode {
-    border-radius: var(--rounded-bottom-6);
-    background-color: var(--character-light-dividers);
-}
-
-.btn:global(.ant-btn) {
-    height: fit-content;
-    padding: var(--p-exercises-form-btn);
-    font-size: var(--text-sm);
-    text-align: start;
-}
-
-.btn:global(.ant-btn):hover,
-.btn:global(.ant-btn):focus {
-    background-color: inherit;
-}

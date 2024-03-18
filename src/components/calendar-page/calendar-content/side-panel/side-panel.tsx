@@ -1,13 +1,11 @@
 import { CloseOutlined } from '@ant-design/icons';
-import { Flex } from '@components/flex/flex';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { isCalendarSidePanelOpenSelector } from '@redux/slices/calendar-side-panel';
-import { trainingModalSelector } from '@redux/slices/training-modal/training-modal';
-import { Button, Drawer, Grid, Typography } from 'antd';
+import { Button, Drawer, Grid } from 'antd';
 import { type ReactNode, useEffect } from 'react';
 
-import { TrainingBadge } from '../../training-badge';
-import { useSidePanelContent } from './hooks/use-side-panel-content';
+import { ContentBody } from './content-body/content-body';
+import { ContentHead } from './content-head/content-head';
 import styles from './side-panel.module.css';
 
 type SidePanelProps = {
@@ -19,9 +17,7 @@ const { useBreakpoint } = Grid;
 
 export const SidePanel = ({ form, close }: SidePanelProps) => {
     const isCalendarSidePanelOpen = useAppSelector(isCalendarSidePanelOpenSelector);
-    const { trainingType, date } = useAppSelector(trainingModalSelector);
     const { xs } = useBreakpoint();
-    const content = useSidePanelContent();
 
     useEffect(() => {
         close();
@@ -42,11 +38,7 @@ export const SidePanel = ({ form, close }: SidePanelProps) => {
             data-test-id='modal-drawer-right'
             {...drawerProps}
         >
-            <Flex className={styles.contentHead} gap='gap10' align='alignCenter'>
-                {content.icon}
-                <Typography.Title className={styles.title} level={4}>
-                    {content.title}
-                </Typography.Title>
+            <ContentHead>
                 <Button
                     className={styles.closeBtn}
                     type='text'
@@ -56,20 +48,9 @@ export const SidePanel = ({ form, close }: SidePanelProps) => {
                     data-test-id='modal-drawer-right-button-close'
                     onClick={close}
                 />
-            </Flex>
+            </ContentHead>
 
-            <Flex className={styles.contentBody} direction='column' gap='gap24'>
-                <Flex
-                    className={styles.contentBodyHeader}
-                    justify='justifyBetween'
-                    align='alignCenter'
-                >
-                    <TrainingBadge className={styles.badge} text={trainingType.name} />
-                    <Typography.Text className={styles.date}>{date.formated}</Typography.Text>
-                </Flex>
-
-                {form}
-            </Flex>
+            <ContentBody>{form}</ContentBody>
         </Drawer>
     );
 };

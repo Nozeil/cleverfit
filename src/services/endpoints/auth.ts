@@ -9,33 +9,36 @@ import type {
     LoginResponse,
 } from '@models/models';
 import { api } from '@services/api';
+import { AUTH_ENDPOINTS } from '@services/api.constants';
+
+const { REGISTRATION, LOGIN, CHECK_EMAIL, CHANGE_PASSWORD, CONFIRM_EMAIL } = AUTH_ENDPOINTS;
 
 export const authApi = api.injectEndpoints({
     endpoints: (builder) => ({
         registerUser: builder.mutation<void, AuthUserBody>({
             query: (body) => ({
-                url: 'auth/registration',
+                url: REGISTRATION,
                 method: 'POST',
                 body,
             }),
         }),
         loginUser: builder.mutation<LoginResponse, AuthUserBody>({
             query: (body) => ({
-                url: 'auth/login',
+                url: LOGIN,
                 method: 'POST',
                 body,
             }),
         }),
         checkEmail: builder.mutation<CheckEmailResponse, CheckEmailBody>({
             query: (body) => ({
-                url: 'auth/check-email',
+                url: CHECK_EMAIL,
                 method: 'POST',
                 body,
             }),
         }),
         confirmEmail: builder.mutation<ConfirmEmailResponse, ConfirmEmailBody>({
             query: (body) => ({
-                url: 'auth/confirm-email',
+                url: CONFIRM_EMAIL,
                 method: 'POST',
                 body,
                 credentials: 'include',
@@ -43,7 +46,7 @@ export const authApi = api.injectEndpoints({
         }),
         changePassword: builder.mutation<ChangePasswordResponse, ChangePasswordBody>({
             query: (body) => ({
-                url: 'auth/change-password',
+                url: CHANGE_PASSWORD,
                 method: 'POST',
                 body,
                 credentials: 'include',
@@ -53,9 +56,9 @@ export const authApi = api.injectEndpoints({
 });
 
 export const {
-  useRegisterUserMutation,
-  useLoginUserMutation,
-  useCheckEmailMutation,
-  useConfirmEmailMutation,
-  useChangePasswordMutation,
+    useRegisterUserMutation,
+    useLoginUserMutation,
+    useCheckEmailMutation,
+    useConfirmEmailMutation,
+    useChangePasswordMutation,
 } = authApi;

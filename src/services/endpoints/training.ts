@@ -5,18 +5,19 @@ import type {
     UpdateTrainingArgs,
 } from '@models/models';
 import { api } from '@services/api';
+import { TRAINING_ENDPOINTS } from '@services/api.constants';
 
 export const trainingApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getTraining: builder.query<GetTrainingResponse, void>({
             query: () => ({
-                url: '/training'
+                url: TRAINING_ENDPOINTS.TRAINING,
             }),
             providesTags: ['Training'],
         }),
         createTraining: builder.mutation<CreateTrainingResponse, TrainingBody>({
             query: (body) => ({
-                url: '/training',
+                url: TRAINING_ENDPOINTS.TRAINING,
                 method: 'POST',
                 body,
             }),
@@ -24,7 +25,7 @@ export const trainingApi = api.injectEndpoints({
         }),
         updateTraining: builder.mutation<CreateTrainingResponse, UpdateTrainingArgs>({
             query: ({ id, body }) => ({
-                url: `/training/${id}`,
+                url: `${TRAINING_ENDPOINTS.TRAINING}/${id}`,
                 method: 'PUT',
                 body,
             }),
@@ -33,5 +34,9 @@ export const trainingApi = api.injectEndpoints({
     }),
 });
 
-export const { useGetTrainingQuery, useLazyGetTrainingQuery, useCreateTrainingMutation, useUpdateTrainingMutation } =
-    trainingApi;
+export const {
+    useGetTrainingQuery,
+    useLazyGetTrainingQuery,
+    useCreateTrainingMutation,
+    useUpdateTrainingMutation,
+} = trainingApi;

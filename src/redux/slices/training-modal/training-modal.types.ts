@@ -13,8 +13,6 @@ export type Trainings = TrainingResponse[];
 
 export type SetExercisesAction = PayloadAction<Exercises>;
 
-export type SetFormExercisesAction = PayloadAction<Exercises | undefined>;
-
 export type AddTrainingsAction = PayloadAction<Trainings>;
 
 export type AddTrainingTypesAction = PayloadAction<TrainingTypesWithImplementation>;

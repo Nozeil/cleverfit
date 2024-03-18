@@ -1,4 +1,3 @@
-import { ROUTES } from '@constants/routes';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { routerSelector } from '@redux/router-selector';
 import { useGetTrainingQuery } from '@services/endpoints/training';
@@ -8,7 +7,7 @@ import { useMemo } from 'react';
 export const useGetTrainingQueryWithSkip = (iso?: string) => {
     const { previousLocations } = useAppSelector(routerSelector);
     const result = useGetTrainingQuery(undefined, {
-        skip: previousLocations?.at(-1)?.location?.pathname !== ROUTES.MAIN,
+        skip: previousLocations?.length === 1,
     });
 
     const filteredTrainings = useMemo(
