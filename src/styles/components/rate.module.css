@@ -1,6 +1,6 @@
 :global(.ant-rate),
 :global(.ant-rate-star) {
-    line-height: 0;
+    line-height: var(--line-height);
 }
 
 :global(.ant-rate) {

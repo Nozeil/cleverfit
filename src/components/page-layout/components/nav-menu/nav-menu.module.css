@@ -17,14 +17,10 @@
 
 .menu:global(.ant-menu) > :global(.ant-menu-item:last-child) {
     margin: var(--m-last-menu-item);
-    padding: var(--px-last-menu-item);
 }
 
-.menu:global(.ant-menu) > :global(.ant-menu-item:nth-last-child(2)) {
-    height: var(--divider-h);
+.menu:global(.ant-menu) > :global(.ant-menu-item-divider) {
     margin: var(--m-menu-item-divider);
-    padding: var(--p-menu-item-divider);
-    pointer-events: none;
 }
 
 .menu:global(.ant-menu) :global(.ant-menu-item:last-child) :global(.ant-menu-title-content) {
@@ -37,8 +33,11 @@
 
 @media screen and (max-width: 767px) {
     .menu:global(.ant-menu) > :global(.ant-menu-item) {
-        padding-right: var(--pr-menu-item-tablet);
-        padding-left: var(--pl-menu-item-tablet);
+        padding: var(--p-menu-item-tablet);
+    }
+
+    .menu:global(.ant-menu) :global(.ant-menu-title-content) {
+        padding: var(--p-menu-item-title-content-tablet);
     }
 
     .menu:global(.ant-menu) > :global(.ant-menu-item:nth-child(-n + 4)) {

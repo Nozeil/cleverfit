@@ -1,16 +1,16 @@
 import { HTTP_STATUS_CODES } from '@constants/index';
-import { ROUTES } from '@constants/routes';
+import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { useAuth } from '@hooks/useAuth';
-import { useGetFeedbacksQuery } from '@services/api';
+import { openError500Modal } from '@redux/slices/error-500-modal';
+import { useGetFeedbacksQuery } from '@services/endpoints/feedbacks';
 import { List } from 'antd';
-import { type ReactNode, useEffect, useMemo, useState } from 'react';
-import { ErrorResponse, useNavigate } from 'react-router-dom';
+import { type ReactNode, useEffect, useMemo } from 'react';
+import { ErrorResponse } from 'react-router-dom';
 
 import { EmptyFeedbacks } from './empty-feedbacks/empty-feedbacks';
 import { Feedback } from './feedback/feedback';
 import styles from './feedback-content.module.css';
 import { ListContainer } from './list-container';
-import { ModalWithResult500 } from './modal-with-result-500';
 
 type FeedbacksListProps = {
     empty: ReactNode;
@@ -21,9 +21,7 @@ type FeedbacksListProps = {
 export const FeedbacksList = ({ showAll, footer, empty }: FeedbacksListProps) => {
     const { data, error, isError } = useGetFeedbacksQuery();
     const { signout } = useAuth();
-    const navigate = useNavigate();
-
-    const [isError500ModalOpen, setError500ModalOpen] = useState(false);
+    const dispatch = useAppDispatch();
 
     let content;
 
@@ -40,9 +38,9 @@ export const FeedbacksList = ({ showAll, footer, empty }: FeedbacksListProps) =>
     useEffect(() => {
         if (isError) {
             const e = error as ErrorResponse;
-            e.status === HTTP_STATUS_CODES.FORBIDDEN ? signout() : setError500ModalOpen(true);
+            e.status === HTTP_STATUS_CODES.FORBIDDEN ? signout() : dispatch(openError500Modal());
         }
-    }, [error, isError, signout]);
+    }, [dispatch, error, isError, signout]);
 
     if (isError) {
         content = null;
@@ -72,10 +70,5 @@ export const FeedbacksList = ({ showAll, footer, empty }: FeedbacksListProps) =>
         );
     }
 
-    return (
-        <>
-            <ModalWithResult500 open={isError500ModalOpen} onClick={() => navigate(ROUTES.MAIN)} />
-            {content}
-        </>
-    );
+    return content;
 };

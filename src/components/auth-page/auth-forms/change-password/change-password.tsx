@@ -1,5 +1,5 @@
 import { COMPOUND_ROUTES } from '@constants/routes';
-import { useChangePasswordMutation } from '@services/api';
+import { useChangePasswordMutation } from '@services/endpoints/auth';
 import { Typography } from 'antd';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';

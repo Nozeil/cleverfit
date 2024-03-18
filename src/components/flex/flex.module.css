@@ -22,6 +22,10 @@
     justify-content: end;
 }
 
+.justifyBetween {
+    justify-content: space-between;
+}
+
 .alignStart {
     align-items: start;
 }
@@ -38,8 +42,16 @@
     gap: var(--gap-4);
 }
 
+.gap6 {
+    gap: var(--gap-6);
+}
+
 .gap8 {
     gap: var(--gap-8);
+}
+
+.gap10 {
+    gap: var(--gap-10);
 }
 
 .gap12 {
@@ -64,4 +76,12 @@
 
 .gap24 {
     gap: var(--gap-24);
+}
+
+.gap26 {
+    gap: var(--gap-26);
+}
+
+.gap32 {
+    gap: var(--gap-32);
 }

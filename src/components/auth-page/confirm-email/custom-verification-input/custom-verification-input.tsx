@@ -1,5 +1,5 @@
 import { COMPOUND_ROUTES } from '@constants/routes';
-import { useConfirmEmailMutation } from '@services/api';
+import { useConfirmEmailMutation } from '@services/endpoints/auth';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import VerificationInput from 'react-verification-input';

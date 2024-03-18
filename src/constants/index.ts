@@ -11,3 +11,12 @@ export const ERROR_MESSAGES = {
 export const STORAGE_TOKEN_KEY = 'accessToken';
 
 export const WIDTH_540 = 540;
+
+export const NAV_MENU_LABELS = {
+    CALENDAR: 'Календарь',
+    WORKOUT: 'Тренировки',
+    ACHIEVEMENTS: 'Достижения',
+    PROFILE: 'Профиль',
+    EXIT: 'Выход',
+    DIVIDER: 'Divider',
+} as const;

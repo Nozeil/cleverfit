@@ -1,3 +1,4 @@
+import { ModalWithShadowMd } from '@components/modal-with-shadow-md/modal-with-shadow-md';
 import { ResultButton } from '@components/result-button/result-button';
 import { WIDTH_540 } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
@@ -6,7 +7,7 @@ import {
     isErrorFeedbackModalOpenSelector,
 } from '@redux/slices/error-feedback-modal';
 import { openFeedbackModal } from '@redux/slices/feedback-modal';
-import { Modal, Result, Space, Typography } from 'antd';
+import { Result, Space, Typography } from 'antd';
 
 import styles from './modal-error.module.css';
 
@@ -22,7 +23,14 @@ export const ModalError = () => {
     };
 
     return (
-        <Modal open={isOpen} closable={false} centered width={WIDTH_540} footer={null}>
+        <ModalWithShadowMd
+            open={isOpen}
+            closable={false}
+            centered
+            width={WIDTH_540}
+            footer={null}
+            maskStyle={{ backgroundColor: 'var(--blue-1)' }}
+        >
             <Result
                 status='error'
                 title={
@@ -46,6 +54,6 @@ export const ModalError = () => {
                     </Space>
                 }
             />
-        </Modal>
+        </ModalWithShadowMd>
     );
 };

@@ -1,0 +1,57 @@
+:global(.ant-select:not(.ant-select-disabled):hover .ant-select-selector) {
+    border-color: var(--primary-light-6);
+}
+
+:global(.ant-select-item-option-selected:not(.ant-select-item-option-disabled)) {
+    font-weight: var(--font-medium);
+    background-color: var(--primary-light-1);
+}
+
+:global(
+        .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input)
+            .ant-select-selector
+    ) {
+    border-color: var(--primary-light-6);
+    box-shadow: var(--input-shadow);
+}
+
+@media screen and (max-width: 575px) {
+    :global(
+            .ant-select-single.ant-select-sm:not(.ant-select-customize-input).ant-select-show-arrow
+                .ant-select-selection-item
+        ),
+    :global(
+            .ant-select-single.ant-select-sm:not(.ant-select-customize-input).ant-select-show-arrow
+                .ant-select-selection-placeholder
+        ) {
+        padding-right: var(--pr-selection-item-mobile-l);
+    }
+
+    :global(
+            .ant-select-single.ant-select-sm:not(.ant-select-customize-input) .ant-select-selector
+        ) {
+        padding: var(--p-select-selector-mobile-l);
+    }
+
+    :global(.ant-picker-calendar-header .ant-picker-calendar-year-select),
+    :global(.ant-picker-calendar-header .ant-picker-calendar-month-select) {
+        width: auto;
+    }
+
+    :global(
+            .ant-select-single.ant-select-sm:not(.ant-select-customize-input)
+                .ant-select-selector::after
+        ),
+    :global(
+            .ant-select-single.ant-select-sm:not(.ant-select-customize-input)
+                .ant-select-selector
+                .ant-select-selection-item
+        ),
+    :global(
+            .ant-select-single.ant-select-sm:not(.ant-select-customize-input)
+                .ant-select-selector
+                .ant-select-selection-placeholder
+        ) {
+        line-height: var(--line-height-18);
+    }
+}

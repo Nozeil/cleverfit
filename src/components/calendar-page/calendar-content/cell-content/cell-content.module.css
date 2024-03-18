@@ -1,0 +1,24 @@
+.cellMask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-10);
+}
+
+.badge {
+    line-height: var(--line-height-16);
+    white-space: nowrap;
+}
+
+.badge :global(.ant-badge-status-text) {
+    font-size: var(--text-xs);
+}
+
+@media screen and (max-width: 575px) {
+    :global(.ant-picker-content td):has(.wrapper),
+    :global(.ant-picker-cell-inner):has(.wrapper) {
+        background-color: var(--primary-light-1);
+    }
+}

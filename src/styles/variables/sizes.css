@@ -10,11 +10,17 @@
     --verification-input-width: 40px;
     --verification-input-height: var(--verification-input-width);
     --rounded-sm: 2px;
+    --rounded-top-24: 24px 24px 0 0;
+    --rounded-bottom-6: 0 0 6px 6px;
+    --rounded-right-8: 8px 0 0 8px;
     --border-1: 1px;
+    --border-none: 0;
+    --rounded-none: 0;
     --result-icon-width: 80px;
     --result-icon-height: var(--result-icon-width);
     --gap-x-8: 8px;
     --gap-4: 4px;
+    --gap-6: 6px;
     --gap-8: 8px;
     --gap-10: 10px;
     --gap-12: 12px;
@@ -23,6 +29,8 @@
     --gap-18: 18px;
     --gap-20: 20px;
     --gap-24: 24px;
+    --gap-26: 26px;
+    --gap-32: 32px;
     --header-btn-w-tablet: 32px;
     --header-btn-h-tablet: var(--header-btn-w-tablet);
     --loader-w: 150px;
@@ -32,4 +40,19 @@
     --modal-close-icon-wh: 64px;
     --modal-close-icon-tablet-wh: 48px;
     --modal-lr-offset: 32px;
+    --h-40: 40px;
+    --h-30: 30px;
+    --h-28: 28px;
+    --h-20: 20px;
+    --h-picker-calenadar-date-content: 119px;
+    --mw-picker-cell-mobile-l: 37px;
+    --w-training-modal: 264px;
+    --mh-training-card-body: 84px;
+    --w-training-modal-icon-btn: 20px;
+    --h-training-modal-icon-btn: 20px;
+    --mh-training-modal-exercises-wrapper: 200px;
+    --h-side-panel-content-head: 42px;
+    --w-side-panel-close-btn: 14px;
+    --h-side-panel-close-btn: 14px;
+
 }

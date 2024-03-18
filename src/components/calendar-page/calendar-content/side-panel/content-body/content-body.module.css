@@ -1,0 +1,13 @@
+.contentBody {
+  height: calc(100% - var(--h-side-panel-content-head));
+}
+
+.contentBodyHeader {
+  margin-bottom: var(--mb-side-panel-content-body-header);
+}
+
+.badge :global(.ant-badge-status-text),
+.date {
+    font-weight: var(--font-medium);
+    color: var(--character-light-secondary-45);
+}

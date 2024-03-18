@@ -1,3 +1,7 @@
+.layout:global(.ant-layout) {
+    margin-bottom: var(--mb-page-template-layout);
+}
+
 .layout:global(.ant-layout),
 .footer:global(.ant-layout-footer) {
     background-color: transparent;

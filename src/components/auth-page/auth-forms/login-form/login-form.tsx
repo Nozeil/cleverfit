@@ -2,7 +2,7 @@ import { INPUT_GROUP_TYPE_KEYS } from '@components/auth-page/auth-page.constants
 import { InputGroup } from '@components/auth-page/input-group/input-group';
 import { COMPOUND_ROUTES, ROUTES } from '@constants/routes';
 import { useAuth } from '@hooks/useAuth';
-import { useLoginUserMutation } from '@services/api';
+import { useLoginUserMutation } from '@services/endpoints/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { EmailInput } from '../../inputs/email-input';

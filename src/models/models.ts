@@ -55,3 +55,45 @@ export type CreateFeedbackBody = {
     message: string;
     rating: number;
 };
+
+export type TrainingExercise = {
+    name: string;
+    replays: number;
+    weight: number;
+    approaches: number;
+    isImplementation: boolean;
+};
+
+type NewTraining = {
+    name: string;
+    date: string;
+    isImplementation: boolean;
+    userId: string;
+    parameters: {
+        repeat: boolean;
+        period: number;
+        jointTraining: boolean;
+        participants: string[];
+    };
+    exercises: TrainingExercise[];
+};
+
+export type TrainingResponse = NewTraining & {
+    _id: string;
+    exercises: (TrainingExercise & {
+        _id: string;
+    })[];
+};
+
+export type GetTrainingResponse = TrainingResponse[];
+
+type TrainingListItem = {
+    name: string;
+    key: string;
+};
+
+export type TrainingListResponse = TrainingListItem[];
+
+export type CreateTrainingResponse = TrainingResponse;
+export type TrainingBody = Omit<NewTraining, 'userId'>;
+export type UpdateTrainingArgs = { id: string; body: TrainingBody };

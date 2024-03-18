@@ -1,0 +1,125 @@
+.modal {
+    position: absolute;
+    z-index: var(--z-5);
+    width: var(--w-training-modal);
+    cursor: auto;
+}
+
+.card:global(.ant-card) {
+    box-shadow: var(--shadow-md);
+}
+
+.card :global(.ant-card-body) {
+    padding: var(--p-training-card-body);
+    min-height: var(--mh-training-card-body);
+}
+
+.card :global(.ant-card-actions) {
+    padding: var(--p-training-card-actions);
+}
+
+.cardHead {
+    padding: var(--p-training-card-body-head);
+}
+
+.trainings {
+    padding: var(--p-trainings);
+}
+
+.title:global(.ant-typography) {
+    font-size: var(--text-sm);
+    font-weight: var(--font-bold);
+}
+
+.date {
+    letter-spacing: var(--date-letter-spacing);
+}
+
+.subtitle {
+    font-size: var(--text-sm);
+}
+
+.iconBtn:global(.ant-btn) {
+    width: var(--w-training-modal-icon-btn);
+    height: var(--h-training-modal-icon-btn);
+}
+
+.actionBtn:global(.ant-btn) {
+    font-size: var(--text-sm);
+}
+
+.cardTitleWrapper {
+    padding-right: var(--pr-training-modal-card-title-wrapper);
+    padding-left: var(--pl-training-modal-card-title-wrapper);
+}
+
+.select:global(.ant-select) {
+    flex-grow: 1;
+    padding: var(--p-training-modal-select);
+    text-align: start;
+}
+
+.select:not(.ant-select-customize-input) :global(.ant-select-selector) {
+    padding: var(--p-training-modal-select-selector);
+    border-color: transparent;
+}
+
+.select :global(.ant-select-selector .ant-select-selection-item) {
+    line-height: var(--line-height-26);
+}
+
+.select:global(.ant-select-show-arrow .ant-select-selection-item) {
+    padding-right: var(--pr-training-modal-selection-item);
+}
+
+.exercisesWrapper {
+    max-height: var(--mh-training-modal-exercises-wrapper);
+    margin: var(--m-training-modal-exercises-wrapper);
+    text-align: start;
+    overflow-y: auto;
+}
+
+.exercise {
+    color: var(--character-light-secondary-45);
+}
+
+.trainingWrapper,
+.exercisesWrapper {
+    padding: var(--p-training-modal-trainings-exercises-wrapper);
+    width: 100%;
+    transition: var(--duration-3);
+}
+
+.trainingWrapper:hover {
+    background-color: var(--character-light-background);
+}
+
+.editBtn:global(.ant-btn) {
+    width: fit-content;
+    height: fit-content;
+    padding: var(--p-training-modal-edit-btn);
+    border: var(--border-none);
+    background-color: transparent;
+}
+
+.editBtn:global(.ant-btn:not([disabled])) {
+    color: var(--primary-light-6);
+}
+
+.editBtn:global(.ant-btn):hover {
+    background-color: transparent;
+}
+
+.modalOkBtn {
+    height: var(--h-40s);
+}
+
+.badgeDisabled :global(.ant-badge-status-text) {
+    color: var(--character-light-disable-25);
+}
+
+@media screen and (max-width: 480px) {
+    .modal {
+        width: 100%;
+    }
+}

@@ -10,15 +10,15 @@
     --m-menu-item-title-tablet: 0;
     --ml-last-menu-item-title-tablet: 0;
     --m-app-layout: 0 auto;
-    --mb-footer-space: 42px;
+    --mb-page-template-layout: 42px;
     --m-footer-card-meta: 0;
     --mr-footer-card-meta-detail: 25px;
     --mr-footer-card-meta-detail-tablet: 0;
     --m-header-title: 6px 0;
-    --mb-breadcrumb: 8px;
+    --mt-header-settings-row: 8px;
     --ml-header-btn-content: 10px;
     --ml-header-btn-content-tablet-lg: 0;
-    --mb-breadcrumb-tablet: 0;
+    --mt-header-settings-row-tablet: 0;
     --mb-auth-space-tablet-l: 52px;
     --mb-auth-space-mobile-l: 8px;
     --m-auth-card-mobile-l: 0 16px;
@@ -54,4 +54,10 @@
     --mb-feedback-title: 0;
     --mb-feedback-form: 16px;
     --mr-rate-item: 4px;
+    --mt-calendar-mode-switch-mobile-l: 0;
+    --ml-calendar-mode-switch-mobile-l: 8px;
+    --m-training-modal-exercises-wrapper: 16px 0;
+    --mb-side-panel-content-head: 16px;
+    --mb-side-panel-content-body-header: 8px;
+    --m-side-panel-title: 0;
 }

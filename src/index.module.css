@@ -4,6 +4,10 @@
 @import url('./styles/components/avatar.module.css');
 @import url('./styles/components/rate.module.css');
 @import url('./styles/components/typography.module.css');
+@import url('./styles/components/nav-menu.module.css');
+@import url('./styles/components/calendar.module.css');
+@import url('./styles/components/dropdown.module.css');
+@import url('./styles/components/radio-buttons.module.css');
 
 :global(.ant-breadcrumb),
 :global(.ant-breadcrumb) li,
@@ -11,11 +15,11 @@
 :global(.ant-typography),
 :global(h1.ant-typography),
 :global(h3.ant-typography),
+:global(h4.ant-typography),
 :global(h5.ant-typography),
 :global(.ant-card),
 :global(.ant-card-head),
 :global(.ant-input-group-addon),
-:global(.ant-input),
 :global(.ant-tabs),
 :global(.ant-checkbox-wrapper),
 :global(.ant-result-title),
@@ -32,6 +36,9 @@
 :global(.ant-result-subtitle),
 :global(.ant-breadcrumb-separator),
 :global(.ant-list-item-meta-description),
+:global(.ant-badge),
+:global(.ant-modal-confirm-body .ant-modal-confirm-title),
+:global(.ant-modal-confirm-body .ant-modal-confirm-content),
 a {
     line-height: var(--line-height);
 }
@@ -113,8 +120,7 @@ a {
     }
 }
 
-:global(.ant-card),
-:global(.ant-modal-content) {
+:global(.ant-card) {
     box-shadow: var(--shadow);
 }
 

@@ -5,10 +5,14 @@ import { combineReducers } from 'redux';
 import { createReduxHistoryContext } from 'redux-first-history';
 
 import { authReducer } from './slices/auth';
+import { calendarSidePanelReducer } from './slices/calendar-side-panel';
+import { error500ModalReducer } from './slices/error-500-modal';
 import { errorFeedbackModalReducer } from './slices/error-feedback-modal';
 import { feedbackModalReducer } from './slices/feedback-modal';
+import { navMenuReducer } from './slices/nav-menu/nav-menu';
 import { siderReducer } from './slices/sider';
 import { successFeedbackModalReducer } from './slices/success-feedback-modal';
+import { trainingModalReducer } from './slices/training-modal/training-modal';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),
@@ -23,6 +27,10 @@ export const store = configureStore({
         feedbackModal: feedbackModalReducer,
         successFeedbackModal: successFeedbackModalReducer,
         errorFeedbackModal: errorFeedbackModalReducer,
+        error500Modal: error500ModalReducer,
+        navMenu: navMenuReducer,
+        trainingModal: trainingModalReducer,
+        calendarSidePanel: calendarSidePanelReducer,
         [api.reducerPath]: api.reducer,
     }),
     middleware: (getDefaultMiddleware) =>

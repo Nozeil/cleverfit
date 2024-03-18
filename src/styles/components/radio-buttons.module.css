@@ -1,0 +1,44 @@
+:global(.ant-radio-button-wrapper) {
+    height: var(--h-28);
+    line-height: var(--line-height-26);
+}
+
+:global(.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)),
+:global(.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover),
+:global(.ant-radio-button-wrapper:hover) {
+    color: var(--primary-light-6);
+}
+
+:global(.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)),
+:global(
+        .ant-radio-button-wrapper-checked:not(
+                [class*=' ant-radio-button-wrapper-disabled']
+            ).ant-radio-button-wrapper:first-child
+    ) {
+    border-color: var(--primary-light-6);
+}
+
+:global(.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):focus-within) {
+    box-shadow: var(--input-shadow);
+}
+
+@media screen and (max-width: 575px) {
+    :global(.ant-picker-calendar-header .ant-picker-calendar-mode-switch) {
+        margin-top: var(--mt-calendar-mode-switch-mobile-l);
+        margin-left: var(--ml-calendar-mode-switch-mobile-l);
+    }
+
+    :global(.ant-radio-group-small .ant-radio-button-wrapper) {
+        height: var(--h-20);
+        line-height: var(--line-height-18);
+    }
+
+    :global(.ant-picker-calendar-header .ant-picker-calendar-mode-switch) {
+        display: flex;
+        width: auto;
+    }
+
+    :global(.ant-picker-calendar-header .ant-picker-calendar-mode-switch > label) {
+        width: auto;
+    }
+}
