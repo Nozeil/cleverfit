@@ -25,6 +25,7 @@ import { AuthPage } from '@pages/auth/auth';
 import { CalendarPage } from '@pages/calendar-page/calendar-page';
 import { FeedbacksPage } from '@pages/feedbacks-page';
 import { MainPage } from '@pages/main-page';
+import { ProfilePage } from '@pages/profile-page';
 import { history } from '@redux/configure-store';
 import { Route, Routes } from 'react-router-dom';
 import { HistoryRouter } from 'redux-first-history/rr6';
@@ -131,6 +132,16 @@ const routes = (
                 }
             >
                 <Route index element={<CalendarPage />} />
+            </Route>
+            <Route
+                path={ROUTES.PROFILE}
+                element={
+                    <AuthRoute>
+                        <PageLayout />
+                    </AuthRoute>
+                }
+            >
+                <Route index element={<ProfilePage />} />
             </Route>
         </Route>
         <Route path='*' element={<CheckGoogleAuthRoute />} />

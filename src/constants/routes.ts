@@ -4,6 +4,7 @@ export const ROUTES = {
     MAIN: '/main',
     FEEDBACKS: '/feedbacks',
     CALENDAR: '/calendar',
+    PROFILE: '/profile',
     RESULT: '/result',
     ERROR_LOGIN: 'error-login',
     SUCCESS_REGISTRATION: 'success',

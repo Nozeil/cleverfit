@@ -6,7 +6,7 @@ import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { useAuth } from '@hooks/useAuth';
 import { useCalendarHandler } from '@hooks/useCalendarHandler';
 import { selectedKeysSelector } from '@redux/slices/nav-menu/nav-menu';
-import { Grid, Menu } from 'antd';
+import { Grid, Menu, MenuProps } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
 import { ICONS_COLOR } from './nav-menu.constants';
@@ -59,10 +59,26 @@ export const NavMenu = () => {
     const selectedKeys = useAppSelector(selectedKeysSelector);
     const { signout } = useAuth();
     const navigate = useNavigate();
-    const calendarHandler = useCalendarHandler();
+    const calendarHandler = useCalendarHandler(navigate);
 
     const { md } = useBreakpoint();
     const mode = md ? 'inline' : 'vertical';
+
+    const menuOnClick: MenuProps['onClick'] = ({ key }) => {
+        switch (key) {
+            case CALENDAR:
+                calendarHandler();
+                break;
+            case PROFILE:
+                navigate(ROUTES.PROFILE);
+                break;
+            case EXIT:
+                signout(() => navigate(ROUTES.AUTH));
+                break;
+            default:
+                return;
+        }
+    };
 
     return (
         <Menu
@@ -71,14 +87,7 @@ export const NavMenu = () => {
             mode={mode}
             items={menuItems}
             inlineIndent={16}
-            onClick={({ key }) => {
-                if (key === CALENDAR) {
-                    calendarHandler();
-                }
-                if (key === EXIT) {
-                    signout(() => navigate(ROUTES.AUTH));
-                }
-            }}
+            onClick={menuOnClick}
         />
     );
 };
