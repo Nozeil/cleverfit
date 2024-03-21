@@ -12,6 +12,7 @@ import styles from './page-template.module.css';
 
 type PageTemplateProps = {
     headerContent?: ReactNode;
+    headerContentClassName?: string;
     mainContent?: ReactNode;
     mainContentClassName?: string;
     footerContent?: ReactNode;
@@ -22,6 +23,7 @@ const { Header, Content, Footer } = Layout;
 
 export const PageTemplate = ({
     headerContent,
+    headerContentClassName,
     mainContent,
     mainContentClassName,
     footerContent,
@@ -37,7 +39,9 @@ export const PageTemplate = ({
     return (
         <Suspense fallback={<Loader />}>
             <Layout className={styles.layout}>
-                <Header className={styles.header}>{headerContent}</Header>
+                <Header className={cx(styles.header, headerContentClassName)}>
+                    {headerContent}
+                </Header>
                 <Content className={cx(styles.content, mainContentClassName)}>
                     {mainContent}
                 </Content>

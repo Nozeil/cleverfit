@@ -1,0 +1,32 @@
+.title:global(.ant-typography) {
+    margin: 6px 0;
+    font-weight: var(--font-medium);
+}
+
+@media screen and (min-width: 835px) {
+    .breadcrumb:global(.ant-breadcrumb) {
+        display: none;
+    }
+
+    .row:global(.ant-row) {
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 834px) {
+    .row:global(.ant-row) {
+        align-items: start;
+        justify-content: end;
+        margin-bottom: 4px;
+    }
+
+    .title {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .row {
+        margin-bottom: 0;
+    }
+}

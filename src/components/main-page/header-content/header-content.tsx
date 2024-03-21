@@ -5,10 +5,10 @@ import styles from './header-content.module.css';
 
 export const HeaderContent = () => (
     <>
-        <Breadcrumb className={styles.breadcrumb}>
+        <Breadcrumb>
             <Breadcrumb.Item>Главная</Breadcrumb.Item>
         </Breadcrumb>
-        <HeaderSettingsRow>
+        <HeaderSettingsRow hideIconOnTablet={true} btnWithBackground={true}>
             <Typography.Title className={styles.title}>
                 {`Приветствуем тебя в\u00a0CleverFit\u00a0— приложении, 
                     которое поможет тебе добиться своей мечты!`}
