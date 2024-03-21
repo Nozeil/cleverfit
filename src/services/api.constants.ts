@@ -19,3 +19,7 @@ export const FEEDBACKS_ENDPOINTS = {
 export const TRAINING_ENDPOINTS = {
     TRAINING: '/training',
 } as const;
+
+export const USER_ENDPOINTS = {
+    ME: 'user/me',
+} as const;

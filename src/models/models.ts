@@ -97,3 +97,17 @@ export type TrainingListResponse = TrainingListItem[];
 export type CreateTrainingResponse = TrainingResponse;
 export type TrainingBody = Omit<NewTraining, 'userId'>;
 export type UpdateTrainingArgs = { id: string; body: TrainingBody };
+
+export type UserInfoResponse = {
+    email: string;
+    firstName: string;
+    lastName: string;
+    birthday: string;
+    imgSrc: string;
+    readyForJointTraining: boolean;
+    sendNotification: boolean;
+    tariff: {
+        tariffId: string;
+        expired: string;
+    };
+};
