@@ -4,10 +4,10 @@ import { Typography } from 'antd';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import { PasswordsGroup } from '../../../passwords-group/passwords-group';
 import { INPUT_GROUP_TYPE_KEYS } from '../../auth-page.constants';
 import { ContentLayout } from '../../content-layout/content-layout';
 import { InputGroup } from '../../input-group/input-group';
-import { PasswordsGroup } from '../../passwords-group/passwords-group';
 import { AuthForm } from '../auth-form/auth-form';
 import type { OnFinishChangePasswordValues } from '../auth-forms.types';
 import styles from './change-password.module.css';

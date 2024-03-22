@@ -111,7 +111,7 @@
 }
 
 .modalOkBtn {
-    height: var(--h-40s);
+    height: var(--h-40);
 }
 
 .badgeDisabled :global(.ant-badge-status-text) {

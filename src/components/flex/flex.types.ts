@@ -3,7 +3,7 @@ import { type ReactNode } from 'react';
 
 type Breakpoints = Partial<Record<Breakpoint, boolean>>;
 
-export type Direction = 'row' | 'column';
+export type Direction = 'row' | 'column' | 'column-reverse';
 export type Justify = 'justifyStart' | 'justifyCenter' | 'justifyEnd' | 'justifyBetween';
 export type Align = 'alignStart' | 'alignCenter' | 'alignEnd';
 export type Gap =

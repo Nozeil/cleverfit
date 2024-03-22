@@ -5,10 +5,13 @@ import './index.module.css';
 
 import { Router } from '@components/router/router';
 import { store } from '@redux/configure-store';
+import { ConfigProvider } from 'antd';
 import moment from 'moment';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
+
+import { locale } from './locale/locale';
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
@@ -22,7 +25,9 @@ moment.locale('ru', {
 root.render(
     <React.StrictMode>
         <Provider store={store}>
-            <Router />
+            <ConfigProvider locale={locale}>
+                <Router />
+            </ConfigProvider>
         </Provider>
     </React.StrictMode>,
 );

@@ -1,0 +1,14 @@
+.wrapper {
+    height: 100%;
+    padding: 24px;
+    background-color: var(--character-light-primary-inverse);
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 575px) {
+    .wrapper {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        border-radius: 0;
+    }
+}

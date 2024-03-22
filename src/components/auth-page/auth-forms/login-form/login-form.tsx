@@ -5,8 +5,8 @@ import { useAuth } from '@hooks/useAuth';
 import { useLoginUserMutation } from '@services/endpoints/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { EmailInput } from '../../inputs/email-input';
-import { PasswordInput } from '../../inputs/password-input';
+import { EmailInput } from '../../../inputs/email-input';
+import { PasswordInput } from '../../../inputs/password-input';
 import { AuthForm } from '../auth-form/auth-form';
 import type { OnFinishLoginValues } from '../auth-forms.types';
 import styles from './login-form.module.css';

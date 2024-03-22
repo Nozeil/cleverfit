@@ -14,7 +14,6 @@ import { createPortal } from 'react-dom';
 import styles from './calendar-content.module.css';
 import { ExercisesForm } from './exercises-form/exercises-form';
 import { useTrainingModal } from './hooks/use-training-modal/use-training-modal';
-import { locale } from './locale';
 import { Notification } from './notification/notification';
 import { SidePanel } from './side-panel/side-panel';
 import { TrainingModal } from './training-modal/training-modal';
@@ -57,10 +56,9 @@ export const CalendarContent = () => {
     };
 
     const calendar = isError ? (
-        <Calendar locale={locale} fullscreen={sm} />
+        <Calendar fullscreen={sm} />
     ) : (
         <Calendar
-            locale={locale}
             fullscreen={sm}
             onPanelChange={() => dispatch(closeTrainingModal())}
             onSelect={resetExercisesAndForm}

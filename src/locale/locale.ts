@@ -1,10 +1,11 @@
-import antLocale from 'antd/es/calendar/locale/ru_RU';
+import calendarLocale from 'antd/es/date-picker/locale/ru_RU';
+import antLocale from 'antd/es/locale/ru_RU';
 import { PickerLocale } from 'antd/lib/date-picker/generatePicker';
 
-export const locale: PickerLocale = {
-    ...antLocale,
+const ruLocale: PickerLocale = {
+    ...calendarLocale,
     lang: {
-        ...antLocale.lang,
+        ...calendarLocale.lang,
         shortWeekDays: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
         shortMonths: [
             'Янв',
@@ -21,5 +22,12 @@ export const locale: PickerLocale = {
             'Дек',
         ],
     },
-    timePickerLocale: { ...antLocale.timePickerLocale },
+    timePickerLocale: { ...calendarLocale.timePickerLocale },
+};
+
+export const locale = {
+    ...antLocale,
+    Calendar: ruLocale,
+    DatePicker: ruLocale,
+    Upload: { ...antLocale.Upload, uploading: 'Загружаем' },
 };

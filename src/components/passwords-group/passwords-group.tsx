@@ -1,12 +1,12 @@
-import { INPUT_NAMES } from '../auth-page.constants';
+import { INPUT_NAMES } from '../auth-page/auth-page.constants';
 import { PasswordInput } from '../inputs/password-input';
 
 const helpMessage = 'Пароль не менее 8 символов, с заглавной буквой и цифрой';
 
 type PasswordGroupProps = {
+    testId_1?: string;
+    testId_2?: string;
     placeholder_1?: string;
-    testId_1: string;
-    testId_2: string;
 };
 
 export const PasswordsGroup = ({ placeholder_1, testId_1, testId_2 }: PasswordGroupProps) => (

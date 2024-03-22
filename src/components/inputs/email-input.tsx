@@ -1,11 +1,11 @@
 import { Form, Input } from 'antd';
 
-import { INPUT_NAMES } from '../auth-page.constants';
+import { INPUT_NAMES } from '../auth-page/auth-page.constants';
 import styles from './inputs.module.css';
 import { emailPattern } from './regex';
 
 type EmailInputProps = {
-    testId: string;
+    testId?: string;
     required?: boolean;
 };
 
@@ -15,7 +15,7 @@ export const EmailInput = ({ testId, required }: EmailInputProps) => (
         name={INPUT_NAMES.EMAIL}
         rules={[
             {
-                required: required,
+                required,
                 pattern: emailPattern,
                 message: '',
             },

@@ -1,12 +1,12 @@
 import { Form, Input } from 'antd';
 import { type Rule } from 'antd/lib/form';
 
-import { INPUT_NAMES } from '../auth-page.constants';
+import { INPUT_NAMES } from '../auth-page/auth-page.constants';
 import styles from './inputs.module.css';
 import { passwordPattern } from './regex';
 
 type PasswordInputProps = {
-    testId: string;
+    testId?: string;
     name?: string;
     message?: string;
     placeholder?: string;

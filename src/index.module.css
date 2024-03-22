@@ -8,6 +8,8 @@
 @import url('./styles/components/calendar.module.css');
 @import url('./styles/components/dropdown.module.css');
 @import url('./styles/components/radio-buttons.module.css');
+@import url('./styles/components/date-picker.module.css');
+@import url('./styles/components/upload.module.css');
 
 :global(.ant-breadcrumb),
 :global(.ant-breadcrumb) li,
