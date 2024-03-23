@@ -1,4 +1,5 @@
 export const BASE_URL = 'https://marathon-api.clevertec.ru/';
+export const AVATAR_BASE_URL = 'https://training-api.clevertec.ru';
 
 export const AUTH_ENDPOINTS = {
     REGISTRATION: 'auth/registration',

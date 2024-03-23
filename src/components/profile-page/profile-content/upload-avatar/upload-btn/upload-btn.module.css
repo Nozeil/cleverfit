@@ -1,0 +1,15 @@
+.uploadText:global(.ant-typography) {
+    margin-bottom: 0;
+    color: var(--character-light-secondary-45);
+}
+
+@media screen and (max-width: 575px) {
+    .uploadBtn:global(.ant-btn) {
+        padding: 10px 26px;
+        font-size: var(--text-sm);
+    }
+
+    .uploadBtn :global(.anticon) + span {
+        margin-left: 10px;
+    }
+}

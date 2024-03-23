@@ -3,11 +3,6 @@
     height: 112px;
 }
 
-.uploadText:global(.ant-typography) {
-    margin-bottom: 0;
-    color: var(--character-light-secondary-45);
-}
-
 .progress:global(.ant-progress) {
     height: 14px;
     width: 87px;
@@ -40,14 +35,5 @@
 
     .uploadFormItem :global(.ant-upload-list-item-name) {
         visibility: hidden;
-    }
-
-    .uploadBtn:global(.ant-btn) {
-        padding: 10px 26px;
-        font-size: var(--text-sm);
-    }
-
-    .uploadBtn :global(.anticon) + span {
-        margin-left: 10px;
     }
 }

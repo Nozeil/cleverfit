@@ -1,32 +1,14 @@
-import { PlusOutlined, UploadOutlined } from '@ant-design/icons';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { selectAuthToken } from '@redux/slices/auth';
 import { UPLOAD_IMAGE } from '@services/api.constants';
 import { useGetUserInfoQuery } from '@services/endpoints/user';
-import { CenteredModalError } from '@utils/modal-error/modal-error';
-import { type UploadProps, Button, Form, Grid, Space, Typography, Upload, UploadFile } from 'antd';
-import { type RcFile } from 'antd/lib/upload';
+import { type UploadFile, type UploadProps, Form, Grid, Typography, Upload } from 'antd';
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import styles from './upload-avatar.module.css';
-
-const isLt5M = (fileSize: number) => fileSize / 1024 / 1024 < 5;
-
-const beforeUpload = (file: RcFile) => {
-    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-    const isLessThen5M = isLt5M(file.size);
-
-    if (!isLessThen5M) {
-        CenteredModalError({
-            title: 'Файл слишком большой',
-            content: 'Выберите файл размером до 5МБ.',
-            okText: 'Закрыть',
-        });
-    }
-
-    return isJpgOrPng && isLessThen5M;
-};
+import { beforeUpload } from './upload-avatar.utils';
+import { UploadBtn } from './upload-btn/upload-btn';
 
 const { useBreakpoint } = Grid;
 
@@ -54,37 +36,18 @@ export const UploadAvatar = () => {
               ]);
     };
 
-    const uploadBtn = xs ? (
-        <Button
-            className={styles.uploadBtn}
-            icon={<UploadOutlined style={{ color: 'var(--character-light-disable-25)' }} />}
-        >
-            Загрузить
-        </Button>
-    ) : (
-        <Space direction='vertical'>
-            <PlusOutlined />
-            <Typography.Paragraph className={styles.uploadText}>
-                {`Загрузить фото \u00a0 профиля`}
-            </Typography.Paragraph>
-        </Space>
-    );
-
     const listType = xs ? 'picture' : 'picture-card';
 
-    const content = fileList.length >= 1 ? null : uploadBtn;
+    const content = fileList.length >= 1 ? null : <UploadBtn />;
+
+    const label = xs && !fileList.length && (
+        <Typography.Text className={styles.uploadLabel}>Загрузить фото профиля:</Typography.Text>
+    );
 
     return (
         <Form.Item
             className={styles.uploadFormItem}
-            label={
-                xs &&
-                !fileList.length && (
-                    <Typography.Text className={styles.uploadLabel}>
-                        Загрузить фото профиля:
-                    </Typography.Text>
-                )
-            }
+            label={label}
             labelCol={{ flex: 'auto' }}
             wrapperCol={{ flex: 'none' }}
             name='upload'
