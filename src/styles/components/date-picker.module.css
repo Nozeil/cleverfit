@@ -9,3 +9,8 @@
 :global(.ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner) {
     background-color: var(--primary-light-6);
 }
+
+:global(.ant-picker-header-view button:hover),
+:global(.ant-picker-today-btn) {
+    color: var(--primary-light-6);
+}
