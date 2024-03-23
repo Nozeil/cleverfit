@@ -3,45 +3,29 @@ import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { selectAuthToken } from '@redux/slices/auth';
 import { UPLOAD_IMAGE } from '@services/api.constants';
 import { useGetUserInfoQuery } from '@services/endpoints/user';
-import {
-    Button,
-    Form,
-    Grid,
-    Modal,
-    Space,
-    Typography,
-    Upload,
-    UploadFile,
-    UploadProps,
-} from 'antd';
+import { CenteredModalError } from '@utils/modal-error/modal-error';
+import { type UploadProps, Button, Form, Grid, Space, Typography, Upload, UploadFile } from 'antd';
 import { type RcFile } from 'antd/lib/upload';
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import styles from './upload-avatar.module.css';
 
-const isLt5M = (fileSize: number) => {
-    return fileSize / 1024 / 1024 < 5;
-};
+const isLt5M = (fileSize: number) => fileSize / 1024 / 1024 < 5;
 
 const beforeUpload = (file: RcFile) => {
     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
     const isLessThen5M = isLt5M(file.size);
+
     if (!isLessThen5M) {
-        Modal.error({
+        CenteredModalError({
             title: 'Файл слишком большой',
             content: 'Выберите файл размером до 5МБ.',
-            centered: true,
-            autoFocusButton: null,
             okText: 'Закрыть',
-            okButtonProps: {
-                className: styles.modalOkBtn,
-            },
-            maskStyle: { backgroundColor: 'var(--blue-2)' },
         });
     }
 
-    return isJpgOrPng && isLt5M(file.size);
+    return isJpgOrPng && isLessThen5M;
 };
 
 const { useBreakpoint } = Grid;
@@ -68,8 +52,6 @@ export const UploadAvatar = () => {
                       status: 'error',
                   },
               ]);
-
-        /* `https://training-api.clevertec.ru/${file.response?.url}` */
     };
 
     const uploadBtn = xs ? (
@@ -105,9 +87,9 @@ export const UploadAvatar = () => {
             }
             labelCol={{ flex: 'auto' }}
             wrapperCol={{ flex: 'none' }}
+            name='upload'
         >
             <Upload
-                name='avatar'
                 fileList={fileList}
                 action={UPLOAD_IMAGE}
                 headers={{ Authorization: `Bearer ${token}` }}
@@ -119,7 +101,6 @@ export const UploadAvatar = () => {
                     strokeWidth: 4,
                     strokeColor: 'var(--primary-light-6)',
                 }}
-                data={(file) => ({ file })}
                 listType={listType}
                 beforeUpload={beforeUpload}
                 onChange={handleChange}

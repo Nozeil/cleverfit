@@ -13,12 +13,12 @@
     width: 87px;
 }
 
-.modalOkBtn {
-    height: var(--h-40);
-}
-
 .uploadLabel {
     font-size: var(--text-xs);
+}
+
+.uploadFormItem :global(.ant-upload-list-item) {
+    margin-top: 0;
 }
 
 @media screen and (max-width: 575px) {

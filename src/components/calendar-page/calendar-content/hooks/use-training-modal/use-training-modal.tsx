@@ -1,3 +1,4 @@
+import { DATE_FORMATS } from '@constants/index';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import {
     closeTrainingModal,
@@ -36,7 +37,7 @@ export const useTrainingModal = (breakpoint: boolean | undefined) => {
         dispatch(
             setTrainingModalDate({
                 iso,
-                formated: date.format('DD.MM.YYYY'),
+                formated: date.format(DATE_FORMATS.DMY),
             }),
         );
 

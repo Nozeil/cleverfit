@@ -110,10 +110,6 @@
     background-color: transparent;
 }
 
-.modalOkBtn {
-    height: var(--h-40);
-}
-
 .badgeDisabled :global(.ant-badge-status-text) {
     color: var(--character-light-disable-25);
 }

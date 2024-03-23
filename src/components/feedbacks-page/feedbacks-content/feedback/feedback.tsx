@@ -1,8 +1,9 @@
 import { StarFilled, StarOutlined, UserOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
+import { DATE_FORMATS } from '@constants/index';
 import { Feedback as FeedbackModel } from '@models/models';
 import { Avatar, Card, List, Rate, Space, Typography } from 'antd';
-import { format } from 'date-fns';
+import moment from 'moment';
 
 import styles from './feedback.module.css';
 
@@ -59,7 +60,7 @@ export const Feedback = ({ createdAt, fullName, imageSrc, message, rating }: Fee
                             />
 
                             <Typography.Text disabled className={styles.date}>
-                                {format(new Date(createdAt), 'dd.MM.yyyy')}
+                                {moment(new Date(createdAt)).format(DATE_FORMATS.DMY)}
                             </Typography.Text>
                         </Space>
 

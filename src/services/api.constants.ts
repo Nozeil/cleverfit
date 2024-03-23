@@ -22,6 +22,7 @@ export const TRAINING_ENDPOINTS = {
 
 export const USER_ENDPOINTS = {
     ME: 'user/me',
+    USER: 'user',
 } as const;
 
 export const UPLOAD_IMAGE = `${BASE_URL}upload-image`;

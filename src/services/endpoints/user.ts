@@ -1,4 +1,4 @@
-import type { UserInfoResponse } from '@models/models';
+import type { UpdateUserBody, UserInfoResponse } from '@models/models';
 import { api } from '@services/api';
 import { USER_ENDPOINTS } from '@services/api.constants';
 
@@ -10,7 +10,15 @@ export const userApi = api.injectEndpoints({
             }),
             providesTags: ['User'],
         }),
+        updateUserInfo: builder.mutation<UserInfoResponse, UpdateUserBody>({
+            query: (body) => ({
+                url: USER_ENDPOINTS.USER,
+                method: 'PUT',
+                body,
+            }),
+            invalidatesTags: ['User'],
+        }),
     }),
 });
 
-export const { useGetUserInfoQuery } = userApi;
+export const { useGetUserInfoQuery, useUpdateUserInfoMutation } = userApi;

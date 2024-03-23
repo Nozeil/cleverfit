@@ -12,6 +12,7 @@ type PasswordInputProps = {
     placeholder?: string;
     help?: string;
     rules?: Rule[];
+    required?: boolean;
 };
 
 export const PasswordInput = ({
@@ -21,10 +22,11 @@ export const PasswordInput = ({
     help,
     rules: additionalRules,
     testId,
+    required = true,
 }: PasswordInputProps) => {
     const rules: Rule[] = [
         {
-            required: true,
+            required,
             pattern: passwordPattern,
             message,
         },
