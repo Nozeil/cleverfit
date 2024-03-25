@@ -106,7 +106,7 @@ a {
     color: var(--primary-light-6);
 }
 
-:global(.ant-btn-text) {
+:global(.ant-btn-text:not(.ant-upload-list-item-card-actions-btn)) {
     &:hover,
     &:active,
     &:focus {

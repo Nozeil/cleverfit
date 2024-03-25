@@ -1,7 +1,9 @@
 import { SettingOutlined } from '@ant-design/icons';
+import { ROUTES } from '@constants/routes';
 import { type RowProps, Button, Row } from 'antd';
 import classNames from 'classnames/bind';
 import { ReactNode } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './header-settings-row.module.css';
 
@@ -22,11 +24,15 @@ export const HeaderSettingsRow = ({
     btnWithBackground,
     children,
 }: HeaderSettingsRowProps) => {
+    const navigate = useNavigate();
+
     const justify = children ? 'space-between' : 'end';
     const btnClassName = btnWithBackground ? cx(styles.btn, styles.btnWithBackground) : styles.btn;
     const iconClassName = hideIconOnTablet
         ? cx(styles.btnIcon, styles.btnIconNone)
         : styles.btnIcon;
+
+    const onClick = () => navigate(ROUTES.SETTINGS);
 
     return (
         <Row className={cx(styles.row, rowClassName)} justify={justify} align={align} wrap={false}>
@@ -35,6 +41,7 @@ export const HeaderSettingsRow = ({
                 className={btnClassName}
                 type='text'
                 icon={<SettingOutlined className={iconClassName} />}
+                onClick={onClick}
             >
                 Настройки
             </Button>

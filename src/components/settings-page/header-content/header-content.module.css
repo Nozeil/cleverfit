@@ -1,0 +1,28 @@
+.btn:global(.ant-btn) {
+    padding: 0;
+    font-size: var(--text-xl);
+    font-weight: var(--font-medium);
+}
+
+.btn:global(.ant-btn):hover,
+.btn:global(.ant-btn):focus {
+    background-color: inherit;
+}
+
+.btn :global(.anticon) + span {
+    margin-left: 14px;
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 767px) {
+    .btn:global(.ant-btn) {
+        height: 30px;
+        font-size: var(--text-sm);
+        font-weight: var(--font-normal);
+    }
+
+    .btn :global(.anticon) + span {
+        margin-left: 16px;
+        vertical-align: middle;
+    }
+}
