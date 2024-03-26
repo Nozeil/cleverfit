@@ -9,7 +9,7 @@ import {
     setProfileSubmit,
 } from '@redux/slices/profile';
 import { AVATAR_BASE_URL } from '@services/api.constants';
-import { useUpdateUserInfoMutation } from '@services/endpoints/user';
+import { useGetUserInfoQuery, useUpdateUserInfoMutation } from '@services/endpoints/user';
 import { CenteredModalError } from '@utils/modal-error/modal-error';
 import { type FormInstance, type FormProps } from 'antd';
 import moment from 'moment';
@@ -17,6 +17,7 @@ import moment from 'moment';
 import type { FormValues } from '../profile-content.types';
 
 export const useFormHandlers = (form: FormInstance) => {
+    const { data } = useGetUserInfoQuery();
     const [updateUser] = useUpdateUserInfoMutation();
     const dispatch = useAppDispatch();
 
@@ -33,8 +34,8 @@ export const useFormHandlers = (form: FormInstance) => {
             lastName,
             email,
             password,
-            readyForJointTraining: true,
-            sendNotification: true,
+            readyForJointTraining: data?.readyForJointTraining,
+            sendNotification: data?.sendNotification,
         };
 
         if (upload) {

@@ -1,0 +1,5 @@
+@import url('../main-content-settings-profile.module.css');
+
+.layout:global(.ant-layout) {
+    background-color: var(--character-light-background);
+}

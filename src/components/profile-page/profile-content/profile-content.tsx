@@ -20,38 +20,37 @@ export const ProfileContent = () => {
 
     useEffect(() => {
         if (data) {
-            const { firstName, lastName, email, birthday } = data;
-
             form.resetFields();
-
-            form.setFieldsValue({
-                firstName,
-                lastName,
-                email,
-                birthday: birthday && moment(birthday),
-            });
         }
     }, [data, form]);
 
     return (
         <ContentWrapper>
             <ProfileAlert />
-            <Form
-                form={form}
-                className={styles.form}
-                name='user-data-update-form'
-                autoComplete='off'
-                size='large'
-                onFinish={onFinish}
-                onValuesChange={onValuesChange}
-                onFieldsChange={onFieldsChange}
-            >
-                <Flex direction='column' gap={{ xs: 'gap20', sm: 'gap24' }}>
-                    <PersonalGroup />
-                    <PrivacyGroup />
-                    <SubmitBtn />
-                </Flex>
-            </Form>
+            {data && (
+                <Form
+                    form={form}
+                    className={styles.form}
+                    initialValues={{
+                        firstName: data.firstName,
+                        lastName: data.lastName,
+                        email: data.email,
+                        birthday: data.birthday && moment(data.birthday),
+                    }}
+                    name='user-data-update-form'
+                    autoComplete='off'
+                    size='large'
+                    onFinish={onFinish}
+                    onValuesChange={onValuesChange}
+                    onFieldsChange={onFieldsChange}
+                >
+                    <Flex direction='column' gap={{ xs: 'gap20', sm: 'gap24' }}>
+                        <PersonalGroup />
+                        <PrivacyGroup />
+                        <SubmitBtn />
+                    </Flex>
+                </Form>
+            )}
         </ContentWrapper>
     );
 };

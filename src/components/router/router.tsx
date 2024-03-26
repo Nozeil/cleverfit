@@ -26,7 +26,7 @@ import { CalendarPage } from '@pages/calendar-page/calendar-page';
 import { FeedbacksPage } from '@pages/feedbacks-page';
 import { MainPage } from '@pages/main-page';
 import { ProfilePage } from '@pages/profile-page/profile-page';
-import { SettingsPage } from '@pages/settings-page';
+import { SettingsPage } from '@pages/settings-page/settings-page';
 import { history } from '@redux/configure-store';
 import { Route, Routes } from 'react-router-dom';
 import { HistoryRouter } from 'redux-first-history/rr6';

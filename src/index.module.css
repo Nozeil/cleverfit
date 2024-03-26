@@ -10,6 +10,7 @@
 @import url('./styles/components/radio-buttons.module.css');
 @import url('./styles/components/date-picker.module.css');
 @import url('./styles/components/upload.module.css');
+@import url('./styles/components/switch.module.css');
 
 :global(.ant-breadcrumb),
 :global(.ant-breadcrumb) li,
@@ -42,6 +43,7 @@
 :global(.ant-badge),
 :global(.ant-modal-confirm-body .ant-modal-confirm-title),
 :global(.ant-modal-confirm-body .ant-modal-confirm-content),
+:global(.ant-tooltip),
 a {
     line-height: var(--line-height);
 }

@@ -1,0 +1,17 @@
+.settingsContainer {
+    max-width: 505px;
+}
+
+.btnGroup {
+    margin-top: 72px;
+}
+
+.btn:global(.ant-btn) {
+    font-size: var(--text-sm);
+}
+
+@media screen and (max-width: 575px) {
+    .btnGroup {
+        margin-top: 0;
+    }
+}

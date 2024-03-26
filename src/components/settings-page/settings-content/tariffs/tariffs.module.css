@@ -1,0 +1,47 @@
+.title:global(.ant-typography) {
+    margin-bottom: 0;
+    font-weight: var(--font-medium);
+}
+
+.card:global(.ant-card) {
+    width: 100%;
+    max-width: 240px;
+    box-shadow: var(--shadow-md);
+}
+
+.card :global(.ant-card-head-wrapper) {
+    padding: 0 24px;
+}
+
+.linkButton:global(.ant-btn) {
+    padding: 0;
+}
+
+.card :global(.ant-card-body) {
+    height: 95px;
+}
+
+.tariffStatus {
+    height: 100%;
+}
+
+.tariffStatusText:global(.ant-typography) {
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    color: var(--primary-light-10);
+}
+
+.btn:global(.ant-btn) {
+    font-size: var(--text-sm);
+}
+
+@media screen and (max-width: 575px) {
+    .card:global(.ant-card) {
+        max-width: 312px;
+    }
+
+    .card :global(.ant-card-body) {
+        height: 64px;
+        padding: 12px 0;
+    }
+}

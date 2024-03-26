@@ -119,6 +119,18 @@ export type UpdateUserBody = {
     lastName?: string;
     birthday?: string;
     imgSrc?: string;
-    readyForJointTraining: boolean;
-    sendNotification: boolean;
+    readyForJointTraining?: boolean;
+    sendNotification?: boolean;
 };
+
+type TariffItem = {
+    _id: string;
+    name: string;
+    periods: {
+        text: string;
+        cost: number;
+        days: number;
+    }[];
+};
+
+export type TariffListResponse = TariffItem[];

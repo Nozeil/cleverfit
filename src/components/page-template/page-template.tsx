@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './page-template.module.css';
 
 type PageTemplateProps = {
+    layoutClassName?: string;
     headerContent?: ReactNode;
     headerContentClassName?: string;
     mainContent?: ReactNode;
@@ -22,6 +23,7 @@ const cx = classNames.bind(styles);
 const { Header, Content, Footer } = Layout;
 
 export const PageTemplate = ({
+    layoutClassName,
     headerContent,
     headerContentClassName,
     mainContent,
@@ -38,7 +40,7 @@ export const PageTemplate = ({
 
     return (
         <Suspense fallback={<Loader />}>
-            <Layout className={styles.layout}>
+            <Layout className={cx(styles.layout, layoutClassName)}>
                 <Header className={cx(styles.header, headerContentClassName)}>
                     {headerContent}
                 </Header>

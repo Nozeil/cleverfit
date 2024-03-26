@@ -6,7 +6,7 @@ import { openSuccessFeedbackModal } from '@redux/slices/success-feedback-modal';
 import { useCreateFeedbackMutation } from '@services/endpoints/feedbacks';
 import { Form, Input, Rate } from 'antd';
 
-import { FORM_NAME } from '../feedback-content.constants';
+import { FORM_NAME } from '../../feedbacks-page/feedbacks-content/feedback-content.constants';
 import styles from './feedback-form.module.css';
 import type { FeedbackFormProps, OnFinishFeedbackValues } from './feedback-form.types';
 

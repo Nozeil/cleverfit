@@ -9,24 +9,30 @@ import {
     openFeedbackModal,
 } from '@redux/slices/feedback-modal';
 import { Button } from 'antd';
-import { type ReactNode } from 'react';
+import classNames from 'classnames/bind';
+import { type ReactNode, useState } from 'react';
 
-import { FORM_NAME } from '../feedback-content.constants';
-import styles from './button-group-with-modal.module.css';
+import { FORM_NAME } from '../feedbacks-page/feedbacks-content/feedback-content.constants';
+import { FeedbackForm } from './feedback-form/feedback-form';
+import styles from './feedback-modal-with-button-group.module.css';
+import { ModalError } from './modal-error/modal-error';
+import { ModalSuccess } from './modal-success';
 
-type ButtonGroupWithModalProps = {
-    children: ReactNode;
-    disabled: boolean;
-    buttonGroupClassName?: string;
-    expendButton?: ReactNode;
+type FeedbackModalWithButtonGroupProps = {
+    btnGroupClassName?: string;
+    additonalButton?: ReactNode;
+    maskStyleColor?: string;
 };
 
-export const ButtonGroupWithModal = ({
-    children,
-    disabled,
-    buttonGroupClassName,
-    expendButton,
-}: ButtonGroupWithModalProps) => {
+const cx = classNames.bind(styles);
+
+export const FeedbackModalWithButtonGroup = ({
+    additonalButton,
+    btnGroupClassName,
+    maskStyleColor,
+}: FeedbackModalWithButtonGroupProps) => {
+    const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+
     const isOpen = useAppSelector(isFeedbackModalOpenSelector);
     const dispatch = useAppDispatch();
 
@@ -35,6 +41,9 @@ export const ButtonGroupWithModal = ({
 
     return (
         <>
+            <ModalSuccess />
+            <ModalError />
+
             <ModalWithShadowMd
                 className={styles.modal}
                 open={isOpen}
@@ -42,7 +51,7 @@ export const ButtonGroupWithModal = ({
                 width={WIDTH_540}
                 title='Ваш отзыв'
                 closeIcon={<CloseOutlined style={{ fontSize: 14 }} />}
-                maskStyle={{ backgroundColor: 'var(--blue-1)' }}
+                maskStyle={{ backgroundColor: maskStyleColor }}
                 footer={
                     <Button
                         form={FORM_NAME}
@@ -50,7 +59,7 @@ export const ButtonGroupWithModal = ({
                         type='primary'
                         size='large'
                         htmlType='submit'
-                        disabled={disabled}
+                        disabled={isSubmitDisabled}
                         data-test-id='new-review-submit-button'
                     >
                         Опубликовать
@@ -59,11 +68,11 @@ export const ButtonGroupWithModal = ({
                 onCancel={closeModal}
                 zIndex={10}
             >
-                {children}
+                <FeedbackForm disableSubmit={(disabled) => setIsSubmitDisabled(disabled)} />
             </ModalWithShadowMd>
 
             <Flex
-                className={buttonGroupClassName}
+                className={cx(styles.btnGroup, btnGroupClassName)}
                 direction={{ sm: 'row', xs: 'column' }}
                 align='alignCenter'
                 gap={{ sm: 'gap8', xs: 'gap16' }}
@@ -79,7 +88,7 @@ export const ButtonGroupWithModal = ({
                     Написать отзыв
                 </Button>
 
-                {expendButton}
+                {additonalButton}
             </Flex>
         </>
     );

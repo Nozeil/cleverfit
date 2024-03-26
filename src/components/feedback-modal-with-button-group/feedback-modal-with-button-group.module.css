@@ -11,6 +11,10 @@
     padding: var(--p-create-feedback-modal);
 }
 
+.btnGroup {
+    width: fit-content;
+}
+
 @media screen and (max-width: 767px) {
     .modal :global(.ant-modal-header) {
         padding: var(--p-create-feedback-modal-tablet);
@@ -20,6 +24,10 @@
     .modal:global(.ant-modal) :global(.ant-modal-footer) {
         padding-left: var(--p-create-feedback-modal-tablet);
         padding-right: var(--p-create-feedback-modal-tablet);
+    }
+
+    .btnGroup {
+        width: 100%;
     }
 
     .btn:global(.ant-btn) {
