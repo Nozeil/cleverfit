@@ -1,5 +1,6 @@
+import { SidePanel } from '@components/side-panel/side-panel';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { closeCalendarSidePanel } from '@redux/slices/calendar-side-panel';
+import { closeSidePanel } from '@redux/slices/side-panel';
 import {
     closeTrainingModal,
     isTrainingModalOpenSelector,
@@ -12,10 +13,11 @@ import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import styles from './calendar-content.module.css';
+import { CalendarSidePanelBody } from './calendar-side-panel-body/calendar-side-panel-body';
+import { CalendarSidePanelHead } from './calendar-side-panel-head';
 import { ExercisesForm } from './exercises-form/exercises-form';
 import { useTrainingModal } from './hooks/use-training-modal/use-training-modal';
 import { Notification } from './notification/notification';
-import { SidePanel } from './side-panel/side-panel';
 import { TrainingModal } from './training-modal/training-modal';
 
 const { useBreakpoint } = Grid;
@@ -43,9 +45,9 @@ export const CalendarContent = () => {
         refetch();
     };
 
-    const closeSidePanel = useCallback(() => {
+    const closeCalendarSidePanel = useCallback(() => {
         form.submit();
-        dispatch(closeCalendarSidePanel());
+        dispatch(closeSidePanel());
     }, [dispatch, form]);
 
     const resetExercisesAndForm = () => {
@@ -68,7 +70,12 @@ export const CalendarContent = () => {
 
     return (
         <>
-            <SidePanel form={<ExercisesForm form={form} />} close={closeSidePanel} />
+            <SidePanel onClose={closeCalendarSidePanel}>
+                <CalendarSidePanelHead onClose={closeCalendarSidePanel} />
+                <CalendarSidePanelBody>
+                    <ExercisesForm form={form} />
+                </CalendarSidePanelBody>
+            </SidePanel>
             <Notification isOpen={isNotificationOpen} close={closeNotification} refresh={refresh} />
             <div ref={calendarWrapperRef} className={styles.calendarWrapper}>
                 {isTrainingModalOpen &&

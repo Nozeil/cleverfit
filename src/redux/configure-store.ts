@@ -5,12 +5,12 @@ import { combineReducers } from 'redux';
 import { createReduxHistoryContext } from 'redux-first-history';
 
 import { authReducer } from './slices/auth';
-import { calendarSidePanelReducer } from './slices/calendar-side-panel';
 import { error500ModalReducer } from './slices/error-500-modal';
 import { errorFeedbackModalReducer } from './slices/error-feedback-modal';
 import { feedbackModalReducer } from './slices/feedback-modal';
 import { navMenuReducer } from './slices/nav-menu/nav-menu';
 import { profileReducer } from './slices/profile';
+import { sidePanelReducer } from './slices/side-panel';
 import { siderReducer } from './slices/sider';
 import { successFeedbackModalReducer } from './slices/success-feedback-modal';
 import { trainingModalReducer } from './slices/training-modal/training-modal';
@@ -31,7 +31,7 @@ export const store = configureStore({
         error500Modal: error500ModalReducer,
         navMenu: navMenuReducer,
         trainingModal: trainingModalReducer,
-        calendarSidePanel: calendarSidePanelReducer,
+        sidePanel: sidePanelReducer,
         profile: profileReducer,
         [api.reducerPath]: api.reducer,
     }),

@@ -1,17 +1,14 @@
 import { EditOutlined, PlusOutlined } from '@ant-design/icons';
-import { Flex } from '@components/flex/flex';
+import { SidePanelHead } from '@components/side-panel-head/side-panel-head';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingModalFormModeSelector } from '@redux/slices/training-modal/training-modal';
-import { Typography } from 'antd';
 import { type ReactNode } from 'react';
 
-import styles from './content-head.module.css';
-
-type ContentHeadProps = {
-    children: ReactNode;
+type CalendarSidePanelHeadProps = {
+    onClose: () => void;
 };
 
-export const ContentHead = ({ children }: ContentHeadProps) => {
+export const CalendarSidePanelHead = ({ onClose }: CalendarSidePanelHeadProps) => {
     const formMode = useAppSelector(trainingModalFormModeSelector);
     const content: { title: string; icon: ReactNode } = {
         title: 'Просмотр упражнений',
@@ -26,13 +23,5 @@ export const ContentHead = ({ children }: ContentHeadProps) => {
         content.icon = <EditOutlined />;
     }
 
-    return (
-        <Flex className={styles.contentHead} gap='gap10' align='alignCenter'>
-            {content.icon}
-            <Typography.Title className={styles.title} level={4}>
-                {content.title}
-            </Typography.Title>
-            {children}
-        </Flex>
-    );
+    return <SidePanelHead title={content.title} icon={content.icon} onClose={onClose} />;
 };

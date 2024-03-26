@@ -5,13 +5,13 @@ import { trainingModalSelector } from '@redux/slices/training-modal/training-mod
 import { Typography } from 'antd';
 import { type ReactNode } from 'react';
 
-import styles from './content-body.module.css';
+import styles from './calendar-side-panel-body.module.css';
 
-type ContentBodyProps = {
+type CalendarSidePanelBodyProps = {
     children: ReactNode;
 };
 
-export const ContentBody = ({ children }: ContentBodyProps) => {
+export const CalendarSidePanelBody = ({ children }: CalendarSidePanelBodyProps) => {
     const { trainingType, date } = useAppSelector(trainingModalSelector);
 
     return (

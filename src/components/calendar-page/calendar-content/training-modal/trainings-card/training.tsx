@@ -2,7 +2,7 @@ import { EditOutlined } from '@ant-design/icons';
 import { TrainingBadge } from '@components/calendar-page/training-badge';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { TrainingResponse } from '@models/models';
-import { openCalendarSidePanel } from '@redux/slices/calendar-side-panel';
+import { openSidePanel } from '@redux/slices/side-panel';
 import {
     setExerciseFormMode,
     setFormExercises,
@@ -39,7 +39,7 @@ export const Training = ({ _id, name, isImplementation, index, exercises }: Trai
 
         if (isImplementation) {
             dispatch(setExerciseFormMode('view'));
-            dispatch(openCalendarSidePanel());
+            dispatch(openSidePanel());
         } else {
             dispatch(setExerciseFormMode('edit'));
 

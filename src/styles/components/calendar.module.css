@@ -136,7 +136,7 @@
     }
 
     :global(.ant-picker-calendar),
-    :global(.ant-picker-body),
+    :global(.ant-picker-calendar) :global(.ant-picker-body),
     :global(
             .ant-picker-calendar-full
                 .ant-picker-panel
@@ -164,7 +164,7 @@
         background-color: var(--character-light-primary-inverse);
     }
 
-    :global(.ant-picker-content th) {
+    :global(.ant-picker-calendar .ant-picker-content th) {
         font-weight: var(--font-medium);
         color: var(--character-light-title-85);
     }

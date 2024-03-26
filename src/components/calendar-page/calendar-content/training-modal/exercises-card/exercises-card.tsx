@@ -2,7 +2,7 @@ import { ArrowLeftOutlined } from '@ant-design/icons';
 import EmptyIcon from '@assets/icons/empty.svg?react';
 import { Flex } from '@components/flex/flex';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { openCalendarSidePanel } from '@redux/slices/calendar-side-panel';
+import { openSidePanel } from '@redux/slices/side-panel';
 import {
     resetFormExercises,
     trainingModalSelector,
@@ -29,7 +29,7 @@ export const ExercisesCard = ({ saveButton, resetForm, onArrowLeftClick }: Exerc
             dispatch(resetFormExercises());
         }
 
-        dispatch(openCalendarSidePanel());
+        dispatch(openSidePanel());
     };
 
     const content = exercises.length ? (
