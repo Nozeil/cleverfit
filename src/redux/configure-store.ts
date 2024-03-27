@@ -13,6 +13,7 @@ import { profileReducer } from './slices/profile';
 import { sidePanelReducer } from './slices/side-panel';
 import { siderReducer } from './slices/sider';
 import { successFeedbackModalReducer } from './slices/success-feedback-modal';
+import { tariffsSidePanelReducer } from './slices/tariffs-side-panel';
 import { trainingModalReducer } from './slices/training-modal/training-modal';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
@@ -33,6 +34,7 @@ export const store = configureStore({
         trainingModal: trainingModalReducer,
         sidePanel: sidePanelReducer,
         profile: profileReducer,
+        tariffsSidePanel: tariffsSidePanelReducer,
         [api.reducerPath]: api.reducer,
     }),
     middleware: (getDefaultMiddleware) =>

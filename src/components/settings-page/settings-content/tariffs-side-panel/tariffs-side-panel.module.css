@@ -1,0 +1,10 @@
+.sidePanel :global(.ant-drawer-footer) {
+    padding: 12px 32px;
+}
+
+@media screen and (max-width: 575px) {
+    .sidePanel :global(.ant-drawer-footer) {
+        padding-right: 18px;
+        padding-left: 18px;
+    }
+}

@@ -1,0 +1,60 @@
+.sidePanelBody {
+    padding-top: 48px;
+}
+
+.tariffLabelFree,
+.tariffLabelPro {
+    width: 56px;
+    padding: 2px 0;
+    font-size: var(--text-xs);
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tariffLabelFree {
+    background-color: var(--character-light-dividers);
+}
+
+.tariffLabelPro {
+    background-color: var(--primary-light-1);
+}
+
+.proTariffLabelText {
+    color: var(--primary-light-7);
+}
+
+.comparisonList,
+.tariffSelectionList {
+    margin: 0;
+    padding: 0;
+    padding-right: 16px;
+}
+
+.comparisonList {
+    margin-bottom: 50px;
+}
+
+.tariffSelectionTitle:global(.ant-typography) {
+    margin-top: 12px;
+    margin-bottom: 0;
+    font-size: var(--font-sm);
+    font-weight: var(--font-bold);
+}
+
+.radioGroup:global(.ant-radio-group) {
+    width: 100%;
+}
+
+@media screen and (max-width: 575px) {
+    .sidePanelBody {
+        padding-top: 24px;
+    }
+
+    .comparisonList {
+        margin-bottom: 20px;
+    }
+
+    .tariffSelectionTitle:global(.ant-typography) {
+        margin: 0;
+    }
+}

@@ -1,5 +1,5 @@
 import { type Breakpoint } from 'antd/lib/_util/responsiveObserve';
-import { type ReactNode } from 'react';
+import { type ElementType, type ReactNode } from 'react';
 
 type Breakpoints = Partial<Record<Breakpoint, boolean>>;
 
@@ -33,15 +33,16 @@ type AdditionalClassNames = {
     gap?: GapWithBreakpoint;
 };
 
-export type FlexProps = {
+export type FlexProps<T extends ElementType> = {
+    as?: T;
     children: ReactNode;
 } & AdditionalClassNames;
 
 export type ClassNameType =
-    | FlexProps['direction']
-    | FlexProps['justify']
-    | FlexProps['align']
-    | FlexProps['gap'];
+    | FlexProps<'div'>['direction']
+    | FlexProps<'div'>['justify']
+    | FlexProps<'div'>['align']
+    | FlexProps<'div'>['gap'];
 
 export type CreateFlexClassNamesType = (
     breakpoints: Breakpoints,

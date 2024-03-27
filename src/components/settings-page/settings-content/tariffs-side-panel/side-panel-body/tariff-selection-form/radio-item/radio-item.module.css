@@ -1,0 +1,24 @@
+.tariffSelectionItem {
+    height: 32px;
+}
+
+.radio:global(.ant-radio-wrapper) {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+}
+
+.radio :global(.ant-radio) {
+    margin-left: 48px;
+}
+
+.radio span:not(:global(.ant-radio)) {
+    flex-grow: 1;
+    padding: 0;
+}
+
+.price:global(.ant-typography) {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+}

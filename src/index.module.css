@@ -11,6 +11,7 @@
 @import url('./styles/components/date-picker.module.css');
 @import url('./styles/components/upload.module.css');
 @import url('./styles/components/switch.module.css');
+@import url('./styles/components/radio-inputs.module.css');
 
 :global(.ant-breadcrumb),
 :global(.ant-breadcrumb) li,

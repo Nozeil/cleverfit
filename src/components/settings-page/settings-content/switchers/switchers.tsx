@@ -1,5 +1,4 @@
 import { Flex } from '@components/flex/flex';
-import { useGetTariffListQuery } from '@services/endpoints/catalogs';
 import { useGetUserInfoQuery } from '@services/endpoints/user';
 
 import { SwitchField } from './switch-field/switcher-field';
@@ -7,7 +6,6 @@ import styles from './switchers.module.css';
 
 export const Switchers = () => {
     const { data } = useGetUserInfoQuery();
-    const { data: tariffs } = useGetTariffListQuery();
 
     const fieldsData = [
         {
