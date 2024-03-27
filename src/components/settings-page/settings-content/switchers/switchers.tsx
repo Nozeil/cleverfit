@@ -44,7 +44,7 @@ export const Switchers = () => {
             text: 'Тёмная тема',
             tooltip: 'темная тема доступна для PRO tarif',
             maxWidth: 113,
-            disabled: true,
+            disabled: !data?.tariff,
         },
     ];
 

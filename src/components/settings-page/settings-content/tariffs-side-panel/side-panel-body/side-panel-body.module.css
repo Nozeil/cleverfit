@@ -19,6 +19,16 @@
     background-color: var(--primary-light-1);
 }
 
+.tariffLabelPro:has(:global(.anticon)) {
+    text-align: end;
+}
+
+.successIcon:global(.anticon) {
+    margin-left: 4px;
+    font-size: var(--text-sm);
+    color: var(--character-light-success);
+}
+
 .proTariffLabelText {
     color: var(--primary-light-7);
 }

@@ -2,9 +2,23 @@
     padding: 12px 32px;
 }
 
+.proTariffActiveTitle:global(.ant-typography) {
+    margin: 0;
+    margin-top: 40px;
+    padding: 14px 0;
+    font-weight: var(--font-medium);
+    color: var(--primary-light-10);
+    background-color: var(--primary-light-1);
+    text-align: center;
+}
+
 @media screen and (max-width: 575px) {
     .sidePanel :global(.ant-drawer-footer) {
         padding-right: 18px;
         padding-left: 18px;
+    }
+
+    .proTariffActiveTitle:global(.ant-typography) {
+        padding: 16px 0;
     }
 }

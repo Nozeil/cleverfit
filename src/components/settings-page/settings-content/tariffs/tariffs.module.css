@@ -26,9 +26,11 @@
 }
 
 .tariffStatusText:global(.ant-typography) {
+    max-width: 72px;
     font-size: var(--text-base);
     font-weight: var(--font-medium);
     color: var(--primary-light-10);
+    text-align: center;
 }
 
 .btn:global(.ant-btn) {
