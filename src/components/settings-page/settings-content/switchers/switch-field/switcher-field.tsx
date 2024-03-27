@@ -2,15 +2,8 @@ import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
 import { Grid, Switch, Tooltip, TooltipProps, Typography } from 'antd';
 
+import type { SwitchFieldProps } from '../switchers.types';
 import styles from './switch.module.css';
-
-type SwitchFieldProps = {
-    text: string;
-    tooltip: string;
-    maxWidth: number;
-    defaultChecked?: boolean;
-    disabled?: boolean;
-};
 
 const { useBreakpoint } = Grid;
 
@@ -19,6 +12,7 @@ export const SwitchField = ({
     tooltip,
     maxWidth,
     defaultChecked,
+    onChange,
     disabled,
 }: SwitchFieldProps) => {
     const { xs } = useBreakpoint();
@@ -47,7 +41,12 @@ export const SwitchField = ({
                     />
                 </Tooltip>
             </Flex>
-            <Switch defaultChecked={defaultChecked} size={switchSize} disabled={disabled} />
+            <Switch
+                defaultChecked={defaultChecked}
+                size={switchSize}
+                disabled={disabled}
+                onChange={onChange}
+            />
         </Flex>
     );
 };
