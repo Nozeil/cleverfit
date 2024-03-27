@@ -1,13 +1,14 @@
+import { HTTP_STATUS_CODES } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { selectAuthToken } from '@redux/slices/auth';
 import { UPLOAD_IMAGE } from '@services/api.constants';
 import { useGetUserInfoQuery } from '@services/endpoints/user';
+import { CenteredModalError } from '@utils/modal-error/modal-error';
 import { type UploadFile, type UploadProps, Form, Grid, Typography, Upload } from 'antd';
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import styles from './upload-avatar.module.css';
-import { beforeUpload } from './upload-avatar.utils';
 import { UploadBtn } from './upload-btn/upload-btn';
 
 const { useBreakpoint } = Grid;
@@ -25,6 +26,14 @@ export const UploadAvatar = () => {
     }, [data]);
 
     const handleChange: UploadProps['onChange'] = ({ file, fileList }) => {
+        if (file.response?.statusCode === HTTP_STATUS_CODES.CONFLICT) {
+            CenteredModalError({
+                title: 'Файл слишком большой',
+                content: 'Выберите файл размером до 5МБ.',
+                okText: 'Закрыть',
+            });
+        }
+
         file.status && file.status !== 'error'
             ? setFileList(fileList)
             : setFileList([
@@ -65,7 +74,6 @@ export const UploadAvatar = () => {
                     strokeColor: 'var(--primary-light-6)',
                 }}
                 listType={listType}
-                beforeUpload={beforeUpload}
                 onChange={handleChange}
             >
                 {content}
