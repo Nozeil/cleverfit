@@ -8,6 +8,7 @@ export const CenteredModalError = (props: ModalFuncProps) => {
         autoFocusButton: null,
         okButtonProps: {
             className: styles.modalOkBtn,
+            
         },
         maskStyle: { backgroundColor: 'var(--blue-2)' },
         ...props,

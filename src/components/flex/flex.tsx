@@ -13,6 +13,7 @@ export const Flex = <T extends ElementType = 'div'>({
     children,
     as,
     className,
+    testId,
     ...additionalStyles
 }: FlexProps<T>) => {
     const screens = useBreakpoint();
@@ -21,5 +22,9 @@ export const Flex = <T extends ElementType = 'div'>({
 
     const Component = as || 'div';
 
-    return <Component className={cx(styles.flex, className, ...classNames)}>{children}</Component>;
+    return (
+        <Component className={cx(styles.flex, className, ...classNames)} data-test-id={testId}>
+            {children}
+        </Component>
+    );
 };

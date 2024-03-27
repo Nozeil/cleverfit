@@ -22,7 +22,13 @@ export const ProCard = ({ onClick, extra }: ProCardProps) => {
         : {
               src: '/png/pro-disabled.png',
               content: (
-                  <Button className={styles.btn} type='primary' size='large' onClick={onClick}>
+                  <Button
+                      className={styles.btn}
+                      type='primary'
+                      size='large'
+                      onClick={onClick}
+                      data-test-id='activate-tariff-btn'
+                  >
                       Активировать
                   </Button>
               ),
@@ -35,6 +41,7 @@ export const ProCard = ({ onClick, extra }: ProCardProps) => {
             extra={extra}
             cover={<img src={src} alt='tariff-cover' />}
             bordered={false}
+            data-test-id='pro-tariff-card'
         >
             <Flex className={styles.tariffStatus} justify='justifyCenter' align='alignCenter'>
                 {content}

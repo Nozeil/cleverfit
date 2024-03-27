@@ -6,6 +6,8 @@ export type SwitchFieldProps = {
     maxWidth: number;
     defaultChecked?: boolean;
     disabled?: boolean;
+    switchTestId?: string;
+    tooltipIconTestId?: string;
     onChange?: SwitchProps['onChange'];
 };
 

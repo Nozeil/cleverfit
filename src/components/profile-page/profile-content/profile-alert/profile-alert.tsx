@@ -16,6 +16,7 @@ export const ProfileAlert = () => {
             showIcon
             closable
             onClose={() => dispatch(closeProfileAlert())}
+            data-test-id='alert'
         />
     ) : null;
 };

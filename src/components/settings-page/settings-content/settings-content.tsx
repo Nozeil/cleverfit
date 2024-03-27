@@ -4,7 +4,7 @@ import { FeedbackNavBtn } from '@components/feedbacks-nav-btn/feedbacks-nav-btn'
 import { Flex } from '@components/flex/flex';
 
 import styles from './settings-content.module.css';
-import { Switchers } from './switchers/switchers';
+import { Switches } from './switches/switches';
 import { Tariffs } from './tariffs/tariffs';
 import { ModalSuccess } from './tariffs-side-panel/modal-success/modal-success';
 import { TariffsSidePanel } from './tariffs-side-panel/tariffs-side-panel';
@@ -20,7 +20,7 @@ export const SettingsContent = () => (
             >
                 <TariffsSidePanel />
                 <Tariffs />
-                <Switchers />
+                <Switches />
                 <FeedbackModalWithButtonGroup
                     btnGroupClassName={styles.btnGroup}
                     maskStyleColor='var(--blue-2)'

@@ -9,21 +9,32 @@ import styles from './side-panel.module.css';
 type SidePanelProps = {
     children: ReactNode;
     onClose: () => void;
+    shouldCloseOnXs?: boolean;
     className?: string;
     footer?: ReactNode;
+    testId?: string;
 };
 
 const cx = classNames.bind(styles);
 
 const { useBreakpoint } = Grid;
 
-export const SidePanel = ({ children, onClose, footer, className }: SidePanelProps) => {
+export const SidePanel = ({
+    children,
+    onClose,
+    footer,
+    className,
+    testId,
+    shouldCloseOnXs = true,
+}: SidePanelProps) => {
     const isOpen = useAppSelector(isSidePanelOpenSelector);
     const { xs } = useBreakpoint();
 
     useEffect(() => {
-        onClose();
-    }, [onClose, xs]);
+        if (shouldCloseOnXs) {
+            onClose();
+        }
+    }, [onClose, shouldCloseOnXs, xs]);
 
     const drawerProps: { placement: 'bottom' | 'right'; height: number } = xs
         ? { placement: 'bottom', height: 555 }
@@ -36,9 +47,10 @@ export const SidePanel = ({ children, onClose, footer, className }: SidePanelPro
             closable={false}
             width={408}
             maskStyle={{ backgroundColor: 'transparent' }}
-            data-test-id='modal-drawer-right'
+            data-test-id={testId}
             footer={footer}
             onClose={onClose}
+            destroyOnClose
             {...drawerProps}
         >
             {children}

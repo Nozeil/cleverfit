@@ -1,5 +1,6 @@
 import { Flex } from '@components/flex/flex';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
+import { closeSidePanel } from '@redux/slices/side-panel';
 import { enableTariffsSubmit, openTariffsSuccessModal } from '@redux/slices/tariffs';
 import { useGetTariffListQuery } from '@services/endpoints/catalogs';
 import { useBuyTariffMutation } from '@services/endpoints/tariff';
@@ -22,6 +23,7 @@ export const TariffSelectionForm = () => {
     const onFinish = async ({ days }: FormValues) => {
         const tariffId = tariffList?.at(0)?._id;
         dispatch(openTariffsSuccessModal());
+        dispatch(closeSidePanel());
 
         if (tariffId) {
             const body = {

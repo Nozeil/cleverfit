@@ -70,7 +70,7 @@ export const CalendarContent = () => {
 
     return (
         <>
-            <SidePanel onClose={closeCalendarSidePanel}>
+            <SidePanel onClose={closeCalendarSidePanel} testId='modal-drawer-right'>
                 <CalendarSidePanelHead onClose={closeCalendarSidePanel} />
                 <CalendarSidePanelBody>
                     <ExercisesForm form={form} />

@@ -26,8 +26,10 @@ export const TariffsSidePanel = () => {
         isData && (
             <SidePanel
                 className={styles.sidePanel}
+                shouldCloseOnXs={false}
                 footer={!userInfo.tariff && <SubmitBtn />}
                 onClose={onClose}
+                testId='tariff-sider'
             >
                 <SidePanelHead onClose={onClose} title='Сравнить тарифы' />
                 {userInfo?.tariff && (

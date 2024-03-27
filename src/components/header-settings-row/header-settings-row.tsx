@@ -41,6 +41,7 @@ export const HeaderSettingsRow = ({
                 className={btnClassName}
                 type='text'
                 icon={<SettingOutlined className={iconClassName} />}
+                data-test-id='header-settings'
                 onClick={onClick}
             >
                 Настройки

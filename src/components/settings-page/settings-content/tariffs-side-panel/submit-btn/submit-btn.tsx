@@ -17,6 +17,7 @@ export const SubmitBtn = () => {
             block
             htmlType='submit'
             form={FORM_NAME}
+            data-test-id='tariff-submit'
         >
             Выбрать и оплатить
         </Button>

@@ -3,7 +3,6 @@ import { Flex } from '@components/flex/flex';
 import { useGetUserInfoQuery } from '@services/endpoints/user';
 import { Form } from 'antd';
 import moment from 'moment';
-import { useEffect } from 'react';
 
 import { useFormHandlers } from './hooks/use-form-handlers';
 import { PersonalGroup } from './personal-group';
@@ -18,12 +17,6 @@ export const ProfileContent = () => {
     const [form] = Form.useForm<FormValues>();
     const { onFieldsChange, onFinish, onValuesChange } = useFormHandlers(form);
 
-    useEffect(() => {
-        if (data) {
-            form.resetFields();
-        }
-    }, [data, form]);
-
     return (
         <ContentWrapper>
             <ProfileAlert />
@@ -36,6 +29,8 @@ export const ProfileContent = () => {
                         lastName: data.lastName,
                         email: data.email,
                         birthday: data.birthday && moment(data.birthday),
+                        password: undefined,
+                        'password-confirm': undefined,
                     }}
                     name='user-data-update-form'
                     autoComplete='off'

@@ -2,6 +2,7 @@ import { CheckCircleFilled } from '@ant-design/icons';
 import { ModalWithShadowMd } from '@components/modal-with-shadow-md/modal-with-shadow-md';
 import { WIDTH_540 } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { useAuth } from '@hooks/useAuth';
 import { closeTariffsSuccessModal, selectIsTariffsSuccessModalOpen } from '@redux/slices/tariffs';
 import { useGetUserInfoQuery } from '@services/endpoints/user';
 import { Grid, Result, Typography } from 'antd';
@@ -14,9 +15,13 @@ export const ModalSuccess = () => {
     const isOpen = useAppSelector(selectIsTariffsSuccessModalOpen);
     const dispatch = useAppDispatch();
     const { data } = useGetUserInfoQuery();
+    const { signout } = useAuth();
     const { xs } = useBreakpoint();
 
-    const onClose = () => dispatch(closeTariffsSuccessModal());
+    const onClose = () => {
+        dispatch(closeTariffsSuccessModal());
+        signout();
+    };
 
     return (
         data && (
@@ -29,6 +34,7 @@ export const ModalSuccess = () => {
                 footer={null}
                 maskStyle={{ backgroundColor: 'var(--blue-2)' }}
                 onCancel={onClose}
+                data-test-id='tariff-modal-success'
             >
                 <Result
                     className={styles.result}

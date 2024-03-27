@@ -16,8 +16,12 @@ export const PrivacyGroup = () => {
             </Typography.Title>
 
             <Input.Group>
-                <EmailInput />
-                <PasswordsGroup required={required} />
+                <EmailInput testId='profile-email' />
+                <PasswordsGroup
+                    required={required}
+                    testId_1='profile-password'
+                    testId_2='profile-repeat-password'
+                />
             </Input.Group>
         </>
     );

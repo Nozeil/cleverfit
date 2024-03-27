@@ -8,6 +8,7 @@ const { useBreakpoint } = Grid;
 
 export const SubmitBtn = () => {
     const isSubmitDisabled = useAppSelector(selectProfileIsSubmitDisabled);
+
     const { xs } = useBreakpoint();
 
     return (
@@ -17,6 +18,7 @@ export const SubmitBtn = () => {
             type='primary'
             htmlType='submit'
             disabled={isSubmitDisabled}
+            data-test-id='profile-submit'
         >
             Сохранить изменения
         </Button>

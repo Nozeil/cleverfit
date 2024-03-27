@@ -2,10 +2,10 @@ import { Flex } from '@components/flex/flex';
 import { useGetUserInfoQuery, useUpdateUserInfoMutation } from '@services/endpoints/user';
 
 import { SwitchField } from './switch-field/switcher-field';
-import styles from './switchers.module.css';
-import { FieldsData } from './switchers.types';
+import styles from './switches.module.css';
+import { FieldsData } from './switches.types';
 
-export const Switchers = () => {
+export const Switches = () => {
     const { data } = useGetUserInfoQuery();
     const [updateUser] = useUpdateUserInfoMutation();
 
@@ -17,6 +17,8 @@ export const Switchers = () => {
 в совместных тренировках`,
             maxWidth: 205,
             defaultChecked: data?.readyForJointTraining,
+            switchTestId: 'tariff-trainings',
+            tooltipIconTestId: 'tariff-trainings-icon',
             onChange: async (readyForJointTraining) => {
                 try {
                     await updateUser({ readyForJointTraining }).unwrap();
@@ -31,6 +33,8 @@ export const Switchers = () => {
             tooltip: 'включеная функция позволит получать уведомления об активностях',
             maxWidth: 219,
             defaultChecked: data?.sendNotification,
+            switchTestId: 'tariff-notifications',
+            tooltipIconTestId: 'tariff-notifications-icon',
             onChange: async (sendNotification) => {
                 try {
                     await updateUser({ sendNotification }).unwrap();
@@ -45,6 +49,8 @@ export const Switchers = () => {
             tooltip: 'темная тема доступна для PRO tarif',
             maxWidth: 113,
             disabled: !data?.tariff,
+            switchTestId: 'tariff-theme',
+            tooltipIconTestId: 'tariff-theme-icon',
         },
     ];
 
@@ -52,7 +58,17 @@ export const Switchers = () => {
         <Flex className={styles.wrapper} direction='column' gap={{ xs: 'gap24', sm: 'gap16' }}>
             {data &&
                 fieldsData.map(
-                    ({ id, text, tooltip, defaultChecked, maxWidth, disabled, onChange }) => (
+                    ({
+                        id,
+                        text,
+                        tooltip,
+                        defaultChecked,
+                        maxWidth,
+                        disabled,
+                        onChange,
+                        switchTestId,
+                        tooltipIconTestId,
+                    }) => (
                         <SwitchField
                             key={id}
                             text={text}
@@ -61,6 +77,8 @@ export const Switchers = () => {
                             defaultChecked={defaultChecked}
                             disabled={disabled}
                             onChange={onChange}
+                            switchTestId={switchTestId}
+                            tooltipIconTestId={tooltipIconTestId}
                         />
                     ),
                 )}

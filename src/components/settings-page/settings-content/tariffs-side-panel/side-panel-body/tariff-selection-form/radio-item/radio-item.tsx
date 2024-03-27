@@ -11,7 +11,11 @@ type RadioItemProps = {
 };
 
 export const RadioItem = ({ text, cost, days }: RadioItemProps) => (
-    <Radio className={styles.radio} value={days}>
+    <Radio
+        className={styles.radio}
+        value={days}
+        data-test-id={cost === 10 ? 'tariff-10' : undefined}
+    >
         <Flex className={styles.tariffSelectionItem} align='alignCenter'>
             <Typography.Text>{text}</Typography.Text>
             <Flex align='alignCenter'>

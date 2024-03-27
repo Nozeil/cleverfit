@@ -5,7 +5,7 @@ import styles from './side-panel-body.module.css';
 import { TariffSelectionForm } from './tariff-selection-form/tariff-selection-form';
 
 export const TariffSelection = () => (
-    <Flex direction='column' gap={{ xs: 'gap12', sm: 'gap24' }}>
+    <Flex direction='column' gap={{ xs: 'gap12', sm: 'gap24' }} testId='tariff-cost'>
         <Typography.Title className={styles.tariffSelectionTitle} level={5}>
             Стоимость тарифа
         </Typography.Title>

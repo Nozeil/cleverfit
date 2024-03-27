@@ -34,8 +34,9 @@ type AdditionalClassNames = {
 };
 
 export type FlexProps<T extends ElementType> = {
-    as?: T;
     children: ReactNode;
+    as?: T;
+    testId?: string;
 } & AdditionalClassNames;
 
 export type ClassNameType =

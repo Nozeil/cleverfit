@@ -27,6 +27,7 @@ export const HeaderContent = () => {
             size='large'
             type='text'
             onClick={onClick}
+            data-test-id='settings-back'
         >
             Настройки
         </Button>

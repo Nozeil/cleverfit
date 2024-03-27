@@ -14,6 +14,7 @@ import { CenteredModalError } from '@utils/modal-error/modal-error';
 import { type FormInstance, type FormProps } from 'antd';
 import moment from 'moment';
 
+import { INPUT_NAMES } from '../profile-content.constants';
 import type { FormValues } from '../profile-content.types';
 
 export const useFormHandlers = (form: FormInstance) => {
@@ -56,7 +57,16 @@ export const useFormHandlers = (form: FormInstance) => {
         }
 
         try {
-            await updateUser(body).unwrap();
+            const formValues = await updateUser(body).unwrap();
+
+            form.setFieldsValue({
+                firstName: formValues.firstName,
+                lastName: formValues.lastName,
+                email: formValues.email,
+                birthday: formValues.birthday && moment(formValues.birthday),
+                password: undefined,
+                'password-confirm': undefined,
+            });
             dispatch(setProfileStateAfterSuccess());
         } catch {
             CenteredModalError({
@@ -69,7 +79,10 @@ export const useFormHandlers = (form: FormInstance) => {
 
     const onFieldsChange = () => {
         const hasErrors = form.getFieldsError().some(({ errors }) => errors.length);
-        dispatch(setProfileSubmit(hasErrors));
+        const upload = form.getFieldValue(INPUT_NAMES.UPLOAD);
+        const isError = hasErrors || upload?.file?.status === 'error';
+
+        dispatch(setProfileSubmit(isError));
     };
 
     const onValuesChange: FormProps<FormValues>['onValuesChange'] = (changedValues) => {
@@ -78,7 +91,7 @@ export const useFormHandlers = (form: FormInstance) => {
         }
 
         const submitAction =
-            changedValues?.upload && !changedValues.upload.file?.status
+            changedValues?.upload && changedValues.upload.file?.status === 'error'
                 ? disableProfileSubmit
                 : enableProfileSubmit;
 

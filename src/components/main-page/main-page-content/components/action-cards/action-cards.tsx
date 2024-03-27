@@ -31,6 +31,7 @@ export const ActionCards = () => {
             title: 'Заполнить профиль',
             buttonIcon: <IdcardTwoTone twoToneColor={[color, color]} />,
             buttonContent: 'Профиль',
+            testId: 'menu-button-profile',
             onClick: () => navigate(ROUTES.PROFILE),
         },
     ];
