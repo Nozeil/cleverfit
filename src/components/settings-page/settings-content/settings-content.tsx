@@ -6,25 +6,29 @@ import { Flex } from '@components/flex/flex';
 import styles from './settings-content.module.css';
 import { Switchers } from './switchers/switchers';
 import { Tariffs } from './tariffs/tariffs';
+import { ModalSuccess } from './tariffs-side-panel/modal-success/modal-success';
 import { TariffsSidePanel } from './tariffs-side-panel/tariffs-side-panel';
 
 export const SettingsContent = () => (
-    <ContentWrapper>
-        <Flex
-            className={styles.settingsContainer}
-            direction='column'
-            gap={{ xs: 'gap20', sm: 'gap24' }}
-        >
-            <TariffsSidePanel />
-            <Tariffs />
-            <Switchers />
-            <FeedbackModalWithButtonGroup
-                btnGroupClassName={styles.btnGroup}
-                maskStyleColor='var(--blue-2)'
-                additonalButton={
-                    <FeedbackNavBtn className={styles.btn}>Смотреть все отзывы</FeedbackNavBtn>
-                }
-            />
-        </Flex>
-    </ContentWrapper>
+    <>
+        <ModalSuccess />
+        <ContentWrapper>
+            <Flex
+                className={styles.settingsContainer}
+                direction='column'
+                gap={{ xs: 'gap20', sm: 'gap24' }}
+            >
+                <TariffsSidePanel />
+                <Tariffs />
+                <Switchers />
+                <FeedbackModalWithButtonGroup
+                    btnGroupClassName={styles.btnGroup}
+                    maskStyleColor='var(--blue-2)'
+                    additonalButton={
+                        <FeedbackNavBtn className={styles.btn}>Смотреть все отзывы</FeedbackNavBtn>
+                    }
+                />
+            </Flex>
+        </ContentWrapper>
+    </>
 );

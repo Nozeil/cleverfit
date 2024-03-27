@@ -11,7 +11,6 @@ type NotificationProps = {
 
 export const Notification = ({ isOpen, close, refresh }: NotificationProps) => (
     <Modal
-        className={styles.modal}
         open={isOpen}
         centered
         footer={null}

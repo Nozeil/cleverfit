@@ -15,7 +15,8 @@ export const useIsLoading = () => {
     const isMutatitonPending = Object.values(api.mutations).some((mutation) => {
         if (
             mutation?.endpointName === 'createTraining' ||
-            mutation?.endpointName === 'updateUserInfo'
+            mutation?.endpointName === 'updateUserInfo' ||
+            mutation?.endpointName === 'buyTariff'
         ) {
             return false;
         }

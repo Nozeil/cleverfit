@@ -16,7 +16,7 @@ import { FORM_NAME } from '../feedbacks-page/feedbacks-content/feedback-content.
 import { FeedbackForm } from './feedback-form/feedback-form';
 import styles from './feedback-modal-with-button-group.module.css';
 import { ModalError } from './modal-error/modal-error';
-import { ModalSuccess } from './modal-success';
+import { ModalSuccess } from './modal-success/modal-success';
 
 type FeedbackModalWithButtonGroupProps = {
     btnGroupClassName?: string;

@@ -1,7 +1,8 @@
 import { Flex } from '@components/flex/flex';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
-import { enableTariffsSidePanelSubmit } from '@redux/slices/tariffs-side-panel';
+import { enableTariffsSubmit, openTariffsSuccessModal } from '@redux/slices/tariffs';
 import { useGetTariffListQuery } from '@services/endpoints/catalogs';
+import { useBuyTariffMutation } from '@services/endpoints/tariff';
 import { type RadioChangeEvent, Form, Radio } from 'antd';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
@@ -9,24 +10,40 @@ import { v4 as uuidv4 } from 'uuid';
 import { FORM_NAME } from '../../tariffs-side-panel.constants';
 import styles from '../side-panel-body.module.css';
 import { RadioItem } from './radio-item/radio-item';
+import { type FormValues } from './tariff-selection-form.types';
 
 export const TariffSelectionForm = () => {
     const [radioValue, setRadioValue] = useState(0);
     const dispatch = useAppDispatch();
 
-    const { data } = useGetTariffListQuery();
+    const { data: tariffList } = useGetTariffListQuery();
+    const [buyTariff] = useBuyTariffMutation();
 
-    const onFinish = (values) => {
-        console.log('submit', values);
+    const onFinish = async ({ days }: FormValues) => {
+        const tariffId = tariffList?.at(0)?._id;
+        dispatch(openTariffsSuccessModal());
+
+        if (tariffId) {
+            const body = {
+                days,
+                tariffId,
+            };
+
+            try {
+                await buyTariff(body).unwrap();
+            } catch (e) {
+                console.error(e);
+            }
+        }
     };
 
     const onChange = (e: RadioChangeEvent) => {
-        dispatch(enableTariffsSidePanelSubmit());
+        dispatch(enableTariffsSubmit());
         setRadioValue(e.target.value);
     };
 
     return (
-        data && (
+        tariffList && (
             <Form name={FORM_NAME} onFinish={onFinish}>
                 <Form.Item name='days' noStyle>
                     <Radio.Group
@@ -39,7 +56,7 @@ export const TariffSelectionForm = () => {
                             direction='column'
                             gap={{ xs: 'gap4', sm: 'gap16' }}
                         >
-                            {data.at(0)?.periods.map(({ text, cost, days }) => (
+                            {tariffList.at(0)?.periods.map(({ text, cost, days }) => (
                                 <RadioItem key={uuidv4()} text={text} cost={cost} days={days} />
                             ))}
                         </Flex>

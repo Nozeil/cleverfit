@@ -8,6 +8,8 @@ import {
 } from '@redux/slices/success-feedback-modal';
 import { Result, Typography } from 'antd';
 
+import styles from './modal-success.module.css';
+
 export const ModalSuccess = () => {
     const isOpen = useAppSelector(isSuccessFeedbackModalOpenSelector);
     const dispatch = useAppDispatch();
@@ -24,6 +26,7 @@ export const ModalSuccess = () => {
             maskStyle={{ backgroundColor: 'var(--blue-1)' }}
         >
             <Result
+                className={styles.result}
                 status='success'
                 title={<Typography.Title level={3}>Отзыв успешно опубликован</Typography.Title>}
                 extra={

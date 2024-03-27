@@ -11,15 +11,15 @@ export const AUTH_ENDPOINTS = {
 
 export const CATALOGS_ENDPOINTS = {
     TRAINING_LIST: 'catalogs/training-list',
-    TARIFF_LIST: '/catalogs/tariff-list',
+    TARIFF_LIST: 'catalogs/tariff-list',
 } as const;
 
 export const FEEDBACKS_ENDPOINTS = {
-    FEEDBACK: '/feedback',
+    FEEDBACK: 'feedback',
 } as const;
 
 export const TRAINING_ENDPOINTS = {
-    TRAINING: '/training',
+    TRAINING: 'training',
 } as const;
 
 export const USER_ENDPOINTS = {
@@ -28,3 +28,7 @@ export const USER_ENDPOINTS = {
 } as const;
 
 export const UPLOAD_IMAGE = `${BASE_URL}upload-image`;
+
+export const TARIFF_ENDPOINTS = {
+    TARRIFF: 'tariff',
+} as const;

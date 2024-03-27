@@ -64,8 +64,8 @@
     --p-verification-container-mobile-l: 0 10px;
     --p-result-icon: 10px 5px;
     --p-result-500: var(--p-64-32-56);
-    --p-result-success: var(--p-64-86);
-    --p-result-success-mobile-l: var(--p-32-16);
+    --p-feedback-result-success: var(--p-64-86);
+    --p-feedback-result-success-mobile-l: var(--p-32-16);
     --p-result-error: var(--p-64-86);
     --p-result-error-mobile-l: var(--p-32-16);
     --px-empty-feedbacks-card: 0 var(--p-32);

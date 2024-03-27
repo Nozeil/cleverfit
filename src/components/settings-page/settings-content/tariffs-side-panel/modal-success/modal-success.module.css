@@ -1,0 +1,35 @@
+.modal :global(.ant-modal-close-x) {
+    width: 63px;
+    height: 67px;
+    font-size: var(--text-sm);
+    line-height: 67px;
+}
+
+.result:global(.ant-result-success) {
+    padding: 64px 44px 56px;
+}
+
+.title:global(.ant-typography) {
+    margin-bottom: 0;
+}
+
+.subtitle:global(.ant-typography),
+.extra:global(.ant-typography) {
+    color: var(--character-light-secondary-45);
+}
+
+@media screen and (max-width: 450px) {
+    .title:global(.ant-typography) {
+        padding: 0 38px;
+    }
+
+    .result:global(.ant-result-success) {
+        padding: 32px 24px;
+    }
+
+    .result :global(.ant-result-extra) {
+        margin-top: 20px;
+        padding: 0 16px;
+        line-height: 1;
+    }
+}

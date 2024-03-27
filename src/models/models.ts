@@ -134,3 +134,8 @@ type TariffItem = {
 };
 
 export type TariffListResponse = TariffItem[];
+
+export type BuyTariffBody = {
+    tariffId: string;
+    days: number;
+};
