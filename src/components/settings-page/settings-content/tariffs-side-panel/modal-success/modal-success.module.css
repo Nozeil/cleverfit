@@ -1,16 +1,16 @@
 .modal :global(.ant-modal-close-x) {
-    width: 63px;
-    height: 67px;
+    width: var(--w-tariffs-side-panel-x);
+    height: var(--h-tariffs-side-panel-x);
     font-size: var(--text-sm);
-    line-height: 67px;
+    line-height: var(--line-height-67);
 }
 
 .result:global(.ant-result-success) {
-    padding: 64px 44px 56px;
+    padding: var(--p-settings-content-modal-success-result);
 }
 
 .title:global(.ant-typography) {
-    margin-bottom: 0;
+    margin-bottom: var(--mb-settings-content-modal-success-title);
 }
 
 .subtitle:global(.ant-typography),
@@ -20,16 +20,16 @@
 
 @media screen and (max-width: 450px) {
     .title:global(.ant-typography) {
-        padding: 0 38px;
+        padding: var(--p-settings-content-modal-success-title-mobile);
     }
 
     .result:global(.ant-result-success) {
-        padding: 32px 24px;
+        padding: var(--p-settings-content-modal-success-result-mobile);
     }
 
     .result :global(.ant-result-extra) {
-        margin-top: 20px;
-        padding: 0 16px;
-        line-height: 1;
+        margin-top: var(--mt-settings-content-modal-success-result-extra-mobile);
+        padding: var(--p-settings-content-modal-success-result-extra-mobile);
+        line-height: var(--line-height-1);
     }
 }

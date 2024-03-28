@@ -1,5 +1,5 @@
 .title:global(.ant-typography) {
-    margin: 6px 0;
+    margin: var(--m-profile-header-title);
     font-weight: var(--font-medium);
 }
 
@@ -9,7 +9,7 @@
     }
 
     .row:global(.ant-row) {
-        margin-top: 0;
+        margin-top: var(--m-profile-header-settings-row);
     }
 }
 
@@ -17,7 +17,7 @@
     .row:global(.ant-row) {
         align-items: start;
         justify-content: end;
-        margin-bottom: 4px;
+        margin-bottom: var(--mb-profile-header-settings-row-tablet-l);
     }
 
     .title {
@@ -27,6 +27,6 @@
 
 @media screen and (max-width: 768px) {
     .row:global(.ant-row) {
-        margin-bottom: 0;
+        margin-bottom: var(--mb-profile-header-settings-row-tablet);
     }
 }

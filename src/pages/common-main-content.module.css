@@ -1,10 +1,10 @@
 .mainContent:global(.ant-layout-content) {
-    padding-bottom: 0;
+    padding-bottom: var(--pb-common-main-content);
 }
 
 @media screen and (max-width: 575px) {
     .mainContent:global(.ant-layout-content) {
-        padding-left: 0;
-        padding-right: 0;
+        padding-right: var(--px-common-main-content-mobile-l);
+        padding-left: var(--px-common-main-content-mobile-l);
     }
 }

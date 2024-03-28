@@ -1,9 +1,9 @@
 .settingsContainer {
-    max-width: 505px;
+    max-width: var(--mw-settings-container);
 }
 
 .btnGroup {
-    margin-top: 72px;
+    margin-top: var(--mt-settings-content-btn-group);
 }
 
 .btn:global(.ant-btn) {
@@ -12,6 +12,6 @@
 
 @media screen and (max-width: 575px) {
     .btnGroup {
-        margin-top: 0;
+        margin-top: var(--mt-settings-content-btn-group-mobile-l);
     }
 }

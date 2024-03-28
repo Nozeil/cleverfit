@@ -12,6 +12,6 @@
 
 @media screen and (max-width: 575px) {
     .switchFieldText {
-        max-width: 176px;
+        max-width: var(--mw-settings-content-switch-field-text-mobile-l);
     }
 }

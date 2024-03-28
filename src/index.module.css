@@ -135,10 +135,10 @@ a {
 }
 
 :global(.ant-divider-horizontal) {
-    margin: 0;
+    margin: var(--m-divider-horizontal);
 }
 
 :global(.ant-card-head),
 :global(.ant-card-head-title) {
-    padding: 0;
+    padding: var(--p-card-head-card-head-title);
 }

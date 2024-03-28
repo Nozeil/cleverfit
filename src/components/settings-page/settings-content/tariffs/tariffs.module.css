@@ -1,24 +1,24 @@
 .title:global(.ant-typography) {
-    margin-bottom: 0;
+    margin-bottom: var(--mb-settings-content-tariffs-title);
     font-weight: var(--font-medium);
 }
 
 .card:global(.ant-card) {
     width: 100%;
-    max-width: 240px;
+    max-width: var(--mw-settings-content-tariffs-card);
     box-shadow: var(--shadow-md);
 }
 
 .card :global(.ant-card-head-wrapper) {
-    padding: 0 24px;
+    padding: var(--p-settings-content-tariff-card-head-wrapper);
 }
 
 .linkButton:global(.ant-btn) {
-    padding: 0;
+    padding: var(--p-settings-content-tariff-link-button);
 }
 
 .card :global(.ant-card-body) {
-    height: 95px;
+    height: var(--h-settings-content-tariffs-card-body);
 }
 
 .tariffStatus {
@@ -26,7 +26,7 @@
 }
 
 .tariffStatusText:global(.ant-typography) {
-    max-width: 72px;
+    max-width: var(--mw-settings-content-tariffs-tariff-status-text);
     font-size: var(--text-base);
     font-weight: var(--font-medium);
     color: var(--primary-light-10);
@@ -39,11 +39,11 @@
 
 @media screen and (max-width: 575px) {
     .card:global(.ant-card) {
-        max-width: 312px;
+        max-width: var(--mw-settings-content-tariffs-card-mobile-l);
     }
 
     .card :global(.ant-card-body) {
-        height: 64px;
-        padding: 12px 0;
+        height: var(--h-settings-content-tariffs-card-body-mobile-l);
+        padding: var(--p-settings-content-tariffs-card-body-mobile-l);
     }
 }

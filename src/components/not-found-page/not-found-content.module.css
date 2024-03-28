@@ -8,6 +8,6 @@
 
 @media screen and (max-width: 450px) {
     .result:global(.ant-result) {
-        padding: 44px 0;
+        padding: var(--p-not-found-content-result-mobile);
     }
 }

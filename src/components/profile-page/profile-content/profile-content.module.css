@@ -1,24 +1,24 @@
 .personalTitle:global(.ant-typography),
 .privacyTitle:global(.ant-typography) {
-    margin: 0;
+    margin: var(--m-profile-content-title);
     font-weight: var(--font-medium);
 }
 
 .privacyTitle:global(.ant-typography) {
-    margin-top: 16px;
+    margin-top: var(--mb-profile-content-privacy-title);
 }
 
 .form:global(.ant-form) {
-    max-width: 480px;
+    max-width: var(--mw-profile-form);
 }
 
 .form :global(.ant-form-item):last-of-type {
-    margin-bottom: 0;
+    margin-bottom: var(--mb-profile-content-form-item);
 }
 
 .datePicker:global(.ant-picker) {
     width: 100%;
-    padding: 8px 12px;
+    padding: var(--p-profile-content-date-picker);
 }
 
 .input {

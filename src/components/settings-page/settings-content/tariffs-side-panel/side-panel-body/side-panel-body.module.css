@@ -1,11 +1,11 @@
 .sidePanelBody {
-    padding-top: 48px;
+    padding-top: var(--pt-settings-content-side-panel-body);
 }
 
 .tariffLabelFree,
 .tariffLabelPro {
-    width: 56px;
-    padding: 2px 0;
+    width: var(--w-tariff-label);
+    padding: var(--p-tariff-label);
     font-size: var(--text-xs);
     text-align: center;
     vertical-align: middle;
@@ -24,7 +24,7 @@
 }
 
 .successIcon:global(.anticon) {
-    margin-left: 4px;
+    margin-left: var(--ml-tariffs-side-panel-success-icon);
     font-size: var(--text-sm);
     color: var(--character-light-success);
 }
@@ -35,18 +35,18 @@
 
 .comparisonList,
 .tariffSelectionList {
-    margin: 0;
-    padding: 0;
-    padding-right: 16px;
+    margin: var(--m-tariffs-side-panel-list);
+    padding: var(--p-tariffs-side-panel-list);
+    padding-right: var(--pr-tariffs-side-panel-list);
 }
 
 .comparisonList {
-    margin-bottom: 50px;
+    margin-bottom: var(--mb-tariffs-side-panel-list);
 }
 
 .tariffSelectionTitle:global(.ant-typography) {
-    margin-top: 12px;
-    margin-bottom: 0;
+    margin-top: var(--mt-tariffs-side-panel-tariff-selection-title);
+    margin-bottom: var(--mb-tariffs-side-panel-tariff-selection-title);
     font-size: var(--font-sm);
     font-weight: var(--font-bold);
 }
@@ -57,14 +57,14 @@
 
 @media screen and (max-width: 575px) {
     .sidePanelBody {
-        padding-top: 24px;
+        padding-top: var(--pt-settings-content-side-panel-body-mobile-l);
     }
 
     .comparisonList {
-        margin-bottom: 20px;
+        margin-bottom: var(--mb-tariffs-side-panel-list-mobile-l);
     }
 
     .tariffSelectionTitle:global(.ant-typography) {
-        margin: 0;
+        margin: var(--m-tariffs-side-panel-tariff-selection-title-mobile-l);
     }
 }

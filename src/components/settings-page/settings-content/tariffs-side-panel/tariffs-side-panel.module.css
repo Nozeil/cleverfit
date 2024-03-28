@@ -1,11 +1,11 @@
 .sidePanel :global(.ant-drawer-footer) {
-    padding: 12px 32px;
+    padding: var(--p-settings-content-tariffs-side-panel-footer);
 }
 
 .proTariffActiveTitle:global(.ant-typography) {
-    margin: 0;
-    margin-top: 40px;
-    padding: 14px 0;
+    margin: var(--m-settings-content-tariffs-side-panel-pro-tariff-active-title);
+    margin-top: var(--mt-settings-content-tariffs-side-panel-pro-tariff-active-title);
+    padding: var(--p-settings-content-tariffs-side-panel-pro-tariff-active-title);
     font-weight: var(--font-medium);
     color: var(--primary-light-10);
     background-color: var(--primary-light-1);
@@ -14,11 +14,11 @@
 
 @media screen and (max-width: 575px) {
     .sidePanel :global(.ant-drawer-footer) {
-        padding-right: 18px;
-        padding-left: 18px;
+        padding-right: var(--px-settings-content-tariffs-side-panel-footer-mobile-l);
+        padding-left: var(--px-settings-content-tariffs-side-panel-footer-mobile-l);
     }
 
     .proTariffActiveTitle:global(.ant-typography) {
-        padding: 16px 0;
+        padding: var(--p-settings-content-tariffs-side-panel-pro-tariff-active-title-mobile-l);
     }
 }
