@@ -42,6 +42,7 @@ export const useOnSaveExercise = (reset: () => void) => {
                     }),
                 ),
             };
+
             if (exercisesFormMode === 'new') {
                 await createTraining(body).unwrap();
             } else if (exercisesFormMode === 'edit') {

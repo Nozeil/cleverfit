@@ -13,8 +13,8 @@ export const ProfileAlert = () => {
             className={styles.alert}
             message='Данные профиля успешно обновлены'
             type='success'
-            showIcon
-            closable
+            showIcon={true}
+            closable={true}
             onClose={() => dispatch(closeProfileAlert())}
             data-test-id='alert'
         />

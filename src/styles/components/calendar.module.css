@@ -207,7 +207,7 @@
         min-width: var(--mw-picker-cell-mobile-l);
     }
 
-    :global(.ant-picker-cell-today.ant-picker-cell-selected::before) {
+    :global(.ant-picker-cell-today.ant-picker-cell-selected:before) {
         border-radius: var(--rounded-none);
         background-color: var(--primary-light-1);
     }
@@ -218,7 +218,7 @@
         background-color: var(--primary-light-6);
     }
 
-    :global(.ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before) {
+    :global(.ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner:before) {
         border-color: var(--primary-light-6);
     }
 

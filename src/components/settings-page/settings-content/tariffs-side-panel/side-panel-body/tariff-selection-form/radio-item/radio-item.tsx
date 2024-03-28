@@ -1,8 +1,9 @@
 import { Flex } from '@components/flex/flex';
 import { Radio, Typography } from 'antd';
 
-import styles from './radio-item.module.css';
 import { createPrice } from './radio-item.utils';
+
+import styles from './radio-item.module.css';
 
 type RadioItemProps = {
     text: string;

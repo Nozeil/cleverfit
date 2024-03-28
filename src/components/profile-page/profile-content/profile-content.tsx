@@ -5,12 +5,13 @@ import { Form } from 'antd';
 import moment from 'moment';
 
 import { useFormHandlers } from './hooks/use-form-handlers';
+import { ProfileAlert } from './profile-alert/profile-alert';
+import { SubmitBtn } from './submit-btn/submit-btn';
 import { PersonalGroup } from './personal-group';
 import { PrivacyGroup } from './privacy-group';
-import { ProfileAlert } from './profile-alert/profile-alert';
-import styles from './profile-content.module.css';
 import { FormValues } from './profile-content.types';
-import { SubmitBtn } from './submit-btn/submit-btn';
+
+import styles from './profile-content.module.css';
 
 export const ProfileContent = () => {
     const { data } = useGetUserInfoQuery();

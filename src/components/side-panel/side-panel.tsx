@@ -1,8 +1,8 @@
+import { type ReactNode, useEffect } from 'react';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { isSidePanelOpenSelector } from '@redux/slices/side-panel';
 import { Drawer, Grid } from 'antd';
 import classNames from 'classnames/bind';
-import { type ReactNode, useEffect } from 'react';
 
 import styles from './side-panel.module.css';
 
@@ -50,7 +50,7 @@ export const SidePanel = ({
             data-test-id={testId}
             footer={footer}
             onClose={onClose}
-            destroyOnClose
+            destroyOnClose={true}
             {...drawerProps}
         >
             {children}

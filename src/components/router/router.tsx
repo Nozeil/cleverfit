@@ -1,3 +1,5 @@
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { HistoryRouter } from 'redux-first-history/rr6';
 import { AppLayout } from '@components/app-layout/app-layout';
 import { AuthProvider } from '@components/auth/auth-provider';
 import { ChangePassword } from '@components/auth-page/auth-forms/change-password/change-password';
@@ -20,7 +22,7 @@ import { Loader } from '@components/loader/loader';
 import { NonAuthRoute } from '@components/non-auth-route';
 import { PageLayout } from '@components/page-layout/page-layout';
 import { COMPOUND_ROUTES, ROUTES } from '@constants/routes';
-import { useIsLoading } from '@hooks/useIsLoading';
+import { useIsLoading } from '@hooks/use-is-loading';
 import { AuthPage } from '@pages/auth/auth';
 import { CalendarPage } from '@pages/calendar-page/calendar-page';
 import { FeedbacksPage } from '@pages/feedbacks-page';
@@ -29,8 +31,6 @@ import { NotFoundPage } from '@pages/not-found-page/not-found-page';
 import { ProfilePage } from '@pages/profile-page/profile-page';
 import { SettingsPage } from '@pages/settings-page/settings-page';
 import { history } from '@redux/configure-store';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { HistoryRouter } from 'redux-first-history/rr6';
 
 const routes = (
     <Routes>
@@ -44,7 +44,7 @@ const routes = (
             >
                 <Route path={ROUTES.AUTH}>
                     <Route element={<AuthPageContent />}>
-                        <Route index element={<LoginForm />} />
+                        <Route index={true} element={<LoginForm />} />
                         <Route path={ROUTES.REGISTRATION} element={<RegistrationForm />} />
                     </Route>
                     <Route
@@ -73,7 +73,10 @@ const routes = (
                     <Route
                         path={ROUTES.ERROR_CHANGE_PASSWORD}
                         element={
-                            <ForgotPasswordRoute prevRoute={COMPOUND_ROUTES.AUTH_CHANGE_PASSWORD}>
+                            <ForgotPasswordRoute
+                                prevRoute={COMPOUND_ROUTES.AUTH_CHANGE_PASSWORD}
+                                isErrorRoute={true}
+                            >
                                 <ErrorChangePassword />
                             </ForgotPasswordRoute>
                         }
@@ -89,7 +92,7 @@ const routes = (
                     <Route
                         path={ROUTES.ERROR_CHECK_EMAIL_NO_EXIST}
                         element={
-                            <ForgotPasswordRoute prevRoute={ROUTES.AUTH}>
+                            <ForgotPasswordRoute prevRoute={ROUTES.AUTH} isErrorRoute={true}>
                                 <ErrorCheckEmailNoExist />
                             </ForgotPasswordRoute>
                         }
@@ -97,7 +100,7 @@ const routes = (
                     <Route
                         path={ROUTES.ERROR_CHECK_EMAIL}
                         element={
-                            <ForgotPasswordRoute prevRoute={ROUTES.AUTH}>
+                            <ForgotPasswordRoute prevRoute={ROUTES.AUTH} isErrorRoute={true}>
                                 <ErrorCheckEmail />
                             </ForgotPasswordRoute>
                         }
@@ -113,7 +116,7 @@ const routes = (
                     </AuthRoute>
                 }
             >
-                <Route index element={<MainPage />} />
+                <Route index={true} element={<MainPage />} />
             </Route>
             <Route
                 path={ROUTES.FEEDBACKS}
@@ -123,7 +126,7 @@ const routes = (
                     </AuthRoute>
                 }
             >
-                <Route index element={<FeedbacksPage />} />
+                <Route index={true} element={<FeedbacksPage />} />
             </Route>
             <Route
                 path={ROUTES.CALENDAR}
@@ -133,7 +136,7 @@ const routes = (
                     </AuthRoute>
                 }
             >
-                <Route index element={<CalendarPage />} />
+                <Route index={true} element={<CalendarPage />} />
             </Route>
             <Route
                 path={ROUTES.PROFILE}
@@ -143,7 +146,7 @@ const routes = (
                     </AuthRoute>
                 }
             >
-                <Route index element={<ProfilePage />} />
+                <Route index={true} element={<ProfilePage />} />
             </Route>
             <Route
                 path={ROUTES.SETTINGS}
@@ -153,7 +156,7 @@ const routes = (
                     </AuthRoute>
                 }
             >
-                <Route index element={<SettingsPage />} />
+                <Route index={true} element={<SettingsPage />} />
             </Route>
             <Route
                 path={ROUTES.NOT_FOUND}
@@ -163,7 +166,7 @@ const routes = (
                     </AuthRoute>
                 }
             >
-                <Route index element={<NotFoundPage />} />
+                <Route index={true} element={<NotFoundPage />} />
             </Route>
         </Route>
         <Route path='/' element={<CheckGoogleAuthRoute />} />

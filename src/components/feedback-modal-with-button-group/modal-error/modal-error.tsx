@@ -26,7 +26,7 @@ export const ModalError = () => {
         <ModalWithShadowMd
             open={isOpen}
             closable={false}
-            centered
+            centered={true}
             width={WIDTH_540}
             footer={null}
             maskStyle={{ backgroundColor: 'var(--blue-1)' }}
@@ -42,13 +42,13 @@ export const ModalError = () => {
                 extra={
                     <Space className={styles.space}>
                         <ResultButton
-                            block
+                            block={true}
                             onClick={onRepeat}
                             testId='write-review-not-saved-modal'
                         >
                             Написать отзыв
                         </ResultButton>
-                        <ResultButton block type='default' onClick={onClose}>
+                        <ResultButton block={true} type='default' onClick={onClose}>
                             Закрыть
                         </ResultButton>
                     </Space>

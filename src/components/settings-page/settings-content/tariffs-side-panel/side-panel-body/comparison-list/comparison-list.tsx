@@ -1,7 +1,8 @@
 import { Flex } from '@components/flex/flex';
 
-import styles from '../side-panel-body.module.css';
 import { ComparisonItem } from './comparison-item/comparison-item';
+
+import styles from '../side-panel-body.module.css';
 
 const tariffsComparison = [
     { id: 0, text: 'Статистика за месяц', includedInFree: true },

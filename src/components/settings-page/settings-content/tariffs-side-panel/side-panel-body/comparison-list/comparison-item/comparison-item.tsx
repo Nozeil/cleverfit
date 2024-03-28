@@ -18,7 +18,7 @@ export const ComparisonItem = ({ text, includedInFree }: ComparisonProps) => {
         checkIcon
     ) : (
         <CloseCircleOutlined
-            disabled
+            disabled={true}
             style={{ fontSize, color: 'var(--character-light-disable-25)' }}
         />
     );

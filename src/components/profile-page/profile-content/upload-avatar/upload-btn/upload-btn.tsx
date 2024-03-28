@@ -20,7 +20,7 @@ export const UploadBtn = () => {
         <Space direction='vertical' data-test-id='profile-avatar'>
             <PlusOutlined />
             <Typography.Paragraph className={styles.uploadText}>
-                {`Загрузить фото \u00a0 профиля`}
+                {'Загрузить фото \u00a0 профиля'}
             </Typography.Paragraph>
         </Space>
     );

@@ -1,12 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import { CalendarTwoTone, HeartFilled, IdcardTwoTone } from '@ant-design/icons';
 import { ROUTES } from '@constants/routes';
-import { useCalendarHandler } from '@hooks/useCalendarHandler';
+import { useCalendarHandler } from '@hooks/use-calendar-handler';
 import { Row } from 'antd';
-import { useNavigate } from 'react-router-dom';
 
 import { ActionCard } from './action-card';
-import styles from './action-cards.module.css';
 import type { ActionCardProps } from './action-cards.types';
+
+import styles from './action-cards.module.css';
 
 const color = 'var(--primary-light-6)';
 
@@ -17,7 +18,7 @@ export const ActionCards = () => {
     const cards: ActionCardProps[] = [
         {
             title: 'Расписать тренировки',
-            buttonIcon: <HeartFilled style={{ color: color }} />,
+            buttonIcon: <HeartFilled style={{ color }} />,
             buttonContent: 'Тренировки',
         },
         {

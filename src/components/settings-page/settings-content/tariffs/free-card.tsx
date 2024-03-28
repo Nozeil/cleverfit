@@ -2,8 +2,9 @@ import { CheckOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
 import { Card, Typography } from 'antd';
 
-import styles from './tariffs.module.css';
 import { FreeCardProps } from './tariffs.types';
+
+import styles from './tariffs.module.css';
 
 export const FreeCard = ({ extra }: FreeCardProps) => (
     <Card

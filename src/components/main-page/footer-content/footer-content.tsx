@@ -26,7 +26,7 @@ export const FooterContent = () => (
                     </Button>
                 }
                 description={
-                    <Button className={styles.cardBtnLink} type='link' disabled>
+                    <Button className={styles.cardBtnLink} type='link' disabled={true}>
                         Доступно в PRO-тарифе
                     </Button>
                 }

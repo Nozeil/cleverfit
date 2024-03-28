@@ -4,8 +4,9 @@ import { useGetUserInfoQuery } from '@services/endpoints/user';
 import { Button, Card, Typography } from 'antd';
 import moment from 'moment';
 
-import styles from './tariffs.module.css';
 import type { ProCardProps } from './tariffs.types';
+
+import styles from './tariffs.module.css';
 
 export const ProCard = ({ onClick, extra }: ProCardProps) => {
     const { data } = useGetUserInfoQuery();

@@ -3,6 +3,7 @@ import { Flex } from '@components/flex/flex';
 import { Grid, Switch, Tooltip, TooltipProps, Typography } from 'antd';
 
 import type { SwitchFieldProps } from '../switches.types';
+
 import styles from './switch.module.css';
 
 const { useBreakpoint } = Grid;
@@ -31,7 +32,7 @@ export const SwitchField = ({
                     {text}
                 </Typography.Text>
                 <Tooltip
-                    arrowPointAtCenter
+                    arrowPointAtCenter={true}
                     title={tooltip}
                     color='var(--neutral-gray-13)'
                     overlayClassName={styles.tooltipOverlay}

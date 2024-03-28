@@ -10,6 +10,7 @@ import moment from 'moment';
 
 import { SidePanelBody } from './side-panel-body/side-panel-body';
 import { SubmitBtn } from './submit-btn/submit-btn';
+
 import styles from './tariffs-side-panel.module.css';
 
 export const TariffsSidePanel = () => {

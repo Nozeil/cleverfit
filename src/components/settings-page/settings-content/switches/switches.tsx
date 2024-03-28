@@ -2,8 +2,9 @@ import { Flex } from '@components/flex/flex';
 import { useGetUserInfoQuery, useUpdateUserInfoMutation } from '@services/endpoints/user';
 
 import { SwitchField } from './switch-field/switcher-field';
-import styles from './switches.module.css';
 import { FieldsData } from './switches.types';
+
+import styles from './switches.module.css';
 
 export const Switches = () => {
     const { data } = useGetUserInfoQuery();

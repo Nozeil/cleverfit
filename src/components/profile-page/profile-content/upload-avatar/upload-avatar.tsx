@@ -1,14 +1,15 @@
+import { useEffect, useState } from 'react';
 import { HTTP_STATUS_CODES } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { selectAuthToken } from '@redux/slices/auth';
 import { UPLOAD_IMAGE } from '@services/api.constants';
 import { CenteredModalError } from '@utils/modal-error/modal-error';
 import { type UploadFile, type UploadProps, Form, Grid, Typography, Upload } from 'antd';
-import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import styles from './upload-avatar.module.css';
 import { UploadBtn } from './upload-btn/upload-btn';
+
+import styles from './upload-avatar.module.css';
 
 type UploadAvatarProps = {
     imgSrc?: string;
@@ -33,7 +34,7 @@ export const UploadAvatar = ({ imgSrc }: UploadAvatarProps) => {
         }
     }, [imgSrc]);
 
-    const handleChange: UploadProps['onChange'] = ({ file, fileList }) => {
+    const handleChange: UploadProps['onChange'] = ({ file, fileList: oldFileList }) => {
         if (file.error?.status === HTTP_STATUS_CODES.CONFLICT) {
             CenteredModalError({
                 title: 'Файл слишком большой',
@@ -42,12 +43,12 @@ export const UploadAvatar = ({ imgSrc }: UploadAvatarProps) => {
             });
         }
 
-        const uploadList: UploadFile[] =
+        const newFileList: UploadFile[] =
             file.status && file.status !== 'error'
-                ? fileList
+                ? oldFileList
                 : [{ uid: uuidv4(), name: 'image.png', status: 'error' }];
 
-        setFileList(uploadList);
+        setFileList(newFileList);
     };
 
     const listType = xs ? 'picture' : 'picture-card';
@@ -56,6 +57,10 @@ export const UploadAvatar = ({ imgSrc }: UploadAvatarProps) => {
 
     const label = xs && !fileList.length && (
         <Typography.Text className={styles.uploadLabel}>Загрузить фото профиля:</Typography.Text>
+    );
+
+    const itemRender: UploadProps['itemRender'] = (originNode) => (
+        <div data-test-id='profile-avatar'>{originNode}</div>
     );
 
     return (
@@ -81,7 +86,7 @@ export const UploadAvatar = ({ imgSrc }: UploadAvatarProps) => {
                 listType={listType}
                 maxCount={1}
                 onChange={handleChange}
-                itemRender={(originNode) => <div data-test-id='profile-avatar'>{originNode}</div>}
+                itemRender={itemRender}
             >
                 {content}
             </Upload>

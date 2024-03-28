@@ -2,7 +2,7 @@ import { CheckCircleFilled } from '@ant-design/icons';
 import { ModalWithShadowMd } from '@components/modal-with-shadow-md/modal-with-shadow-md';
 import { WIDTH_540 } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { useAuth } from '@hooks/useAuth';
+import { useAuth } from '@hooks/use-auth';
 import { closeTariffsSuccessModal, selectIsTariffsSuccessModalOpen } from '@redux/slices/tariffs';
 import { useGetUserInfoQuery } from '@services/endpoints/user';
 import { Grid, Result, Typography } from 'antd';
@@ -29,7 +29,7 @@ export const ModalSuccess = () => {
                 className={styles.modal}
                 open={isOpen}
                 closable={!xs}
-                centered
+                centered={true}
                 width={WIDTH_540}
                 footer={null}
                 maskStyle={{ backgroundColor: 'var(--blue-2)' }}

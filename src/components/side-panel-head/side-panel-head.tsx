@@ -1,7 +1,7 @@
+import { type ReactNode } from 'react';
 import { CloseOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
 import { Button, Typography } from 'antd';
-import { type ReactNode } from 'react';
 
 import styles from './side-panel-head.module.css';
 

@@ -6,6 +6,7 @@ import { Typography } from 'antd';
 import { CardExtra } from './card-extra';
 import { FreeCard } from './free-card';
 import { ProCard } from './pro-card';
+
 import styles from './tariffs.module.css';
 
 export const Tariffs = () => {

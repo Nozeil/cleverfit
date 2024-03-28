@@ -3,6 +3,6 @@
     border-color: var(--primary-light-6);
 }
 
-:global(.ant-radio-inner::after) {
+:global(.ant-radio-inner:after) {
     background-color: var(--primary-light-6);
 }

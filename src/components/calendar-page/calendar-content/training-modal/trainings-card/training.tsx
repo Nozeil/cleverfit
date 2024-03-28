@@ -12,8 +12,9 @@ import {
 } from '@redux/slices/training-modal/training-modal';
 import { Button, Row } from 'antd';
 
-import styles from './../training-modal.module.css';
 import { useTrainingTypes } from './hooks/use-training-types';
+
+import styles from '../training-modal.module.css';
 
 type TrainingProps = Omit<TrainingResponse, 'date' | 'userId' | 'parameters'> & { index: number };
 
@@ -47,6 +48,7 @@ export const Training = ({ _id, name, isImplementation, index, exercises }: Trai
                 const paylaod = isPast
                     ? trainingTypes.filter((type) => type.isImplementation)
                     : trainingTypes.filter((type) => type.name !== name);
+
                 dispatch(switchToExercises(paylaod));
             }
         }

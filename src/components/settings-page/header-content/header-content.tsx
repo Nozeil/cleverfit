@@ -1,8 +1,8 @@
+import { useNavigate } from 'react-router-dom';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { routerSelector } from '@redux/router-selector';
 import { Button } from 'antd';
-import { useNavigate } from 'react-router-dom';
 
 import styles from './header-content.module.css';
 

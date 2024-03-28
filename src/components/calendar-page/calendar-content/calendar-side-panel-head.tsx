@@ -1,8 +1,8 @@
+import { type ReactNode } from 'react';
 import { EditOutlined, PlusOutlined } from '@ant-design/icons';
 import { SidePanelHead } from '@components/side-panel-head/side-panel-head';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingModalFormModeSelector } from '@redux/slices/training-modal/training-modal';
-import { type ReactNode } from 'react';
 
 type CalendarSidePanelHeadProps = {
     onClose: () => void;

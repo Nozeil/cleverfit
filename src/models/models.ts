@@ -80,9 +80,9 @@ type NewTraining = {
 
 export type TrainingResponse = NewTraining & {
     _id: string;
-    exercises: (TrainingExercise & {
+    exercises: Array<TrainingExercise & {
         _id: string;
-    })[];
+    }>;
 };
 
 export type GetTrainingResponse = TrainingResponse[];
@@ -126,11 +126,11 @@ export type UpdateUserBody = {
 type TariffItem = {
     _id: string;
     name: string;
-    periods: {
+    periods: Array<{
         text: string;
         cost: number;
         days: number;
-    }[];
+    }>;
 };
 
 export type TariffListResponse = TariffItem[];

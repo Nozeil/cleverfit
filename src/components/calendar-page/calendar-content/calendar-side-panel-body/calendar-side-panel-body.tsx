@@ -1,9 +1,9 @@
+import { type ReactNode } from 'react';
 import { TrainingBadge } from '@components/calendar-page/training-badge';
 import { Flex } from '@components/flex/flex';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingModalSelector } from '@redux/slices/training-modal/training-modal';
 import { Typography } from 'antd';
-import { type ReactNode } from 'react';
 
 import styles from './calendar-side-panel-body.module.css';
 

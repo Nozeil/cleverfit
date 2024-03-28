@@ -1,9 +1,10 @@
+import { useState } from 'react';
 import { FeedbackModalWithButtonGroup } from '@components/feedback-modal-with-button-group/feedback-modal-with-button-group';
 import { Button } from 'antd';
-import { useState } from 'react';
+
+import { FeedbacksList } from './feedbacks-list';
 
 import styles from './feedback-content.module.css';
-import { FeedbacksList } from './feedbacks-list';
 
 const maskStyleColor = 'var(--blue-1)';
 
@@ -22,7 +23,7 @@ export const FeedbacksContent = () => {
                     maskStyleColor={maskStyleColor}
                     additonalButton={
                         <Button
-                            block
+                            block={true}
                             type='link'
                             size='large'
                             onClick={() => toggleShowAll((prevShowAll) => !prevShowAll)}

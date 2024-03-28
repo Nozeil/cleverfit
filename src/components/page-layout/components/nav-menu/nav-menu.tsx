@@ -1,15 +1,16 @@
+import { useNavigate } from 'react-router-dom';
 import { CalendarTwoTone, HeartFilled, IdcardTwoTone, TrophyFilled } from '@ant-design/icons';
 import ExitIcon from '@assets/icons/exit.svg?react';
 import { NAV_MENU_LABELS } from '@constants/index';
 import { ROUTES } from '@constants/routes';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { useAuth } from '@hooks/useAuth';
-import { useCalendarHandler } from '@hooks/useCalendarHandler';
+import { useAuth } from '@hooks/use-auth';
+import { useCalendarHandler } from '@hooks/use-calendar-handler';
 import { selectedKeysSelector } from '@redux/slices/nav-menu/nav-menu';
 import { Grid, Menu, MenuProps } from 'antd';
-import { useNavigate } from 'react-router-dom';
 
 import { ICONS_COLOR } from './nav-menu.constants';
+
 import styles from './nav-menu.module.css';
 
 const { useBreakpoint } = Grid;
@@ -76,7 +77,6 @@ export const NavMenu = () => {
                 signout(() => navigate(ROUTES.AUTH));
                 break;
             default:
-                return;
         }
     };
 

@@ -1,8 +1,8 @@
+import { type ReactNode } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '@constants/routes';
 import { Button } from 'antd';
 import classNames from 'classnames/bind';
-import { type ReactNode } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import styles from './feedbacks-nav-btn.module.css';
 

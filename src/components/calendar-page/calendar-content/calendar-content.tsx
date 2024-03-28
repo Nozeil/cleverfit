@@ -1,3 +1,5 @@
+import { Fragment, useCallback, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { SidePanel } from '@components/side-panel/side-panel';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { closeSidePanel } from '@redux/slices/side-panel';
@@ -9,16 +11,15 @@ import {
 } from '@redux/slices/training-modal/training-modal';
 import { useGetTrainingListQuery } from '@services/endpoints/catalogs';
 import { Calendar, Form, Grid } from 'antd';
-import { useCallback, useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
 
-import styles from './calendar-content.module.css';
 import { CalendarSidePanelBody } from './calendar-side-panel-body/calendar-side-panel-body';
-import { CalendarSidePanelHead } from './calendar-side-panel-head';
 import { ExercisesForm } from './exercises-form/exercises-form';
 import { useTrainingModal } from './hooks/use-training-modal/use-training-modal';
 import { Notification } from './notification/notification';
 import { TrainingModal } from './training-modal/training-modal';
+import { CalendarSidePanelHead } from './calendar-side-panel-head';
+
+import styles from './calendar-content.module.css';
 
 const { useBreakpoint } = Grid;
 
@@ -37,7 +38,11 @@ export const CalendarContent = () => {
     const closeNotification = () => setIsNotificationOpen(false);
 
     useEffect(() => {
-        isError ? setIsNotificationOpen(true) : closeNotification();
+        if (isError) {
+            setIsNotificationOpen(true);
+        } else {
+            closeNotification();
+        }
     }, [isError]);
 
     const refresh = () => {
@@ -69,7 +74,7 @@ export const CalendarContent = () => {
     );
 
     return (
-        <>
+        <Fragment>
             <SidePanel onClose={closeCalendarSidePanel} testId='modal-drawer-right'>
                 <CalendarSidePanelHead onClose={closeCalendarSidePanel} />
                 <CalendarSidePanelBody>
@@ -90,6 +95,6 @@ export const CalendarContent = () => {
                     )}
                 {calendar}
             </div>
-        </>
+        </Fragment>
     );
 };

@@ -3,6 +3,7 @@ import { selectIsTariffsSubmitDisabled } from '@redux/slices/tariffs';
 import { Button } from 'antd';
 
 import { FORM_NAME } from '../tariffs-side-panel.constants';
+
 import styles from './submit-btn.module.css';
 
 export const SubmitBtn = () => {
@@ -14,7 +15,7 @@ export const SubmitBtn = () => {
             disabled={isSubmitDisabled}
             type='primary'
             size='large'
-            block
+            block={true}
             htmlType='submit'
             form={FORM_NAME}
             data-test-id='tariff-submit'

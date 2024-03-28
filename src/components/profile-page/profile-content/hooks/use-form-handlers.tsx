@@ -53,6 +53,7 @@ export const useFormHandlers = (form: FormInstance) => {
 
         if (birthday) {
             const localDate = birthday.toISOString(true);
+
             body.birthday = moment(localDate).format(DATE_FORMATS.ISO);
         }
 

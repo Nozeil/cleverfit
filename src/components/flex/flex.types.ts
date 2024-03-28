@@ -1,5 +1,5 @@
-import { type Breakpoint } from 'antd/lib/_util/responsiveObserve';
 import { type ElementType, type ReactNode } from 'react';
+import { type Breakpoint } from 'antd/lib/_util/responsiveObserve';
 
 type Breakpoints = Partial<Record<Breakpoint, boolean>>;
 

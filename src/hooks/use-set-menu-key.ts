@@ -1,6 +1,6 @@
+import { useEffect } from 'react';
 import { resetSelectedKeys, setSelectedKey } from '@redux/slices/nav-menu/nav-menu';
 import { NavMenuSelectedKey } from '@typings/index';
-import { useEffect } from 'react';
 
 import { useAppDispatch } from '.';
 

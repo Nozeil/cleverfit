@@ -1,8 +1,8 @@
+import { combineReducers } from 'redux';
+import { createReduxHistoryContext } from 'redux-first-history';
 import { configureStore } from '@reduxjs/toolkit';
 import { api } from '@services/api';
 import { createBrowserHistory } from 'history';
-import { combineReducers } from 'redux';
-import { createReduxHistoryContext } from 'redux-first-history';
 
 import { authReducer } from './slices/auth';
 import { error500ModalReducer } from './slices/error-500-modal';

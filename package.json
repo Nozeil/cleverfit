@@ -78,6 +78,27 @@
     "vite": "^5.0.6",
     "vite-plugin-svgr": "^4.2.0"
   },
+  "commitlint": {
+    "extends": [
+      "./node_modules/arui-presets-lint/commitlint"
+    ],
+    "rules": {
+      "subject-case": [
+        2,
+        "never",
+        [
+          "start-case",
+          "pascal-case",
+          "upper-case"
+        ]
+      ],
+      "header-max-length": [
+        2,
+        "always",
+        120
+      ]
+    }
+  },
   "prettier": "arui-presets-lint/prettier",
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [

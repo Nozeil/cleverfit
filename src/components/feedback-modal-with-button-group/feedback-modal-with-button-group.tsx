@@ -1,3 +1,4 @@
+import { type ReactNode, Fragment, useState } from 'react';
 import { CloseOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
 import { ModalWithShadowMd } from '@components/modal-with-shadow-md/modal-with-shadow-md';
@@ -10,13 +11,14 @@ import {
 } from '@redux/slices/feedback-modal';
 import { Button } from 'antd';
 import classNames from 'classnames/bind';
-import { type ReactNode, useState } from 'react';
 
 import { FORM_NAME } from '../feedbacks-page/feedbacks-content/feedback-content.constants';
+
 import { FeedbackForm } from './feedback-form/feedback-form';
-import styles from './feedback-modal-with-button-group.module.css';
 import { ModalError } from './modal-error/modal-error';
 import { ModalSuccess } from './modal-success/modal-success';
+
+import styles from './feedback-modal-with-button-group.module.css';
 
 type FeedbackModalWithButtonGroupProps = {
     btnGroupClassName?: string;
@@ -40,14 +42,14 @@ export const FeedbackModalWithButtonGroup = ({
     const closeModal = () => dispatch(closeFeedbackModal());
 
     return (
-        <>
+        <Fragment>
             <ModalSuccess />
             <ModalError />
 
             <ModalWithShadowMd
                 className={styles.modal}
                 open={isOpen}
-                centered
+                centered={true}
                 width={WIDTH_540}
                 title='Ваш отзыв'
                 closeIcon={<CloseOutlined style={{ fontSize: 14 }} />}
@@ -78,7 +80,7 @@ export const FeedbackModalWithButtonGroup = ({
                 gap={{ sm: 'gap8', xs: 'gap16' }}
             >
                 <Button
-                    block
+                    block={true}
                     className={styles.btn}
                     type='primary'
                     size='large'
@@ -90,6 +92,6 @@ export const FeedbackModalWithButtonGroup = ({
 
                 {additonalButton}
             </Flex>
-        </>
+        </Fragment>
     );
 };

@@ -20,7 +20,7 @@ export const ModalSuccess = () => {
         <ModalWithShadowMd
             open={isOpen}
             closable={false}
-            centered
+            centered={true}
             width={WIDTH_540}
             footer={null}
             maskStyle={{ backgroundColor: 'var(--blue-1)' }}
@@ -30,7 +30,7 @@ export const ModalSuccess = () => {
                 status='success'
                 title={<Typography.Title level={3}>Отзыв успешно опубликован</Typography.Title>}
                 extra={
-                    <ResultButton block onClick={onClick}>
+                    <ResultButton block={true} onClick={onClick}>
                         Отлично
                     </ResultButton>
                 }

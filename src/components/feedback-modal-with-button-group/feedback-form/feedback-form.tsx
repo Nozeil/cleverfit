@@ -4,11 +4,13 @@ import { openErrorFeedbackModal } from '@redux/slices/error-feedback-modal';
 import { closeFeedbackModal } from '@redux/slices/feedback-modal';
 import { openSuccessFeedbackModal } from '@redux/slices/success-feedback-modal';
 import { useCreateFeedbackMutation } from '@services/endpoints/feedbacks';
-import { Form, Input, Rate } from 'antd';
+import { type RateProps, Form, Input, Rate } from 'antd';
 
 import { FORM_NAME } from '../../feedbacks-page/feedbacks-content/feedback-content.constants';
-import styles from './feedback-form.module.css';
+
 import type { FeedbackFormProps, OnFinishFeedbackValues } from './feedback-form.types';
+
+import styles from './feedback-form.module.css';
 
 const rateItemName = 'rating';
 
@@ -41,6 +43,14 @@ export const FeedbackForm = ({ disableSubmit }: FeedbackFormProps) => {
         }
     };
 
+    const character: RateProps['character'] = ({ index, value }) => {
+        if (index !== undefined && value !== undefined) {
+            return value > index ? <StarFilled /> : <StarOutlined />;
+        }
+
+        return null;
+    };
+
     return (
         <Form
             form={form}
@@ -54,19 +64,12 @@ export const FeedbackForm = ({ disableSubmit }: FeedbackFormProps) => {
                 name={rateItemName}
                 rules={[{ required: true, message: '' }]}
             >
-                <Rate
-                    className={styles.rate}
-                    character={({ index, value }) => {
-                        if (index !== undefined && value !== undefined) {
-                            return value > index ? <StarFilled /> : <StarOutlined />;
-                        }
-                    }}
-                />
+                <Rate className={styles.rate} character={character} />
             </Form.Item>
-            <Form.Item name='message' noStyle>
+            <Form.Item name='message' noStyle={true}>
                 <Input.TextArea
                     placeholder='Напишите, что вам понравилось или не понравилось в нашем приложении, и как мы можем его улучшить'
-                    autoSize
+                    autoSize={true}
                     className={styles.textarea}
                     size='middle'
                 />

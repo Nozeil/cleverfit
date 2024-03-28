@@ -4,8 +4,9 @@ import { useGetUserInfoQuery } from '@services/endpoints/user';
 import { Grid, Typography } from 'antd';
 
 import { ComparisonList } from './comparison-list/comparison-list';
-import styles from './side-panel-body.module.css';
 import { TariffSelection } from './tariff-selection';
+
+import styles from './side-panel-body.module.css';
 
 const { useBreakpoint } = Grid;
 
