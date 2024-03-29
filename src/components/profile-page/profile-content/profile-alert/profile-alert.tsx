@@ -8,6 +8,8 @@ export const ProfileAlert = () => {
     const isAlert = useAppSelector(selectProfileIsAlert);
     const dispatch = useAppDispatch();
 
+    const onClose = () => dispatch(closeProfileAlert());
+
     return isAlert ? (
         <Alert
             className={styles.alert}
@@ -15,7 +17,7 @@ export const ProfileAlert = () => {
             type='success'
             showIcon={true}
             closable={true}
-            onClose={() => dispatch(closeProfileAlert())}
+            onClose={onClose}
             data-test-id='alert'
         />
     ) : null;

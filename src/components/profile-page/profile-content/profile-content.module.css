@@ -21,12 +21,12 @@
     padding: var(--p-profile-content-date-picker);
 }
 
-.input {
+.input:global(.ant-input) {
     padding: var(--p-auth-input);
 }
 
 .input:global(.ant-input),
-.datePicker:global(.ant-picker) input {
+.datePicker:global(.ant-picker) :global(.ant-picker-input) input {
     font-size: var(--text-sm);
 }
 

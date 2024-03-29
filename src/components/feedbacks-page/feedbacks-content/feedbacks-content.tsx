@@ -13,6 +13,8 @@ export const FeedbacksContent = () => {
 
     const expendBtnText = showAll ? 'Свернуть все отзывы' : 'Развернуть все отзывы';
 
+    const onClick = () => toggleShowAll((prevShowAll) => !prevShowAll);
+
     return (
         <FeedbacksList
             showAll={showAll}
@@ -26,7 +28,7 @@ export const FeedbacksContent = () => {
                             block={true}
                             type='link'
                             size='large'
-                            onClick={() => toggleShowAll((prevShowAll) => !prevShowAll)}
+                            onClick={onClick}
                             data-test-id='all-reviews-button'
                         >
                             {expendBtnText}

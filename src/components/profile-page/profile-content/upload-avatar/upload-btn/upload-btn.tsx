@@ -8,7 +8,7 @@ const { useBreakpoint } = Grid;
 export const UploadBtn = () => {
     const { xs } = useBreakpoint();
 
-    const uploadBtn = xs ? (
+    return xs ? (
         <Button
             className={styles.uploadBtn}
             icon={<UploadOutlined style={{ color: 'var(--character-light-disable-25)' }} />}
@@ -24,6 +24,4 @@ export const UploadBtn = () => {
             </Typography.Paragraph>
         </Space>
     );
-
-    return uploadBtn;
 };
