@@ -5,7 +5,7 @@ import { NAV_MENU_LABELS } from '@constants/index';
 import { ROUTES } from '@constants/routes';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { useAuth } from '@hooks/use-auth';
-import { useCalendarHandler } from '@hooks/use-calendar-handler';
+import { useTrainingHandler } from '@hooks/use-training-handler';
 import { selectedKeysSelector } from '@redux/slices/nav-menu/nav-menu';
 import { Grid, Menu, MenuProps } from 'antd';
 
@@ -60,7 +60,8 @@ export const NavMenu = () => {
     const selectedKeys = useAppSelector(selectedKeysSelector);
     const { signout } = useAuth();
     const navigate = useNavigate();
-    const calendarHandler = useCalendarHandler(navigate);
+    const calendarHandler = useTrainingHandler(() => navigate(ROUTES.CALENDAR));
+    const workoutsHandler = useTrainingHandler(() => navigate(ROUTES.TRAINING));
 
     const { md } = useBreakpoint();
     const mode = md ? 'inline' : 'vertical';
@@ -69,6 +70,9 @@ export const NavMenu = () => {
         switch (key) {
             case CALENDAR:
                 calendarHandler();
+                break;
+            case WORKOUT:
+                workoutsHandler();
                 break;
             case PROFILE:
                 navigate(ROUTES.PROFILE);
