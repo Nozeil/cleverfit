@@ -1,0 +1,25 @@
+:global(.ant-tabs) :global(.ant-tabs-nav) {
+    margin-bottom: var(--mb-tabs);
+}
+
+:global(.ant-tabs-nav-list) {
+    width: 100%;
+}
+
+:global(.ant-tabs) :global(.ant-tabs-tab) {
+    margin: var(--m-tab);
+    padding: var(--p-tab);
+}
+
+:global(.ant-tabs-ink-bar) {
+    background: var(--primary-light-6);
+}
+
+:global(.ant-tabs) :global(.ant-tabs-tab-active) :global(.ant-tabs-tab-btn) {
+    color: var(--primary-light-6);
+    text-shadow: none;
+}
+
+:global(.ant-tab-btn) {
+    height: fit-content;
+}

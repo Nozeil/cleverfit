@@ -14,7 +14,7 @@
     padding: var(--p-main-page-content-action-card-body);
 }
 
-@media screen and (max-width: 834px) {
+@media screen and (max-width: 835px) {
     .card :global(.ant-card-head-title) {
         text-align: start;
         white-space: pre-wrap;

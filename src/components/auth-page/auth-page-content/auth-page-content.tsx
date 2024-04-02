@@ -44,7 +44,6 @@ export const AuthPageContent = () => {
                 centered={true}
                 items={items}
                 size='large'
-                color='red'
             />
         </ContentLayout>
     );

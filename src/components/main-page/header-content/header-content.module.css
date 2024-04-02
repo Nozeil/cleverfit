@@ -3,7 +3,7 @@
     white-space: pre-line;
 }
 
-@media screen and (max-width: 834px) {
+@media screen and (max-width: 835px) {
     .title:global(.ant-typography) {
         font-size: var(--text-2xl);
         font-weight: var(--font-medium);

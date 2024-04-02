@@ -51,7 +51,7 @@
     --p-auth-card-body: 0;
     --p-auth-logo: 0 calc(115px - var(--px-auth-card));
     --p-auth-logo-mobile-l: 0 calc(62.5px - var(--px-auth-card-mobile-l));
-    --p-auth-tab: 0;
+    --p-tab: 0;
     --p-auth-link: 11px 0;
     --p-auth-link-mobile-l: 14px 0;
     --p-auth-input: 10px 12px;
@@ -128,7 +128,7 @@
     --pt-settings-content-side-panel-body: 48px;
     --p-tariff-label: 2px 0;
     --p-tariffs-side-panel-list: 0;
-    --pr-tariffs-side-panel-list: 16px;
+    --pr-tariffs-side-panel-list: var(--p-16);
     --pt-settings-content-side-panel-body-mobile-l: var(--p-24);
     --p-tariff-selection-form-radio-span: 0;
     --p-not-found-content-result-mobile: 44px 0;
@@ -137,4 +137,11 @@
     --p-profile-content-date-picker: var(--p-8) var(--p-12);
     --p-profile-upload-form-item-label-mobile-l: 0;
     --p-profile-upload-btn-mobile-l: 10px 26px;
+    --p-workouts-tabs-wrapper: var(--p-12) 0;
+    --pr-workouts-tabs-nav-list: 50px;
+    --p-workouts-tabs-wrapper-tablet-l: 4px 0;
+    --p-workouts-tabs-nav-list-tablet-l: 0 var(--p-12);
+    --p-workouts-tabs-tab-btn-tablet-l: 14px 0;
+    --p-workouts-content-wrapper-mobile-l: var(--p-16) var(--p-12);
+    --p-workouts-tabs-nav-list-mobile-l: 0;
 }

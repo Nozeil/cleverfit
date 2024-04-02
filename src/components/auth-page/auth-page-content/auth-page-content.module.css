@@ -3,36 +3,13 @@
     margin-bottom: var(--mb-auth-logo);
 }
 
-.tabs:global(.ant-tabs) :global(.ant-tabs-nav) {
-    margin-bottom: var(--mb-auth-tabs);
-}
-
-.tabs :global(.ant-tabs-nav-list) {
-    width: 100%;
-}
-
 .tabs:global(.ant-tabs):global(.ant-tabs-large) :global(.ant-tabs-tab) {
     justify-content: center;
     flex: 1;
-    margin: var(--m-auth-tab);
-    padding: var(--p-auth-tab);
-}
-
-.tabs :global(.ant-tabs-ink-bar) {
-    background: var(--primary-light-6);
 }
 
 .tabs:global(.ant-tabs) :global(.ant-tabs-tab-btn) {
     flex: 1;
-}
-
-.tabs:global(.ant-tabs) :global(.ant-tabs-tab-active) :global(.ant-tabs-tab-btn) {
-    color: var(--primary-light-6);
-    text-shadow: none;
-}
-
-.tabs :global(.ant-tab-btn) {
-    height: fit-content;
 }
 
 .link {
@@ -43,7 +20,7 @@
     text-align: center;
 }
 
-@media screen and (max-width: 834px) {
+@media screen and (max-width: 835px) {
     .space {
         margin-bottom: var(--mb-auth-space-tablet-l);
     }

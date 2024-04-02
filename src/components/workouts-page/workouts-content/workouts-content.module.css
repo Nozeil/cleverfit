@@ -1,0 +1,48 @@
+.tabsWrapper {
+    padding: var(--p-workouts-tabs-wrapper);
+}
+
+.tabs :global(.ant-tabs-nav-list) {
+    justify-content: space-between;
+    padding-right: var(--pr-workouts-tabs-nav-list);
+}
+
+.tabs :global(.ant-tabs-tab-btn) {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-medium);
+}
+
+.tabs:global(.ant-tabs) :global(.ant-tabs-tab) {
+    margin: var(--m-workouts-tabs-tab);
+}
+
+@media screen and (max-width: 835px) {
+    .tabsWrapper {
+        padding: var(--p-workouts-tabs-wrapper-tablet-l);
+    }
+
+    .tabs :global(.ant-tabs-nav-list) {
+        padding: var(--p-workouts-tabs-nav-list-tablet-l);
+    }
+
+    .tabs :global(.ant-tabs-tab-btn) {
+        padding: var(--p-workouts-tabs-tab-btn-tablet-l);
+        font-size: var(--text-sm);
+        font-weight: var(--font-medium);
+    }
+
+    .tabs:global(.ant-tabs) :global(.ant-tabs-tab) {
+        margin: var(--m-workouts-tabs-tab-mobile-l);
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .contentWrapper {
+        padding: var(--p-workouts-content-wrapper-mobile-l);
+    }
+
+    .tabs :global(.ant-tabs-nav-list) {
+        gap: var(--gap-2);
+        padding: var(--p-workouts-tabs-nav-list-mobile-l);
+    }
+}
