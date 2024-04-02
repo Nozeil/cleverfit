@@ -1,7 +1,9 @@
-import { Fragment, useCallback, useEffect, useState } from 'react';
+import { Fragment, useCallback } from 'react';
 import { createPortal } from 'react-dom';
+import { Notification } from '@components/notification/notification';
 import { SidePanel } from '@components/side-panel/side-panel';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { useTrainingListQueryWithNotification } from '@hooks/use-training-list-query-with-notification';
 import { closeSidePanel } from '@redux/slices/side-panel';
 import {
     closeTrainingModal,
@@ -9,13 +11,11 @@ import {
     resetExercises,
     resetFormExercises,
 } from '@redux/slices/training-modal/training-modal';
-import { useGetTrainingListQuery } from '@services/endpoints/catalogs';
 import { Calendar, Form, Grid } from 'antd';
 
 import { CalendarSidePanelBody } from './calendar-side-panel-body/calendar-side-panel-body';
 import { ExercisesForm } from './exercises-form/exercises-form';
 import { useTrainingModal } from './hooks/use-training-modal/use-training-modal';
-import { Notification } from './notification/notification';
 import { TrainingModal } from './training-modal/training-modal';
 import { CalendarSidePanelHead } from './calendar-side-panel-head';
 
@@ -24,8 +24,7 @@ import styles from './calendar-content.module.css';
 const { useBreakpoint } = Grid;
 
 export const CalendarContent = () => {
-    const { isError, refetch } = useGetTrainingListQuery();
-    const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+    const { queryResult, refresh } = useTrainingListQueryWithNotification();
 
     const isTrainingModalOpen = useAppSelector(isTrainingModalOpenSelector);
     const dispatch = useAppDispatch();
@@ -34,21 +33,6 @@ export const CalendarContent = () => {
     const { sm } = useBreakpoint();
 
     const { coords, container, dateCellRender, calendarWrapperRef } = useTrainingModal(sm);
-
-    const closeNotification = () => setIsNotificationOpen(false);
-
-    useEffect(() => {
-        if (isError) {
-            setIsNotificationOpen(true);
-        } else {
-            closeNotification();
-        }
-    }, [isError]);
-
-    const refresh = () => {
-        closeNotification();
-        refetch();
-    };
 
     const closeCalendarSidePanel = useCallback(() => {
         form.submit();
@@ -62,7 +46,7 @@ export const CalendarContent = () => {
         dispatch(resetExercises());
     };
 
-    const calendar = isError ? (
+    const calendar = queryResult.isError ? (
         <Calendar fullscreen={sm} />
     ) : (
         <Calendar
@@ -81,7 +65,7 @@ export const CalendarContent = () => {
                     <ExercisesForm form={form} />
                 </CalendarSidePanelBody>
             </SidePanel>
-            <Notification isOpen={isNotificationOpen} close={closeNotification} refresh={refresh} />
+            <Notification refresh={refresh} />
             <div ref={calendarWrapperRef} className={styles.calendarWrapper}>
                 {isTrainingModalOpen &&
                     container &&
