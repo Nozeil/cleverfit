@@ -1,0 +1,42 @@
+.wrapper {
+    padding-top: 144px;
+}
+
+.text:global(.ant-typography) {
+    padding: 56px 130px;
+    font-size: var(--text-2xl);
+    font-weight: var(--font-medium);
+    text-align: center;
+}
+
+.btn:global(.ant-btn) {
+    width: fit-content;
+    padding: 10px 16px;
+    font-size: var(--text-sm);
+}
+
+@media screen and (max-width: 835px) {
+    .wrapper {
+        padding-top: 177px;
+    }
+
+    .text:global(.ant-typography) {
+        margin-bottom: 32px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .wrapper {
+        padding: 75px 12px 0;
+    }
+
+    .text:global(.ant-typography) {
+        margin-bottom: 75px;
+        padding-right: 6px;
+        padding-left: 6px;
+    }
+
+    .btn:global(.ant-btn) {
+        width: 100%;
+    }
+}

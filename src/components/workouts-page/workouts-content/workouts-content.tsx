@@ -2,25 +2,29 @@ import { Fragment } from 'react';
 import { ContentWrapper } from '@components/content-wrapper/content-wrapper';
 import { Notification } from '@components/notification/notification';
 import { useTrainingListQueryWithNotification } from '@hooks/use-training-list-query-with-notification';
+import { useGetTrainingQuery } from '@services/endpoints/training';
 import { Grid, Tabs } from 'antd';
+
+import { EmptyTrainings } from './empty-trainings/empty-trainings';
 
 import styles from './workouts-content.module.css';
 
 const { useBreakpoint } = Grid;
 
-const tabsItems = [
-    {
-        label: 'Мои тренировки',
-        key: 'my-trainings',
-        children: <div>My</div>,
-    },
-    { label: 'Совместные тренировки', key: 'joint-trainings', children: <div>Joint</div> },
-    { label: 'Марафоны', key: 'marathons' },
-];
-
 export const WorkoutsContent = () => {
-    const { queryResult, refresh } = useTrainingListQueryWithNotification();
+    const { refresh } = useTrainingListQueryWithNotification();
+    const { data: trainings } = useGetTrainingQuery();
     const { xl, sm } = useBreakpoint();
+
+    const tabsItems = [
+        {
+            label: 'Мои тренировки',
+            key: 'my-trainings',
+            children: trainings?.length ? <div>Trainings</div> : <EmptyTrainings />,
+        },
+        { label: 'Совместные тренировки', key: 'joint-trainings', children: <div>Joint</div> },
+        { label: 'Марафоны', key: 'marathons' },
+    ];
 
     let tabBarGutter = 0;
 
