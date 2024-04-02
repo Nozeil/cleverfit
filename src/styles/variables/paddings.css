@@ -137,11 +137,6 @@
     --p-profile-content-date-picker: var(--p-8) var(--p-12);
     --p-profile-upload-form-item-label-mobile-l: 0;
     --p-profile-upload-btn-mobile-l: 10px 26px;
-    --p-workouts-tabs-wrapper: var(--p-12) 0;
-    --pr-workouts-tabs-nav-list: 50px;
-    --p-workouts-tabs-wrapper-tablet-l: 4px 0;
-    --p-workouts-tabs-nav-list-tablet-l: 0 var(--p-12);
     --p-workouts-tabs-tab-btn-tablet-l: 14px 0;
     --p-workouts-content-wrapper-mobile-l: var(--p-16) var(--p-12);
-    --p-workouts-tabs-nav-list-mobile-l: 0;
 }

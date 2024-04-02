@@ -2,10 +2,6 @@
     margin-bottom: var(--mb-tabs);
 }
 
-:global(.ant-tabs-nav-list) {
-    width: 100%;
-}
-
 :global(.ant-tabs) :global(.ant-tabs-tab) {
     margin: var(--m-tab);
     padding: var(--p-tab);

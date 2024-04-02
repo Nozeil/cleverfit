@@ -1,10 +1,5 @@
-.tabsWrapper {
-    padding: var(--p-workouts-tabs-wrapper);
-}
-
-.tabs :global(.ant-tabs-nav-list) {
-    justify-content: space-between;
-    padding-right: var(--pr-workouts-tabs-nav-list);
+.tabs:global(.ant-tabs) :global(.ant-tabs-nav) {
+    margin: var(--m-workouts-tabs-nav);
 }
 
 .tabs :global(.ant-tabs-tab-btn) {
@@ -12,27 +7,22 @@
     font-weight: var(--font-medium);
 }
 
-.tabs:global(.ant-tabs) :global(.ant-tabs-tab) {
-    margin: var(--m-workouts-tabs-tab);
+.tabs:global(.ant-tabs-top)
+    :global(.ant-tabs-nav .ant-tabs-nav-wrap.ant-tabs-nav-wrap-ping-right:after),
+.tabs:global(.ant-tabs-top)
+    :global(.ant-tabs-nav .ant-tabs-nav-wrap.ant-tabs-nav-wrap-ping-left:before) {
+    opacity: 0;
 }
 
 @media screen and (max-width: 835px) {
-    .tabsWrapper {
-        padding: var(--p-workouts-tabs-wrapper-tablet-l);
-    }
-
-    .tabs :global(.ant-tabs-nav-list) {
-        padding: var(--p-workouts-tabs-nav-list-tablet-l);
+    .tabs:global(.ant-tabs) :global(.ant-tabs-nav) {
+        margin: var(--m-workouts-tabs-nav-tablet-l);
     }
 
     .tabs :global(.ant-tabs-tab-btn) {
         padding: var(--p-workouts-tabs-tab-btn-tablet-l);
         font-size: var(--text-sm);
         font-weight: var(--font-medium);
-    }
-
-    .tabs:global(.ant-tabs) :global(.ant-tabs-tab) {
-        margin: var(--m-workouts-tabs-tab-mobile-l);
     }
 }
 
@@ -41,8 +31,7 @@
         padding: var(--p-workouts-content-wrapper-mobile-l);
     }
 
-    .tabs :global(.ant-tabs-nav-list) {
-        gap: var(--gap-2);
-        padding: var(--p-workouts-tabs-nav-list-mobile-l);
+    .tabs:global(.ant-tabs) :global(.ant-tabs-nav) {
+        margin: var(--m-workouts-tabs-nav-mobile-l);
     }
 }
