@@ -1,7 +1,9 @@
 import { Fragment, useCallback } from 'react';
 import { createPortal } from 'react-dom';
+import { ExercisesForm } from '@components/exercises-form/exercises-form';
 import { Notification } from '@components/notification/notification';
 import { SidePanel } from '@components/side-panel/side-panel';
+import { SidePanelHeadDependentFromFormMode } from '@components/side-panel-head-dependent-from-form-mode';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { useTrainingListQueryWithNotification } from '@hooks/use-training-list-query-with-notification';
 import { closeSidePanel } from '@redux/slices/side-panel';
@@ -14,10 +16,8 @@ import {
 import { Calendar, Form, Grid } from 'antd';
 
 import { CalendarSidePanelBody } from './calendar-side-panel-body/calendar-side-panel-body';
-import { ExercisesForm } from './exercises-form/exercises-form';
 import { useTrainingModal } from './hooks/use-training-modal/use-training-modal';
 import { TrainingModal } from './training-modal/training-modal';
-import { CalendarSidePanelHead } from './calendar-side-panel-head';
 
 import styles from './calendar-content.module.css';
 
@@ -60,7 +60,14 @@ export const CalendarContent = () => {
     return (
         <Fragment>
             <SidePanel onClose={closeCalendarSidePanel} testId='modal-drawer-right'>
-                <CalendarSidePanelHead onClose={closeCalendarSidePanel} />
+                <SidePanelHeadDependentFromFormMode
+                    onClose={closeCalendarSidePanel}
+                    fallbackTitle='Просмотр упражнений'
+                    fallbackIcon={null}
+                    newTitle='Добавление упражнений'
+                    editTitle='Редактирование'
+                />
+
                 <CalendarSidePanelBody>
                     <ExercisesForm form={form} />
                 </CalendarSidePanelBody>

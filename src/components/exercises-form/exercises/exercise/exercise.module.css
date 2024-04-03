@@ -10,7 +10,7 @@
     font-size: var(--text-8);
 }
 
-.x {
+.x:global(.ant-typography) {
     padding: var(--p-exercise-x);
     line-height: var(--line-height-24);
 }

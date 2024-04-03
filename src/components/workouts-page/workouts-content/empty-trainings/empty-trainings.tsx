@@ -1,6 +1,8 @@
 import { Flex } from '@components/flex/flex';
 import { useGetTrainingListQuery } from '@services/endpoints/catalogs';
-import { Button, Typography } from 'antd';
+import { Typography } from 'antd';
+
+import { NewTrainingBtn } from '../new-training-btn/new-training-btn';
 
 import styles from './empty-trainings.module.css';
 
@@ -13,9 +15,7 @@ export const EmptyTrainings = () => {
                 У вас ещё нет созданных тренировок
             </Typography.Text>
 
-            <Button className={styles.btn} type='primary' size='large'>
-                Создать тренировку
-            </Button>
+            <NewTrainingBtn>Создать тренировку</NewTrainingBtn>
         </Flex>
     ) : null;
 };

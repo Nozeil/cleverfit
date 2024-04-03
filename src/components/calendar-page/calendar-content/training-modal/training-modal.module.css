@@ -59,16 +59,16 @@
     text-align: start;
 }
 
-.select:not(.ant-select-customize-input) :global(.ant-select-selector) {
+.select:global(.ant-select):not(.ant-select-customize-input) :global(.ant-select-selector) {
     padding: var(--p-training-modal-select-selector);
     border-color: transparent;
 }
 
-.select :global(.ant-select-selector .ant-select-selection-item) {
+.select:global(.ant-select) :global(.ant-select-selector .ant-select-selection-item) {
     line-height: var(--line-height-26);
 }
 
-.select:global(.ant-select-show-arrow .ant-select-selection-item) {
+.select:global(.ant-select.ant-select-show-arrow .ant-select-selection-item) {
     padding-right: var(--pr-training-modal-selection-item);
 }
 

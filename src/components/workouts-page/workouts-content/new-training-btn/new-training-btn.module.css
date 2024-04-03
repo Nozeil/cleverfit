@@ -1,0 +1,11 @@
+.btn:global(.ant-btn) {
+    width: fit-content;
+    padding: 10px 16px;
+    font-size: var(--text-sm);
+}
+
+@media screen and (max-width: 450px) {
+    .btn:global(.ant-btn) {
+        width: 100%;
+    }
+}

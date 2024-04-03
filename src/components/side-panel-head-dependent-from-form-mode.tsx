@@ -4,22 +4,32 @@ import { SidePanelHead } from '@components/side-panel-head/side-panel-head';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { exercisesFormModeSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 
-type CalendarSidePanelHeadProps = {
+type SidePanelHeadDependentFromFormModeProps = {
+    fallbackTitle: string;
+    fallbackIcon: ReactNode;
+    newTitle: string;
+    editTitle: string;
     onClose: () => void;
 };
 
-export const CalendarSidePanelHead = ({ onClose }: CalendarSidePanelHeadProps) => {
+export const SidePanelHeadDependentFromFormMode = ({
+    fallbackIcon,
+    fallbackTitle,
+    newTitle,
+    editTitle,
+    onClose,
+}: SidePanelHeadDependentFromFormModeProps) => {
     const formMode = useAppSelector(exercisesFormModeSelector);
     const content: { title: string; icon: ReactNode } = {
-        title: 'Просмотр упражнений',
-        icon: null,
+        title: fallbackTitle,
+        icon: fallbackIcon,
     };
 
     if (formMode === 'new') {
-        content.title = 'Добавление упражнений';
+        content.title = newTitle;
         content.icon = <PlusOutlined />;
     } else if (formMode === 'edit') {
-        content.title = 'Редактирование';
+        content.title = editTitle;
         content.icon = <EditOutlined />;
     }
 

@@ -27,6 +27,7 @@ export const useExercisesFormHandlers = (
     };
 
     const onFinish = (values: FormValues) => {
+        console.log(values);
         const formExercises = Object.values(values)
             .map((exercise) => {
                 if (!exercise.name) {

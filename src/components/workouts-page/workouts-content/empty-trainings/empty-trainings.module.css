@@ -9,12 +9,6 @@
     text-align: center;
 }
 
-.btn:global(.ant-btn) {
-    width: fit-content;
-    padding: 10px 16px;
-    font-size: var(--text-sm);
-}
-
 @media screen and (max-width: 835px) {
     .wrapper {
         padding-top: 177px;
@@ -34,9 +28,5 @@
         margin-bottom: 75px;
         padding-right: 6px;
         padding-left: 6px;
-    }
-
-    .btn:global(.ant-btn) {
-        width: 100%;
     }
 }
