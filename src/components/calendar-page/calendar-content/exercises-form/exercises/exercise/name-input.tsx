@@ -1,5 +1,5 @@
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { trainingModalFormModeSelector } from '@redux/slices/training-modal/training-modal';
+import { exercisesFormModeSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { Checkbox, Form, Input } from 'antd';
 
 import styles from './exercise.module.css';
@@ -11,7 +11,7 @@ type NameInputProps = {
 };
 
 export const NameInput = ({ id, initialValue, index }: NameInputProps) => {
-    const formMode = useAppSelector(trainingModalFormModeSelector);
+    const formMode = useAppSelector(exercisesFormModeSelector);
 
     const addonAfter =
         formMode === 'new' ? null : (

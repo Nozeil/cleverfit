@@ -10,7 +10,7 @@ import {
     isTrainingModalOpenSelector,
     resetExercises,
     resetFormExercises,
-} from '@redux/slices/training-modal/training-modal';
+} from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { Calendar, Form, Grid } from 'antd';
 
 import { CalendarSidePanelBody } from './calendar-side-panel-body/calendar-side-panel-body';

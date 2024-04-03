@@ -7,7 +7,7 @@ import {
     setIsPastFalse,
     setIsPastTrue,
     setTrainingModalDate,
-} from '@redux/slices/training-modal/training-modal';
+} from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import moment from 'moment';
 
 import { CellContent } from '../../cell-content/cell-content';

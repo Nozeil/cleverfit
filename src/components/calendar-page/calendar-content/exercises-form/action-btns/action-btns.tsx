@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { MinusOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
 import { useAppSelector } from '@hooks/index';
-import { trainingModalFormModeSelector } from '@redux/slices/training-modal/training-modal';
+import { exercisesFormModeSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { Button } from 'antd';
 
 import { AddBtn } from './add-btn';
@@ -15,7 +15,7 @@ type ActionBtnsProps = {
 };
 
 export const ActionBtns = ({ deleteDisabled, onDelete }: ActionBtnsProps) => {
-    const formMode = useAppSelector(trainingModalFormModeSelector);
+    const formMode = useAppSelector(exercisesFormModeSelector);
 
     let btns = null;
     let btnsWrapperClassName = '';

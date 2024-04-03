@@ -3,7 +3,7 @@ import {
     removeFormExerciseById,
     removeFormExercisesByIds,
     setExercises,
-} from '@redux/slices/training-modal/training-modal';
+} from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { FormInstance } from 'antd/es/form/Form';
 
 import { FormValues } from '../exercises-form.types';
@@ -20,7 +20,7 @@ export const useExercisesFormHandlers = (
         const ids = fields.filter((field) => field.shouldDelete).map((field) => field.id);
 
         if (fields.length !== ids.length) {
-          setIsDisabled(true);
+            setIsDisabled(true);
         }
 
         dispatch(removeFormExercisesByIds(ids));

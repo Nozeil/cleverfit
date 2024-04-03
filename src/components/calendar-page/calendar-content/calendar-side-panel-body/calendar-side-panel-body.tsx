@@ -2,7 +2,7 @@ import { type ReactNode } from 'react';
 import { TrainingBadge } from '@components/calendar-page/training-badge';
 import { Flex } from '@components/flex/flex';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { trainingModalSelector } from '@redux/slices/training-modal/training-modal';
+import { trainingModalAndExercisesFormSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { Typography } from 'antd';
 
 import styles from './calendar-side-panel-body.module.css';
@@ -12,7 +12,7 @@ type CalendarSidePanelBodyProps = {
 };
 
 export const CalendarSidePanelBody = ({ children }: CalendarSidePanelBodyProps) => {
-    const { trainingType, date } = useAppSelector(trainingModalSelector);
+    const { trainingType, date } = useAppSelector(trainingModalAndExercisesFormSelector);
 
     return (
         <Flex className={styles.contentBody} direction='column' gap='gap24'>

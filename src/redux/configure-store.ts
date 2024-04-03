@@ -15,7 +15,7 @@ import { siderReducer } from './slices/sider';
 import { successFeedbackModalReducer } from './slices/success-feedback-modal';
 import { tariffsReducer } from './slices/tariffs';
 import { trainingListErrorNotificationReducer } from './slices/training-list-error-notification';
-import { trainingModalReducer } from './slices/training-modal/training-modal';
+import { trainingModalAndExercisesFormReducer } from './slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),
@@ -32,7 +32,7 @@ export const store = configureStore({
         errorFeedbackModal: errorFeedbackModalReducer,
         error500Modal: error500ModalReducer,
         navMenu: navMenuReducer,
-        trainingModal: trainingModalReducer,
+        trainingModalAndExercisesForm: trainingModalAndExercisesFormReducer,
         sidePanel: sidePanelReducer,
         profile: profileReducer,
         tariffs: tariffsReducer,

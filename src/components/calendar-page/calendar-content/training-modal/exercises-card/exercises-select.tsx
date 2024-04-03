@@ -7,9 +7,9 @@ import {
     setFormExercises,
     setReceivedExercises,
     setTrainingType,
-    trainingModalSelector,
+    trainingModalAndExercisesFormSelector,
     unlockExerciseBtn,
-} from '@redux/slices/training-modal/training-modal';
+} from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { useGetTrainingListQuery } from '@services/endpoints/catalogs';
 import { Select } from 'antd';
 
@@ -21,8 +21,9 @@ type ExercisesSelectProps = {
 
 export const ExercisesSelect = ({ reset }: ExercisesSelectProps) => {
     const { data } = useGetTrainingListQuery();
-    const { isPast, trainingTypes, trainingType, trainings } =
-        useAppSelector(trainingModalSelector);
+    const { isPast, trainingTypes, trainingType, trainings } = useAppSelector(
+        trainingModalAndExercisesFormSelector,
+    );
     const dispatch = useAppDispatch();
 
     const selectOptions = useMemo(() => {

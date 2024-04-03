@@ -9,7 +9,7 @@ import {
     setReceivedExercises,
     setTrainings,
     switchToExercises,
-} from '@redux/slices/training-modal/training-modal';
+} from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { Button, Row } from 'antd';
 
 import { useTrainingTypes } from './hooks/use-training-types';

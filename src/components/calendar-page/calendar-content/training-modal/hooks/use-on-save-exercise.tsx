@@ -2,8 +2,8 @@ import { DATE_FORMATS } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
     closeTrainingModal,
-    trainingModalSelector,
-} from '@redux/slices/training-modal/training-modal';
+    trainingModalAndExercisesFormSelector,
+} from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { useCreateTrainingMutation, useUpdateTrainingMutation } from '@services/endpoints/training';
 import { CenteredModalError } from '@utils/modal-error/modal-error';
 import moment from 'moment';
@@ -12,8 +12,9 @@ export const useOnSaveExercise = (reset: () => void) => {
     const [createTraining, { isLoading: isCreateLoading }] = useCreateTrainingMutation();
     const [updateTraining, { isLoading: isUpdateLoading }] = useUpdateTrainingMutation();
 
-    const { trainingType, exercises, exercisesFormMode, isPast, date } =
-        useAppSelector(trainingModalSelector);
+    const { trainingType, exercises, exercisesFormMode, isPast, date } = useAppSelector(
+        trainingModalAndExercisesFormSelector,
+    );
     const dispatch = useAppDispatch();
 
     const isLoading = isCreateLoading || isUpdateLoading;

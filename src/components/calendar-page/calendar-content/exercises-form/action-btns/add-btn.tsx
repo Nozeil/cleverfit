@@ -1,6 +1,6 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
-import { addEmptyFormExercise } from '@redux/slices/training-modal/training-modal';
+import { addEmptyFormExercise } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { Button } from 'antd';
 
 import styles from './action-btns.module.css';

@@ -1,7 +1,7 @@
 import EmptyIcon from '@assets/icons/empty.svg?react';
 import { Flex } from '@components/flex/flex';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { trainingModalDateSelector } from '@redux/slices/training-modal/training-modal';
+import { trainingModalDateSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { Empty } from 'antd';
 
 import { useGetTrainingQueryWithSkip } from '../../hooks/use-get-training-with-skip';

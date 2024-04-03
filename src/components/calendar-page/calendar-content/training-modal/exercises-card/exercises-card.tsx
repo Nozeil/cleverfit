@@ -6,8 +6,8 @@ import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { openSidePanel } from '@redux/slices/side-panel';
 import {
     resetFormExercises,
-    trainingModalSelector,
-} from '@redux/slices/training-modal/training-modal';
+    trainingModalAndExercisesFormSelector,
+} from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { Button, Card, Empty } from 'antd';
 
 import { Exercises } from './exercises';
@@ -22,7 +22,9 @@ type ExercisesCardProps = {
 };
 
 export const ExercisesCard = ({ saveButton, resetForm, onArrowLeftClick }: ExercisesCardProps) => {
-    const { exercises, formExercises, isExerciseBtnLocked } = useAppSelector(trainingModalSelector);
+    const { exercises, formExercises, isExerciseBtnLocked } = useAppSelector(
+        trainingModalAndExercisesFormSelector,
+    );
     const dispatch = useAppDispatch();
 
     const onAddExerciseClick = () => {

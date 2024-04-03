@@ -5,7 +5,7 @@ import {
     closeTrainingModal,
     setExerciseFormMode,
     switchToExercises,
-} from '@redux/slices/training-modal/training-modal';
+} from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { useGetTrainingListQuery } from '@services/endpoints/catalogs';
 import { Button, Card, Typography } from 'antd';
 

@@ -19,9 +19,9 @@ import type {
     Trainings,
     TrainingType,
     TrainingTypesWithImplementation,
-} from './training-modal.types';
+} from './training-modal-and-exercises-form.types';
 
-type TrainingModalState = {
+type TrainingModalStateAndExercisesForm = {
     date: TrainingModalDate;
     exercisesFormMode: FormModes;
     trainingType: TrainingType;
@@ -37,7 +37,7 @@ type TrainingModalState = {
     trainings: Trainings;
 };
 
-const initialState: TrainingModalState = {
+const initialState: TrainingModalStateAndExercisesForm = {
     date: { iso: '', formated: '' },
     exercisesFormMode: 'new',
     isPast: false,
@@ -53,8 +53,8 @@ const initialState: TrainingModalState = {
     trainings: [],
 };
 
-export const trainingModalSlice = createSlice({
-    name: 'trainingModal',
+export const trainingModalAndExercisesFormSlice = createSlice({
+    name: 'trainingModalWithExercisesForm',
     initialState,
     reducers: {
         setIsPastTrue: (state) => {
@@ -167,14 +167,16 @@ export const {
     setFormExercises,
     removeFormExercisesByIds,
     setTrainingModalDate,
-} = trainingModalSlice.actions;
-export const isTrainingModalOpenSelector = (state: RootState) => state.trainingModal.isOpen;
-export const trainingModalSelector = (state: RootState) => state.trainingModal;
-export const trainingModalIsPast = (state: RootState) => state.trainingModal.isPast;
-export const trainingModalFormModeSelector = (state: RootState) =>
-    state.trainingModal.exercisesFormMode;
-export const trainingModalFormExercisesSelector = (state: RootState) =>
-    state.trainingModal.formExercises;
-export const trainingModalDateSelector = (state: RootState) => state.trainingModal.date;
+} = trainingModalAndExercisesFormSlice.actions;
+export const isTrainingModalOpenSelector = (state: RootState) =>
+    state.trainingModalAndExercisesForm.isOpen;
+export const trainingModalAndExercisesFormSelector = (state: RootState) =>
+    state.trainingModalAndExercisesForm;
+export const exercisesFormModeSelector = (state: RootState) =>
+    state.trainingModalAndExercisesForm.exercisesFormMode;
+export const exercisesFormFormExercisesSelector = (state: RootState) =>
+    state.trainingModalAndExercisesForm.formExercises;
+export const trainingModalDateSelector = (state: RootState) =>
+    state.trainingModalAndExercisesForm.date;
 
-export const trainingModalReducer = trainingModalSlice.reducer;
+export const trainingModalAndExercisesFormReducer = trainingModalAndExercisesFormSlice.reducer;
