@@ -1,4 +1,5 @@
-import { type ReactNode, Fragment, useState } from 'react';
+import { Fragment, useState } from 'react';
+import { FORM_NAMES } from '@constants/index';
 import { type FormInstance, Form } from 'antd';
 
 import { ActionBtns } from './action-btns/action-btns';
@@ -9,10 +10,9 @@ import styles from './exercises-form.module.css';
 
 type ExercisesFormProps = {
     form: FormInstance;
-    fields?: ReactNode[];
 };
 
-export const ExercisesForm = ({ form, fields }: ExercisesFormProps) => {
+export const ExercisesForm = ({ form }: ExercisesFormProps) => {
     const [isDeleteBtnDisabled, setIsDeleteBtnDisabled] = useState(true);
     const { onDelete, onFinish, valuesChangeHandler } = useExercisesFormHandlers(
         form,
@@ -24,13 +24,12 @@ export const ExercisesForm = ({ form, fields }: ExercisesFormProps) => {
             <Form
                 className={styles.form}
                 form={form}
-                name='exercise-form'
+                name={FORM_NAMES.EXERCISES_FORM}
                 size='small'
                 autoComplete='off'
                 onFinish={onFinish}
                 onValuesChange={(_, values) => valuesChangeHandler(values)}
             >
-                {fields}
                 <Exercises />
             </Form>
 

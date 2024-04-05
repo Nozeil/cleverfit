@@ -4,9 +4,9 @@ import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import {
     closeTrainingModal,
     openTrainingModal,
+    setExerciseDate,
     setIsPastFalse,
     setIsPastTrue,
-    setTrainingModalDate,
 } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import moment from 'moment';
 
@@ -36,7 +36,7 @@ export const useTrainingModal = (breakpoint: boolean | undefined) => {
         dispatch(setIsPast());
 
         dispatch(
-            setTrainingModalDate({
+            setExerciseDate({
                 iso,
                 formated: date.format(DATE_FORMATS.DMY),
             }),

@@ -12,6 +12,10 @@
     padding-left: var(--px-drawer-body);
 }
 
+.drawer :global(.ant-drawer-footer) {
+    padding: var(--p-side-panel-footer);
+}
+
 @media screen and (max-width: 576px) {
     .drawer :global(.ant-drawer-body) {
         padding-right: var(--px-side-panel-drawer-mobile-l);
@@ -21,5 +25,10 @@
     .drawer :global(.ant-drawer-content),
     .drawer :global(.ant-drawer-content-wrapper) {
         border-radius: var(--rounded-top-24);
+    }
+
+    .drawer :global(.ant-drawer-footer) {
+        padding-right: var(--px-tariffs-side-panel-footer-mobile-l);
+        padding-left: var(--px-tariffs-side-panel-footer-mobile-l);
     }
 }

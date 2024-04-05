@@ -15,6 +15,11 @@
     box-shadow: var(--input-shadow);
 }
 
+:global(.ant-select-single .ant-select-selector .ant-select-selection-item),
+:global(.ant-select-single .ant-select-selector .ant-select-selection-placeholder) {
+    line-height: var(--line-height-26);
+}
+
 @media screen and (max-width: 575px) {
     :global(
             .ant-select-single.ant-select-sm:not(.ant-select-customize-input).ant-select-show-arrow

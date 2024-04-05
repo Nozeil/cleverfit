@@ -10,9 +10,9 @@ import type {
     FormModes,
     RemoveFormExerciseByIdAction,
     RemoveFormExercisesByIdsAction,
+    SetExerciseDateAction,
     SetExercisesAction,
     SetFormModeAction,
-    SetTrainingModalDateAction,
     SetTrainingsAction,
     SetTrainingTypeAction,
     TrainingModalDate,
@@ -140,8 +140,11 @@ export const trainingModalAndExercisesFormSlice = createSlice({
             state.trainings = [];
             state.receivedExercises = [];
         },
-        setTrainingModalDate(state, action: SetTrainingModalDateAction) {
+        setExerciseDate(state, action: SetExerciseDateAction) {
             state.date = action.payload;
+        },
+        setTrainingTypes: (state, action: AddTrainingTypesAction) => {
+            state.trainingTypes = action.payload;
         },
     },
 });
@@ -166,7 +169,8 @@ export const {
     setExerciseFormMode,
     setFormExercises,
     removeFormExercisesByIds,
-    setTrainingModalDate,
+    setExerciseDate,
+    setTrainingTypes,
 } = trainingModalAndExercisesFormSlice.actions;
 export const isTrainingModalOpenSelector = (state: RootState) =>
     state.trainingModalAndExercisesForm.isOpen;

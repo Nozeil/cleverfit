@@ -27,12 +27,7 @@ export const useOnSaveExercise = (reset: () => void) => {
                 name: trainingType.name,
                 date: moment(localDate).format(DATE_FORMATS.ISO),
                 isImplementation: isPast,
-                parameters: {
-                    repeat: false,
-                    period: 7,
-                    jointTraining: false,
-                    participants: [],
-                },
+
                 exercises: exercises.map(
                     ({ name, approaches, isImplementation, replays, weight }) => ({
                         name,

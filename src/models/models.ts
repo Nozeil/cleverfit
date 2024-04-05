@@ -64,25 +64,29 @@ export type TrainingExercise = {
     isImplementation: boolean;
 };
 
+type NewTrainingParameters = {
+    repeat: boolean;
+    period: number;
+    jointTraining: boolean;
+    participants: string[];
+};
+
 type NewTraining = {
     name: string;
     date: string;
     isImplementation: boolean;
     userId: string;
-    parameters: {
-        repeat: boolean;
-        period: number;
-        jointTraining: boolean;
-        participants: string[];
-    };
+    parameters: NewTrainingParameters;
     exercises: TrainingExercise[];
 };
 
 export type TrainingResponse = NewTraining & {
     _id: string;
-    exercises: Array<TrainingExercise & {
-        _id: string;
-    }>;
+    exercises: Array<
+        TrainingExercise & {
+            _id: string;
+        }
+    >;
 };
 
 export type GetTrainingResponse = TrainingResponse[];
@@ -95,7 +99,9 @@ type TrainingListItem = {
 export type TrainingListResponse = TrainingListItem[];
 
 export type CreateTrainingResponse = TrainingResponse;
-export type TrainingBody = Omit<NewTraining, 'userId'>;
+export type TrainingBody = Omit<NewTraining, 'userId' | 'parameters'> & {
+    parameters?: Partial<NewTrainingParameters>;
+};
 export type UpdateTrainingArgs = { id: string; body: TrainingBody };
 
 export type UserInfoResponse = {

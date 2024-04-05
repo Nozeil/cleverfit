@@ -12,8 +12,10 @@ import { navMenuReducer } from './slices/nav-menu/nav-menu';
 import { profileReducer } from './slices/profile';
 import { sidePanelReducer } from './slices/side-panel';
 import { siderReducer } from './slices/sider';
+import { successAlertReducer } from './slices/success-alert';
 import { successFeedbackModalReducer } from './slices/success-feedback-modal';
 import { tariffsReducer } from './slices/tariffs';
+import { trainingFormReducer } from './slices/training-form';
 import { trainingListErrorNotificationReducer } from './slices/training-list-error-notification';
 import { trainingModalAndExercisesFormReducer } from './slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 
@@ -37,6 +39,8 @@ export const store = configureStore({
         profile: profileReducer,
         tariffs: tariffsReducer,
         trainingListErrorNotification: trainingListErrorNotificationReducer,
+        trainingForm: trainingFormReducer,
+        successAlert: successAlertReducer,
         [api.reducerPath]: api.reducer,
     }),
     middleware: (getDefaultMiddleware) =>

@@ -4,9 +4,8 @@ import {
     removeFormExercisesByIds,
     setExercises,
 } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
-import { FormInstance } from 'antd/es/form/Form';
-
-import { FormValues } from '../exercises-form.types';
+import { type ExercisesFormValues } from '@typings/index';
+import { type FormInstance } from 'antd/es/form/Form';
 
 export const useExercisesFormHandlers = (
     form: FormInstance,
@@ -15,7 +14,7 @@ export const useExercisesFormHandlers = (
     const dispatch = useAppDispatch();
 
     const onDelete = () => {
-        const formValues: FormValues = form.getFieldsValue();
+        const formValues: ExercisesFormValues = form.getFieldsValue();
         const fields = Object.values(formValues);
         const ids = fields.filter((field) => field.shouldDelete).map((field) => field.id);
 
@@ -26,8 +25,7 @@ export const useExercisesFormHandlers = (
         dispatch(removeFormExercisesByIds(ids));
     };
 
-    const onFinish = (values: FormValues) => {
-        console.log(values);
+    const onFinish = (values: ExercisesFormValues) => {
         const formExercises = Object.values(values)
             .map((exercise) => {
                 if (!exercise.name) {
@@ -49,7 +47,7 @@ export const useExercisesFormHandlers = (
         dispatch(setExercises(formExercises));
     };
 
-    const valuesChangeHandler = (values: FormValues) => {
+    const valuesChangeHandler = (values: ExercisesFormValues) => {
         const isDisabled = !Object.values(values).some((field) => field?.shouldDelete);
 
         setIsDisabled(isDisabled);

@@ -1,0 +1,34 @@
+.form:global(.ant-form) {
+    margin-top: 22px;
+}
+
+.checkbox,
+.selectFormItem :global(.ant-form-item-control-input) {
+    min-height: 28px;
+}
+
+.column {
+    width: 156px;
+}
+
+.picker:global(.ant-picker) {
+    height: 28px;
+}
+
+.cellWithExercises:global(.ant-picker-cell-inner),
+:global(.ant-picker-dropdown)
+    :global(.ant-picker-cell):has(.cellWithExercises:global(.ant-picker-cell-inner)) {
+    background-color: var(--primary-light-1);
+}
+
+.checkbox:global(.ant-checkbox-wrapper) {
+    align-items: center;
+}
+
+.checkbox :global(.ant-checkbox) {
+    top: 0;
+}
+
+.checkbox span:not(:global(.ant-checkbox)) {
+    padding-right: 0;
+}

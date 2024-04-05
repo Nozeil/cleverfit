@@ -26,3 +26,8 @@ export const DATE_FORMATS = {
     DMY: 'DD.MM.YYYY',
     DM: 'DD.MM',
 } as const;
+
+export const FORM_NAMES = {
+    EXERCISES_FORM: 'exercise-form',
+    TRAINING_INFO_FORM: 'training-info-form',
+} as const;

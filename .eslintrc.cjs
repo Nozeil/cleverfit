@@ -39,6 +39,6 @@ module.exports = {
         'no-underscore-dangle': ['error', { allow: ['_id'] }],
     },
     settings: {
-        'import/core-modules': ['redux', 'moment'],
+        'import/core-modules': ['redux', 'moment', 'rc-field-form'],
     },
 };

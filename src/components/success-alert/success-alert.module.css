@@ -1,6 +1,6 @@
 .alert:global(.ant-alert) {
-    position: absolute;
-    left: 48%;
+    position: fixed;
+    left: 55.6%;
     bottom: var(--profile-alert-bottom);
     z-index: var(--z-5);
     width: 100%;
@@ -12,10 +12,10 @@
     margin-right: var(--mr-profile-alert-icon);
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 768px) {
     .alert:global(.ant-alert) {
         left: 50%;
-        bottom: var(--profile-alert-bottom-mobile-l);
+        bottom: var(--profile-alert-bottom-tablet);
         max-width: var(--mw-profile-alert-mobile-l);
     }
 }

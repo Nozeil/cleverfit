@@ -20,6 +20,7 @@ export const WrappedInputNumber = ({
     placeholder,
     title,
     flex,
+    addonBefore
 }: WrappedInputNumberProps) => (
     <Col flex={flex}>
         <Row gutter={[0, 6]}>
@@ -30,6 +31,7 @@ export const WrappedInputNumber = ({
                     className={styles.input}
                     placeholder={placeholder}
                     min={min}
+                    addonBefore={addonBefore}
                     data-test-id={testId}
                 />
             </Form.Item>

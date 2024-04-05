@@ -15,7 +15,7 @@
     :global(.ant-select-single .ant-select-selector .ant-select-selection-item),
 :global(.ant-picker-calendar-header)
     :global(.ant-select-single .ant-select-selector .ant-select-selection-placeholder) {
-    line-height: var(--line-height-28);
+    line-height: var(--line-height-26);
 }
 
 :global(.ant-picker-calendar-header) :global(.ant-select-arrow) {
