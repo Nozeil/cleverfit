@@ -1,0 +1,57 @@
+.trainingText,
+.sort {
+    padding: 7px 8px;
+    background-color: var(--character-light-dividers);
+}
+
+.trainingText:global(.ant-typography) {
+    flex-basis: 259px;
+    font-size: var(--text-xs);
+    white-space: nowrap;
+}
+
+.sortWrapper {
+    flex-shrink: 0;
+    flex-basis: calc(555px - 259px - 12px);
+}
+
+.sort {
+    width: 240px;
+    cursor: pointer;
+}
+
+.sortText:global(.ant-typography) {
+    font-weight: var(--font-medium);
+}
+
+.icon:global(.anticon) {
+    max-height: 8px;
+    font-size: var(--text-xs);
+}
+
+@media screen and (max-width: 450px) {
+    .trainingText,
+    .sort {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+    .trainingText {
+        min-width: 114px;
+    }
+
+    .sortWrapper {
+        flex-basis: 0;
+    }
+
+    .sort {
+        width: 188px;
+    }
+
+    
+
+    .sortText:global(.ant-typography) {
+        font-weight: var(--font-normal);
+        font-size: var(--text-xs);
+    }
+}

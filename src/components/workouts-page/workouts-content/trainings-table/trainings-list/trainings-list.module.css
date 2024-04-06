@@ -1,0 +1,50 @@
+.list {
+    padding: 0;
+    margin: 0;
+}
+
+.listItem {
+    height: 32px;
+}
+
+.btn:global(.ant-btn) {
+    padding: 0;
+    width: fit-content;
+    height: fit-content;
+}
+
+.btn:global(.ant-btn:hover),
+.btn:global(.ant-btn:focus) {
+    background-color: transparent;
+}
+
+.training {
+    flex-basis: 259px;
+}
+
+.period {
+    flex-basis: calc(555px - 259px - 12px);
+}
+
+.periodText {
+    width: 240px;
+}
+
+.trainingName {
+    flex-grow: 1;
+}
+
+@media screen and (max-width: 450px) {
+    .training {
+        min-width: 114px;
+    }
+
+    .period {
+        flex-shrink: 0;
+        flex-basis: 188px;
+    }
+
+    .periodText {
+        width: auto;
+    }
+}

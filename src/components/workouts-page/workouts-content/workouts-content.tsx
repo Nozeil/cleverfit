@@ -9,12 +9,14 @@ import { SuccessAlert } from '@components/success-alert/success-alert';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { useTrainingListQueryWithNotification } from '@hooks/use-training-list-query-with-notification';
 import { closeSidePanel } from '@redux/slices/side-panel';
+import { useGetTrainingQuery } from '@services/endpoints/training';
 import type { ExercisesFormValues } from '@typings/index';
 import { Form, Grid, Tabs } from 'antd';
 
 import { EmptyTrainings } from './empty-trainings/empty-trainings';
 import { SubmitBtn } from './submit-btn/submit-btn';
 import { TrainingForm } from './training-form/training-form';
+import { TrainingsTable } from './trainings-table/trainings-table';
 import type { TrainingInfoFormValues } from './workouts-content.types';
 
 import styles from './workouts-content.module.css';
@@ -25,6 +27,7 @@ export const WorkoutsContent = () => {
     const dispatch = useAppDispatch();
 
     const { refresh } = useTrainingListQueryWithNotification();
+    const { data: trainings } = useGetTrainingQuery();
     const { xl, sm } = useBreakpoint();
 
     const [exercisesForm] = Form.useForm<ExercisesFormValues>();
@@ -34,7 +37,7 @@ export const WorkoutsContent = () => {
         {
             label: 'Мои тренировки',
             key: 'my-trainings',
-            children: /* trainings?.length ? <div>Trainings</div> : */ <EmptyTrainings />,
+            children: trainings?.length ? <TrainingsTable /> : <EmptyTrainings />,
         },
         { label: 'Совместные тренировки', key: 'joint-trainings', children: <div>Joint</div> },
         { label: 'Марафоны', key: 'marathons' },

@@ -31,3 +31,11 @@ export const FORM_NAMES = {
     EXERCISES_FORM: 'exercise-form',
     TRAINING_INFO_FORM: 'training-info-form',
 } as const;
+
+export const TRAINING_COLORS: { [x: string]: string } = {
+    Ноги: 'var(--character-light-error)',
+    Руки: 'var(--tranie-cyan)',
+    Силовая: 'var(--tranie-yellow)',
+    Спина: 'var(--tranie-orange)',
+    Грудь: 'var(--character-light-success)',
+} as const;

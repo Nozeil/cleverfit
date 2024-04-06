@@ -3,6 +3,7 @@ import { Flex } from '@components/flex/flex';
 import { type CheckboxProps, Checkbox, Form, FormInstance, Select } from 'antd';
 
 import { TrainingDatePicker } from './training-date-picker';
+import { createPeriodSelectOptions } from './training-info-form.utils';
 import { TrainingNameSelect } from './training-name-select';
 
 import styles from './training-info-form.module.css';
@@ -11,36 +12,7 @@ type TrainingInfoFormProps = {
     form: FormInstance;
 };
 
-const options = [
-    {
-        label: 'Через 1 день',
-        value: 1,
-    },
-    {
-        label: 'Через 2 дня',
-        value: 2,
-    },
-    {
-        label: 'Через 3 дня',
-        value: 3,
-    },
-    {
-        label: 'Через 4 дня',
-        value: 4,
-    },
-    {
-        label: 'Через 5 дней',
-        value: 5,
-    },
-    {
-        label: 'Через 6 дней',
-        value: 6,
-    },
-    {
-        label: '1 раз в неделю',
-        value: 7,
-    },
-];
+const options = createPeriodSelectOptions();
 
 export const TrainingInfoForm = ({ form }: TrainingInfoFormProps) => {
     const [isPeriod, setIsPeriod] = useState(false);

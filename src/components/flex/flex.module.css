@@ -46,6 +46,10 @@
     gap: var(--gap-4);
 }
 
+.gap5 {
+    gap: var(--gap-5);
+}
+
 .gap6 {
     gap: var(--gap-6);
 }
