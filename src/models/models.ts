@@ -66,7 +66,7 @@ export type TrainingExercise = {
 
 type NewTrainingParameters = {
     repeat: boolean;
-    period: number;
+    period: number | null;
     jointTraining: boolean;
     participants: string[];
 };

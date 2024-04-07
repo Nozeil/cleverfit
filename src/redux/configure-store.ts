@@ -18,6 +18,7 @@ import { tariffsReducer } from './slices/tariffs';
 import { trainingFormReducer } from './slices/training-form';
 import { trainingListErrorNotificationReducer } from './slices/training-list-error-notification';
 import { trainingModalAndExercisesFormReducer } from './slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
+import { trainingsTableReducer } from './slices/trainings-table/trainings-table';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),
@@ -41,6 +42,7 @@ export const store = configureStore({
         trainingListErrorNotification: trainingListErrorNotificationReducer,
         trainingForm: trainingFormReducer,
         successAlert: successAlertReducer,
+        trainingsTable: trainingsTableReducer,
         [api.reducerPath]: api.reducer,
     }),
     middleware: (getDefaultMiddleware) =>

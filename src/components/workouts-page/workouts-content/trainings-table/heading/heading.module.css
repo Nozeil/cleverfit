@@ -1,5 +1,5 @@
 .trainingText,
-.sort {
+.sort:global(.ant-btn.ant-btn-text) {
     padding: 7px 8px;
     background-color: var(--character-light-dividers);
 }
@@ -15,9 +15,18 @@
     flex-basis: calc(555px - 259px - 12px);
 }
 
-.sort {
+.sort:global(.ant-btn.ant-btn-text) {
     width: 240px;
-    cursor: pointer;
+    height: fit-content;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    outline: 0;
+}
+
+.sort:global(.ant-btn.ant-btn-text):hover,
+.sort:global(.ant-btn.ant-btn-text):focus {
+    background-color: var(--character-light-dividers);
 }
 
 .sortText:global(.ant-typography) {
@@ -31,7 +40,7 @@
 
 @media screen and (max-width: 450px) {
     .trainingText,
-    .sort {
+    .sort:global(.ant-btn.ant-btn-text) {
         padding-top: 4px;
         padding-bottom: 4px;
     }
@@ -44,11 +53,9 @@
         flex-basis: 0;
     }
 
-    .sort {
+    .sort:global(.ant-btn.ant-btn-text) {
         width: 188px;
     }
-
-    
 
     .sortText:global(.ant-typography) {
         font-weight: var(--font-normal);
