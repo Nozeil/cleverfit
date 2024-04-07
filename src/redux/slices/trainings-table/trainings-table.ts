@@ -3,17 +3,23 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { TrainingsTableSortedBy } from '@typings/index';
 
 import type {
+    SetPaginationPageAction,
+    SetPaginationPageSizeAction,
     SetSortedByAction,
-    SetSortedTrainings,
-    SortedTrainings,
+    SetSortedTrainingsAction,
+    Trainings,
 } from './trainings-table.types';
 
 type TrainingsTableState = {
+    paginationPage: number;
+    paginationPageSize: number;
     sortedBy: TrainingsTableSortedBy;
-    sortedTrainings: SortedTrainings;
+    sortedTrainings: Trainings;
 };
 
 const initialState: TrainingsTableState = {
+    paginationPage: 1,
+    paginationPageSize: 0,
     sortedBy: null,
     sortedTrainings: [],
 };
@@ -25,14 +31,25 @@ export const trainingsTableSlice = createSlice({
         setSortedBy: (state, action: SetSortedByAction) => {
             state.sortedBy = action.payload;
         },
-        setSortedTrainings: (state, action: SetSortedTrainings) => {
+
+        setSortedTrainings: (state, action: SetSortedTrainingsAction) => {
             state.sortedTrainings = action.payload;
+        },
+
+        setPaginationPageSize: (state, action: SetPaginationPageSizeAction) => {
+            state.paginationPageSize = action.payload;
+        },
+
+        setPaginationPage: (state, action: SetPaginationPageAction) => {
+            state.paginationPage = action.payload;
         },
     },
 });
 
-export const { setSortedBy, setSortedTrainings } = trainingsTableSlice.actions;
+export const { setSortedBy, setSortedTrainings, setPaginationPageSize, setPaginationPage } =
+    trainingsTableSlice.actions;
 export const trainingsTableSortedBySelector = (state: RootState) => state.trainingsTable.sortedBy;
-export const trainingsTableSortedTrainingsSelector = (state: RootState) =>
-    state.trainingsTable.sortedTrainings;
+export const trainingsTableSelector = (state: RootState) => state.trainingsTable;
+export const trainingsTablePaginationPageSizeSelector = (state: RootState) =>
+    state.trainingsTable.paginationPageSize;
 export const trainingsTableReducer = trainingsTableSlice.reducer;

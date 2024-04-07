@@ -1,0 +1,23 @@
+:global(.ant-pagination-prev:hover .ant-pagination-item-link),
+:global(.ant-pagination-next:hover .ant-pagination-item-link),
+:global(.ant-pagination-item-active a),
+:global(.ant-pagination-item-active:hover a),
+:global(.ant-pagination-item:hover a) {
+    color: var(--primary-light-6);
+}
+
+:global(.ant-pagination-item-active),
+:global(.ant-pagination-item-active:hover) {
+    border-color: var(--primary-light-6);
+}
+
+:global(.ant-pagination.ant-pagination-mini .ant-pagination-item) {
+    min-width: 24px;
+    height: 20px;
+    margin: 0;
+    line-height: 16px;
+}
+
+:global(.ant-pagination-item a) {
+    line-height: inherit;
+}

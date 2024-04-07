@@ -1,8 +1,9 @@
+import { useMemo } from 'react';
 import { DownOutlined, EditOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
 import { TRAINING_COLORS } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { trainingsTableSortedTrainingsSelector } from '@redux/slices/trainings-table/trainings-table';
+import { trainingsTableSelector } from '@redux/slices/trainings-table/trainings-table';
 import { Badge, Button, Typography } from 'antd';
 
 import { PERIODS } from '../workouts-content.constants';
@@ -10,14 +11,24 @@ import { PERIODS } from '../workouts-content.constants';
 import styles from './trainings-list.module.css';
 
 export const TrainingsList = () => {
-    const sortedTrainings = useAppSelector(trainingsTableSortedTrainingsSelector);
+    const { sortedTrainings, paginationPage, paginationPageSize } =
+        useAppSelector(trainingsTableSelector);
+
+    const paginatedTrainings = useMemo(() => {
+        const sliceStart = (paginationPage - 1) * paginationPageSize;
+        const sliceEnd = sliceStart + paginationPageSize;
+
+        return sortedTrainings.slice(sliceStart, sliceEnd);
+    }, [paginationPage, paginationPageSize, sortedTrainings]);
 
     return (
         <Flex className={styles.list} as='ul' direction='column' gap='gap5'>
-            {sortedTrainings?.map(({ _id, name, parameters }) => (
+            {paginatedTrainings?.map(({ _id, name, parameters }) => (
                 <Flex as='li' className={styles.listItem} key={_id} align='alignCenter' gap='gap12'>
-                    <Flex className={styles.training} gap='gap12'>
-                        <Badge color={TRAINING_COLORS[name]} />
+                    <Flex className={styles.training} align='alignCenter' gap='gap12'>
+                        <Flex className={styles.badgeWrapper} align='alignCenter'>
+                            <Badge color={TRAINING_COLORS[name]} />
+                        </Flex>
                         <Flex
                             className={styles.trainingName}
                             align='alignCenter'
@@ -38,9 +49,11 @@ export const TrainingsList = () => {
                         align='alignCenter'
                         gap='gap12'
                     >
-                        <Typography.Text className={styles.periodText}>
-                            {parameters.period && PERIODS[parameters.period - 1]}
-                        </Typography.Text>
+                        <Flex className={styles.periodTextWrapper} align='alignCenter'>
+                            <Typography.Text className={styles.periodText}>
+                                {parameters.period && PERIODS[parameters.period - 1]}
+                            </Typography.Text>
+                        </Flex>
 
                         <Button
                             className={styles.btn}

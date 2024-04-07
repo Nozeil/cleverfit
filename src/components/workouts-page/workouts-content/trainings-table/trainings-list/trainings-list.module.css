@@ -34,6 +34,21 @@
     flex-grow: 1;
 }
 
+.training,
+.trainingName,
+.badgeWrapper,
+.period,
+.periodTextWrapper {
+    height: 100%;
+    
+}
+
+.badgeWrapper,
+.periodTextWrapper,
+.trainingName {
+    border-bottom: var(--border-1) solid var(--character-light-dividers);
+}
+
 @media screen and (max-width: 450px) {
     .training {
         min-width: 114px;
