@@ -29,7 +29,7 @@ export const TrainingNameSelect = () => {
     };
 
     return (
-        <Form.Item className={styles.selectFormItem} name='name'>
+        <Form.Item className={styles.selectFormItem} name='name' noStyle={true}>
             <Select
                 placeholder='Выбор типа тренировки'
                 options={selectOptions}

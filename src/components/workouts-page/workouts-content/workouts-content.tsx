@@ -84,7 +84,7 @@ export const WorkoutsContent = () => {
                     editTitle='Редактировать тренировку'
                 />
 
-                <SidePanelBody>
+                <SidePanelBody gap={{ xs: 'gap16', sm: 'gap24' }}>
                     <TrainingForm
                         trainingInfoForm={trainingInfoForm}
                         exercisesForm={exercisesForm}

@@ -23,6 +23,7 @@
 
 .checkbox:global(.ant-checkbox-wrapper) {
     align-items: center;
+    white-space: nowrap;
 }
 
 .checkbox :global(.ant-checkbox) {
@@ -31,4 +32,14 @@
 
 .checkbox span:not(:global(.ant-checkbox)) {
     padding-right: 0;
+}
+
+@media screen and (max-width: 575px) {
+    .form:global(.ant-form) {
+        margin: 0;
+    }
+
+    .column {
+        width: 148px;
+    }
 }

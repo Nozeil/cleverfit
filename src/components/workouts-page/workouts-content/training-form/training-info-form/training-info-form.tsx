@@ -52,28 +52,30 @@ export const TrainingInfoForm = ({ form }: TrainingInfoFormProps) => {
 
     return (
         <Form className={styles.form} form={form} autoComplete='off' name='training-info-form'>
-            <TrainingNameSelect />
+            <Flex direction='column' gap={{ xs: 'gap16', sm: 'gap24' }}>
+                <TrainingNameSelect />
 
-            <Flex gap='gap32'>
-                <Flex className={styles.column} direction='column' gap='gap8'>
-                    <TrainingDatePicker />
-                    {isPeriod && (
-                        <Form.Item noStyle={true} name='period'>
-                            <Select
-                                className={styles.periodSelect}
-                                placeholder='Периодичность'
-                                options={options}
-                            />
+                <Flex gap={{ xs: 'gap24', sm: 'gap32' }}>
+                    <Flex className={styles.column} direction='column' gap='gap8'>
+                        <TrainingDatePicker />
+                        {isPeriod && (
+                            <Form.Item noStyle={true} name='period'>
+                                <Select
+                                    className={styles.periodSelect}
+                                    placeholder='Периодичность'
+                                    options={options}
+                                />
+                            </Form.Item>
+                        )}
+                    </Flex>
+
+                    <Flex className={styles.column} direction='column'>
+                        <Form.Item noStyle={true} name='repeat' valuePropName='checked'>
+                            <Checkbox className={styles.checkbox} onChange={onChange}>
+                                С периодичностью
+                            </Checkbox>
                         </Form.Item>
-                    )}
-                </Flex>
-
-                <Flex className={styles.column} direction='column'>
-                    <Form.Item noStyle={true} name='repeat' valuePropName='checked'>
-                        <Checkbox className={styles.checkbox} onChange={onChange}>
-                            С периодичностью
-                        </Checkbox>
-                    </Form.Item>
+                    </Flex>
                 </Flex>
             </Flex>
         </Form>
