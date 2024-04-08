@@ -1,33 +1,23 @@
-import { useMemo } from 'react';
-import { DownOutlined, EditOutlined } from '@ant-design/icons';
+import { Fragment, useMemo, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { Flex } from '@components/flex/flex';
-import { TRAINING_COLORS } from '@constants/index';
-import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { openSidePanel } from '@redux/slices/side-panel';
-import {
-    resetExercises,
-    resetFormExercises,
-    setExerciseDate,
-    setExerciseFormMode,
-    setFormExercises,
-    setIsPastFalse,
-    setIsPastTrue,
-    setReceivedExercises,
-    setTrainingType,
-} from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
+import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingsTableSelector } from '@redux/slices/trainings-table/trainings-table';
-import { Badge, Button, Typography } from 'antd';
-import moment from 'moment';
+import { Grid } from 'antd';
 
-import { formatExerciseDate } from '../../workouts-content.utils';
-import { PERIODS } from '../workouts-content.constants';
+import { ExercisesCard } from './exercises-card/exercises-card';
+import { TrainingListItem } from './training-list-item';
+import { ContainersRefCurrent } from './trainings-list.type';
 
 import styles from './trainings-list.module.css';
 
+const { useBreakpoint } = Grid;
+
 export const TrainingsList = () => {
-    const { sortedTrainings, paginationPage, paginationPageSize } =
+    const { isExerciseCard, sortedTrainings, paginationPage, paginationPageSize } =
         useAppSelector(trainingsTableSelector);
-    const dispatch = useAppDispatch();
+    const containersRef = useRef<ContainersRefCurrent>();
+    const { xs } = useBreakpoint();
 
     const paginatedTrainings = useMemo(() => {
         const sliceStart = (paginationPage - 1) * paginationPageSize;
@@ -36,75 +26,37 @@ export const TrainingsList = () => {
         return sortedTrainings.slice(sliceStart, sliceEnd);
     }, [paginationPage, paginationPageSize, sortedTrainings]);
 
+    const setContainers = (current: ContainersRefCurrent) => {
+        containersRef.current = current;
+    };
+
+    let container;
+
+    if (xs) {
+        container = containersRef.current?.xs;
+    } else {
+        container = containersRef.current?.default;
+    }
+
     return (
-        <Flex className={styles.list} as='ul' direction='column' gap='gap5'>
-            {paginatedTrainings?.map(
-                ({ _id, name, date, parameters, exercises, isImplementation }) => (
-                    <Flex
-                        as='li'
-                        className={styles.listItem}
-                        key={_id}
-                        align='alignCenter'
-                        gap='gap12'
-                    >
-                        <Flex className={styles.training} align='alignCenter' gap='gap12'>
-                            <Flex className={styles.badgeWrapper} align='alignCenter'>
-                                <Badge color={TRAINING_COLORS[name]} />
-                            </Flex>
-                            <Flex
-                                className={styles.trainingName}
-                                align='alignCenter'
-                                justify='justifyBetween'
-                            >
-                                <Typography.Text>{name}</Typography.Text>
-                                <Button
-                                    className={styles.btn}
-                                    type='text'
-                                    icon={<DownOutlined style={{ fontSize: 12 }} />}
-                                />
-                            </Flex>
-                        </Flex>
-
-                        <Flex
-                            className={styles.period}
-                            justify='justifyBetween'
-                            align='alignCenter'
-                            gap='gap12'
-                        >
-                            <Flex className={styles.periodTextWrapper} align='alignCenter'>
-                                <Typography.Text className={styles.periodText}>
-                                    {parameters.period && PERIODS[parameters.period - 1]}
-                                </Typography.Text>
-                            </Flex>
-
-                            <Button
-                                className={styles.editBtn}
-                                type='text'
-                                icon={<EditOutlined style={{ fontSize: 28 }} />}
-                                disabled={isImplementation}
-                                onClick={() => {
-                                    const exerciseDate = formatExerciseDate(date);
-                                    const setIsPastAction = moment(date).isBefore()
-                                        ? setIsPastTrue
-                                        : setIsPastFalse;
-
-                                    dispatch(resetFormExercises());
-                                    dispatch(resetExercises());
-
-                                    dispatch(setExerciseFormMode('edit'));
-                                    dispatch(setReceivedExercises(exercises));
-                                    dispatch(setFormExercises());
-                                    dispatch(setExerciseDate(exerciseDate));
-                                    dispatch(setTrainingType({ name, id: _id }));
-                                    dispatch(setIsPastAction());
-
-                                    dispatch(openSidePanel());
-                                }}
-                            />
-                        </Flex>
-                    </Flex>
-                ),
-            )}
-        </Flex>
+        <Fragment>
+            {isExerciseCard && container && createPortal(<ExercisesCard />, container)}
+            <Flex className={styles.list} as='ul' direction='column' gap='gap5'>
+                {paginatedTrainings?.map(
+                    ({ _id, name, date, parameters, exercises, isImplementation }) => (
+                        <TrainingListItem
+                            key={_id}
+                            _id={_id}
+                            name={name}
+                            date={date}
+                            parameters={parameters}
+                            exercises={exercises}
+                            isImplementation={isImplementation}
+                            setContainers={setContainers}
+                        />
+                    ),
+                )}
+            </Flex>
+        </Fragment>
     );
 };

@@ -4,6 +4,7 @@
 }
 
 .listItem {
+    position: relative;
     height: 32px;
 }
 
@@ -27,6 +28,7 @@
 }
 
 .training {
+    position: relative;
     flex-basis: 259px;
 }
 
@@ -39,6 +41,7 @@
 }
 
 .trainingName {
+    position: relative;
     flex-grow: 1;
 }
 

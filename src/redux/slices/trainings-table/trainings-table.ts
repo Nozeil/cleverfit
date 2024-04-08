@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { TrainingsTableSortedBy } from '@typings/index';
 
 import type {
+    SetIsExerciseCardAction,
     SetPaginationPageAction,
     SetPaginationPageSizeAction,
     SetSortedByAction,
@@ -11,6 +12,7 @@ import type {
 } from './trainings-table.types';
 
 type TrainingsTableState = {
+    isExerciseCard: boolean;
     paginationPage: number;
     paginationPageSize: number;
     sortedBy: TrainingsTableSortedBy;
@@ -18,6 +20,7 @@ type TrainingsTableState = {
 };
 
 const initialState: TrainingsTableState = {
+    isExerciseCard: false,
     paginationPage: 1,
     paginationPageSize: 0,
     sortedBy: null,
@@ -43,13 +46,22 @@ export const trainingsTableSlice = createSlice({
         setPaginationPage: (state, action: SetPaginationPageAction) => {
             state.paginationPage = action.payload;
         },
+        setIsExerciseCard: (state, action: SetIsExerciseCardAction) => {
+            state.isExerciseCard = action.payload;
+        },
     },
 });
 
-export const { setSortedBy, setSortedTrainings, setPaginationPageSize, setPaginationPage } =
-    trainingsTableSlice.actions;
+export const {
+    setSortedBy,
+    setSortedTrainings,
+    setPaginationPageSize,
+    setPaginationPage,
+    setIsExerciseCard,
+} = trainingsTableSlice.actions;
 export const trainingsTableSortedBySelector = (state: RootState) => state.trainingsTable.sortedBy;
 export const trainingsTableSelector = (state: RootState) => state.trainingsTable;
 export const trainingsTablePaginationPageSizeSelector = (state: RootState) =>
     state.trainingsTable.paginationPageSize;
+
 export const trainingsTableReducer = trainingsTableSlice.reducer;

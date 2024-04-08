@@ -1,0 +1,55 @@
+.card:global(.ant-card) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: var(--z-5);
+    width: 100%;
+    box-shadow: var(--shadow-md);
+}
+
+.card :global(.ant-card-body),
+.card :global(.ant-card-actions) {
+    padding: 0 12px;
+}
+
+.titleWrapper {
+    padding: 18px 8px;
+}
+
+.title:global(.ant-typography) {
+    font-weight: var(--font-normal);
+    font-size: var(--text-sm);
+}
+
+.btn:global(.ant-btn) {
+    width: fit-content;
+    height: fit-content;
+    padding: 0;
+}
+
+.addExerciseBtn:global(.ant-btn) {
+    min-height: 32px;
+    height: auto;
+    white-space: wrap;
+}
+
+.exercisesWrapper {
+    min-height: 130px;
+    padding: 16px 0;
+}
+
+.exercise:global(.ant-typography) {
+    color: var(--character-light-secondary-45);
+}
+
+@media screen and (max-width: 835px) {
+    .card:global(.ant-card) {
+        width: calc(100% + var(--gap-12));
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card:global(.ant-card) {
+        width: 100%;
+    }
+}

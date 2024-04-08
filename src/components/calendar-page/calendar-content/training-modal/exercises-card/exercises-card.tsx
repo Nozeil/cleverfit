@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 import { ArrowLeftOutlined } from '@ant-design/icons';
-import EmptyIcon from '@assets/icons/empty.svg?react';
+import { ExercisesContent } from '@components/exercises-content';
 import { Flex } from '@components/flex/flex';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { openSidePanel } from '@redux/slices/side-panel';
@@ -8,7 +8,7 @@ import {
     resetFormExercises,
     trainingModalAndExercisesFormSelector,
 } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
-import { Button, Card, Empty } from 'antd';
+import { Button, Card } from 'antd';
 
 import { Exercises } from './exercises';
 import { ExercisesSelect } from './exercises-select';
@@ -22,7 +22,7 @@ type ExercisesCardProps = {
 };
 
 export const ExercisesCard = ({ saveButton, resetForm, onArrowLeftClick }: ExercisesCardProps) => {
-    const { exercises, formExercises, isExerciseBtnLocked } = useAppSelector(
+    const { formExercises, isExerciseBtnLocked } = useAppSelector(
         trainingModalAndExercisesFormSelector,
     );
     const dispatch = useAppDispatch();
@@ -34,12 +34,6 @@ export const ExercisesCard = ({ saveButton, resetForm, onArrowLeftClick }: Exerc
 
         dispatch(openSidePanel());
     };
-
-    const content = exercises.length ? (
-        <Exercises onAdd={onAddExerciseClick} />
-    ) : (
-        <Empty description='' image={<EmptyIcon />} imageStyle={{ height: 91, marginBottom: 0 }} />
-    );
 
     return (
         <Card
@@ -69,7 +63,7 @@ export const ExercisesCard = ({ saveButton, resetForm, onArrowLeftClick }: Exerc
             ]}
             data-test-id='modal-create-exercise'
         >
-            {content}
+            <ExercisesContent content={<Exercises onAdd={onAddExerciseClick} />} />
         </Card>
     );
 };

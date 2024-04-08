@@ -8,3 +8,4 @@ export type SetSortedByAction = PayloadAction<TrainingsTableSortedBy>;
 export type SetSortedTrainingsAction = PayloadAction<Trainings>;
 export type SetPaginationPageSizeAction = PayloadAction<number>;
 export type SetPaginationPageAction = PayloadAction<number>;
+export type SetIsExerciseCardAction = PayloadAction<boolean>;
