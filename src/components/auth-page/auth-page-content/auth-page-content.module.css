@@ -8,12 +8,13 @@
     flex: 1;
 }
 
-.tabs:global(.ant-tabs-nav-list) {
+.tabs :global(.ant-tabs-nav-list) {
     width: 100%;
 }
 
 .tabs:global(.ant-tabs) :global(.ant-tabs-tab-btn) {
     flex: 1;
+    
 }
 
 .link {
