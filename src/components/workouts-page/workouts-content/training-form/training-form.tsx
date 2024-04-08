@@ -1,17 +1,18 @@
 import { useEffect } from 'react';
 import { ExercisesForm } from '@components/exercises-form/exercises-form';
-import { DATE_FORMATS, FORM_NAMES } from '@constants/index';
+import { FORM_NAMES } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { openSuccessAlert } from '@redux/slices/success-alert';
 import { setIsTrainingFormSubmitDisabled } from '@redux/slices/training-form';
 import { trainingModalAndExercisesFormSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
-import { useCreateTrainingMutation } from '@services/endpoints/training';
+import { useCreateTrainingMutation, useUpdateTrainingMutation } from '@services/endpoints/training';
 import type { ExercisesFormValues } from '@typings/index';
 import { CenteredModalError } from '@utils/modal-error/modal-error';
 import { Form, FormInstance } from 'antd';
 import { type FormProviderProps } from 'antd/lib/form/context';
-import moment from 'moment';
 
 import type { TrainingInfoFormValues } from '../workouts-content.types';
+import { formatExerciseDate } from '../workouts-content.utils';
 
 import { TrainingInfoForm } from './training-info-form/training-info-form';
 import { checkIsFieldsValid } from './training-form.utils';
@@ -23,10 +24,13 @@ type TrainingFormProps = {
 };
 
 export const TrainingForm = ({ trainingInfoForm, exercisesForm, onClose }: TrainingFormProps) => {
-    const { formExercises, isPast } = useAppSelector(trainingModalAndExercisesFormSelector);
+    const { formExercises, isPast, exercisesFormMode, trainingType } = useAppSelector(
+        trainingModalAndExercisesFormSelector,
+    );
     const dispatch = useAppDispatch();
 
     const [createTraining] = useCreateTrainingMutation();
+    const [updateTraining] = useUpdateTrainingMutation();
 
     useEffect(() => {
         const isValid = checkIsFieldsValid(trainingInfoForm, exercisesForm);
@@ -56,16 +60,23 @@ export const TrainingForm = ({ trainingInfoForm, exercisesForm, onClose }: Train
             ? { repeat: true, period: trainingInfoFormValues.period }
             : undefined;
 
+        const date = formatExerciseDate(trainingInfoFormValues.date);
+
         const body = {
             name: trainingInfoFormValues.name,
-            date: moment(trainingInfoFormValues.date.toISOString(true)).format(DATE_FORMATS.ISO),
+            date: date.iso,
             isImplementation: isPast,
             parameters,
             exercises,
         };
 
         try {
-            await createTraining(body).unwrap();
+            if (exercisesFormMode === 'new') {
+                await createTraining(body).unwrap();
+            } else if (exercisesFormMode === 'edit' && trainingType.id) {
+                await updateTraining({ body, id: trainingType.id }).unwrap();
+            }
+            dispatch(openSuccessAlert());
         } catch {
             CenteredModalError();
         } finally {

@@ -180,7 +180,7 @@ export const exercisesFormModeSelector = (state: RootState) =>
     state.trainingModalAndExercisesForm.exercisesFormMode;
 export const exercisesFormFormExercisesSelector = (state: RootState) =>
     state.trainingModalAndExercisesForm.formExercises;
-export const trainingModalDateSelector = (state: RootState) =>
+export const trainingModalAndExercisesFormDateSelector = (state: RootState) =>
     state.trainingModalAndExercisesForm.date;
 
 export const trainingModalAndExercisesFormReducer = trainingModalAndExercisesFormSlice.reducer;

@@ -18,7 +18,7 @@ export const useExercisesFormHandlers = (
         const fields = Object.values(formValues);
         const ids = fields.filter((field) => field.shouldDelete).map((field) => field.id);
 
-        if (fields.length !== ids.length) {
+        if (fields.length !== ids.length || fields.length === 1) {
             setIsDisabled(true);
         }
 

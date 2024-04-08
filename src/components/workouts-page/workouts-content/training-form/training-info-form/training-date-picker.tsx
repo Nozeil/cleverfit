@@ -10,6 +10,8 @@ import { type DatePickerProps, DatePicker, Form } from 'antd';
 import classNames from 'classnames/bind';
 import moment from 'moment';
 
+import { formatExerciseDate } from '../../workouts-content.utils';
+
 import styles from './training-info-form.module.css';
 
 const cx = classNames.bind(styles);
@@ -28,10 +30,7 @@ export const TrainingDatePicker = () => {
         exercisesFormMode === 'new' && current && current < moment().endOf('day');
 
     const dateRender: DatePickerProps['dateRender'] = (current) => {
-        const local = current
-            .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
-            .toISOString(true);
-        const iso = moment(local).format(DATE_FORMATS.ISO);
+        const { iso } = formatExerciseDate(current);
 
         const isExercises = data?.some(({ date }) => date === iso);
 
@@ -45,29 +44,44 @@ export const TrainingDatePicker = () => {
     };
 
     const onChange: DatePickerProps['onChange'] = (date) => {
-        const localISO = moment(date?.toISOString(true));
-        const iso = localISO.format(DATE_FORMATS.ISO);
+        if (date) {
+            const exerciseDate = formatExerciseDate(date);
 
-        dispatch(
-            setExerciseDate({
-                iso: localISO.format(DATE_FORMATS.ISO),
-                formated: localISO.format(DATE_FORMATS.DMY),
-            }),
-        );
+            dispatch(setExerciseDate(exerciseDate));
 
-        const trainingTypes = data
-            ? data
-                  .filter((training) => training.date === iso)
-                  .map(({ name, isImplementation }) => ({ name, isImplementation }))
-            : [];
+            if (exercisesFormMode !== 'new') {
+                const trainingTypes = data
+                    ? data
+                          .filter((training) => training.date === exerciseDate.iso)
+                          .map(({ name, isImplementation }) => ({ name, isImplementation }))
+                    : [];
 
-        const isTrainingTypeExist = trainingTypes.some(({ name }) => trainingType.name === name);
+                const isTrainingTypeExist = trainingTypes.some(
+                    ({ name }) => trainingType.name === name,
+                );
 
-        if (isTrainingTypeExist) {
-            form.resetFields(['name']);
+                if (isTrainingTypeExist) {
+                    form.resetFields(['name']);
+                }
+
+                dispatch(setTrainingTypes(trainingTypes));
+            }
+            const trainingTypes = data
+                ? data
+                      .filter((training) => training.date === exerciseDate.iso)
+                      .map(({ name, isImplementation }) => ({ name, isImplementation }))
+                : [];
+
+            const isTrainingTypeExist = trainingTypes.some(
+                ({ name }) => trainingType.name === name,
+            );
+
+            if (isTrainingTypeExist) {
+                form.resetFields(['name']);
+            }
+
+            dispatch(setTrainingTypes(trainingTypes));
         }
-
-        dispatch(setTrainingTypes(trainingTypes));
     };
 
     return (

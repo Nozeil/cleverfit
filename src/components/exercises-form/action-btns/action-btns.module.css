@@ -19,7 +19,9 @@
     text-align: start;
 }
 
-.btn:global(.ant-btn):hover,
-.btn:global(.ant-btn):focus {
+.btnsWrapper .btn:global(.ant-btn.ant-btn-text):hover,
+.btnsWrapper .btn:global(.ant-btn.ant-btn-text):focus,
+.btnsWrapperEditMode .btn:global(.ant-btn.ant-btn-text):hover,
+.btnsWrapperEditMode .btn:global(.ant-btn.ant-btn-text):focus {
     background-color: inherit;
 }

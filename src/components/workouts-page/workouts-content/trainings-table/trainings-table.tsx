@@ -26,12 +26,8 @@ export const TrainingsTable = () => {
     const sortedTrainings = useMemo(() => {
         const trainings = data?.slice();
 
-        if (sortedBy === 'asc') {
-            return trainings?.sort((a, b) => trainingsSorter(a, b, 'asc'));
-        }
-
-        if (sortedBy === 'dsc') {
-            return trainings?.sort((a, b) => trainingsSorter(a, b, 'dsc'));
+        if (sortedBy === 'asc' || sortedBy === 'dsc') {
+            return trainings?.sort((a, b) => trainingsSorter(a, b, sortedBy));
         }
 
         return trainings;

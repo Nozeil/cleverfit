@@ -10,7 +10,9 @@ import { Form, Select, SelectProps } from 'antd';
 import styles from './training-info-form.module.css';
 
 export const TrainingNameSelect = () => {
-    const { trainingTypes } = useAppSelector(trainingModalAndExercisesFormSelector);
+    const { trainingTypes, exercisesFormMode } = useAppSelector(
+        trainingModalAndExercisesFormSelector,
+    );
     const dispatch = useAppDispatch();
     const { data: trainingList } = useGetTrainingListQuery();
 
@@ -31,6 +33,7 @@ export const TrainingNameSelect = () => {
             <Select
                 placeholder='Выбор типа тренировки'
                 options={selectOptions}
+                disabled={exercisesFormMode !== 'new'}
                 onSelect={onSelect}
             />
         </Form.Item>
