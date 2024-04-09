@@ -1,0 +1,12 @@
+.wrapper {
+    margin-top: 14px;
+}
+
+.title:global(.ant-typography) {
+    margin: 0;
+    font-weight: var(--font-medium);
+}
+
+.text:global(.ant-typography) {
+    color: var(--character-light-secondary-45);
+}

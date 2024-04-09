@@ -15,6 +15,7 @@ import type { ExercisesFormValues } from '@typings/index';
 import { Form, Grid, Tabs } from 'antd';
 
 import { EmptyTrainings } from './empty-trainings/empty-trainings';
+import { JointTrainings } from './joint-trainings/joint-trainings';
 import { SubmitBtn } from './submit-btn/submit-btn';
 import { TrainingForm } from './training-form/training-form';
 import { TrainingsTable } from './trainings-table/trainings-table';
@@ -50,7 +51,7 @@ export const WorkoutsContent = () => {
             key: 'my-trainings',
             children: trainings?.length ? <TrainingsTable /> : <EmptyTrainings />,
         },
-        { label: 'Совместные тренировки', key: 'joint-trainings', children: <div>Joint</div> },
+        { label: 'Совместные тренировки', key: 'joint-trainings', children: <JointTrainings /> },
         { label: 'Марафоны', key: 'marathons' },
     ];
 
@@ -97,6 +98,7 @@ export const WorkoutsContent = () => {
                 <SuccessAlert message={alertMessage} />
                 <Tabs
                     className={styles.tabs}
+                    defaultActiveKey='joint-trainings' // DELETE
                     items={tabsItems}
                     destroyInactiveTabPane={true}
                     tabBarGutter={tabBarGutter}

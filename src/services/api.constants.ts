@@ -12,6 +12,7 @@ export const AUTH_ENDPOINTS = {
 export const CATALOGS_ENDPOINTS = {
     TRAINING_LIST: 'catalogs/training-list',
     TARIFF_LIST: 'catalogs/tariff-list',
+    TRAINING_PALS: 'catalogs/training-pals',
 } as const;
 
 export const FEEDBACKS_ENDPOINTS = {

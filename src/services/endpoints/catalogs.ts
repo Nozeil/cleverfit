@@ -1,4 +1,8 @@
-import type { TariffListResponse, TrainingListResponse } from '@models/models';
+import type {
+    TariffListResponse,
+    TrainingListResponse,
+    TrainingPalsResponse,
+} from '@models/models';
 import { api } from '@services/api';
 import { CATALOGS_ENDPOINTS } from '@services/api.constants';
 
@@ -14,7 +18,13 @@ export const catalogsApi = api.injectEndpoints({
                 url: CATALOGS_ENDPOINTS.TARIFF_LIST,
             }),
         }),
+        getTrainingPals: builder.query<TrainingPalsResponse, void>({
+            query: () => ({
+                url: CATALOGS_ENDPOINTS.TRAINING_PALS,
+            }),
+        }),
     }),
 });
 
-export const { useGetTrainingListQuery, useGetTariffListQuery } = catalogsApi;
+export const { useGetTrainingListQuery, useGetTariffListQuery, useGetTrainingPalsQuery } =
+    catalogsApi;

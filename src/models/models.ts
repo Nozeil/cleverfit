@@ -145,3 +145,13 @@ export type BuyTariffBody = {
     tariffId: string;
     days: number;
 };
+
+export type TrainingPalsResponse = Array<{
+    id: string;
+    name: string;
+    trainingType: string;
+    imageSrc: string | null;
+    avgWeightInWeek: number;
+    inviteId: string;
+    status: string;
+}>;
