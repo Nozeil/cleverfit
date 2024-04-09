@@ -12,7 +12,7 @@ import { closeSidePanel } from '@redux/slices/side-panel';
 import { exercisesFormModeSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { useGetTrainingQuery } from '@services/endpoints/training';
 import type { ExercisesFormValues } from '@typings/index';
-import { Form, Grid, Tabs } from 'antd';
+import { Form, Tabs } from 'antd';
 
 import { EmptyTrainings } from './empty-trainings/empty-trainings';
 import { JointTrainings } from './joint-trainings/joint-trainings';
@@ -23,15 +23,12 @@ import type { TrainingInfoFormValues } from './workouts-content.types';
 
 import styles from './workouts-content.module.css';
 
-const { useBreakpoint } = Grid;
-
 export const WorkoutsContent = () => {
     const formMode = useAppSelector(exercisesFormModeSelector);
     const dispatch = useAppDispatch();
 
     const { refresh } = useTrainingListQueryWithNotification();
     const { data: trainings } = useGetTrainingQuery();
-    const { xl, sm } = useBreakpoint();
 
     const [exercisesForm] = Form.useForm<ExercisesFormValues>();
     const [trainingInfoForm] = Form.useForm<TrainingInfoFormValues>();
@@ -49,21 +46,18 @@ export const WorkoutsContent = () => {
         {
             label: 'Мои тренировки',
             key: 'my-trainings',
-            children: trainings?.length ? <TrainingsTable /> : <EmptyTrainings />,
+            children: trainings?.length ? (
+                <TrainingsTable />
+            ) : (
+                <Fragment>
+                    <Notification refresh={refresh} />
+                    <EmptyTrainings />
+                </Fragment>
+            ),
         },
         { label: 'Совместные тренировки', key: 'joint-trainings', children: <JointTrainings /> },
         { label: 'Марафоны', key: 'marathons' },
     ];
-
-    let tabBarGutter;
-
-    if (xl) {
-        tabBarGutter = 228;
-    } else if (sm) {
-        tabBarGutter = 74;
-    } else {
-        tabBarGutter = 10;
-    }
 
     let alertMessage;
 
@@ -75,7 +69,6 @@ export const WorkoutsContent = () => {
 
     return (
         <Fragment>
-            <Notification refresh={refresh} />
             <SidePanel onClose={onClose} shouldCloseOnXs={false} footer={<SubmitBtn />}>
                 <SidePanelHeadDependentFromFormMode
                     onClose={onClose}
@@ -101,7 +94,6 @@ export const WorkoutsContent = () => {
                     defaultActiveKey='joint-trainings' // DELETE
                     items={tabsItems}
                     destroyInactiveTabPane={true}
-                    tabBarGutter={tabBarGutter}
                     moreIcon={null}
                 />
             </ContentWrapper>

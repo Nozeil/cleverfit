@@ -1,0 +1,3 @@
+.highlight:global(.ant-typography) {
+    color: var(--character-light-red-4);
+}

@@ -13,6 +13,7 @@ export const CATALOGS_ENDPOINTS = {
     TRAINING_LIST: 'catalogs/training-list',
     TARIFF_LIST: 'catalogs/tariff-list',
     TRAINING_PALS: 'catalogs/training-pals',
+    USER_JOINT_TRAINING_LIST: 'catalogs/user-joint-training-list',
 } as const;
 
 export const FEEDBACKS_ENDPOINTS = {

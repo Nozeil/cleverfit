@@ -19,9 +19,9 @@
 
 .title:global(.ant-typography) {
     margin-bottom: var(--mb-feedback-title);
+    font-size: var(--text-base);
     font-weight: var(--font-medium);
     text-align: center;
-    word-spacing: var(--feedback-title-word-spacing);
 }
 
 .rate:global(.ant-rate) {

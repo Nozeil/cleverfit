@@ -146,6 +146,8 @@ export type BuyTariffBody = {
     days: number;
 };
 
+export type TrainingStatus = 'accepted' | 'pending' | 'rejected' | null;
+
 export type TrainingPalsResponse = Array<{
     id: string;
     name: string;
@@ -153,5 +155,22 @@ export type TrainingPalsResponse = Array<{
     imageSrc: string | null;
     avgWeightInWeek: number;
     inviteId: string;
-    status: string;
+    status: TrainingStatus;
 }>;
+
+export type JointTrainingListItem = {
+    id: string;
+    name: string | null;
+    trainingType: string;
+    imageSrc: string | null;
+    avgWeightInWeek: number;
+    status: TrainingStatus;
+    inviteId: string | null;
+};
+
+export type UserJointTrainingListResponse = JointTrainingListItem[];
+
+export type UserJointTrainingListParams = {
+    trainingType?: string;
+    status?: TrainingStatus;
+};

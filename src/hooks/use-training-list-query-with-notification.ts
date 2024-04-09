@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import {
-    closeTrainingListErrorNotification,
-    openTrainingListErrorNotification,
+    closeErrorNotification,
+    openErrorNotification,
 } from '@redux/slices/training-list-error-notification';
 import { useGetTrainingListQuery } from '@services/endpoints/catalogs';
 
@@ -12,15 +12,13 @@ export const useTrainingListQueryWithNotification = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        const action = queryResult.isError
-            ? openTrainingListErrorNotification
-            : closeTrainingListErrorNotification;
+        const action = queryResult.isError ? openErrorNotification : closeErrorNotification;
 
         dispatch(action());
     }, [dispatch, queryResult.isError]);
 
     const refresh = () => {
-        dispatch(closeTrainingListErrorNotification());
+        dispatch(closeErrorNotification());
         queryResult.refetch();
     };
 

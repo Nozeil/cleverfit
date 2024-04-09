@@ -1,0 +1,15 @@
+.label:global(.ant-typography) {
+    font-size: var(--text-xs);
+    color: var(--character-light-secondary-45);
+}
+
+.value:global(.ant-typography) {
+    font-weight: var(--font-medium);
+    color: var(--primary-light-6);
+}
+
+.value:global(.ant-typography),
+.label:global(.ant-typography) {
+    height: 16px;
+    white-space: nowrap;
+}

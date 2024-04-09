@@ -9,21 +9,20 @@ const initialState: NotificationState = {
     isOpen: false,
 };
 
-export const TrainingListErrorNotificationSlice = createSlice({
-    name: 'trainingListErrorNotification',
+export const ErrorNotificationSlice = createSlice({
+    name: 'ErrorNotification',
     initialState,
     reducers: {
-        openTrainingListErrorNotification: (state) => {
+        openErrorNotification: (state) => {
             state.isOpen = true;
         },
-        closeTrainingListErrorNotification: (state) => {
+        closeErrorNotification: (state) => {
             state.isOpen = false;
         },
     },
 });
 
-export const { openTrainingListErrorNotification, closeTrainingListErrorNotification } =
-    TrainingListErrorNotificationSlice.actions;
-export const isTrainingListErrorNotificationOpenSelector = (state: RootState) =>
+export const { openErrorNotification, closeErrorNotification } = ErrorNotificationSlice.actions;
+export const isErrorNotificationOpenSelector = (state: RootState) =>
     state.trainingListErrorNotification.isOpen;
-export const trainingListErrorNotificationReducer = TrainingListErrorNotificationSlice.reducer;
+export const errorNotificationReducer = ErrorNotificationSlice.reducer;

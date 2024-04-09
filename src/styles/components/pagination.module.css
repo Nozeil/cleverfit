@@ -11,13 +11,22 @@
     border-color: var(--primary-light-6);
 }
 
-:global(.ant-pagination.ant-pagination-mini .ant-pagination-item) {
+:global(.ant-pagination.ant-pagination-mini .ant-pagination-item),
+:global(.ant-pagination.ant-pagination-mini .ant-pagination-prev),
+:global(.ant-pagination.ant-pagination-mini .ant-pagination-next) {
     min-width: 24px;
     height: 20px;
     margin: 0;
-    line-height: 16px;
+    line-height: 18px;
 }
 
 :global(.ant-pagination-item a) {
     line-height: inherit;
+}
+
+:global(.ant-pagination-prev .ant-pagination-item-link),
+:global(.ant-pagination-next .ant-pagination-item-link) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

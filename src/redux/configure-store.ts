@@ -8,6 +8,7 @@ import { authReducer } from './slices/auth';
 import { error500ModalReducer } from './slices/error-500-modal';
 import { errorFeedbackModalReducer } from './slices/error-feedback-modal';
 import { feedbackModalReducer } from './slices/feedback-modal';
+import { jointTrainingsReducer } from './slices/joint-training/joint-trainings';
 import { navMenuReducer } from './slices/nav-menu/nav-menu';
 import { profileReducer } from './slices/profile';
 import { sidePanelReducer } from './slices/side-panel';
@@ -16,7 +17,7 @@ import { successAlertReducer } from './slices/success-alert';
 import { successFeedbackModalReducer } from './slices/success-feedback-modal';
 import { tariffsReducer } from './slices/tariffs';
 import { trainingFormReducer } from './slices/training-form';
-import { trainingListErrorNotificationReducer } from './slices/training-list-error-notification';
+import { errorNotificationReducer } from './slices/training-list-error-notification';
 import { trainingModalAndExercisesFormReducer } from './slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { trainingsTableReducer } from './slices/trainings-table/trainings-table';
 
@@ -39,10 +40,11 @@ export const store = configureStore({
         sidePanel: sidePanelReducer,
         profile: profileReducer,
         tariffs: tariffsReducer,
-        trainingListErrorNotification: trainingListErrorNotificationReducer,
+        trainingListErrorNotification: errorNotificationReducer,
         trainingForm: trainingFormReducer,
         successAlert: successAlertReducer,
         trainingsTable: trainingsTableReducer,
+        jointTrainings: jointTrainingsReducer,
         [api.reducerPath]: api.reducer,
     }),
     middleware: (getDefaultMiddleware) =>

@@ -1,8 +1,8 @@
 import { CloseCircleOutlined, CloseOutlined } from '@ant-design/icons';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
-    closeTrainingListErrorNotification,
-    isTrainingListErrorNotificationOpenSelector,
+    closeErrorNotification,
+    isErrorNotificationOpenSelector,
 } from '@redux/slices/training-list-error-notification';
 import { Button, Modal, Space, Typography } from 'antd';
 
@@ -13,10 +13,10 @@ type NotificationProps = {
 };
 
 export const Notification = ({ refresh }: NotificationProps) => {
-    const isOpen = useAppSelector(isTrainingListErrorNotificationOpenSelector);
+    const isOpen = useAppSelector(isErrorNotificationOpenSelector);
     const dispatch = useAppDispatch();
 
-    const closeNotification = () => dispatch(closeTrainingListErrorNotification());
+    const closeNotification = () => dispatch(closeErrorNotification());
 
     return (
         <Modal

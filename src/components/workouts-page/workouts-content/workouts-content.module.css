@@ -1,5 +1,16 @@
+.contentWrapper {
+    padding-bottom: 16px;
+}
+
 .tabs:global(.ant-tabs) :global(.ant-tabs-nav) {
     margin: var(--m-workouts-tabs-nav);
+}
+
+.tabs:global(.ant-tabs) :global(.ant-tabs-nav-list) {
+    flex-grow: 1;
+    justify-content: space-between;
+    margin-right: 28px;
+    gap: 74px;
 }
 
 .tabs :global(.ant-tabs-tab-btn) {
@@ -33,5 +44,9 @@
 
     .tabs:global(.ant-tabs) :global(.ant-tabs-nav) {
         margin: var(--m-workouts-tabs-nav-mobile-l);
+    }
+
+    .tabs:global(.ant-tabs) :global(.ant-tabs-nav-list) {
+        gap: 8px;
     }
 }
