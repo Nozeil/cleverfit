@@ -5,7 +5,7 @@ import {
     jointTrainingsSelector,
     setPaginationTotal,
 } from '@redux/slices/joint-training/joint-trainings';
-import { useGetUserJointTrainingListQuery } from '@services/endpoints/catalogs';
+import { useLazyGetUserJointTrainingListQuery } from '@services/endpoints/catalogs';
 
 import { PalCard } from '../pal-card/pal-card';
 import { SearchPagination } from '../search-pagination';
@@ -19,9 +19,11 @@ export const PalCards = () => {
         useAppSelector(jointTrainingsSelector);
     const dispatch = useAppDispatch();
 
-    const { data } = useGetUserJointTrainingListQuery(
-        isRandom ? undefined : { trainingType: trainingKey },
-    );
+    const [getUserJointTrainingList, { data }] = useLazyGetUserJointTrainingListQuery();
+
+    useEffect(() => {
+        getUserJointTrainingList(isRandom ? undefined : { trainingType: trainingKey });
+    }, [getUserJointTrainingList, isRandom, trainingKey]);
 
     const sortedData = useMemo(() => {
         const dataCopy = data?.slice() ?? [];

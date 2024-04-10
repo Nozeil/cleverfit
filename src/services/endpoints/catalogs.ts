@@ -24,14 +24,17 @@ export const catalogsApi = api.injectEndpoints({
             query: () => ({
                 url: CATALOGS_ENDPOINTS.TRAINING_PALS,
             }),
-            providesTags: ['InviteStatus']
+            providesTags: ['InviteStatus'],
         }),
-        getUserJointTrainingList: builder.query<UserJointTrainingListResponse,UserJointTrainingListParams | void>({
+        getUserJointTrainingList: builder.query<
+            UserJointTrainingListResponse,
+            UserJointTrainingListParams | void
+        >({
             query: (params) => ({
                 url: CATALOGS_ENDPOINTS.USER_JOINT_TRAINING_LIST,
                 params: params || undefined,
             }),
-            providesTags: ['InviteStatus']
+            providesTags: ['InviteStatus'],
         }),
     }),
 });
@@ -40,6 +43,5 @@ export const {
     useGetTrainingListQuery,
     useGetTariffListQuery,
     useGetTrainingPalsQuery,
-    useGetUserJointTrainingListQuery,
     useLazyGetUserJointTrainingListQuery,
 } = catalogsApi;

@@ -1,6 +1,6 @@
 import { CheckCircleFilled, ExclamationCircleOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
-import { Typography } from 'antd';
+import { Tooltip, Typography } from 'antd';
 
 import type { Content, TrainingStatusProps } from './training-status-box.types';
 
@@ -24,9 +24,18 @@ export const TrainingStatusBox = ({ status }: TrainingStatusProps) => {
         content = {
             text: 'тренировка отклонена',
             icon: (
-                <ExclamationCircleOutlined
-                    style={{ fontSize: iconSize, color: 'var(--character-light-secondary-45)' }}
-                />
+                <Tooltip
+                    arrowPointAtCenter={true}
+                    title='повторный запрос будет доступнен через 2 недели'
+                    color='var(--neutral-gray-13)'
+                    overlayClassName={styles.tooltipOverlay}
+                    overlayStyle={{ maxWidth: 147 }}
+                    placement='topRight'
+                >
+                    <ExclamationCircleOutlined
+                        style={{ fontSize: iconSize, color: 'var(--character-light-secondary-45)' }}
+                    />
+                </Tooltip>
             ),
         };
     } else if (status === 'pending') {
