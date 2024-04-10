@@ -15,11 +15,13 @@ import { Sorter } from './pal-cards.utils';
 import styles from './pal-cards.module.css';
 
 export const PalCards = () => {
-    const { searchValue, paginationPage, paginationPageSize } =
+    const { searchValue, paginationPage, paginationPageSize, trainingKey, isRandom } =
         useAppSelector(jointTrainingsSelector);
     const dispatch = useAppDispatch();
 
-    const { data } = useGetUserJointTrainingListQuery();
+    const { data } = useGetUserJointTrainingListQuery(
+        isRandom ? undefined : { trainingType: trainingKey },
+    );
 
     const sortedData = useMemo(() => {
         const dataCopy = data?.slice() ?? [];
@@ -51,7 +53,11 @@ export const PalCards = () => {
     }, [dispatch, sortedData]);
 
     return (
-        <Flex className={styles.palsWithPagination} direction='column' gap={{ xs: 'gap16', sm: 'gap12', lg: 'gap16' }}>
+        <Flex
+            className={styles.palsWithPagination}
+            direction='column'
+            gap={{ xs: 'gap16', sm: 'gap12', lg: 'gap16' }}
+        >
             <Flex className={styles.palsWrapper} gap={{ xs: 'gap12', sm: 'gap12', lg: 'gap16' }}>
                 {paginatedData.map(
                     ({ id, name, avgWeightInWeek, imageSrc, inviteId, status, trainingType }) => (

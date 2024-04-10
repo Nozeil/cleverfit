@@ -1,22 +1,77 @@
-import { Fragment } from 'react';
+import { Fragment, useMemo } from 'react';
 import { Flex } from '@components/flex/flex';
 import { Notification } from '@components/notification/notification';
-import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
-import { openSearch } from '@redux/slices/joint-training/joint-trainings';
+import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import {
+    isRandomSelector,
+    openSearch,
+    setIsRandomFalse,
+    setIsRandomTrue,
+    setTrainingKey,
+} from '@redux/slices/joint-training/joint-trainings';
 import {
     closeErrorNotification,
     openErrorNotification,
 } from '@redux/slices/training-list-error-notification';
-import { useLazyGetUserJointTrainingListQuery } from '@services/endpoints/catalogs';
+import {
+    useGetTrainingListQuery,
+    useLazyGetUserJointTrainingListQuery,
+} from '@services/endpoints/catalogs';
+import { useGetTrainingQuery } from '@services/endpoints/training';
 import { Button, Card, Typography } from 'antd';
 
 import styles from './joint-trainings-card.module.css';
 
 export const JointTrainingsCard = () => {
     const [getUserJointTrainingList] = useLazyGetUserJointTrainingListQuery();
+    const { data: trainings } = useGetTrainingQuery();
+    const { data: trainingList } = useGetTrainingListQuery();
+
+    const isRandom = useAppSelector(isRandomSelector);
     const dispatch = useAppDispatch();
 
+    const mostPopularTraining = useMemo(() => {
+        const training = trainings?.reduce(
+            (prevTraining, { name, exercises }) => {
+                const load = exercises.reduce(
+                    (prevExercise, { weight, approaches, replays }) =>
+                        prevExercise + weight * approaches * replays,
+                    0,
+                );
+
+                return load >= prevTraining.load ? { name, load } : prevTraining;
+            },
+            { name: '', load: 0 },
+        );
+        const trainingType = trainingList?.find(({ name }) => training?.name === name);
+
+        if (trainingType && training) {
+            training.name = trainingType.key;
+        }
+
+        return training;
+    }, [trainingList, trainings]);
+
+    const onTrainingTypeSelection = async () => {
+        dispatch(setIsRandomFalse());
+
+        const key = mostPopularTraining?.name;
+
+        if (key) {
+            dispatch(setTrainingKey(key));
+        }
+
+        try {
+            await getUserJointTrainingList({ trainingType: mostPopularTraining?.name }).unwrap();
+            dispatch(openSearch());
+        } catch {
+            dispatch(openErrorNotification());
+        }
+    };
+
     const onRandomSelection = async () => {
+        dispatch(setIsRandomTrue());
+
         try {
             await getUserJointTrainingList().unwrap();
             dispatch(openSearch());
@@ -26,8 +81,13 @@ export const JointTrainingsCard = () => {
     };
 
     const refresh = () => {
+        if (isRandom) {
+            onRandomSelection();
+        } else {
+            onTrainingTypeSelection();
+        }
+
         dispatch(closeErrorNotification());
-        onRandomSelection();
     };
 
     return (
@@ -44,7 +104,12 @@ export const JointTrainingsCard = () => {
                         <Button block={true} type='link' onClick={onRandomSelection}>
                             Случайный выбор
                         </Button>
-                        <Button block={true} className={styles.textBtn} type='text'>
+                        <Button
+                            block={true}
+                            className={styles.textBtn}
+                            type='text'
+                            onClick={onTrainingTypeSelection}
+                        >
                             Выбор друга по моим видам тренировок
                         </Button>
                     </Flex>,
