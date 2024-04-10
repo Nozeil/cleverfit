@@ -53,7 +53,7 @@ export const TrainingInfoForm = ({ form }: TrainingInfoFormProps) => {
     return (
         <Form className={styles.form} form={form} autoComplete='off' name='training-info-form'>
             <Flex direction='column' gap={{ xs: 'gap16', sm: 'gap24' }}>
-                <TrainingNameSelect />
+                {exercisesFormMode !== 'joint' && <TrainingNameSelect />}
 
                 <Flex gap={{ xs: 'gap24', sm: 'gap32' }}>
                     <Flex className={styles.column} direction='column' gap='gap8'>

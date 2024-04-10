@@ -7,6 +7,8 @@ import type {
     SetPaginationTotalAction,
     SetSearchValueAction,
     SetTrainingKeyAction,
+    SetUserInfoAction,
+    UserInfo,
 } from './joint-trainings.types';
 
 type JointTrainingsState = {
@@ -17,6 +19,7 @@ type JointTrainingsState = {
     paginationPage: number;
     paginationPageSize: number;
     trainingKey: string;
+    userInfo: UserInfo;
 };
 
 const initialState: JointTrainingsState = {
@@ -27,6 +30,7 @@ const initialState: JointTrainingsState = {
     paginationPage: 1,
     paginationPageSize: 0,
     trainingKey: '',
+    userInfo: { userId: '', imageSrc: '', name: '' },
 };
 
 export const jointTrainingsSlice = createSlice({
@@ -60,6 +64,9 @@ export const jointTrainingsSlice = createSlice({
         setTrainingKey: (state, action: SetTrainingKeyAction) => {
             state.trainingKey = action.payload;
         },
+        setUserInfo: (state, action: SetUserInfoAction) => {
+            state.userInfo = action.payload;
+        },
     },
 });
 
@@ -73,12 +80,14 @@ export const {
     setIsRandomFalse,
     setIsRandomTrue,
     setTrainingKey,
+    setUserInfo,
 } = jointTrainingsSlice.actions;
 
 export const isJointTrainingsSearchOpenSelector = (state: RootState) =>
     state.jointTrainings.isSearch;
 export const searchValueSelector = (state: RootState) => state.jointTrainings.searchValue;
 export const isRandomSelector = (state: RootState) => state.jointTrainings.isRandom;
+export const userInfoSelector = (state: RootState) => state.jointTrainings.userInfo;
 export const jointTrainingsSelector = (state: RootState) => state.jointTrainings;
 
 export const jointTrainingsReducer = jointTrainingsSlice.reducer;

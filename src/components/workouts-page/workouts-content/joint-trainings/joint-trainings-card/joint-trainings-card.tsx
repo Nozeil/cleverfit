@@ -33,15 +33,15 @@ export const JointTrainingsCard = () => {
     const mostPopularTraining = useMemo(() => {
         const training = trainings?.reduce(
             (prevTraining, { name, exercises }) => {
-                const load = exercises.reduce(
-                    (prevExercise, { weight, approaches, replays }) =>
-                        prevExercise + weight * approaches * replays,
-                    0,
-                );
+                const maxLoad = exercises.reduce((prevLoad, { weight, approaches, replays }) => {
+                    const load = weight * approaches * replays;
 
-                return load >= prevTraining.load ? { name, load } : prevTraining;
+                    return load > prevLoad ? load : prevLoad;
+                }, 0);
+
+                return maxLoad >= prevTraining.maxLoad ? { name, maxLoad } : prevTraining;
             },
-            { name: '', load: 0 },
+            { name: '', maxLoad: 0 },
         );
         const trainingType = trainingList?.find(({ name }) => training?.name === name);
 

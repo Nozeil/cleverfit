@@ -1,5 +1,5 @@
 import { EditOutlined } from '@ant-design/icons';
-import { TrainingBadge } from '@components/calendar-page/training-badge';
+import { TrainingBadge } from '@components/training-badge';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { TrainingResponse } from '@models/models';
 import { openSidePanel } from '@redux/slices/side-panel';

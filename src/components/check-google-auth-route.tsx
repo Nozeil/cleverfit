@@ -1,4 +1,4 @@
-import { useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { STORAGE_TOKEN_KEY } from '@constants/index';
 import { ROUTES } from '@constants/routes';
@@ -16,7 +16,7 @@ export const CheckGoogleAuthRoute = () => {
         token = new URLSearchParams(search).get(STORAGE_TOKEN_KEY);
     }
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (token) {
             signin(token, () => navigate(ROUTES.MAIN), true);
         }

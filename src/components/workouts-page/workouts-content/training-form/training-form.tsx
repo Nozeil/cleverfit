@@ -2,9 +2,11 @@ import { useEffect } from 'react';
 import { ExercisesForm } from '@components/exercises-form/exercises-form';
 import { FORM_NAMES } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { userInfoSelector } from '@redux/slices/joint-training/joint-trainings';
 import { openSuccessAlert } from '@redux/slices/success-alert';
 import { setIsTrainingFormSubmitDisabled } from '@redux/slices/training-form';
 import { trainingModalAndExercisesFormSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
+import { useCreateInviteMutation } from '@services/endpoints/invite';
 import { useCreateTrainingMutation, useUpdateTrainingMutation } from '@services/endpoints/training';
 import type { ExercisesFormValues } from '@typings/index';
 import { CenteredModalError } from '@utils/modal-error/modal-error';
@@ -27,16 +29,18 @@ export const TrainingForm = ({ trainingInfoForm, exercisesForm, onClose }: Train
     const { formExercises, isPast, exercisesFormMode, trainingType } = useAppSelector(
         trainingModalAndExercisesFormSelector,
     );
+    const userInfo = useAppSelector(userInfoSelector);
     const dispatch = useAppDispatch();
 
     const [createTraining] = useCreateTrainingMutation();
     const [updateTraining] = useUpdateTrainingMutation();
+    const [createInvite] = useCreateInviteMutation();
 
     useEffect(() => {
-        const isValid = checkIsFieldsValid(trainingInfoForm, exercisesForm);
+        const isValid = checkIsFieldsValid(trainingInfoForm, exercisesForm, exercisesFormMode);
 
         dispatch(setIsTrainingFormSubmitDisabled(isValid));
-    }, [dispatch, exercisesForm, formExercises, trainingInfoForm]);
+    }, [dispatch, exercisesForm, exercisesFormMode, formExercises, trainingInfoForm]);
 
     const onFormFinish: FormProviderProps['onFormFinish'] = async (_, info) => {
         const trainingInfoFormValues = info.forms[
@@ -75,8 +79,16 @@ export const TrainingForm = ({ trainingInfoForm, exercisesForm, onClose }: Train
                 await createTraining(body).unwrap();
             } else if (exercisesFormMode === 'edit' && trainingType.id) {
                 await updateTraining({ body, id: trainingType.id }).unwrap();
+            } else if (exercisesFormMode === 'joint') {
+                body.name = trainingType.name;
+                const { _id: trainingId } = await createTraining(body).unwrap();
+
+                await createInvite({ to: userInfo.userId, trainingId });
             }
-            dispatch(openSuccessAlert());
+
+            if (exercisesFormMode !== 'joint') {
+                dispatch(openSuccessAlert());
+            }
         } catch {
             CenteredModalError();
         } finally {
@@ -88,6 +100,7 @@ export const TrainingForm = ({ trainingInfoForm, exercisesForm, onClose }: Train
         const isValid = checkIsFieldsValid(
             info.forms[FORM_NAMES.TRAINING_INFO_FORM],
             info.forms[FORM_NAMES.EXERCISES_FORM],
+            exercisesFormMode,
         );
 
         dispatch(setIsTrainingFormSubmitDisabled(isValid));

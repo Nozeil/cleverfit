@@ -36,7 +36,7 @@ export type RemoveFormExerciseByIdAction = PayloadAction<string | number>;
 
 export type RemoveFormExercisesByIdsAction = PayloadAction<Array<string | number>>;
 
-export type FormModes = 'edit' | 'view' | 'new';
+export type FormModes = 'edit' | 'view' | 'new' | 'joint';
 
 export type SetFormModeAction = PayloadAction<FormModes>;
 

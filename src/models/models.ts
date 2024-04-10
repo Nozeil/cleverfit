@@ -174,3 +174,29 @@ export type UserJointTrainingListParams = {
     trainingType?: string;
     status?: TrainingStatus;
 };
+
+type FromTo = {
+    _id: string;
+    firstName?: string;
+    lastName?: string;
+    imageSrc?: string;
+};
+
+export type GetInvitesResponse = Array<{
+    _id: string;
+    from: FromTo;
+    training: TrainingResponse;
+    status: TrainingStatus;
+    createdAt: string;
+}>;
+
+export type CreateInviteResponse = Array<{
+    _id: string;
+    from: FromTo;
+    training: TrainingResponse;
+    status: TrainingStatus;
+    createdAt: string;
+    to: FromTo;
+}>;
+
+export type CreateTrainingBody = { to: string; trainingId: string };

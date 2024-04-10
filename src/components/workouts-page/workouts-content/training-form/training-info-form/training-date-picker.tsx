@@ -27,7 +27,7 @@ export const TrainingDatePicker = () => {
     const form = Form.useFormInstance();
 
     const disabledDate: DatePickerProps['disabledDate'] = (current) =>
-        exercisesFormMode === 'new' && current && current < moment().endOf('day');
+        exercisesFormMode !== 'edit' && current && current < moment().endOf('day');
 
     const dateRender: DatePickerProps['dateRender'] = (current) => {
         const { iso } = formatExerciseDate(current);
@@ -66,21 +66,24 @@ export const TrainingDatePicker = () => {
 
                 dispatch(setTrainingTypes(trainingTypes));
             }
-            const trainingTypes = data
-                ? data
-                      .filter((training) => training.date === exerciseDate.iso)
-                      .map(({ name, isImplementation }) => ({ name, isImplementation }))
-                : [];
 
-            const isTrainingTypeExist = trainingTypes.some(
-                ({ name }) => trainingType.name === name,
-            );
+            if (exercisesFormMode === 'edit' || exercisesFormMode === 'new') {
+                const trainingTypes = data
+                    ? data
+                          .filter((training) => training.date === exerciseDate.iso)
+                          .map(({ name, isImplementation }) => ({ name, isImplementation }))
+                    : [];
 
-            if (isTrainingTypeExist) {
-                form.resetFields(['name']);
+                const isTrainingTypeExist = trainingTypes.some(
+                    ({ name }) => trainingType.name === name,
+                );
+
+                if (isTrainingTypeExist) {
+                    form.resetFields(['name']);
+                }
+
+                dispatch(setTrainingTypes(trainingTypes));
             }
-
-            dispatch(setTrainingTypes(trainingTypes));
         }
     };
 

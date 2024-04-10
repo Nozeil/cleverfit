@@ -1,0 +1,12 @@
+.wrapper {
+  padding-bottom: 6px;
+}
+
+.badge:global(.ant-badge) {
+    display: flex;
+    align-items: center;
+}
+
+.badge :global(.ant-badge-status-dot) {
+  top: 0;
+}

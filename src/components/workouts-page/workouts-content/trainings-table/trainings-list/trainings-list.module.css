@@ -15,15 +15,18 @@
     padding: 0;
 }
 
-.editBtn:global(.ant-btn:hover),
-.btn:global(.ant-btn:hover),
-.editBtn:global(.ant-btn:focus),
-.btn:global(.ant-btn:focus) {
+.listItem .period .editBtn:global(.ant-btn:hover),
+.listItem .trainingName .btn:global(.ant-btn:hover),
+.listItem .period .editBtn:global(.ant-btn:focus),
+.listItem .trainingName.btn:global(.ant-btn:focus),
+.listItem .period .editBtn:global(.ant-btn:active),
+.listItem .trainingName .btn:global(.ant-btn:active) {
     background-color: transparent;
 }
 
 .editBtn:global(.ant-btn),
-.editBtn:global(.ant-btn.ant-btn-icon-only:not([disabled]):hover) {
+.editBtn:global(.ant-btn.ant-btn-icon-only:not([disabled]):hover),
+.editBtn:global(.ant-btn.ant-btn-icon-only:not([disabled]):focus) {
     color: var(--primary-light-6);
 }
 

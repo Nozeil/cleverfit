@@ -24,12 +24,14 @@ export const catalogsApi = api.injectEndpoints({
             query: () => ({
                 url: CATALOGS_ENDPOINTS.TRAINING_PALS,
             }),
+            providesTags: ['InviteStatus']
         }),
         getUserJointTrainingList: builder.query<UserJointTrainingListResponse,UserJointTrainingListParams | void>({
             query: (params) => ({
                 url: CATALOGS_ENDPOINTS.USER_JOINT_TRAINING_LIST,
                 params: params || undefined,
             }),
+            providesTags: ['InviteStatus']
         }),
     }),
 });

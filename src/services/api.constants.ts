@@ -34,3 +34,7 @@ export const UPLOAD_IMAGE = `${BASE_URL}upload-image`;
 export const TARIFF_ENDPOINTS = {
     TARRIFF: 'tariff',
 } as const;
+
+export const INVITE_ENDPOINTS = {
+    INVITE: 'invite',
+};

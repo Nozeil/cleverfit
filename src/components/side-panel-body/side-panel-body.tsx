@@ -10,7 +10,7 @@ type SidePanelBodyProps = {
     gap?: FlexProps<'div'>['gap'];
 };
 
-export const SidePanelBody = ({ head, children, gap = 'gap24' }: SidePanelBodyProps) => (
+export const SidePanelBody = ({ head, children, gap }: SidePanelBodyProps) => (
     <Flex className={styles.contentBody} direction='column' gap={gap}>
         {head && (
             <Flex className={styles.contentBodyHeader} justify='justifyBetween' align='alignCenter'>

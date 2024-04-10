@@ -23,7 +23,7 @@ export const ActionBtns = ({ deleteDisabled, onDelete }: ActionBtnsProps) => {
     if (formMode === 'new') {
         btnsWrapperClassName = styles.btnsWrapper;
         btns = <AddBtn />;
-    } else if (formMode === 'edit') {
+    } else if (formMode === 'edit' || formMode === 'joint') {
         btnsWrapperClassName = styles.btnsWrapperEditMode;
         btns = (
             <Fragment>
