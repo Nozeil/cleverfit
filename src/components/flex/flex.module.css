@@ -82,6 +82,10 @@
     gap: var(--gap-20);
 }
 
+.gap22 {
+    gap: var(--gap-22);
+}
+
 .gap24 {
     gap: var(--gap-24);
 }

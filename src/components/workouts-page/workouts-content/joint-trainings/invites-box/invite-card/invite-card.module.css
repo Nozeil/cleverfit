@@ -1,0 +1,47 @@
+.card {
+    padding: 20px;
+    border-radius: 2px 16px 16px 16px;
+    box-shadow: var(--shadow);
+}
+
+.name:global(.ant-typography) {
+    font-size: var(--text-base);
+}
+
+.user {
+    flex-shrink: 0;
+    width: 160px;
+    text-align: center;
+}
+
+.date:global(.ant-typography) {
+    font-size: var(--text-xs);
+    color: var(--character-light-disable-25);
+    line-height: var(--date-letter-spacing);
+    white-space: nowrap;
+}
+
+.message:global(.ant-typography) {
+    margin-bottom: 4px;
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    color: var(--primary-light-9);
+}
+
+.btn:global(.ant-btn) {
+    height: 40px;
+}
+
+@media screen and (max-width: 991px) {
+    .card {
+        padding-left: 12px;
+    }
+
+    .user {
+        text-align: start;
+    }
+
+    .textWrapper {
+        margin-bottom: 20px;
+    }
+}

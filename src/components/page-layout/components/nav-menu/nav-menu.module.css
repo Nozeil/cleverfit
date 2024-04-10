@@ -31,6 +31,12 @@
     vertical-align: middle;
 }
 
+.badge:global(.ant-badge) :global(.ant-badge-count) {
+    width: 16px;
+    height: 16px;
+    line-height: var(--line-height-16);
+}
+
 @media screen and (max-width: 767px) {
     .menu:global(.ant-menu) > :global(.ant-menu-item) {
         padding: var(--p-menu-item-tablet);
@@ -52,7 +58,8 @@
         margin: var(--m-menu-item-title-tablet);
     }
 
-    .menu:global(.ant-menu) .icon:global(.ant-menu-item-icon) {
+    .menu:global(.ant-menu) .icon:global(.anticon),
+    .badge:global(.ant-badge) {
         display: none;
     }
 

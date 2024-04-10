@@ -18,10 +18,3 @@
     font-size: var(--text-sm);
     text-align: start;
 }
-
-.btnsWrapper .btn:global(.ant-btn.ant-btn-text):hover,
-.btnsWrapper .btn:global(.ant-btn.ant-btn-text):focus,
-.btnsWrapperEditMode .btn:global(.ant-btn.ant-btn-text):hover,
-.btnsWrapperEditMode .btn:global(.ant-btn.ant-btn-text):focus {
-    background-color: inherit;
-}

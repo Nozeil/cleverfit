@@ -3,10 +3,12 @@ import { Flex } from '@components/flex/flex';
 import { useGetTrainingPalsQuery } from '@services/endpoints/catalogs';
 import { Typography } from 'antd';
 
+import { FriendsBox } from './friends-box/friends-box';
+
 import styles from './training-pals.module.css';
 
 export const TrainingPals = () => {
-    const { data } = useGetTrainingPalsQuery();
+    const { data: trainingPals } = useGetTrainingPalsQuery();
 
     return (
         <Flex className={styles.wrapper} direction='column' gap='gap12'>
@@ -14,8 +16,8 @@ export const TrainingPals = () => {
                 <Typography.Title className={styles.title} level={4}>
                     Мои партнёры по тренировкам
                 </Typography.Title>
-                {data?.length ? (
-                    <div>Pals</div>
+                {trainingPals?.length ? (
+                    <FriendsBox />
                 ) : (
                     <Typography.Text className={styles.text}>
                         У вас пока нет партнёров для совместных тренировок

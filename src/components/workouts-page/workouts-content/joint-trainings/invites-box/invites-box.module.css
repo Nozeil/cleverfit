@@ -1,0 +1,23 @@
+.box {
+    padding: 16px 24px 24px;
+    box-shadow: var(--shadow);
+}
+
+.text:global(.ant-typography) {
+    color: var(--character-light-secondary-45);
+}
+
+.btn:global(.ant-btn) {
+    width: fit-content;
+    padding: 0 8px;
+}
+
+.btn:global(.ant-btn) :global(.anticon) + span {
+    margin-left: 12px;
+}
+
+@media screen and (max-width: 835px) {
+    .box {
+        padding: 12px;
+    }
+}

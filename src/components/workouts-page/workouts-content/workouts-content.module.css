@@ -25,6 +25,16 @@
     opacity: 0;
 }
 
+.badge:global(.ant-badge) {
+    margin-left: 4px;
+}
+
+.badge:global(.ant-badge) :global(.ant-badge-count) {
+    width: 24px;
+    height: 16px;
+    line-height: var(--line-height-16);
+}
+
 @media screen and (max-width: 835px) {
     .tabs:global(.ant-tabs) :global(.ant-tabs-nav) {
         margin: var(--m-workouts-tabs-nav-tablet-l);

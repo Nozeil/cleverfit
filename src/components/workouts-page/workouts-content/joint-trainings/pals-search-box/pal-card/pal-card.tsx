@@ -14,10 +14,10 @@ import {
 import { Button } from 'antd';
 import classNames from 'classnames/bind';
 
+import { TrainingInfo } from '../../training-info/training-info';
 import { TrainingStatusBox } from '../../training-status-box/training-status-box';
 
 import { HighlightedName } from './highlighted-name/highlighted-name';
-import { TrainingInfo } from './training-info/training-info';
 
 import styles from './pal-card.module.css';
 

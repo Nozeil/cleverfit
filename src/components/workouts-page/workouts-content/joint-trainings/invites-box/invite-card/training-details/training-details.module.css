@@ -1,0 +1,72 @@
+.details {
+    position: relative;
+}
+
+.linkBtn:global(.ant-btn) {
+    width: fit-content;
+    padding: 0;
+}
+
+.card:global(.ant-card) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: var(--z-5);
+    width: 312px;
+    padding: 0 12px;
+    box-shadow: var(--shadow-md);
+}
+
+.card:global(.ant-card) :global(.ant-card-head) {
+    padding: 18px 0;
+}
+
+.card:global(.ant-card) :global(.ant-card-body) {
+    padding: 24px 0;
+}
+
+.btn:global(.ant-btn) {
+    width: fit-content;
+    height: fit-content;
+    padding: 0;
+    border: 0;
+}
+
+.dates {
+    margin-bottom: 12px;
+}
+
+.humanizedDate:global(.ant-typography) {
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+}
+
+.exerciseName:global(.ant-typography) {
+    color: var(--character-light-secondary-45);
+}
+
+.humanizedDate:global(.ant-typography),
+.exerciseName:global(.ant-typography) {
+    margin: 0;
+}
+
+.humanizedDate:global(.ant-typography)::first-letter,
+.exerciseName:global(.ant-typography)::first-letter {
+    text-transform: uppercase;
+}
+
+.date:global(.ant-typography) {
+    letter-spacing: var(--date-letter-spacing);
+}
+
+.exerciseParams:global(.ant-typography) {
+    font-size: var(--text-xs);
+    color: var(--primary-light-6);
+}
+
+@media screen and (max-width: 575px) {
+    .card:global(.ant-card) {
+        width: 288px;
+        left: -12px;
+    }
+}

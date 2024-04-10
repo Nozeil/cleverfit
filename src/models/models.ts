@@ -148,7 +148,7 @@ export type BuyTariffBody = {
 
 export type TrainingStatus = 'accepted' | 'pending' | 'rejected' | null;
 
-export type TrainingPalsResponse = Array<{
+export type TrainingPal = {
     id: string;
     name: string;
     trainingType: string;
@@ -156,7 +156,9 @@ export type TrainingPalsResponse = Array<{
     avgWeightInWeek: number;
     inviteId: string;
     status: TrainingStatus;
-}>;
+};
+
+export type TrainingPalsResponse = TrainingPal[];
 
 export type JointTrainingListItem = {
     id: string;
@@ -182,21 +184,30 @@ type FromTo = {
     imageSrc?: string;
 };
 
-export type GetInvitesResponse = Array<{
+export type Invite = {
     _id: string;
     from: FromTo;
     training: TrainingResponse;
     status: TrainingStatus;
     createdAt: string;
-}>;
+};
 
-export type CreateInviteResponse = Array<{
-    _id: string;
-    from: FromTo;
-    training: TrainingResponse;
+export type GetInvitesResponse = Invite[];
+
+export type CreateInviteResponse = Array<
+    Invite & {
+        to: FromTo;
+    }
+>;
+
+export type CreateInviteBody = { to: string; trainingId: string };
+
+export type UpdateInviteBody = {
+    id: string;
+    status: 'accepted' | 'rejected';
+};
+
+export type DeleteInviteParams = {
+    id: string;
     status: TrainingStatus;
-    createdAt: string;
-    to: FromTo;
-}>;
-
-export type CreateTrainingBody = { to: string; trainingId: string };
+};

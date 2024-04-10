@@ -12,7 +12,7 @@ export const SidePanelBodyHead = () => {
     const userInfo = useAppSelector(userInfoSelector);
 
     return (
-        <Flex className={styles.wrapper} align='alignEnd' gap='gap10'>
+        <Flex className={styles.wrapper} justify='justifyBetween' align='alignEnd' gap='gap10'>
             <Flex align='alignCenter' gap='gap8'>
                 <UserAvatarWithName imageSrc={userInfo.imageSrc} name={userInfo.name} />
             </Flex>

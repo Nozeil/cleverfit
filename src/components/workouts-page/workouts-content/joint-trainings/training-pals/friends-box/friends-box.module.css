@@ -1,0 +1,53 @@
+.box {
+    flex-wrap: wrap;
+}
+
+.card:global(.ant-card) {
+    flex-basis: 234px;
+    cursor: pointer;
+}
+
+.card:global(.ant-card) :global(.ant-card-body) {
+    padding: 12px;
+}
+
+.modal:global(.ant-modal) :global(.ant-modal-content) {
+    padding: 40px 64px 40px 32px;
+}
+
+.trainingInfoWrapper,
+.btn:global(.ant-btn) {
+    flex-shrink: 0;
+    width: 209px;
+}
+
+.btn:global(.ant-btn) {
+    height: 40px;
+}
+
+@media screen and (max-width: 575px) {
+    .modal:global(.ant-modal) {
+        max-width: 312px;
+    }
+
+    .modal:global(.ant-modal) :global(.ant-modal-close-x) {
+        width: 46px;
+        height: 46px;
+        line-height: 46px;
+    }
+
+    .modal:global(.ant-modal) :global(.ant-modal-content) {
+        padding: 16px 12px;
+    }
+
+    .trainingInfoWrapper,
+    .btn:global(.ant-btn) {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card:global(.ant-card) {
+        flex-basis: 100%;
+    }
+}

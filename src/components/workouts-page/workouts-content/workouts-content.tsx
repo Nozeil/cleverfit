@@ -11,9 +11,10 @@ import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { useTrainingListQueryWithNotification } from '@hooks/use-training-list-query-with-notification';
 import { closeSidePanel } from '@redux/slices/side-panel';
 import { trainingModalAndExercisesFormSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
+import { useGetInvitesQuery } from '@services/endpoints/invite';
 import { useGetTrainingQuery } from '@services/endpoints/training';
 import type { ExercisesFormValues } from '@typings/index';
-import { Form, Tabs } from 'antd';
+import { Badge, Form, Tabs } from 'antd';
 
 import { EmptyTrainings } from './empty-trainings/empty-trainings';
 import { JointTrainings } from './joint-trainings/joint-trainings';
@@ -29,6 +30,7 @@ export const WorkoutsContent = () => {
     const { exercisesFormMode: formMode, date } = useAppSelector(
         trainingModalAndExercisesFormSelector,
     );
+    const { data: invites } = useGetInvitesQuery();
 
     const dispatch = useAppDispatch();
 
@@ -67,7 +69,18 @@ export const WorkoutsContent = () => {
                 </Fragment>
             ),
         },
-        { label: 'Совместные тренировки', key: 'joint-trainings', children: <JointTrainings /> },
+        {
+            label: invites ? (
+                <Fragment>
+                    Совместные тренировки
+                    <Badge className={styles.badge} count={invites.length} />
+                </Fragment>
+            ) : (
+                'Совместные тренировки'
+            ),
+            key: 'joint-trainings',
+            children: <JointTrainings />,
+        },
         { label: 'Марафоны', key: 'marathons' },
     ];
 
@@ -91,7 +104,7 @@ export const WorkoutsContent = () => {
                 />
 
                 <SidePanelBody head={formMode === 'joint' && <SidePanelBodyHead />}>
-                    <Flex direction='column' gap={{ xs: 'gap16', sm: 'gap24' }}>
+                    <Flex direction='column' gap='gap24'>
                         <TrainingForm
                             trainingInfoForm={trainingInfoForm}
                             exercisesForm={exercisesForm}
@@ -105,7 +118,6 @@ export const WorkoutsContent = () => {
                 <SuccessAlert message={alertMessage} />
                 <Tabs
                     className={styles.tabs}
-                    defaultActiveKey='joint-trainings' // DELETE
                     items={tabsItems}
                     destroyInactiveTabPane={true}
                     moreIcon={null}
