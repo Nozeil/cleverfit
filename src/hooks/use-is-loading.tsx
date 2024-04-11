@@ -6,7 +6,7 @@ export const useIsLoading = () => {
     const api = useAppSelector((state) => state.api);
 
     const isQueryPending = Object.values(api.queries).some((query) => {
-        if (query?.endpointName === 'getUserInfo') {
+        if (query?.endpointName === 'getUserInfo' || query?.endpointName === 'getInvites') {
             return false;
         }
 
@@ -16,7 +16,9 @@ export const useIsLoading = () => {
         if (
             mutation?.endpointName === 'createTraining' ||
             mutation?.endpointName === 'updateUserInfo' ||
-            mutation?.endpointName === 'buyTariff'
+            mutation?.endpointName === 'buyTariff' ||
+            mutation?.endpointName === 'updateInvite' ||
+            mutation?.endpointName === 'deleteInvite'
         ) {
             return false;
         }

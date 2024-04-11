@@ -1,0 +1,53 @@
+.box {
+    flex-wrap: wrap;
+}
+
+.card:global(.ant-card) {
+    flex-basis: var(--mw-workouts-pal-card);
+    cursor: pointer;
+}
+
+.card:global(.ant-card) :global(.ant-card-body) {
+    padding: var(--p-workouts-friends-box-card-body);
+}
+
+.modal:global(.ant-modal) :global(.ant-modal-content) {
+    padding: var(--p-workouts-friends-box-modal-content);
+}
+
+.trainingInfoWrapper,
+.btn:global(.ant-btn) {
+    flex-shrink: 0;
+    width: var(--w-workouts-friends-box-btn);
+}
+
+.btn:global(.ant-btn) {
+    height: var(--h-40);
+}
+
+@media screen and (max-width: 575px) {
+    .modal:global(.ant-modal) {
+        max-width: var(--mw-workouts-friends-box-modal-mobile-l);
+    }
+
+    .modal:global(.ant-modal) :global(.ant-modal-close-x) {
+        width: var(--m-workouts-friends-box-modal-close-mobile-l);
+        height: var(--h-workouts-friends-box-modal-close-mobile-l);
+        line-height: var(--line-height-46);
+    }
+
+    .modal:global(.ant-modal) :global(.ant-modal-content) {
+        padding: var(--p-workouts-friends-box-modal-content-mobile-l);
+    }
+
+    .trainingInfoWrapper,
+    .btn:global(.ant-btn) {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card:global(.ant-card) {
+        flex-basis: 100%;
+    }
+}

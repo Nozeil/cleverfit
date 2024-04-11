@@ -14,6 +14,7 @@
     --rounded-bottom-6: 0 0 6px 6px;
     --rounded-right-8: 8px 0 0 8px;
     --rounded-8: 8px;
+    --rounded-2-16-16-16: 2px 16px 16px 16px;
     --border-1: 1px;
     --border-none: 0;
     --rounded-none: 0;
@@ -21,6 +22,7 @@
     --result-icon-height: var(--result-icon-width);
     --gap-x-8: 8px;
     --gap-4: 4px;
+    --gap-5: 5px;
     --gap-6: 6px;
     --gap-8: 8px;
     --gap-10: 10px;
@@ -29,9 +31,11 @@
     --gap-16: 16px;
     --gap-18: 18px;
     --gap-20: 20px;
+    --gap-22: 22px;
     --gap-24: 24px;
     --gap-26: 26px;
     --gap-32: 32px;
+    --gap-74: 74px;
     --header-btn-w-tablet: 32px;
     --header-btn-h-tablet: var(--header-btn-w-tablet);
     --loader-w: 150px;
@@ -42,9 +46,12 @@
     --modal-close-icon-tablet-wh: 48px;
     --modal-lr-offset: 32px;
     --h-40: 40px;
+    --h-32: 32px;
     --h-30: 30px;
     --h-28: 28px;
     --h-20: 20px;
+    --h-16: 16px;
+    --h-8: 8px;
     --h-picker-calenadar-date-content: 119px;
     --mw-picker-cell-mobile-l: 37px;
     --w-training-modal: 264px;
@@ -74,5 +81,36 @@
     --h-profile-upload-form-item: 112px;
     --h-profile-upload-progress: 14px;
     --w-profile-upload-progress: 87px;
-
+    --h-pagination-item: 20px;
+    --mw-pagination-item: 24px;
+    --w-menu-item-badge-count: 16px;
+    --h-menu-item-badge-count: var(--w-menu-item-badge-count);
+    --w-workouts-badge-count: 24px;
+    --h-workouts-badge-count: 16px;
+    --w-workouts-training-details-card: 312px;
+    --w-workouts-training-details-card-mobile-l: 288px;
+    --w-workouts-invite-user: 160px;
+    --mw-workouts-pals-search-box-search-wrapper: 734px;
+    --mw-workouts-pals-search-box-input: 484px;
+    --mw-workouts-pals-search-box-search-wrapper-laptop: 535px;
+    --mw-workouts-pals-search-box-input-laptop: 380px;
+    --mw-workouts-pals-search-box-input-mobile: 312px;
+    --mw-workouts-pal-card: 234px;
+    --h-workouts-pal-card: 194px;
+    --mw-workouts-pal-card-mobile: 312px;
+    --w-workouts-friends-box-btn: 209px;
+    --mw-workouts-friends-box-modal-mobile-l: 312px;
+    --m-workouts-friends-box-modal-close-mobile-l: 46px;
+    --h-workouts-friends-box-modal-close-mobile-l: var(
+        --m-workouts-friends-box-modal-close-mobile-l
+    );
+    --w-workouts-training-info-form-column: 156px;
+    --w-workouts-training-info-form-column-mobile-l: 148px;
+    --mw-workouts-trainings-table: 555px;
+    --mw-workouts-trainings-table-tablet-l: 530px;
+    --w-workouts-trainings-table-training-text: 259px;
+    --w-workouts-trainings-table-sort-btn: 240px;
+    --mw-workouts-trainings-table-trainings-text-mobile: 114px;
+    --w-workouts-trainings-table-sort-btn-mobile: 188px;
+    --mh-workouts-exercises-card-exercises-wrapper: 130px;
 }

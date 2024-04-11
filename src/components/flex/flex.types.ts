@@ -8,6 +8,7 @@ export type Justify = 'justifyStart' | 'justifyCenter' | 'justifyEnd' | 'justify
 export type Align = 'alignStart' | 'alignCenter' | 'alignEnd';
 export type Gap =
     | 'gap4'
+    | 'gap5'
     | 'gap8'
     | 'gap6'
     | 'gap10'
@@ -16,6 +17,7 @@ export type Gap =
     | 'gap16'
     | 'gap18'
     | 'gap20'
+    | 'gap22'
     | 'gap24'
     | 'gap26'
     | 'gap32';

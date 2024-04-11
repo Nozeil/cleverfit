@@ -1,0 +1,45 @@
+.form:global(.ant-form) {
+    margin-top: var(--mt-workouts-training-info-form);
+}
+
+.checkbox,
+.selectFormItem :global(.ant-form-item-control-input) {
+    min-height: var(--h-28);
+}
+
+.column {
+    width: var(--w-workouts-training-info-form-column);
+}
+
+.picker:global(.ant-picker) {
+    height: var(--h-28);
+}
+
+.cellWithExercises:global(.ant-picker-cell-inner),
+:global(.ant-picker-dropdown)
+    :global(.ant-picker-cell):has(.cellWithExercises:global(.ant-picker-cell-inner)) {
+    background-color: var(--primary-light-1);
+}
+
+.checkbox:global(.ant-checkbox-wrapper) {
+    align-items: center;
+    white-space: nowrap;
+}
+
+.checkbox :global(.ant-checkbox) {
+    top: 0;
+}
+
+.checkbox span:not(:global(.ant-checkbox)) {
+    padding-right: var(--pr-workouts-training-info-form-checkbox-text);
+}
+
+@media screen and (max-width: 575px) {
+    .form:global(.ant-form) {
+        margin: var(--m-workouts-training-info-form-mobile-l);
+    }
+
+    .column {
+        width: var(--w-workouts-training-info-form-column-mobile-l);
+    }
+}

@@ -6,3 +6,8 @@
 :global(.ant-menu-item-selected) {
     color: var(--primary-light-5);
 }
+
+:global(.ant-menu.ant-menu-inline-collapsed) > :global(.ant-menu-item .ant-menu-item-icon),
+:global(.ant-menu.ant-menu-inline-collapsed) > :global(.ant-menu-item .anticon) {
+    line-height: var(--line-height);
+}

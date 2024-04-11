@@ -1,6 +1,7 @@
 import { type CSSProperties } from 'react';
+import { EXERCISES_FORM_MODES } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { trainingModalSelector } from '@redux/slices/training-modal/training-modal';
+import { trainingModalAndExercisesFormSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { Button } from 'antd';
 
 import { ExercisesCard } from './exercises-card/exercises-card';
@@ -15,9 +16,12 @@ type TrainingModalProps = {
     style?: CSSProperties;
 };
 
+const { NEW } = EXERCISES_FORM_MODES;
+
 export const TrainingModal = ({ style, resetForm, resetExercisesAndForm }: TrainingModalProps) => {
-    const { isExercises, exercises, exercisesFormMode, isPast } =
-        useAppSelector(trainingModalSelector);
+    const { isExercises, exercises, exercisesFormMode, isPast } = useAppSelector(
+        trainingModalAndExercisesFormSelector,
+    );
     const { onSaveExercise, isLoading } = useOnSaveExercise(resetExercisesAndForm);
 
     const saveBtnContent = isPast ? 'Сохранить изменения' : 'Сохранить';
@@ -28,7 +32,7 @@ export const TrainingModal = ({ style, resetForm, resetExercisesAndForm }: Train
                 <Button
                     block={true}
                     type='link'
-                    disabled={!exercises.length && exercisesFormMode === 'new'}
+                    disabled={!exercises.length && exercisesFormMode === NEW}
                     onClick={onSaveExercise}
                     loading={isLoading}
                 >

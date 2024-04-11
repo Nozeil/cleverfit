@@ -1,0 +1,19 @@
+.wrapper {
+    width: 100%;
+    padding-bottom: var(--pb-workouts-side-panel-body-head-wrapper);
+}
+
+.badge:global(.ant-badge) {
+    display: flex;
+    align-items: center;
+}
+
+.badge :global(.ant-badge-status-dot) {
+    top: 0;
+}
+
+@media screen and (max-width: 575px) {
+    .wrapper {
+        padding-bottom: var(--pb-workouts-side-panel-body-head-wrapper-mobile-l);
+    }
+}

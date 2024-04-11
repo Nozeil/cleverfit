@@ -1,3 +1,4 @@
+import type { Nullable } from '@typings/utility';
 import moment from 'moment';
 
 import { type Coords } from '../use-training-modal.types';
@@ -6,7 +7,7 @@ import { type EventType } from './use-training-modal.types';
 
 export const calcCoords = (
     e: EventType,
-    calendarWrapper: HTMLDivElement | null,
+    calendarWrapper: Nullable<HTMLDivElement>,
     breakpoint?: boolean,
 ) => {
     let coords: Coords = {

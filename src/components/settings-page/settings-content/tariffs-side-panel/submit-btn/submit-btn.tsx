@@ -1,5 +1,6 @@
-import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { selectIsTariffsSubmitDisabled } from '@redux/slices/tariffs';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { disableTariffsSubmit, selectIsTariffsSubmitDisabled } from '@redux/slices/tariffs';
 import { Button } from 'antd';
 
 import { FORM_NAME } from '../tariffs-side-panel.constants';
@@ -8,6 +9,15 @@ import styles from './submit-btn.module.css';
 
 export const SubmitBtn = () => {
     const isSubmitDisabled = useAppSelector(selectIsTariffsSubmitDisabled);
+
+    const dispatch = useAppDispatch();
+
+    useEffect(
+        () => () => {
+            dispatch(disableTariffsSubmit());
+        },
+        [dispatch],
+    );
 
     return (
         <Button

@@ -1,0 +1,23 @@
+.box {
+    padding: var(--p-workouts-invites-box);
+    box-shadow: var(--shadow);
+}
+
+.text:global(.ant-typography) {
+    color: var(--character-light-secondary-45);
+}
+
+.btn:global(.ant-btn) {
+    width: fit-content;
+    padding: var(--p-workouts-invites-box-btn);
+}
+
+.btn:global(.ant-btn) :global(.anticon) + span {
+    margin-left: var(--ml-workouts-invites-box-btn-text);
+}
+
+@media screen and (max-width: 835px) {
+    .box {
+        padding: var(--p-workouts-invites-box-laptop-l);
+    }
+}

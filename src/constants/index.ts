@@ -26,3 +26,34 @@ export const DATE_FORMATS = {
     DMY: 'DD.MM.YYYY',
     DM: 'DD.MM',
 } as const;
+
+export const FORM_NAMES = {
+    EXERCISES_FORM: 'exercise-form',
+    TRAINING_INFO_FORM: 'training-info-form',
+} as const;
+
+export const TRAINING_COLORS: { [x: string]: string } = {
+    Ноги: 'var(--character-light-error)',
+    Руки: 'var(--tranie-cyan)',
+    Силовая: 'var(--tranie-yellow)',
+    Спина: 'var(--tranie-orange)',
+    Грудь: 'var(--character-light-success)',
+} as const;
+
+export const INVITES_STATUS = {
+    ACCEPTED: 'accepted',
+    PENDING: 'pending',
+    REJECTED: 'rejected',
+} as const;
+
+export const EXERCISES_FORM_MODES = {
+    EDIT: 'edit',
+    VIEW: 'view',
+    NEW: 'new',
+    JOINT: 'joint',
+} as const;
+
+export const SORT_BY = {
+    ASC: 'asc',
+    DSC: 'dsc',
+} as const;

@@ -1,0 +1,21 @@
+.alert:global(.ant-alert) {
+    position: fixed;
+    left: 55.6%;
+    bottom: var(--profile-alert-bottom);
+    z-index: var(--z-5);
+    width: 100%;
+    max-width: var(--mw-profile-alert);
+    transform: translateX(-50%);
+}
+
+.alert :global(.ant-alert-icon) {
+    margin-right: var(--mr-profile-alert-icon);
+}
+
+@media screen and (max-width: 768px) {
+    .alert:global(.ant-alert) {
+        left: 50%;
+        bottom: var(--profile-alert-bottom-tablet);
+        max-width: var(--mw-profile-alert-mobile-l);
+    }
+}

@@ -1,0 +1,27 @@
+.card {
+    flex-basis: var(--mw-workouts-pal-card);
+    flex-shrink: 0;
+    max-width: var(--mw-workouts-pal-card);
+    height: var(--h-workouts-pal-card);
+    padding: var(--p-workouts-pal-card);
+}
+
+.card {
+    background-color: var(--primary-light-1);
+}
+
+.cardRejected {
+    background-color: var(--character-light-table-header);
+}
+
+.btn:global(.ant-btn) {
+    height: var(--h-28);
+    margin-top: var(--mt-workouts-pal-card-btn);
+}
+
+@media screen and (max-width: 480px) {
+    .card {
+        flex-basis: 100%;
+        max-width: var(--mw-workouts-pal-card-mobile);
+    }
+}

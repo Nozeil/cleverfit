@@ -1,7 +1,7 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { ContentLayout } from '@components/auth-page/content-layout/content-layout';
 import { COMPOUND_ROUTES, ROUTES } from '@constants/routes';
-import { Image,Tabs } from 'antd';
+import { Image, Tabs } from 'antd';
 
 import styles from './auth-page-content.module.css';
 
@@ -44,7 +44,6 @@ export const AuthPageContent = () => {
                 centered={true}
                 items={items}
                 size='large'
-                color='red'
             />
         </ContentLayout>
     );

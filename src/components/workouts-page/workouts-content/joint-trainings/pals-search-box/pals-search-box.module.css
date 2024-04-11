@@ -1,0 +1,58 @@
+.searchWrapper {
+    max-width: var(--mw-workouts-pals-search-box-search-wrapper);
+    padding: var(--p-workouts-pals-search-box-search-wrapper);
+}
+
+.btn:global(.ant-btn) {
+    display: flex;
+    align-items: center;
+    padding: var(--p-workouts-pals-search-box-btn);
+}
+
+.btn:global(.ant-btn) :global(.anticon) {
+    line-height: var(--line-height-none);
+}
+
+.btn:global(.ant-btn) span:not(:global(.anticon)) {
+    margin-left: var(--ml-workouts-pals-search-box-btn-text);
+    font-size: var(--text-xl);
+    font-weight: var(--font-medium);
+}
+
+.btn:global(.ant-btn.ant-btn-text):active {
+    background-color: inherit;
+}
+
+.input:global(.ant-input-group-wrapper) {
+    max-width: var(--mw-workouts-pals-search-box-input);
+}
+
+.input:global(.ant-input-group-wrapper) :global(.ant-input) {
+    line-height: inherit;
+}
+
+@media screen and (max-width: 1024px) {
+    .searchWrapper {
+        max-width: var(--mw-workouts-pals-search-box-search-wrapper-laptop);
+    }
+
+    .input:global(.ant-input-group-wrapper) {
+        max-width: var(--mw-workouts-pals-search-box-input-laptop);
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .searchWrapper {
+        padding: var(--p-workouts-pals-search-box-search-wrapper);
+    }
+
+    .btn:global(.ant-btn) span:not(:global(.anticon)) {
+        font-size: var(--text-base);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .input:global(.ant-input-group-wrapper) {
+        max-width: var(--mw-workouts-pals-search-box-input-mobile);
+    }
+}

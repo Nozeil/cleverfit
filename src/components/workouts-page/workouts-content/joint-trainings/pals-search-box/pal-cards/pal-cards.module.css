@@ -1,0 +1,9 @@
+.palsWrapper {
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 480px) {
+    .palsWithPagination {
+        margin-bottom: var(--mb-workouts-pal-cards-pals-with-pagination-mobile);
+    }
+}

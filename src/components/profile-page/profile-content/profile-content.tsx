@@ -1,11 +1,11 @@
 import { ContentWrapper } from '@components/content-wrapper/content-wrapper';
 import { Flex } from '@components/flex/flex';
+import { SuccessAlert } from '@components/success-alert/success-alert';
 import { useGetUserInfoQuery } from '@services/endpoints/user';
 import { Form } from 'antd';
 import moment from 'moment';
 
 import { useFormHandlers } from './hooks/use-form-handlers';
-import { ProfileAlert } from './profile-alert/profile-alert';
 import { SubmitBtn } from './submit-btn/submit-btn';
 import { PersonalGroup } from './personal-group';
 import { PrivacyGroup } from './privacy-group';
@@ -20,7 +20,7 @@ export const ProfileContent = () => {
 
     return (
         <ContentWrapper>
-            <ProfileAlert />
+            <SuccessAlert message='Данные профиля успешно обновлены' />
             {data && (
                 <Form
                     form={form}

@@ -1,19 +1,22 @@
-import { DATE_FORMATS } from '@constants/index';
+import { DATE_FORMATS, EXERCISES_FORM_MODES } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
     closeTrainingModal,
-    trainingModalSelector,
-} from '@redux/slices/training-modal/training-modal';
+    trainingModalAndExercisesFormSelector,
+} from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { useCreateTrainingMutation, useUpdateTrainingMutation } from '@services/endpoints/training';
 import { CenteredModalError } from '@utils/modal-error/modal-error';
 import moment from 'moment';
+
+const { NEW, EDIT } = EXERCISES_FORM_MODES;
 
 export const useOnSaveExercise = (reset: () => void) => {
     const [createTraining, { isLoading: isCreateLoading }] = useCreateTrainingMutation();
     const [updateTraining, { isLoading: isUpdateLoading }] = useUpdateTrainingMutation();
 
-    const { trainingType, exercises, exercisesFormMode, isPast, date } =
-        useAppSelector(trainingModalSelector);
+    const { trainingType, exercises, exercisesFormMode, isPast, date } = useAppSelector(
+        trainingModalAndExercisesFormSelector,
+    );
     const dispatch = useAppDispatch();
 
     const isLoading = isCreateLoading || isUpdateLoading;
@@ -26,12 +29,7 @@ export const useOnSaveExercise = (reset: () => void) => {
                 name: trainingType.name,
                 date: moment(localDate).format(DATE_FORMATS.ISO),
                 isImplementation: isPast,
-                parameters: {
-                    repeat: false,
-                    period: 7,
-                    jointTraining: false,
-                    participants: [],
-                },
+
                 exercises: exercises.map(
                     ({ name, approaches, isImplementation, replays, weight }) => ({
                         name,
@@ -43,9 +41,9 @@ export const useOnSaveExercise = (reset: () => void) => {
                 ),
             };
 
-            if (exercisesFormMode === 'new') {
+            if (exercisesFormMode === NEW) {
                 await createTraining(body).unwrap();
-            } else if (exercisesFormMode === 'edit') {
+            } else if (exercisesFormMode === EDIT) {
                 if (trainingType.id) {
                     await updateTraining({ body, id: trainingType.id }).unwrap();
                 }

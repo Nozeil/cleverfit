@@ -1,4 +1,5 @@
 import { useEffect, useMemo } from 'react';
+import { EXERCISES_FORM_MODES } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
     clearExercises,
@@ -7,9 +8,9 @@ import {
     setFormExercises,
     setReceivedExercises,
     setTrainingType,
-    trainingModalSelector,
+    trainingModalAndExercisesFormSelector,
     unlockExerciseBtn,
-} from '@redux/slices/training-modal/training-modal';
+} from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { useGetTrainingListQuery } from '@services/endpoints/catalogs';
 import { Select } from 'antd';
 
@@ -19,10 +20,13 @@ type ExercisesSelectProps = {
     reset: () => void;
 };
 
+const { NEW, EDIT } = EXERCISES_FORM_MODES;
+
 export const ExercisesSelect = ({ reset }: ExercisesSelectProps) => {
     const { data } = useGetTrainingListQuery();
-    const { isPast, trainingTypes, trainingType, trainings } =
-        useAppSelector(trainingModalSelector);
+    const { isPast, trainingTypes, trainingType, trainings } = useAppSelector(
+        trainingModalAndExercisesFormSelector,
+    );
     const dispatch = useAppDispatch();
 
     const selectOptions = useMemo(() => {
@@ -54,11 +58,11 @@ export const ExercisesSelect = ({ reset }: ExercisesSelectProps) => {
         dispatch(setTrainingType({ name: value, id: selectedTraining?._id }));
 
         if (selectedTraining) {
-            dispatch(setExerciseFormMode('edit'));
+            dispatch(setExerciseFormMode(EDIT));
             dispatch(setReceivedExercises(selectedTraining.exercises));
             dispatch(setFormExercises());
         } else {
-            dispatch(setExerciseFormMode('new'));
+            dispatch(setExerciseFormMode(NEW));
         }
     };
 

@@ -12,6 +12,8 @@
 @import url('./styles/components/upload.module.css');
 @import url('./styles/components/switch.module.css');
 @import url('./styles/components/radio-inputs.module.css');
+@import url('./styles/components/tabs.module.css');
+@import url('./styles/components/pagination.module.css');
 
 :global(.ant-breadcrumb),
 :global(.ant-breadcrumb) li,
@@ -109,7 +111,11 @@ a {
     color: var(--primary-light-6);
 }
 
-:global(.ant-btn-text:not(.ant-upload-list-item-card-actions-btn)) {
+:global(
+        .ant-btn-text:not(.ant-upload-list-item-card-actions-btn):not([disabled]):not(
+                .ant-btn-icon-only
+            )
+    ) {
     &:hover,
     &:active,
     &:focus {

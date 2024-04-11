@@ -1,0 +1,7 @@
+.contentBody {
+    height: calc(100% - var(--h-side-panel-content-head));
+}
+
+.contentBodyHeader {
+    margin-bottom: var(--mb-side-panel-content-body-header);
+}

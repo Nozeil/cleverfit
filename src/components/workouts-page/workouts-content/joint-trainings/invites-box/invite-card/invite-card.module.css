@@ -1,0 +1,47 @@
+.card {
+    padding: var(--p-workouts-invite-card);
+    border-radius: var(--rounded-2-16-16-16);
+    box-shadow: var(--shadow);
+}
+
+.name:global(.ant-typography) {
+    font-size: var(--text-base);
+}
+
+.user {
+    flex-shrink: 0;
+    width: var(--w-workouts-invite-user);
+    text-align: center;
+}
+
+.date:global(.ant-typography) {
+    font-size: var(--text-xs);
+    color: var(--character-light-disable-25);
+    line-height: var(--date-letter-spacing);
+    white-space: nowrap;
+}
+
+.message:global(.ant-typography) {
+    margin-bottom: var(--mb-workouts-invite-message);
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    color: var(--primary-light-9);
+}
+
+.btn:global(.ant-btn) {
+    height: var(--h-40);
+}
+
+@media screen and (max-width: 991px) {
+    .card {
+        padding-left: var(--pl-workouts-invite-card-laptop-l);
+    }
+
+    .user {
+        text-align: start;
+    }
+
+    .textWrapper {
+        margin-bottom: var(--mb-workouts-invite-card-laptop-l);
+    }
+}

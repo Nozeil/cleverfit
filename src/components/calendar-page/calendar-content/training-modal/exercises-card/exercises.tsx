@@ -1,9 +1,7 @@
 import { EditOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import {
-    trainingModalSelector,
-} from '@redux/slices/training-modal/training-modal';
+import { trainingModalAndExercisesFormSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { Row, Typography } from 'antd';
 
 import styles from '../training-modal.module.css';
@@ -13,7 +11,7 @@ type ExercisesProps = {
 };
 
 export const Exercises = ({ onAdd }: ExercisesProps) => {
-    const { exercises } = useAppSelector(trainingModalSelector);
+    const { exercises } = useAppSelector(trainingModalAndExercisesFormSelector);
 
     return (
         <Flex className={styles.exercisesWrapper} direction='column' gap='gap12'>

@@ -30,6 +30,7 @@ import { MainPage } from '@pages/main-page';
 import { NotFoundPage } from '@pages/not-found-page/not-found-page';
 import { ProfilePage } from '@pages/profile-page/profile-page';
 import { SettingsPage } from '@pages/settings-page/settings-page';
+import { WorkoutsPage } from '@pages/workouts-page';
 import { history } from '@redux/configure-store';
 
 const routes = (
@@ -137,6 +138,16 @@ const routes = (
                 }
             >
                 <Route index={true} element={<CalendarPage />} />
+            </Route>
+            <Route
+                path={ROUTES.TRAINING}
+                element={
+                    <AuthRoute>
+                        <PageLayout />
+                    </AuthRoute>
+                }
+            >
+                <Route index={true} element={<WorkoutsPage />} />
             </Route>
             <Route
                 path={ROUTES.PROFILE}

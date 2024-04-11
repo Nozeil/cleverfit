@@ -1,5 +1,6 @@
 import { EditOutlined } from '@ant-design/icons';
-import { TrainingBadge } from '@components/calendar-page/training-badge';
+import { TrainingBadge } from '@components/training-badge';
+import { EXERCISES_FORM_MODES } from '@constants/index';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { TrainingResponse } from '@models/models';
 import { openSidePanel } from '@redux/slices/side-panel';
@@ -9,7 +10,7 @@ import {
     setReceivedExercises,
     setTrainings,
     switchToExercises,
-} from '@redux/slices/training-modal/training-modal';
+} from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { Button, Row } from 'antd';
 
 import { useTrainingTypes } from './hooks/use-training-types';
@@ -17,6 +18,8 @@ import { useTrainingTypes } from './hooks/use-training-types';
 import styles from '../training-modal.module.css';
 
 type TrainingProps = Omit<TrainingResponse, 'date' | 'userId' | 'parameters'> & { index: number };
+
+const { VIEW, EDIT } = EXERCISES_FORM_MODES;
 
 export const Training = ({ _id, name, isImplementation, index, exercises }: TrainingProps) => {
     const { trainingQueryResult, trainingTypes, isPast } = useTrainingTypes();
@@ -39,10 +42,10 @@ export const Training = ({ _id, name, isImplementation, index, exercises }: Trai
         dispatch(setFormExercises());
 
         if (isImplementation) {
-            dispatch(setExerciseFormMode('view'));
+            dispatch(setExerciseFormMode(VIEW));
             dispatch(openSidePanel());
         } else {
-            dispatch(setExerciseFormMode('edit'));
+            dispatch(setExerciseFormMode(EDIT));
 
             if (trainingTypes) {
                 const paylaod = isPast

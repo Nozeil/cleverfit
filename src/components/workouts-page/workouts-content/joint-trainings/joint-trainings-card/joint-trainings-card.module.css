@@ -1,0 +1,37 @@
+.card:global(.ant-card) {
+    text-align: center;
+}
+
+.card :global(.ant-card-body) {
+    padding: var(--p-workouts-joint-trainings-card);
+}
+
+.title:global(.ant-typography) {
+    margin: var(--m-workouts-joint-trainings-card-title);
+    color: var(--primary-light-9);
+    white-space: pre-wrap;
+}
+
+.text:global(.ant-typography) {
+    color: var(--character-light-secondary-45);
+}
+
+.card:global(.ant-card) :global(.ant-card-actions > li) {
+    margin: var(--m-workouts-joint-trainings-card-li);
+    border: var(--border-none);
+}
+
+.card:global(.ant-card) :global(.ant-card-actions) {
+    padding: var(--p-workouts-joint-trainings-card-actions);
+}
+
+@media screen and (max-width: 575px) {
+    .card :global(.ant-card-body) {
+        padding-right: var(--px-workouts-joint-trainings-card-body-mobile-l);
+        padding-left: var(--px-workouts-joint-trainings-card-body-mobile-l);
+    }
+
+    .card:global(.ant-card) :global(.ant-card-actions) {
+        padding: var(--p-workouts-joint-trainings-card-actions-mobile-l);
+    }
+}

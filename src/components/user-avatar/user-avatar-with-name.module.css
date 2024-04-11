@@ -1,0 +1,7 @@
+.avatar:global(.ant-avatar) {
+    flex-shrink: 0;
+}
+
+.text:global(.ant-typography) {
+    word-spacing: var(--feedback-title-word-spacing);
+}

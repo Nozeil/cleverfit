@@ -21,19 +21,31 @@ export const createFlexClassNames: CreateFlexClassNamesType = (
     classNamesWithKeys.forEach(({ key, className }) => {
         if (typeof className === 'string') {
             stylesClassNames[key] = styles[className];
-        } else if (xxl && className?.xxl) {
-                stylesClassNames[key] = styles[className.xxl];
-            } else if (xl && className?.xl) {
-                stylesClassNames[key] = styles[className.xl];
-            } else if (lg && className?.lg) {
-                stylesClassNames[key] = styles[className.lg];
-            } else if (md && className?.md) {
-                stylesClassNames[key] = styles[className.md];
-            } else if (sm && className?.sm) {
-                stylesClassNames[key] = styles[className.sm];
-            } else if (xs && className?.xs) {
+        } else {
+            if (xs && className?.xs) {
                 stylesClassNames[key] = styles[className.xs];
             }
+
+            if (sm && className?.sm) {
+                stylesClassNames[key] = styles[className.sm];
+            }
+
+            if (md && className?.md) {
+                stylesClassNames[key] = styles[className.md];
+            }
+
+            if (lg && className?.lg) {
+                stylesClassNames[key] = styles[className.lg];
+            }
+
+            if (xl && className?.xl) {
+                stylesClassNames[key] = styles[className.xl];
+            }
+
+            if (xxl && className?.xxl) {
+                stylesClassNames[key] = styles[className.xxl];
+            }
+        }
     });
 
     return Object.values(stylesClassNames);

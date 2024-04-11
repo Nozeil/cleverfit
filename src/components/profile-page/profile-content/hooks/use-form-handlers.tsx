@@ -8,6 +8,7 @@ import {
     setProfileStateAfterSuccess,
     setProfileSubmit,
 } from '@redux/slices/profile';
+import { openSuccessAlert } from '@redux/slices/success-alert';
 import { AVATAR_BASE_URL } from '@services/api.constants';
 import { useGetUserInfoQuery, useUpdateUserInfoMutation } from '@services/endpoints/user';
 import { CenteredModalError } from '@utils/modal-error/modal-error';
@@ -69,11 +70,20 @@ export const useFormHandlers = (form: FormInstance) => {
                 'password-confirm': undefined,
             });
             dispatch(setProfileStateAfterSuccess());
+            dispatch(openSuccessAlert());
         } catch {
             CenteredModalError({
-                title: 'При сохранении данных произошла ошибка',
-                content: 'Придётся попробовать ещё раз',
-                okText: 'Закрыть',
+                title: (
+                    <span data-test-id='modal-error-user-training-title'>
+                        При сохранении данных произошла ошибка
+                    </span>
+                ),
+                content: (
+                    <span data-test-id='modal-error-user-training-subtitle'>
+                        Придётся попробовать ещё раз
+                    </span>
+                ),
+                okText: <span data-test-id='modal-error-user-training-button'>Закрыть</span>,
             });
         }
     };

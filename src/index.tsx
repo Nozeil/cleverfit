@@ -13,6 +13,8 @@ import 'normalize.css';
 import './index.css';
 import './index.module.css';
 
+import 'moment/dist/locale/ru';
+
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
 

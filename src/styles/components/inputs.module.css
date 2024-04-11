@@ -1,5 +1,6 @@
 :global(.ant-checkbox-checked) :global(.ant-checkbox-inner),
 :global(.ant-checkbox:hover) :global(.ant-checkbox-inner),
+:global(.ant-checkbox-wrapper:hover) :global(.ant-checkbox-inner),
 :global(.ant-checkbox-checked:hover) :global(.ant-checkbox-inner),
 :global(.ant-checkbox-checked:after),
 :global(.ant-checkbox-input:focus) + :global(.ant-checkbox-inner),
@@ -9,11 +10,14 @@
 :global(.ant-input-number):focus,
 :global(.ant-input-number-focused),
 :global(.ant-picker):hover,
-:global(.ant-picker-focused) {
+:global(.ant-picker-focused),
+:global(.ant-input-search .ant-input:hover),
+:global(.ant-input-search .ant-input:focus) {
     border-color: var(--primary-light-6);
 }
 
-:global(.ant-picker-focused) {
+:global(.ant-picker-focused),
+:global(.ant-input-search .ant-input:focus) {
     box-shadow: var(--input-shadow);
 }
 

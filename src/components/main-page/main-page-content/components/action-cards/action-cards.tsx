@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { CalendarTwoTone, HeartFilled, IdcardTwoTone } from '@ant-design/icons';
 import { ROUTES } from '@constants/routes';
-import { useCalendarHandler } from '@hooks/use-calendar-handler';
+import { useTrainingHandler } from '@hooks/use-training-handler';
 import { Row } from 'antd';
 
 import { ActionCard } from './action-card';
@@ -13,20 +13,23 @@ const color = 'var(--primary-light-6)';
 
 export const ActionCards = () => {
     const navigate = useNavigate();
-    const calendarHandler = useCalendarHandler(navigate);
+    const calendarHandler = useTrainingHandler(() => navigate(ROUTES.CALENDAR));
+    const workoutsHandler = useTrainingHandler(() => navigate(ROUTES.TRAINING));
 
     const cards: ActionCardProps[] = [
         {
             title: 'Расписать тренировки',
             buttonIcon: <HeartFilled style={{ color }} />,
             buttonContent: 'Тренировки',
+            testId: 'menu-button-training',
+            onClick: workoutsHandler,
         },
         {
             title: 'Назначить календарь',
             buttonIcon: <CalendarTwoTone twoToneColor={[color, color]} />,
             buttonContent: 'Календарь',
             testId: 'menu-button-calendar',
-            onClick: () => calendarHandler(),
+            onClick: calendarHandler,
         },
         {
             title: 'Заполнить профиль',

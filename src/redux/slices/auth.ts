@@ -1,9 +1,10 @@
 import { type RootState } from '@redux/configure-store';
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
+import type { Nullable } from '@typings/utility';
 import { getAccessToken } from '@utils/utils';
 
 type AuthState = {
-    token: string | null;
+    token: Nullable<string>;
 };
 
 const initialState: AuthState = {
@@ -14,7 +15,7 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        setToken: (state, action: PayloadAction<string | null>) => {
+        setToken: (state, action: PayloadAction<Nullable<string>>) => {
             state.token = action.payload;
         },
     },

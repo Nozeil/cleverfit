@@ -4,10 +4,11 @@ import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import {
     closeTrainingModal,
     openTrainingModal,
+    setExerciseDate,
     setIsPastFalse,
     setIsPastTrue,
-    setTrainingModalDate,
-} from '@redux/slices/training-modal/training-modal';
+} from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
+import type { Nullable } from '@typings/utility';
 import moment from 'moment';
 
 import { CellContent } from '../../cell-content/cell-content';
@@ -22,7 +23,7 @@ export const useTrainingModal = (breakpoint: boolean | undefined) => {
     });
     const dispatch = useAppDispatch();
     const calendarWrapperRef = useRef<HTMLDivElement>(null);
-    const container = useRef<HTMLElement | null>(null);
+    const container = useRef<Nullable<HTMLElement>>(null);
 
     useEffect(() => {
         dispatch(closeTrainingModal());
@@ -36,7 +37,7 @@ export const useTrainingModal = (breakpoint: boolean | undefined) => {
         dispatch(setIsPast());
 
         dispatch(
-            setTrainingModalDate({
+            setExerciseDate({
                 iso,
                 formated: date.format(DATE_FORMATS.DMY),
             }),

@@ -1,0 +1,55 @@
+.card:global(.ant-card) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: var(--z-5);
+    width: 100%;
+    box-shadow: var(--shadow-md);
+}
+
+.card :global(.ant-card-body),
+.card :global(.ant-card-actions) {
+    padding: var(--p-workouts-exercises-card-body);
+}
+
+.titleWrapper {
+    padding: var(--p-workouts-exercises-card-title-wrapper);
+}
+
+.title:global(.ant-typography) {
+    font-weight: var(--font-normal);
+    font-size: var(--text-sm);
+}
+
+.btn:global(.ant-btn) {
+    width: fit-content;
+    height: fit-content;
+    padding: var(--p-workouts-exercises-card-btn);
+}
+
+.addExerciseBtn:global(.ant-btn) {
+    min-height: var(--h-32);
+    height: auto;
+    white-space: wrap;
+}
+
+.exercisesWrapper {
+    min-height: var(--mh-workouts-exercises-card-exercises-wrapper);
+    padding: var(--p-workouts-exercises-card-exercises-wrapper);
+}
+
+.exercise:global(.ant-typography) {
+    color: var(--character-light-secondary-45);
+}
+
+@media screen and (max-width: 835px) {
+    .card:global(.ant-card) {
+        width: calc(100% + var(--gap-12));
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card:global(.ant-card) {
+        width: 100%;
+    }
+}

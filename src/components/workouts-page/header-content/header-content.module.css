@@ -1,0 +1,5 @@
+@media screen and (min-width: 575px) {
+    .row:global(.ant-row) {
+        margin-bottom: var(--mb-workouts-header-row);
+    }
+}

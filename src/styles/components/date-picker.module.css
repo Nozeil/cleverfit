@@ -14,3 +14,11 @@
 :global(.ant-picker-today-btn) {
     color: var(--primary-light-6);
 }
+
+:global(.ant-picker-cell-disabled) {
+    color: inherit;
+}
+
+:global(.ant-picker-cell-disabled:before) {
+    background-color: inherit;
+}

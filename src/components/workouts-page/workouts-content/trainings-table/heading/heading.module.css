@@ -1,0 +1,67 @@
+.trainingText,
+.sort:global(.ant-btn.ant-btn-text) {
+    padding: var(--p-workouts-trainings-table-sort);
+    background-color: var(--character-light-dividers);
+}
+
+.trainingText:global(.ant-typography) {
+    flex-basis: var(--w-workouts-trainings-table-training-text);
+    font-size: var(--text-xs);
+    white-space: nowrap;
+}
+
+.sortWrapper {
+    flex-shrink: 0;
+    flex-basis: calc(
+        var(--mw-workouts-trainings-table) - var(--w-workouts-trainings-table-training-text) -
+            var(--gap-12)
+    );
+}
+
+.sort:global(.ant-btn.ant-btn-text) {
+    width: var(--w-workouts-trainings-table-sort-btn);
+    height: fit-content;
+    border: var(--border-none);
+    border-radius: var(--rounded-none);
+    box-shadow: none;
+    outline: 0;
+}
+
+.sort:global(.ant-btn.ant-btn-text):hover,
+.sort:global(.ant-btn.ant-btn-text):focus {
+    background-color: var(--character-light-dividers);
+}
+
+.sortText:global(.ant-typography) {
+    font-weight: var(--font-medium);
+}
+
+.icon:global(.anticon) {
+    max-height: var(--h-8);
+    font-size: var(--text-xs);
+}
+
+@media screen and (max-width: 450px) {
+    .trainingText,
+    .sort:global(.ant-btn.ant-btn-text) {
+        padding-top: var(--py-workouts-trainings-table-training-text-mobile);
+        padding-bottom: var(--py-workouts-trainings-table-training-text-mobile);
+    }
+
+    .trainingText {
+        min-width: var(--mw-workouts-trainings-table-trainings-text-mobile);
+    }
+
+    .sortWrapper {
+        flex-basis: 0;
+    }
+
+    .sort:global(.ant-btn.ant-btn-text) {
+        width: var(--w-workouts-trainings-table-sort-btn-mobile);
+    }
+
+    .sortText:global(.ant-typography) {
+        font-weight: var(--font-normal);
+        font-size: var(--text-xs);
+    }
+}

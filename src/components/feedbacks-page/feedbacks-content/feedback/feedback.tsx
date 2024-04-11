@@ -1,8 +1,9 @@
-import { StarFilled, StarOutlined, UserOutlined } from '@ant-design/icons';
+import { StarFilled, StarOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
+import { UserAvatarWithName } from '@components/user-avatar/user-avatar-with-name';
 import { DATE_FORMATS } from '@constants/index';
 import { Feedback as FeedbackModel } from '@models/models';
-import { type RateProps, Avatar, Card, List, Rate, Space, Typography } from 'antd';
+import { type RateProps, Card, List, Rate, Space, Typography } from 'antd';
 import moment from 'moment';
 
 import styles from './feedback.module.css';
@@ -24,23 +25,11 @@ export const Feedback = ({ createdAt, fullName, imageSrc, message, rating }: Fee
                             align={{ sm: 'alignCenter' }}
                             gap={{ sm: 'gap12', xs: 'gap16' }}
                         >
-                            <Avatar
-                                className={styles.avatar}
-                                src={imageSrc}
-                                size={42}
-                                alt='avatar'
-                                icon={
-                                    <UserOutlined
-                                        style={{
-                                            color: 'var(--character-light-title-85)',
-                                        }}
-                                    />
-                                }
+                            <UserAvatarWithName
+                                nameClassName={styles.title}
+                                name={fullName}
+                                imageSrc={imageSrc}
                             />
-
-                            <Typography.Title className={styles.title} level={5}>
-                                {fullName ?? 'Пользователь'}
-                            </Typography.Title>
                         </Flex>
                     }
                     description={
