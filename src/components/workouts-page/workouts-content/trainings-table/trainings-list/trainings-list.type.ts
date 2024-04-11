@@ -1,4 +1,6 @@
+import type { Nullable } from '@typings/utility';
+
 export type ContainersRefCurrent = {
-    xs: Element | null;
-    default: Element | null;
+    xs: Nullable<Element>;
+    default: Nullable<Element>;
 };

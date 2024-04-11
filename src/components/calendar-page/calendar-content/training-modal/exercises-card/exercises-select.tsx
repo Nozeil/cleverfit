@@ -1,4 +1,5 @@
 import { useEffect, useMemo } from 'react';
+import { EXERCISES_FORM_MODES } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
     clearExercises,
@@ -18,6 +19,8 @@ import styles from '../training-modal.module.css';
 type ExercisesSelectProps = {
     reset: () => void;
 };
+
+const { NEW, EDIT } = EXERCISES_FORM_MODES;
 
 export const ExercisesSelect = ({ reset }: ExercisesSelectProps) => {
     const { data } = useGetTrainingListQuery();
@@ -55,11 +58,11 @@ export const ExercisesSelect = ({ reset }: ExercisesSelectProps) => {
         dispatch(setTrainingType({ name: value, id: selectedTraining?._id }));
 
         if (selectedTraining) {
-            dispatch(setExerciseFormMode('edit'));
+            dispatch(setExerciseFormMode(EDIT));
             dispatch(setReceivedExercises(selectedTraining.exercises));
             dispatch(setFormExercises());
         } else {
-            dispatch(setExerciseFormMode('new'));
+            dispatch(setExerciseFormMode(NEW));
         }
     };
 

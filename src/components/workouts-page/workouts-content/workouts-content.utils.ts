@@ -1,7 +1,8 @@
 import { DATE_FORMATS } from '@constants/index';
+import type { Nullable } from '@typings/utility';
 import moment from 'moment';
 
-export const formatExerciseDate = (date: moment.Moment | string | null) => {
+export const formatExerciseDate = (date: Nullable<moment.Moment | string>) => {
     const localISO = moment(date)
         .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
         .toISOString(true);

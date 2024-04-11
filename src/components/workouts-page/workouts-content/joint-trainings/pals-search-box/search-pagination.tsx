@@ -20,6 +20,10 @@ export const SearchPagination = () => {
         const pageSize = xl ? 12 : 8;
 
         dispatch(setPaginationPageSize(pageSize));
+
+        return () => {
+            dispatch(setPaginationPage(1));
+        };
     }, [dispatch, xl]);
 
     return (
@@ -27,6 +31,7 @@ export const SearchPagination = () => {
             <Pagination
                 pageSize={paginationPageSize}
                 size='small'
+                showSizeChanger={false}
                 total={paginationTotal}
                 onChange={onChange}
             />

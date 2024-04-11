@@ -1,5 +1,6 @@
 import { Flex } from '@components/flex/flex';
 import { UserAvatarWithName } from '@components/user-avatar/user-avatar-with-name';
+import { EXERCISES_FORM_MODES, INVITES_STATUS } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import type { JointTrainingListItem } from '@models/models';
 import { setUserInfo, userInfoSelector } from '@redux/slices/joint-training/joint-trainings';
@@ -25,6 +26,9 @@ type PalCardProps = JointTrainingListItem & { testId: string };
 
 const cx = classNames.bind(styles);
 
+const { ACCEPTED, REJECTED, PENDING } = INVITES_STATUS;
+const { JOINT } = EXERCISES_FORM_MODES;
+
 export const PalCard = ({
     id,
     avgWeightInWeek,
@@ -42,7 +46,7 @@ export const PalCard = ({
         dispatch(resetFormExercises());
         dispatch(resetExercises());
 
-        dispatch(setExerciseFormMode('joint'));
+        dispatch(setExerciseFormMode(JOINT));
         dispatch(setTrainingType({ name: trainingType }));
         dispatch(setExerciseDate({ iso: '', formated: '' }));
         dispatch(setUserInfo({ userId: id, imageSrc, name, status }));
@@ -50,13 +54,15 @@ export const PalCard = ({
     };
 
     const isDisabled =
-        status === 'pending' ||
-        status === 'rejected' ||
-        (userInfo.status === 'pending' && userInfo.userId === id);
+        status === PENDING ||
+        status === REJECTED ||
+        (userInfo.status === PENDING && userInfo.userId === id);
 
     return (
         <Flex
-            className={cx(styles.card, { [styles.cardRejected]: status === 'rejected' })}
+            className={cx(styles.card, {
+                [styles.cardRejected]: status === REJECTED,
+            })}
             direction='column'
             gap='gap12'
             testId={testId}
@@ -69,7 +75,7 @@ export const PalCard = ({
             </Flex>
 
             <TrainingInfo trainingType={trainingType} avgWeight={avgWeightInWeek} />
-            {inviteId && status === 'accepted' ? (
+            {inviteId && status === ACCEPTED ? (
                 <Button className={styles.btn} block={true}>
                     Отменить тренировку
                 </Button>

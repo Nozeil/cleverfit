@@ -1,6 +1,6 @@
 import { DownOutlined, EditOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
-import { TRAINING_COLORS } from '@constants/index';
+import { EXERCISES_FORM_MODES, TRAINING_COLORS } from '@constants/index';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { TrainingResponse } from '@models/models';
 import { openSidePanel } from '@redux/slices/side-panel';
@@ -31,6 +31,8 @@ type TrainingListItemProps = {
     testId: string;
 } & Omit<TrainingResponse, 'userId'>;
 
+const { EDIT } = EXERCISES_FORM_MODES;
+
 export const TrainingListItem = ({
     name,
     _id,
@@ -50,7 +52,7 @@ export const TrainingListItem = ({
         dispatch(resetFormExercises());
         dispatch(resetExercises());
 
-        dispatch(setExerciseFormMode('edit'));
+        dispatch(setExerciseFormMode(EDIT));
         dispatch(setReceivedExercises(exercises));
         dispatch(setFormExercises());
         dispatch(setExerciseDate(exerciseDate));

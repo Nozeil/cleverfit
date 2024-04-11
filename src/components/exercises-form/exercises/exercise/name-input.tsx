@@ -1,3 +1,4 @@
+import { EXERCISES_FORM_MODES } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { exercisesFormModeSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { Checkbox, Form, Input } from 'antd';
@@ -10,11 +11,13 @@ type NameInputProps = {
     initialValue?: string;
 };
 
+const { NEW } = EXERCISES_FORM_MODES;
+
 export const NameInput = ({ id, initialValue, index }: NameInputProps) => {
     const formMode = useAppSelector(exercisesFormModeSelector);
 
     const addonAfter =
-        formMode === 'new' ? null : (
+        formMode === NEW ? null : (
             <Form.Item name={[id, 'shouldDelete']} noStyle={true} valuePropName='checked'>
                 <Checkbox data-test-id={`modal-drawer-right-checkbox-exercise${index}`} />
             </Form.Item>

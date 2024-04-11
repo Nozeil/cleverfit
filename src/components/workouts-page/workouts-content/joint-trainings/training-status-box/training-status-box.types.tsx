@@ -1,9 +1,10 @@
 import { type ReactNode } from 'react';
-import type { TrainingStatus } from '@models/models';
+import type { InviteStatus } from '@models/models';
+import type { Nullable } from '@typings/utility';
 
 export type Content = {
-    text: string | null;
+    text: Nullable<string>;
     icon: ReactNode;
 };
 
-export type TrainingStatusProps = { status: TrainingStatus };
+export type TrainingStatusProps = { status: InviteStatus };

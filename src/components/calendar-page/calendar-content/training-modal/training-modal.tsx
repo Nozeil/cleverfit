@@ -1,4 +1,5 @@
 import { type CSSProperties } from 'react';
+import { EXERCISES_FORM_MODES } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingModalAndExercisesFormSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { Button } from 'antd';
@@ -15,6 +16,8 @@ type TrainingModalProps = {
     style?: CSSProperties;
 };
 
+const { NEW } = EXERCISES_FORM_MODES;
+
 export const TrainingModal = ({ style, resetForm, resetExercisesAndForm }: TrainingModalProps) => {
     const { isExercises, exercises, exercisesFormMode, isPast } = useAppSelector(
         trainingModalAndExercisesFormSelector,
@@ -29,7 +32,7 @@ export const TrainingModal = ({ style, resetForm, resetExercisesAndForm }: Train
                 <Button
                     block={true}
                     type='link'
-                    disabled={!exercises.length && exercisesFormMode === 'new'}
+                    disabled={!exercises.length && exercisesFormMode === NEW}
                     onClick={onSaveExercise}
                     loading={isLoading}
                 >

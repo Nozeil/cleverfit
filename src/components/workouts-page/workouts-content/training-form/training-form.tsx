@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { ExercisesForm } from '@components/exercises-form/exercises-form';
-import { FORM_NAMES } from '@constants/index';
+import { EXERCISES_FORM_MODES, FORM_NAMES } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { setUserInfo, userInfoSelector } from '@redux/slices/joint-training/joint-trainings';
 import { openSuccessAlert } from '@redux/slices/success-alert';
@@ -24,6 +24,8 @@ type TrainingFormProps = {
     exercisesForm: FormInstance;
     onClose: () => void;
 };
+
+const { NEW, EDIT, JOINT } = EXERCISES_FORM_MODES;
 
 export const TrainingForm = ({ trainingInfoForm, exercisesForm, onClose }: TrainingFormProps) => {
     const { formExercises, isPast, exercisesFormMode, trainingType } = useAppSelector(
@@ -75,11 +77,15 @@ export const TrainingForm = ({ trainingInfoForm, exercisesForm, onClose }: Train
         };
 
         try {
-            if (exercisesFormMode === 'new') {
+            if (exercisesFormMode === NEW) {
                 await createTraining(body).unwrap();
-            } else if (exercisesFormMode === 'edit' && trainingType.id) {
+            }
+
+            if (exercisesFormMode === EDIT && trainingType.id) {
                 await updateTraining({ body, id: trainingType.id }).unwrap();
-            } else if (exercisesFormMode === 'joint') {
+            }
+
+            if (exercisesFormMode === JOINT) {
                 body.name = trainingType.name;
                 const { _id: trainingId } = await createTraining(body).unwrap();
 
@@ -98,7 +104,7 @@ export const TrainingForm = ({ trainingInfoForm, exercisesForm, onClose }: Train
                 );
             }
 
-            if (exercisesFormMode !== 'joint') {
+            if (exercisesFormMode !== JOINT) {
                 dispatch(openSuccessAlert());
             }
         } catch {

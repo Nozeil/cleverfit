@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { EXERCISES_FORM_MODES } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
     setTrainingType,
@@ -8,6 +9,8 @@ import { useGetTrainingListQuery } from '@services/endpoints/catalogs';
 import { Form, Select, SelectProps } from 'antd';
 
 import styles from './training-info-form.module.css';
+
+const { NEW } = EXERCISES_FORM_MODES;
 
 export const TrainingNameSelect = () => {
     const { trainingTypes, exercisesFormMode } = useAppSelector(
@@ -33,7 +36,7 @@ export const TrainingNameSelect = () => {
             <Select
                 placeholder='Выбор типа тренировки'
                 options={selectOptions}
-                disabled={exercisesFormMode !== 'new'}
+                disabled={exercisesFormMode !== NEW}
                 onSelect={onSelect}
                 data-test-id='modal-create-exercise-select'
             />

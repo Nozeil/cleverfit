@@ -1,5 +1,6 @@
 import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
+import { SORT_BY } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
     setSortedBy,
@@ -12,20 +13,22 @@ import { createIconStyle } from './heading.utils';
 
 import styles from './heading.module.css';
 
+const { ASC, DSC } = SORT_BY;
+
 export const Heading = () => {
     const sortedBy = useAppSelector(trainingsTableSortedBySelector);
     const dispatch = useAppDispatch();
 
-    const ascIconStyle = createIconStyle(sortedBy, 'asc');
-    const dscIconStyle = createIconStyle(sortedBy, 'dsc');
+    const ascIconStyle = createIconStyle(sortedBy, ASC);
+    const dscIconStyle = createIconStyle(sortedBy, DSC);
 
     const onClick = () => {
         let sort: TrainingsTableSortedBy = null;
 
         if (!sortedBy) {
-            sort = 'asc';
-        } else if (sortedBy === 'asc') {
-            sort = 'dsc';
+            sort = ASC;
+        } else if (sortedBy === ASC) {
+            sort = DSC;
         } else {
             sort = null;
         }

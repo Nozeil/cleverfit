@@ -23,7 +23,7 @@ export const NavMenu = () => {
     const { signout } = useAuth();
     const navigate = useNavigate();
 
-    const { data: invites } = useGetInvitesQuery();
+    const { data: invites } = useGetInvitesQuery(undefined, { pollingInterval: 3000 });
 
     const calendarHandler = useTrainingHandler(() => navigate(ROUTES.CALENDAR));
     const workoutsHandler = useTrainingHandler(() => navigate(ROUTES.TRAINING));
@@ -46,8 +46,13 @@ export const NavMenu = () => {
         {
             label: WORKOUT,
             title: WORKOUT,
-            icon: invites && invites.length ? (
-                <Badge className={styles.badge} count={invites.length} size='small' data-test-id='notification-about-joint-training'>
+            icon: invites?.length ? (
+                <Badge
+                    className={styles.badge}
+                    count={invites.length}
+                    size='small'
+                    data-test-id='notification-about-joint-training'
+                >
                     <HeartFilled className={styles.icon} style={{ color: ICONS_COLOR }} />
                 </Badge>
             ) : (

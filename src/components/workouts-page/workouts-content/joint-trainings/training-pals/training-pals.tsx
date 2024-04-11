@@ -3,6 +3,7 @@ import { Flex } from '@components/flex/flex';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { deletedUserIdSelector } from '@redux/slices/joint-training/joint-trainings';
 import { useGetTrainingPalsQuery } from '@services/endpoints/catalogs';
+import { isArrayWithItems } from '@utils/utils';
 import { Typography } from 'antd';
 
 import { FriendsBox } from './friends-box/friends-box';
@@ -24,7 +25,7 @@ export const TrainingPals = () => {
                 <Typography.Title className={styles.title} level={4}>
                     Мои партнёры по тренировкам
                 </Typography.Title>
-                {filteredPals && filteredPals?.length ? (
+                {isArrayWithItems(filteredPals) ? (
                     <FriendsBox />
                 ) : (
                     <Typography.Text className={styles.text}>

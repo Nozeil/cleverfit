@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
+import { ROUTES } from '@constants/routes';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { selectSider, toogleCollapsed } from '@redux/slices/sider';
 import { useGetUserInfoQuery } from '@services/endpoints/user';
@@ -29,7 +30,9 @@ export const PageLayout = () => {
                 isBreakpoint={isBreakpoint}
                 onBreakpoint={setIsBreakpoint}
             >
-                <Logo cropped={collapsed} isBreakpoint={isBreakpoint} />
+                <Link to={ROUTES.MAIN}>
+                    <Logo cropped={collapsed} isBreakpoint={isBreakpoint} />
+                </Link>
                 <Trigger
                     collapsed={collapsedAtBreakpoint}
                     onClick={onTrigger}

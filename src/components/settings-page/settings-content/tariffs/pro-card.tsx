@@ -8,12 +8,15 @@ import type { ProCardProps } from './tariffs.types';
 
 import styles from './tariffs.module.css';
 
+import proDisabled from '/png/pro-disabled.png';
+import proEnabled from '/png/pro-enabled.png';
+
 export const ProCard = ({ onClick, extra }: ProCardProps) => {
     const { data } = useGetUserInfoQuery();
 
     const { src, content } = data?.tariff
         ? {
-              src: '/png/pro-enabled.png',
+              src: proEnabled,
               content: (
                   <Typography.Text className={styles.tariffStatusText}>
                       активен до {moment(data?.tariff.expired).format(DATE_FORMATS.DM)}
@@ -21,7 +24,7 @@ export const ProCard = ({ onClick, extra }: ProCardProps) => {
               ),
           }
         : {
-              src: '/png/pro-disabled.png',
+              src: proDisabled,
               content: (
                   <Button
                       className={styles.btn}

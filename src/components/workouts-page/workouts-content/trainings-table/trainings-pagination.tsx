@@ -29,6 +29,10 @@ export const TrainingsPagination = () => {
         }
 
         dispatch(setPaginationPageSize(size));
+
+        return () => {
+            dispatch(setPaginationPage(1));
+        };
     }, [dispatch, lg, xs]);
 
     const onChange: PaginationProps['onChange'] = (page) => dispatch(setPaginationPage(page));
@@ -38,6 +42,7 @@ export const TrainingsPagination = () => {
             pageSize={pageSize}
             size='small'
             total={data?.length}
+            showSizeChanger={false}
             hideOnSinglePage={true}
             onChange={onChange}
         />

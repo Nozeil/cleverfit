@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Flex } from '@components/flex/flex';
+import { EXERCISES_FORM_MODES } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingModalAndExercisesFormSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { useGetTrainingQuery } from '@services/endpoints/training';
@@ -18,6 +19,8 @@ type TrainingInfoFormProps = {
     form: FormInstance<TrainingInfoFormValues>;
 };
 
+const { EDIT, JOINT } = EXERCISES_FORM_MODES;
+
 const options = createPeriodSelectOptions();
 
 export const TrainingInfoForm = ({ form }: TrainingInfoFormProps) => {
@@ -34,7 +37,7 @@ export const TrainingInfoForm = ({ form }: TrainingInfoFormProps) => {
     );
 
     useEffect(() => {
-        if (exercisesFormMode === 'edit' && pickedTraining) {
+        if (exercisesFormMode === EDIT && pickedTraining) {
             const { repeat, period } = pickedTraining.parameters;
 
             form.setFieldsValue({
@@ -53,7 +56,7 @@ export const TrainingInfoForm = ({ form }: TrainingInfoFormProps) => {
     return (
         <Form className={styles.form} form={form} autoComplete='off' name='training-info-form'>
             <Flex direction='column' gap={{ xs: 'gap16', sm: 'gap24' }}>
-                {exercisesFormMode !== 'joint' && <TrainingNameSelect />}
+                {exercisesFormMode !== JOINT && <TrainingNameSelect />}
 
                 <Flex gap={{ xs: 'gap24', sm: 'gap32' }}>
                     <Flex className={styles.column} direction='column' gap='gap8'>

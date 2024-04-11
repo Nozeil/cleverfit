@@ -8,12 +8,15 @@ import { InvitesBox } from './invites-box/invites-box';
 import { JointTrainingsCard } from './joint-trainings-card/joint-trainings-card';
 import { PalsSearchBox } from './pals-search-box/pals-search-box';
 import { TrainingPals } from './training-pals/training-pals';
+import { MAX_TRAINING_PALS_AMOUNT } from './joint-trainings.constants';
 
 import styles from './joint-trainings.module.css';
 
 export const JointTrainings = () => {
     const { data: trainingPals } = useGetTrainingPalsQuery();
     const isSearch = useAppSelector(isJointTrainingsSearchOpenSelector);
+
+    const isLessThenMaxPals = trainingPals && trainingPals.length < MAX_TRAINING_PALS_AMOUNT;
 
     return (
         <Flex className={styles.wrapper} direction='column' gap={{ xs: 'gap20', sm: 'gap24' }}>
@@ -22,7 +25,7 @@ export const JointTrainings = () => {
             ) : (
                 <Fragment>
                     <InvitesBox />
-                    {trainingPals && trainingPals?.length < 4 && <JointTrainingsCard />}
+                    {isLessThenMaxPals && <JointTrainingsCard />}
                     <TrainingPals />
                 </Fragment>
             )}

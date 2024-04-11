@@ -1,3 +1,6 @@
+import { INVITES_STATUS } from '@constants/index';
+import { Nullable } from '@typings/utility';
+
 export type ErrorResponse = {
     status: number;
     data: { statusCode: number; error: string; message: string };
@@ -42,8 +45,8 @@ export type ChangePasswordResponse = {
 
 export type Feedback = {
     id: string;
-    fullName: string | null;
-    imageSrc: string | null;
+    fullName: Nullable<string>;
+    imageSrc: Nullable<string>;
     message: string;
     rating: number;
     createdAt: string;
@@ -66,7 +69,7 @@ export type TrainingExercise = {
 
 type NewTrainingParameters = {
     repeat: boolean;
-    period: number | null;
+    period: Nullable<number>;
     jointTraining: boolean;
     participants: string[];
 };
@@ -118,16 +121,16 @@ export type UserInfoResponse = {
     };
 };
 
-export type UpdateUserBody = {
-    email?: string;
-    password?: string;
-    firstName?: string;
-    lastName?: string;
-    birthday?: string;
-    imgSrc?: string;
-    readyForJointTraining?: boolean;
-    sendNotification?: boolean;
-};
+export type UpdateUserBody = Partial<{
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    birthday: string;
+    imgSrc: string;
+    readyForJointTraining: boolean;
+    sendNotification: boolean;
+}>;
 
 type TariffItem = {
     _id: string;
@@ -146,49 +149,51 @@ export type BuyTariffBody = {
     days: number;
 };
 
-export type TrainingStatus = 'accepted' | 'pending' | 'rejected' | null;
+type NonNullableInviteStatus = (typeof INVITES_STATUS)[keyof typeof INVITES_STATUS];
+
+export type InviteStatus = Nullable<NonNullableInviteStatus>;
 
 export type TrainingPal = {
     id: string;
     name: string;
     trainingType: string;
-    imageSrc: string | null;
+    imageSrc: Nullable<string>;
     avgWeightInWeek: number;
     inviteId: string;
-    status: TrainingStatus;
+    status: InviteStatus;
 };
 
 export type TrainingPalsResponse = TrainingPal[];
 
 export type JointTrainingListItem = {
     id: string;
-    name: string | null;
+    name: Nullable<string>;
     trainingType: string;
-    imageSrc: string | null;
+    imageSrc: Nullable<string>;
     avgWeightInWeek: number;
-    status: TrainingStatus;
-    inviteId: string | null;
+    status: InviteStatus;
+    inviteId: Nullable<string>;
 };
 
 export type UserJointTrainingListResponse = JointTrainingListItem[];
 
-export type UserJointTrainingListParams = {
-    trainingType?: string;
-    status?: TrainingStatus;
-};
+export type UserJointTrainingListParams = Partial<{
+    trainingType: string;
+    status: InviteStatus;
+}>;
 
 type FromTo = {
     _id: string;
-    firstName: string | null;
-    lastName: string | null;
-    imageSrc: string | null;
+    firstName: Nullable<string>;
+    lastName: Nullable<string>;
+    imageSrc: Nullable<string>;
 };
 
 export type Invite = {
     _id: string;
     from: FromTo;
     training: TrainingResponse;
-    status: TrainingStatus;
+    status: InviteStatus;
     createdAt: string;
 };
 
@@ -202,10 +207,10 @@ export type CreateInviteBody = { to: string; trainingId: string };
 
 export type UpdateInviteBody = {
     id: string;
-    status: 'accepted' | 'rejected';
+    status: Exclude<NonNullableInviteStatus, 'pending'>;
 };
 
 export type DeleteInviteParams = {
     id: string;
-    status: TrainingStatus;
+    status: InviteStatus;
 };

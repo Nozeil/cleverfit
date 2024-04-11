@@ -1,5 +1,6 @@
 import { type ReactNode, Fragment } from 'react';
 import { UserOutlined } from '@ant-design/icons';
+import type { Nullable } from '@typings/utility';
 import { Avatar, AvatarProps, Typography } from 'antd';
 import classNames from 'classnames/bind';
 
@@ -7,7 +8,7 @@ import styles from './user-avatar-with-name.module.css';
 
 type UserAvatarWithNameProps = {
     imageSrc: AvatarProps['src'];
-    name: ReactNode | null;
+    name: Nullable<ReactNode>;
     nameClassName?: string;
 };
 

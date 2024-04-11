@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { MinusOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
+import { EXERCISES_FORM_MODES } from '@constants/index';
 import { useAppSelector } from '@hooks/index';
 import { exercisesFormModeSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { Button } from 'antd';
@@ -14,16 +15,18 @@ type ActionBtnsProps = {
     onDelete: () => void;
 };
 
+const { NEW, EDIT, JOINT } = EXERCISES_FORM_MODES;
+
 export const ActionBtns = ({ deleteDisabled, onDelete }: ActionBtnsProps) => {
     const formMode = useAppSelector(exercisesFormModeSelector);
 
     let btns = null;
     let btnsWrapperClassName = '';
 
-    if (formMode === 'new') {
+    if (formMode === NEW) {
         btnsWrapperClassName = styles.btnsWrapper;
         btns = <AddBtn />;
-    } else if (formMode === 'edit' || formMode === 'joint') {
+    } else if (formMode === EDIT || formMode === JOINT) {
         btnsWrapperClassName = styles.btnsWrapperEditMode;
         btns = (
             <Fragment>

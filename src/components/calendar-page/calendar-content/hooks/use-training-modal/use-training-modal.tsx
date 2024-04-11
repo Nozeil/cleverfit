@@ -8,6 +8,7 @@ import {
     setIsPastFalse,
     setIsPastTrue,
 } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
+import type { Nullable } from '@typings/utility';
 import moment from 'moment';
 
 import { CellContent } from '../../cell-content/cell-content';
@@ -22,7 +23,7 @@ export const useTrainingModal = (breakpoint: boolean | undefined) => {
     });
     const dispatch = useAppDispatch();
     const calendarWrapperRef = useRef<HTMLDivElement>(null);
-    const container = useRef<HTMLElement | null>(null);
+    const container = useRef<Nullable<HTMLElement>>(null);
 
     useEffect(() => {
         dispatch(closeTrainingModal());

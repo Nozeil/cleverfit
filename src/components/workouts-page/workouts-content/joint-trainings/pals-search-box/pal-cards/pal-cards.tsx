@@ -1,5 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { Flex } from '@components/flex/flex';
+import { INVITES_STATUS } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
     jointTrainingsSelector,
@@ -13,6 +14,8 @@ import { SearchPagination } from '../search-pagination';
 import { Sorter } from './pal-cards.utils';
 
 import styles from './pal-cards.module.css';
+
+const { ACCEPTED, REJECTED } = INVITES_STATUS;
 
 export const PalCards = () => {
     const { searchValue, paginationPage, paginationPageSize, trainingKey, isRandom } =
@@ -28,14 +31,10 @@ export const PalCards = () => {
     const sortedData = useMemo(() => {
         const dataCopy = data?.slice() ?? [];
 
-        const accepted = dataCopy
-            ?.filter((training) => training.status === 'accepted')
-            .sort(Sorter);
-        const rejected = dataCopy
-            ?.filter((training) => training.status === 'rejected')
-            .sort(Sorter);
+        const accepted = dataCopy?.filter((training) => training.status === ACCEPTED).sort(Sorter);
+        const rejected = dataCopy?.filter((training) => training.status === REJECTED).sort(Sorter);
         const others = dataCopy
-            ?.filter((training) => training.status !== 'accepted' && training.status !== 'rejected')
+            ?.filter((training) => training.status !== ACCEPTED && training.status !== REJECTED)
             .sort(Sorter);
 
         return [...accepted, ...others, ...rejected].filter((training) =>

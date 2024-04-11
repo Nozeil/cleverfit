@@ -1,6 +1,6 @@
 import { type MouseEventHandler, Fragment } from 'react';
-import { TrainingBadge } from '@components/training-badge';
 import { Flex } from '@components/flex/flex';
+import { TrainingBadge } from '@components/training-badge';
 
 import { useGetTrainingQueryWithSkip } from '../hooks/use-get-training-with-skip';
 

@@ -1,11 +1,12 @@
-import { TrainingStatus } from '@models/models';
+import { InviteStatus } from '@models/models';
 import { PayloadAction } from '@reduxjs/toolkit';
+import type { Nullable } from '@typings/utility';
 
 export type UserInfo = {
     userId: string;
-    imageSrc: string | null;
-    name: string | null;
-    status: TrainingStatus;
+    imageSrc: Nullable<string>;
+    name: Nullable<string>;
+    status: InviteStatus;
 };
 
 export type SetSearchValueAction = PayloadAction<string>;

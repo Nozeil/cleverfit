@@ -22,7 +22,7 @@ export const TariffSelectionForm = () => {
     const { data: tariffList } = useGetTariffListQuery();
     const [buyTariff] = useBuyTariffMutation();
 
-    const onFinish = async ({ days }: FormValues) => {
+    const onFinish = ({ days }: FormValues) => {
         const tariffId = tariffList?.at(0)?._id;
 
         dispatch(openTariffsSuccessModal());
@@ -34,11 +34,7 @@ export const TariffSelectionForm = () => {
                 tariffId,
             };
 
-            try {
-                await buyTariff(body).unwrap();
-            } catch (e) {
-                console.error(e);
-            }
+            buyTariff(body);
         }
     };
 

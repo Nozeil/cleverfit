@@ -1,5 +1,7 @@
+import { EXERCISES_FORM_MODES } from '@constants/index';
 import { type RootState } from '@redux/configure-store';
 import { createSlice } from '@reduxjs/toolkit';
+import type { ExercisesFormModes } from '@typings/index';
 import { v4 as uuidv4 } from 'uuid';
 
 import type {
@@ -7,7 +9,6 @@ import type {
     AddTrainingTypesAction,
     Exercises,
     FormExercises,
-    FormModes,
     RemoveFormExerciseByIdAction,
     RemoveFormExercisesByIdsAction,
     SetExerciseDateAction,
@@ -23,7 +24,7 @@ import type {
 
 type TrainingModalStateAndExercisesForm = {
     date: TrainingModalDate;
-    exercisesFormMode: FormModes;
+    exercisesFormMode: ExercisesFormModes;
     trainingType: TrainingType;
     isPast: boolean;
     isOpen: boolean;
@@ -39,7 +40,7 @@ type TrainingModalStateAndExercisesForm = {
 
 const initialState: TrainingModalStateAndExercisesForm = {
     date: { iso: '', formated: '' },
-    exercisesFormMode: 'new',
+    exercisesFormMode: EXERCISES_FORM_MODES.NEW,
     isPast: false,
     isOpen: false,
     isExercises: false,
@@ -132,7 +133,7 @@ export const trainingModalAndExercisesFormSlice = createSlice({
             state.receivedExercises = action.payload;
         },
         resetExercises: (state) => {
-            state.exercisesFormMode = 'new';
+            state.exercisesFormMode = EXERCISES_FORM_MODES.NEW;
             state.isExercises = false;
             state.isExerciseBtnLocked = true;
             state.trainingType = { name: '', id: '' };

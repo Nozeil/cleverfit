@@ -1,5 +1,6 @@
 import { CloseOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
+import { EXERCISES_FORM_MODES } from '@constants/index';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import {
     closeTrainingModal,
@@ -13,6 +14,8 @@ import { useTrainingTypes } from './hooks/use-training-types';
 import { TrainingCardContent } from './training-card-content';
 
 import styles from '../training-modal.module.css';
+
+const { NEW } = EXERCISES_FORM_MODES;
 
 export const TrainingsCard = () => {
     const { trainingQueryResult, trainingTypes, isPast, date } = useTrainingTypes();
@@ -30,7 +33,7 @@ export const TrainingsCard = () => {
             dispatch(switchToExercises(trainingTypes));
         }
 
-        dispatch(setExerciseFormMode('new'));
+        dispatch(setExerciseFormMode(NEW));
     };
 
     return (

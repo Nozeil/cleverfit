@@ -6,12 +6,14 @@ import { FreeCardProps } from './tariffs.types';
 
 import styles from './tariffs.module.css';
 
+import cover from '/png/free.png';
+
 export const FreeCard = ({ extra }: FreeCardProps) => (
     <Card
         className={styles.card}
         title='FREE tarif'
         extra={extra}
-        cover={<img src='/png/free.png' alt='tariff-cover' />}
+        cover={<img src={cover} alt='tariff-cover' />}
         bordered={false}
     >
         <Flex

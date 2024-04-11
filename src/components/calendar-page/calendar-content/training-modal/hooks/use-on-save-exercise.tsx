@@ -1,4 +1,4 @@
-import { DATE_FORMATS } from '@constants/index';
+import { DATE_FORMATS, EXERCISES_FORM_MODES } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
     closeTrainingModal,
@@ -7,6 +7,8 @@ import {
 import { useCreateTrainingMutation, useUpdateTrainingMutation } from '@services/endpoints/training';
 import { CenteredModalError } from '@utils/modal-error/modal-error';
 import moment from 'moment';
+
+const { NEW, EDIT } = EXERCISES_FORM_MODES;
 
 export const useOnSaveExercise = (reset: () => void) => {
     const [createTraining, { isLoading: isCreateLoading }] = useCreateTrainingMutation();
@@ -39,9 +41,9 @@ export const useOnSaveExercise = (reset: () => void) => {
                 ),
             };
 
-            if (exercisesFormMode === 'new') {
+            if (exercisesFormMode === NEW) {
                 await createTraining(body).unwrap();
-            } else if (exercisesFormMode === 'edit') {
+            } else if (exercisesFormMode === EDIT) {
                 if (trainingType.id) {
                     await updateTraining({ body, id: trainingType.id }).unwrap();
                 }

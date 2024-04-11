@@ -1,5 +1,6 @@
 import { type TrainingExercise, TrainingResponse } from '@models/models';
 import { type PayloadAction } from '@reduxjs/toolkit';
+import type { ExercisesFormModes } from '@typings/index';
 
 export type TrainingTypesWithImplementation = Array<
     Pick<TrainingResponse, 'name' | 'isImplementation'>
@@ -36,9 +37,7 @@ export type RemoveFormExerciseByIdAction = PayloadAction<string | number>;
 
 export type RemoveFormExercisesByIdsAction = PayloadAction<Array<string | number>>;
 
-export type FormModes = 'edit' | 'view' | 'new' | 'joint';
-
-export type SetFormModeAction = PayloadAction<FormModes>;
+export type SetFormModeAction = PayloadAction<ExercisesFormModes>;
 
 export type TrainingModalDate = { iso: string; formated: string };
 

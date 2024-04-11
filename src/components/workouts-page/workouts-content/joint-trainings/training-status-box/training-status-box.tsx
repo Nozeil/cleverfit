@@ -1,5 +1,6 @@
 import { CheckCircleFilled, ExclamationCircleOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
+import { INVITES_STATUS } from '@constants/index';
 import { Tooltip, Typography } from 'antd';
 
 import type { Content, TrainingStatusProps } from './training-status-box.types';
@@ -8,10 +9,12 @@ import styles from './training-status-box.module.css';
 
 const iconSize = 16;
 
+const { ACCEPTED, REJECTED, PENDING } = INVITES_STATUS;
+
 export const TrainingStatusBox = ({ status }: TrainingStatusProps) => {
     let content: Content = { text: null, icon: null };
 
-    if (status === 'accepted') {
+    if (status === ACCEPTED) {
         content = {
             text: 'тренировка одобрена',
             icon: (
@@ -20,7 +23,7 @@ export const TrainingStatusBox = ({ status }: TrainingStatusProps) => {
                 />
             ),
         };
-    } else if (status === 'rejected') {
+    } else if (status === REJECTED) {
         content = {
             text: 'тренировка отклонена',
             icon: (
@@ -38,7 +41,7 @@ export const TrainingStatusBox = ({ status }: TrainingStatusProps) => {
                 </Tooltip>
             ),
         };
-    } else if (status === 'pending') {
+    } else if (status === PENDING) {
         content = { text: 'ожидает подтверждения', icon: null };
     }
 

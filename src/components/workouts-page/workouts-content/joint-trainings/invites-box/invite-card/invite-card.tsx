@@ -1,6 +1,6 @@
 import { Flex } from '@components/flex/flex';
 import { UserAvatarWithName } from '@components/user-avatar/user-avatar-with-name';
-import { DATE_FORMATS } from '@constants/index';
+import { DATE_FORMATS, INVITES_STATUS } from '@constants/index';
 import type { Invite } from '@models/models';
 import { useUpdateInviteMutation } from '@services/endpoints/invite';
 import { Button, Typography } from 'antd';
@@ -13,24 +13,14 @@ import styles from './invite-card.module.css';
 
 type InviteCardProps = Omit<Invite, 'status'>;
 
+const { ACCEPTED, REJECTED } = INVITES_STATUS;
+
 export const InviteCard = ({ _id, from, training, createdAt }: InviteCardProps) => {
     const [updateInvite] = useUpdateInviteMutation();
 
-    const onAccept = async () => {
-        try {
-            await updateInvite({ id: _id, status: 'accepted' }).unwrap();
-        } catch (e) {
-            console.error(e);
-        }
-    };
+    const onAccept = () => updateInvite({ id: _id, status: ACCEPTED });
 
-    const onReject = async () => {
-        try {
-            await updateInvite({ id: _id, status: 'rejected' }).unwrap();
-        } catch (e) {
-            console.error(e);
-        }
-    };
+    const onReject = async () => updateInvite({ id: _id, status: REJECTED });
 
     return (
         <Flex

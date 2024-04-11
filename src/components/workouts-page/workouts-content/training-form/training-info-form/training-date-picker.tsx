@@ -1,4 +1,4 @@
-import { DATE_FORMATS } from '@constants/index';
+import { DATE_FORMATS, EXERCISES_FORM_MODES } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
     setExerciseDate,
@@ -15,6 +15,7 @@ import { formatExerciseDate } from '../../workouts-content.utils';
 import styles from './training-info-form.module.css';
 
 const cx = classNames.bind(styles);
+const { NEW, EDIT } = EXERCISES_FORM_MODES;
 
 export const TrainingDatePicker = () => {
     const { exercisesFormMode, trainingType } = useAppSelector(
@@ -27,7 +28,7 @@ export const TrainingDatePicker = () => {
     const form = Form.useFormInstance();
 
     const disabledDate: DatePickerProps['disabledDate'] = (current) =>
-        exercisesFormMode !== 'edit' && current && current < moment().endOf('day');
+        exercisesFormMode !== EDIT && current && current < moment().endOf('day');
 
     const dateRender: DatePickerProps['dateRender'] = (current) => {
         const { iso } = formatExerciseDate(current);
@@ -49,7 +50,7 @@ export const TrainingDatePicker = () => {
 
             dispatch(setExerciseDate(exerciseDate));
 
-            if (exercisesFormMode !== 'new') {
+            if (exercisesFormMode !== NEW) {
                 const trainingTypes = data
                     ? data
                           .filter((training) => training.date === exerciseDate.iso)
@@ -67,7 +68,7 @@ export const TrainingDatePicker = () => {
                 dispatch(setTrainingTypes(trainingTypes));
             }
 
-            if (exercisesFormMode === 'edit' || exercisesFormMode === 'new') {
+            if (exercisesFormMode === EDIT || exercisesFormMode === NEW) {
                 const trainingTypes = data
                     ? data
                           .filter((training) => training.date === exerciseDate.iso)

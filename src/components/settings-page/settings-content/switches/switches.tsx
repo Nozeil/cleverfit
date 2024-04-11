@@ -20,13 +20,7 @@ export const Switches = () => {
             defaultChecked: data?.readyForJointTraining,
             switchTestId: 'tariff-trainings',
             tooltipIconTestId: 'tariff-trainings-icon',
-            onChange: async (readyForJointTraining) => {
-                try {
-                    await updateUser({ readyForJointTraining }).unwrap();
-                } catch (e) {
-                    console.error(e);
-                }
-            },
+            onChange: (readyForJointTraining) => updateUser({ readyForJointTraining }),
         },
         {
             id: 1,
@@ -36,13 +30,7 @@ export const Switches = () => {
             defaultChecked: data?.sendNotification,
             switchTestId: 'tariff-notifications',
             tooltipIconTestId: 'tariff-notifications-icon',
-            onChange: async (sendNotification) => {
-                try {
-                    await updateUser({ sendNotification }).unwrap();
-                } catch (e) {
-                    console.error(e);
-                }
-            },
+            onChange: (sendNotification) => updateUser({ sendNotification }),
         },
         {
             id: 2,

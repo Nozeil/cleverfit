@@ -1,6 +1,7 @@
 import { type ReactNode } from 'react';
 import { EditOutlined, PlusOutlined } from '@ant-design/icons';
 import { SidePanelHead } from '@components/side-panel-head/side-panel-head';
+import { EXERCISES_FORM_MODES } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { exercisesFormModeSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 
@@ -9,6 +10,8 @@ type SidePanelHeadDependentFromFormModeProps = {
     fallbackIcon: ReactNode;
     onClose: () => void;
 };
+
+const { NEW, EDIT } = EXERCISES_FORM_MODES;
 
 export const SidePanelHeadDependentFromFormMode = ({
     fallbackIcon,
@@ -21,10 +24,10 @@ export const SidePanelHeadDependentFromFormMode = ({
         icon: fallbackIcon,
     };
 
-    if (formMode === 'new') {
+    if (formMode === NEW) {
         content.title = 'Добавление упражнений';
         content.icon = <PlusOutlined />;
-    } else if (formMode === 'edit') {
+    } else if (formMode === EDIT) {
         content.title = 'Редактирование';
         content.icon = <EditOutlined />;
     }

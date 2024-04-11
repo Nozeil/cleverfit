@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
+import { SORT_BY } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
     setSortedTrainings,
@@ -17,6 +18,8 @@ import { trainingsSorter } from './trainings-table.utils';
 
 import styles from './trainings-table.module.css';
 
+const { ASC, DSC } = SORT_BY;
+
 export const TrainingsTable = () => {
     const sortedBy = useAppSelector(trainingsTableSortedBySelector);
     const dispatch = useAppDispatch();
@@ -26,7 +29,7 @@ export const TrainingsTable = () => {
     const sortedTrainings = useMemo(() => {
         const trainings = data?.slice();
 
-        if (sortedBy === 'asc' || sortedBy === 'dsc') {
+        if (sortedBy === ASC || sortedBy === DSC) {
             return trainings?.sort((a, b) => trainingsSorter(a, b, sortedBy));
         }
 

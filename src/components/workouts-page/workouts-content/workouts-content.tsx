@@ -7,6 +7,7 @@ import { SidePanel } from '@components/side-panel/side-panel';
 import { SidePanelBody } from '@components/side-panel-body/side-panel-body';
 import { SidePanelHeadDependentFromFormMode } from '@components/side-panel-head-dependent-from-form-mode';
 import { SuccessAlert } from '@components/success-alert/success-alert';
+import { EXERCISES_FORM_MODES } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { useTrainingListQueryWithNotification } from '@hooks/use-training-list-query-with-notification';
 import { closeSidePanel } from '@redux/slices/side-panel';
@@ -25,6 +26,8 @@ import { TrainingsTable } from './trainings-table/trainings-table';
 import type { TrainingInfoFormValues } from './workouts-content.types';
 
 import styles from './workouts-content.module.css';
+
+const { NEW, EDIT, JOINT } = EXERCISES_FORM_MODES;
 
 export const WorkoutsContent = () => {
     const formMode = useAppSelector(exercisesFormModeSelector);
@@ -61,15 +64,14 @@ export const WorkoutsContent = () => {
             ),
         },
         {
-            label:
-                invites && invites.length ? (
-                    <Fragment>
-                        Совместные тренировки
-                        <Badge className={styles.badge} count={invites.length} />
-                    </Fragment>
-                ) : (
-                    'Совместные тренировки'
-                ),
+            label: invites?.length ? (
+                <Fragment>
+                    Совместные тренировки
+                    <Badge className={styles.badge} count={invites.length} />
+                </Fragment>
+            ) : (
+                'Совместные тренировки'
+            ),
             key: 'joint-trainings',
             children: <JointTrainings />,
         },
@@ -78,9 +80,9 @@ export const WorkoutsContent = () => {
 
     let alertMessage;
 
-    if (formMode === 'new') {
+    if (formMode === NEW) {
         alertMessage = 'Новая тренировка успешно добавлена';
-    } else if (formMode === 'edit') {
+    } else if (formMode === EDIT) {
         alertMessage = 'Тренировка успешно обновлена';
     }
 
@@ -98,7 +100,7 @@ export const WorkoutsContent = () => {
                     fallbackIcon={<PlusOutlined />}
                 />
 
-                <SidePanelBody head={formMode === 'joint' && <SidePanelBodyHead />}>
+                <SidePanelBody head={formMode === JOINT && <SidePanelBodyHead />}>
                     <Flex direction='column' gap='gap24'>
                         <TrainingForm
                             trainingInfoForm={trainingInfoForm}
