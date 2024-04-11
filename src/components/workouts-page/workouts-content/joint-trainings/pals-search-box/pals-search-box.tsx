@@ -45,6 +45,7 @@ export const PalsSearchBox = () => {
                     className={styles.input}
                     placeholder='Поиск по имени'
                     onSearch={onSearch}
+                    data-test-id='search-input'
                 />
             </Flex>
             <PalCards />

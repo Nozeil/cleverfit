@@ -43,5 +43,6 @@ export const {
     useGetTrainingListQuery,
     useGetTariffListQuery,
     useGetTrainingPalsQuery,
+    useGetUserJointTrainingListQuery,
     useLazyGetUserJointTrainingListQuery,
 } = catalogsApi;

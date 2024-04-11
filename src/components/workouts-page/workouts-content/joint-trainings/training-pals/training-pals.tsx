@@ -1,5 +1,7 @@
-import { Fragment } from 'react';
+import { Fragment, useMemo } from 'react';
 import { Flex } from '@components/flex/flex';
+import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { deletedUserIdSelector } from '@redux/slices/joint-training/joint-trainings';
 import { useGetTrainingPalsQuery } from '@services/endpoints/catalogs';
 import { Typography } from 'antd';
 
@@ -9,6 +11,12 @@ import styles from './training-pals.module.css';
 
 export const TrainingPals = () => {
     const { data: trainingPals } = useGetTrainingPalsQuery();
+    const deletedUserId = useAppSelector(deletedUserIdSelector);
+
+    const filteredPals = useMemo(
+        () => trainingPals?.filter(({ id }) => deletedUserId !== id),
+        [deletedUserId, trainingPals],
+    );
 
     return (
         <Flex className={styles.wrapper} direction='column' gap='gap12'>
@@ -16,7 +24,7 @@ export const TrainingPals = () => {
                 <Typography.Title className={styles.title} level={4}>
                     Мои партнёры по тренировкам
                 </Typography.Title>
-                {trainingPals?.length ? (
+                {filteredPals && filteredPals?.length ? (
                     <FriendsBox />
                 ) : (
                     <Typography.Text className={styles.text}>

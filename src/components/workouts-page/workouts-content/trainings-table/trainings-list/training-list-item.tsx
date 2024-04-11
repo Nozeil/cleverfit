@@ -28,6 +28,7 @@ import styles from './trainings-list.module.css';
 
 type TrainingListItemProps = {
     setContainers: (current: ContainersRefCurrent) => void;
+    testId: string;
 } & Omit<TrainingResponse, 'userId'>;
 
 export const TrainingListItem = ({
@@ -38,6 +39,7 @@ export const TrainingListItem = ({
     date,
     exercises,
     setContainers,
+    testId,
 }: TrainingListItemProps) => {
     const dispatch = useAppDispatch();
 
@@ -111,6 +113,7 @@ export const TrainingListItem = ({
                     icon={<EditOutlined style={{ fontSize: 28 }} />}
                     disabled={isImplementation}
                     onClick={onEdit}
+                    data-test-id={testId}
                 />
             </Flex>
         </Flex>

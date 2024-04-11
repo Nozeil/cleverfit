@@ -25,7 +25,7 @@ export const SuccessAlert = (props: AlertProps) => {
             showIcon={true}
             closable={true}
             onClose={onClose}
-            data-test-id='alert'
+            data-test-id='create-training-success-alert'
             {...props}
         />
     ) : null;

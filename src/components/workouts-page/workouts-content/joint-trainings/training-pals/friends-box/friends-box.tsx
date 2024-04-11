@@ -10,9 +10,24 @@ export const FriendsBox = () => {
 
     return (
         <Flex className={styles.box} gap='gap16'>
-            {trainingPals?.map((pal) => (
-                <FriendsCard key={pal.id} {...pal} />
-            ))}
+            {trainingPals?.map(
+                (
+                    { avgWeightInWeek, id, imageSrc, inviteId, name, status, trainingType },
+                    index,
+                ) => (
+                    <FriendsCard
+                        key={id}
+                        status={status}
+                        name={name}
+                        trainingType={trainingType}
+                        imageSrc={imageSrc}
+                        avgWeightInWeek={avgWeightInWeek}
+                        inviteId={inviteId}
+                        testId={`joint-training-cards${index}`}
+                        id={id}
+                    />
+                ),
+            )}
         </Flex>
     );
 };

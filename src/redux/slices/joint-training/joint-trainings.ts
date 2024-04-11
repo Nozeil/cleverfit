@@ -2,6 +2,7 @@ import { type RootState } from '@redux/configure-store';
 import { createSlice } from '@reduxjs/toolkit';
 
 import type {
+    SetDeletedUserIdAction,
     SetPaginationPageAction,
     SetPaginationPageSizeAction,
     SetPaginationTotalAction,
@@ -20,6 +21,7 @@ type JointTrainingsState = {
     paginationPageSize: number;
     trainingKey: string;
     userInfo: UserInfo;
+    deletedUserId: string;
 };
 
 const initialState: JointTrainingsState = {
@@ -30,7 +32,8 @@ const initialState: JointTrainingsState = {
     paginationPage: 1,
     paginationPageSize: 0,
     trainingKey: '',
-    userInfo: { userId: '', imageSrc: '', name: '' },
+    userInfo: { userId: '', imageSrc: '', name: '', status: null },
+    deletedUserId: '',
 };
 
 export const jointTrainingsSlice = createSlice({
@@ -67,6 +70,9 @@ export const jointTrainingsSlice = createSlice({
         setUserInfo: (state, action: SetUserInfoAction) => {
             state.userInfo = action.payload;
         },
+        setDeletedUserId: (state, action: SetDeletedUserIdAction) => {
+            state.deletedUserId = action.payload;
+        },
     },
 });
 
@@ -81,6 +87,7 @@ export const {
     setIsRandomTrue,
     setTrainingKey,
     setUserInfo,
+    setDeletedUserId,
 } = jointTrainingsSlice.actions;
 
 export const isJointTrainingsSearchOpenSelector = (state: RootState) =>
@@ -88,6 +95,7 @@ export const isJointTrainingsSearchOpenSelector = (state: RootState) =>
 export const searchValueSelector = (state: RootState) => state.jointTrainings.searchValue;
 export const isRandomSelector = (state: RootState) => state.jointTrainings.isRandom;
 export const userInfoSelector = (state: RootState) => state.jointTrainings.userInfo;
+export const deletedUserIdSelector = (state: RootState) => state.jointTrainings.deletedUserId;
 export const jointTrainingsSelector = (state: RootState) => state.jointTrainings;
 
 export const jointTrainingsReducer = jointTrainingsSlice.reducer;

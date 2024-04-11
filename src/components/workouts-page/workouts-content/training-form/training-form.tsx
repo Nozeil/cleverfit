@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { ExercisesForm } from '@components/exercises-form/exercises-form';
 import { FORM_NAMES } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { userInfoSelector } from '@redux/slices/joint-training/joint-trainings';
+import { setUserInfo, userInfoSelector } from '@redux/slices/joint-training/joint-trainings';
 import { openSuccessAlert } from '@redux/slices/success-alert';
 import { setIsTrainingFormSubmitDisabled } from '@redux/slices/training-form';
 import { trainingModalAndExercisesFormSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
@@ -83,14 +83,38 @@ export const TrainingForm = ({ trainingInfoForm, exercisesForm, onClose }: Train
                 body.name = trainingType.name;
                 const { _id: trainingId } = await createTraining(body).unwrap();
 
-                await createInvite({ to: userInfo.userId, trainingId });
+                const { to, status } = await createInvite({
+                    to: userInfo.userId,
+                    trainingId,
+                }).unwrap();
+
+                dispatch(
+                    setUserInfo({
+                        userId: to._id,
+                        imageSrc: to.imageSrc,
+                        name: `${to.firstName} ${to.lastName}`,
+                        status,
+                    }),
+                );
             }
 
             if (exercisesFormMode !== 'joint') {
                 dispatch(openSuccessAlert());
             }
         } catch {
-            CenteredModalError();
+            CenteredModalError({
+                title: (
+                    <span data-test-id='modal-error-user-training-title'>
+                        При сохранении данных произошла ошибка
+                    </span>
+                ),
+                content: (
+                    <span data-test-id='modal-error-user-training-subtitle'>
+                        Придётся попробовать ещё раз
+                    </span>
+                ),
+                okText: <span data-test-id='modal-error-user-training-button'>Закрыть</span>,
+            });
         } finally {
             onClose();
         }

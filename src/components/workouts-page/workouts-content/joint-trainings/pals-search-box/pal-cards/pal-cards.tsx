@@ -62,7 +62,10 @@ export const PalCards = () => {
         >
             <Flex className={styles.palsWrapper} gap={{ xs: 'gap12', sm: 'gap12', lg: 'gap16' }}>
                 {paginatedData.map(
-                    ({ id, name, avgWeightInWeek, imageSrc, inviteId, status, trainingType }) => (
+                    (
+                        { id, name, avgWeightInWeek, imageSrc, inviteId, status, trainingType },
+                        index,
+                    ) => (
                         <PalCard
                             key={id}
                             id={id}
@@ -72,6 +75,7 @@ export const PalCards = () => {
                             inviteId={inviteId}
                             status={status}
                             trainingType={trainingType}
+                            testId={`joint-training-cards${index}`}
                         />
                     ),
                 )}

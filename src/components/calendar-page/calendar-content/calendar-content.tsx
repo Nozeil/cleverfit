@@ -64,8 +64,6 @@ export const CalendarContent = () => {
                     onClose={closeCalendarSidePanel}
                     fallbackTitle='Просмотр упражнений'
                     fallbackIcon={null}
-                    newTitle='Добавление упражнений'
-                    editTitle='Редактирование'
                 />
 
                 <CalendarSidePanelBody>

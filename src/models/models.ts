@@ -179,9 +179,9 @@ export type UserJointTrainingListParams = {
 
 type FromTo = {
     _id: string;
-    firstName?: string;
-    lastName?: string;
-    imageSrc?: string;
+    firstName: string | null;
+    lastName: string | null;
+    imageSrc: string | null;
 };
 
 export type Invite = {
@@ -194,11 +194,9 @@ export type Invite = {
 
 export type GetInvitesResponse = Invite[];
 
-export type CreateInviteResponse = Array<
-    Invite & {
-        to: FromTo;
-    }
->;
+export type CreateInviteResponse = Invite & {
+    to: FromTo;
+};
 
 export type CreateInviteBody = { to: string; trainingId: string };
 

@@ -24,7 +24,7 @@ export const NewTrainingBtn = ({ children, icon }: NewTrainingBtnProps) => {
     };
 
     return (
-        <Button className={styles.btn} type='primary' size='large' onClick={onClick} icon={icon}>
+        <Button className={styles.btn} type='primary' size='large' onClick={onClick} icon={icon} data-test-id='create-new-training-button'>
             {children}
         </Button>
     );

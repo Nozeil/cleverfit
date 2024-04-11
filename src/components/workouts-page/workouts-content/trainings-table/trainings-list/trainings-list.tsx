@@ -43,7 +43,7 @@ export const TrainingsList = () => {
             {isExerciseCard && container && createPortal(<ExercisesCard />, container)}
             <Flex className={styles.list} as='ul' direction='column' gap='gap5'>
                 {paginatedTrainings?.map(
-                    ({ _id, name, date, parameters, exercises, isImplementation }) => (
+                    ({ _id, name, date, parameters, exercises, isImplementation }, index) => (
                         <TrainingListItem
                             key={_id}
                             _id={_id}
@@ -53,6 +53,7 @@ export const TrainingsList = () => {
                             exercises={exercises}
                             isImplementation={isImplementation}
                             setContainers={setContainers}
+                            testId={`update-my-training-table-icon${index}`}
                         />
                     ),
                 )}

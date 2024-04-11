@@ -64,6 +64,7 @@ export const TrainingInfoForm = ({ form }: TrainingInfoFormProps) => {
                                     className={styles.periodSelect}
                                     placeholder='Периодичность'
                                     options={options}
+                                    data-test-id='modal-drawer-right-select-period'
                                 />
                             </Form.Item>
                         )}
@@ -71,7 +72,11 @@ export const TrainingInfoForm = ({ form }: TrainingInfoFormProps) => {
 
                     <Flex className={styles.column} direction='column'>
                         <Form.Item noStyle={true} name='repeat' valuePropName='checked'>
-                            <Checkbox className={styles.checkbox} onChange={onChange}>
+                            <Checkbox
+                                className={styles.checkbox}
+                                onChange={onChange}
+                                data-test-id='modal-drawer-right-checkbox-period'
+                            >
                                 С периодичностью
                             </Checkbox>
                         </Form.Item>

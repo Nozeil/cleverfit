@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from 'react';
+import { Fragment } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import { ContentWrapper } from '@components/content-wrapper/content-wrapper';
 import { Flex } from '@components/flex/flex';
@@ -10,7 +10,7 @@ import { SuccessAlert } from '@components/success-alert/success-alert';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { useTrainingListQueryWithNotification } from '@hooks/use-training-list-query-with-notification';
 import { closeSidePanel } from '@redux/slices/side-panel';
-import { trainingModalAndExercisesFormSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
+import { exercisesFormModeSelector } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { useGetInvitesQuery } from '@services/endpoints/invite';
 import { useGetTrainingQuery } from '@services/endpoints/training';
 import type { ExercisesFormValues } from '@typings/index';
@@ -27,9 +27,7 @@ import type { TrainingInfoFormValues } from './workouts-content.types';
 import styles from './workouts-content.module.css';
 
 export const WorkoutsContent = () => {
-    const { exercisesFormMode: formMode, date } = useAppSelector(
-        trainingModalAndExercisesFormSelector,
-    );
+    const formMode = useAppSelector(exercisesFormModeSelector);
     const { data: invites } = useGetInvitesQuery();
 
     const dispatch = useAppDispatch();
@@ -40,28 +38,21 @@ export const WorkoutsContent = () => {
     const [exercisesForm] = Form.useForm<ExercisesFormValues>();
     const [trainingInfoForm] = Form.useForm<TrainingInfoFormValues>();
 
-    useEffect(() => {
-        if (formMode === 'new') {
-            trainingInfoForm.resetFields();
-            exercisesForm.resetFields();
-        }
-    }, [exercisesForm, formMode, trainingInfoForm]);
-
-    useEffect(() => {
-        if (formMode === 'joint' && date.iso === '') {
-            trainingInfoForm.resetFields();
-            exercisesForm.resetFields();
-        }
-    }, [date.iso, exercisesForm, formMode, trainingInfoForm]);
-
-    const onClose = () => dispatch(closeSidePanel());
+    const onClose = () => {
+        trainingInfoForm.resetFields();
+        exercisesForm.resetFields();
+        dispatch(closeSidePanel());
+    };
 
     const tabsItems = [
         {
             label: 'Мои тренировки',
             key: 'my-trainings',
             children: trainings?.length ? (
-                <TrainingsTable />
+                <Fragment>
+                    <Notification refresh={refresh} />
+                    <TrainingsTable />
+                </Fragment>
             ) : (
                 <Fragment>
                     <Notification refresh={refresh} />
@@ -70,14 +61,15 @@ export const WorkoutsContent = () => {
             ),
         },
         {
-            label: invites ? (
-                <Fragment>
-                    Совместные тренировки
-                    <Badge className={styles.badge} count={invites.length} />
-                </Fragment>
-            ) : (
-                'Совместные тренировки'
-            ),
+            label:
+                invites && invites.length ? (
+                    <Fragment>
+                        Совместные тренировки
+                        <Badge className={styles.badge} count={invites.length} />
+                    </Fragment>
+                ) : (
+                    'Совместные тренировки'
+                ),
             key: 'joint-trainings',
             children: <JointTrainings />,
         },
@@ -94,13 +86,16 @@ export const WorkoutsContent = () => {
 
     return (
         <Fragment>
-            <SidePanel onClose={onClose} shouldCloseOnXs={false} footer={<SubmitBtn />}>
+            <SidePanel
+                onClose={onClose}
+                shouldCloseOnXs={false}
+                footer={<SubmitBtn />}
+                testId='modal-drawer-right'
+            >
                 <SidePanelHeadDependentFromFormMode
                     onClose={onClose}
                     fallbackTitle='Совместная тренировка'
                     fallbackIcon={<PlusOutlined />}
-                    newTitle='Новая тренировка'
-                    editTitle='Редактировать тренировку'
                 />
 
                 <SidePanelBody head={formMode === 'joint' && <SidePanelBodyHead />}>

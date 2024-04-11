@@ -110,7 +110,7 @@ export const JointTrainingsCard = () => {
                             type='text'
                             onClick={onTrainingTypeSelection}
                         >
-                            Выбор друга по моим видам тренировок
+                            Выбор друга по моим тренировкам
                         </Button>
                     </Flex>,
                 ]}

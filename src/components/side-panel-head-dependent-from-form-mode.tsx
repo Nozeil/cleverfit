@@ -7,16 +7,12 @@ import { exercisesFormModeSelector } from '@redux/slices/training-modal-and-exer
 type SidePanelHeadDependentFromFormModeProps = {
     fallbackTitle: string;
     fallbackIcon: ReactNode;
-    newTitle: string;
-    editTitle: string;
     onClose: () => void;
 };
 
 export const SidePanelHeadDependentFromFormMode = ({
     fallbackIcon,
     fallbackTitle,
-    newTitle,
-    editTitle,
     onClose,
 }: SidePanelHeadDependentFromFormModeProps) => {
     const formMode = useAppSelector(exercisesFormModeSelector);
@@ -26,10 +22,10 @@ export const SidePanelHeadDependentFromFormMode = ({
     };
 
     if (formMode === 'new') {
-        content.title = newTitle;
+        content.title = 'Добавление упражнений';
         content.icon = <PlusOutlined />;
     } else if (formMode === 'edit') {
-        content.title = editTitle;
+        content.title = 'Редактирование';
         content.icon = <EditOutlined />;
     }
 

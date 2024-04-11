@@ -40,7 +40,12 @@ export const TrainingsTable = () => {
     }, [dispatch, sortedTrainings]);
 
     return (
-        <Flex className={styles.wrapper} direction='column' gap={{ xs: 'gap20', sm: 'gap24' }}>
+        <Flex
+            className={styles.wrapper}
+            direction='column'
+            gap={{ xs: 'gap20', sm: 'gap24' }}
+            testId='my-trainings-table'
+        >
             <Flex className={styles.table} direction='column' gap={{ xs: 'gap12', sm: 'gap24' }}>
                 <Heading />
                 <TrainingsList />

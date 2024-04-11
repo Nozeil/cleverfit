@@ -15,13 +15,21 @@ export const TrainingsPagination = () => {
     const dispatch = useAppDispatch();
 
     const { data } = useGetTrainingQuery();
-    const { xs } = useBreakpoint();
+    const { xs, lg } = useBreakpoint();
 
     useLayoutEffect(() => {
-        const size = xs ? 8 : 14;
+        let size;
+
+        if (xs) {
+            size = 8;
+        } else if (lg) {
+            size = 14;
+        } else {
+            size = 10;
+        }
 
         dispatch(setPaginationPageSize(size));
-    }, [dispatch, xs]);
+    }, [dispatch, lg, xs]);
 
     const onChange: PaginationProps['onChange'] = (page) => dispatch(setPaginationPage(page));
 

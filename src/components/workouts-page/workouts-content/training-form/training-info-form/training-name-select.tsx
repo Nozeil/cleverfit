@@ -35,6 +35,7 @@ export const TrainingNameSelect = () => {
                 options={selectOptions}
                 disabled={exercisesFormMode !== 'new'}
                 onSelect={onSelect}
+                data-test-id='modal-create-exercise-select'
             />
         </Form.Item>
     );

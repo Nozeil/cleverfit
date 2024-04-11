@@ -95,6 +95,7 @@ export const TrainingDatePicker = () => {
                 disabledDate={disabledDate}
                 dateRender={dateRender}
                 onChange={onChange}
+                data-test-id='modal-drawer-right-date-picker'
             />
         </Form.Item>
     );

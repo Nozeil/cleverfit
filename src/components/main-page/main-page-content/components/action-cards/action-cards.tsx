@@ -21,6 +21,7 @@ export const ActionCards = () => {
             title: 'Расписать тренировки',
             buttonIcon: <HeartFilled style={{ color }} />,
             buttonContent: 'Тренировки',
+            testId: 'menu-button-training',
             onClick: workoutsHandler,
         },
         {

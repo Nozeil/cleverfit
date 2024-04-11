@@ -1,8 +1,8 @@
 import { Flex } from '@components/flex/flex';
 import { UserAvatarWithName } from '@components/user-avatar/user-avatar-with-name';
-import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
+import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import type { JointTrainingListItem } from '@models/models';
-import { setUserInfo } from '@redux/slices/joint-training/joint-trainings';
+import { setUserInfo, userInfoSelector } from '@redux/slices/joint-training/joint-trainings';
 import { openSidePanel } from '@redux/slices/side-panel';
 import {
     resetExercises,
@@ -21,7 +21,7 @@ import { HighlightedName } from './highlighted-name/highlighted-name';
 
 import styles from './pal-card.module.css';
 
-type PalCardProps = JointTrainingListItem;
+type PalCardProps = JointTrainingListItem & { testId: string };
 
 const cx = classNames.bind(styles);
 
@@ -33,7 +33,9 @@ export const PalCard = ({
     name,
     status,
     trainingType,
+    testId,
 }: PalCardProps) => {
+    const userInfo = useAppSelector(userInfoSelector);
     const dispatch = useAppDispatch();
 
     const onCreateTraining = () => {
@@ -43,15 +45,21 @@ export const PalCard = ({
         dispatch(setExerciseFormMode('joint'));
         dispatch(setTrainingType({ name: trainingType }));
         dispatch(setExerciseDate({ iso: '', formated: '' }));
-        dispatch(setUserInfo({ userId: id, imageSrc: imageSrc ?? '', name: name ?? '' }));
+        dispatch(setUserInfo({ userId: id, imageSrc, name, status }));
         dispatch(openSidePanel());
     };
+
+    const isDisabled =
+        status === 'pending' ||
+        status === 'rejected' ||
+        (userInfo.status === 'pending' && userInfo.userId === id);
 
     return (
         <Flex
             className={cx(styles.card, { [styles.cardRejected]: status === 'rejected' })}
             direction='column'
             gap='gap12'
+            testId={testId}
         >
             <Flex align='alignCenter' gap='gap8'>
                 <UserAvatarWithName
@@ -70,13 +78,13 @@ export const PalCard = ({
                     className={styles.btn}
                     type='primary'
                     block={true}
-                    disabled={status === 'pending' || status === 'rejected'}
+                    disabled={isDisabled}
                     onClick={onCreateTraining}
                 >
                     Создать тренировку
                 </Button>
             )}
-            <TrainingStatusBox status={status} />
+            <TrainingStatusBox status={status || userInfo.status} />
         </Flex>
     );
 };

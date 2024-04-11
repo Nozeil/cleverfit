@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { CloseOutlined } from '@ant-design/icons';
 import { Flex } from '@components/flex/flex';
 import { TrainingBadge } from '@components/training-badge';
@@ -17,10 +17,14 @@ type TrainingDetailsProps = Pick<Invite['training'], 'date' | 'name' | 'exercise
 export const TrainingDetails = ({ date, exercises, name }: TrainingDetailsProps) => {
     const [isTrainingDetails, setIsTrainingDetails] = useState(false);
 
-    const days = moment(date)
-        .set({ hours: 0 })
-        .diff(moment({ hours: 0 }), 'days');
-    const humanizedDays = moment.duration(days, 'days').humanize(true);
+    const humanizedDaysFirstLetterUpperCase = useMemo(() => {
+        const days = moment(date)
+            .set({ hours: 0 })
+            .diff(moment({ hours: 0 }), 'days');
+        const humanizedDays = moment.duration(days, 'days').humanize(true);
+
+        return humanizedDays[0].toUpperCase() + humanizedDays.slice(1);
+    }, [date]);
 
     const onShowTrainingDetails = () => setIsTrainingDetails((prevDetails) => !prevDetails);
 
@@ -45,11 +49,12 @@ export const TrainingDetails = ({ date, exercises, name }: TrainingDetailsProps)
                             />
                         </Flex>
                     }
+                    data-test-id='joint-training-review-card'
                 >
                     <Flex direction='column'>
                         <Flex className={styles.dates} justify='justifyBetween' align='alignCenter'>
                             <Typography.Paragraph className={styles.humanizedDate}>
-                                {humanizedDays}
+                                {humanizedDaysFirstLetterUpperCase}
                             </Typography.Paragraph>
                             <Typography.Text className={styles.date}>
                                 {moment(date).format(DATE_FORMATS.DMY)}
