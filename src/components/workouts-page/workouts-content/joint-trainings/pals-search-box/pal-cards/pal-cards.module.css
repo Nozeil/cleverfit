@@ -4,6 +4,6 @@
 
 @media screen and (max-width: 480px) {
     .palsWithPagination {
-        margin-bottom: 22px;
+        margin-bottom: var(--mb-workouts-pal-cards-pals-with-pagination-mobile);
     }
 }

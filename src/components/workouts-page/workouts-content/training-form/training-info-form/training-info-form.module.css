@@ -1,18 +1,18 @@
 .form:global(.ant-form) {
-    margin-top: 22px;
+    margin-top: var(--mt-workouts-training-info-form);
 }
 
 .checkbox,
 .selectFormItem :global(.ant-form-item-control-input) {
-    min-height: 28px;
+    min-height: var(--h-28);
 }
 
 .column {
-    width: 156px;
+    width: var(--w-workouts-training-info-form-column);
 }
 
 .picker:global(.ant-picker) {
-    height: 28px;
+    height: var(--h-28);
 }
 
 .cellWithExercises:global(.ant-picker-cell-inner),
@@ -31,15 +31,15 @@
 }
 
 .checkbox span:not(:global(.ant-checkbox)) {
-    padding-right: 0;
+    padding-right: var(--pr-workouts-training-info-form-checkbox-text);
 }
 
 @media screen and (max-width: 575px) {
     .form:global(.ant-form) {
-        margin: 0;
+        margin: var(--m-workouts-training-info-form-mobile-l);
     }
 
     .column {
-        width: 148px;
+        width: var(--w-workouts-training-info-form-column-mobile-l);
     }
 }

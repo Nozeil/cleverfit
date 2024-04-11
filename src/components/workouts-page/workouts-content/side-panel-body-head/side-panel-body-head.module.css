@@ -1,6 +1,6 @@
 .wrapper {
-  width: 100%;
-  padding-bottom: 6px;
+    width: 100%;
+    padding-bottom: var(--pb-workouts-side-panel-body-head-wrapper);
 }
 
 .badge:global(.ant-badge) {
@@ -9,11 +9,11 @@
 }
 
 .badge :global(.ant-badge-status-dot) {
-  top: 0;
+    top: 0;
 }
 
 @media screen and (max-width: 575px) {
-  .wrapper {
-    padding-bottom: 22px;
-  }
+    .wrapper {
+        padding-bottom: var(--pb-workouts-side-panel-body-head-wrapper-mobile-l);
+    }
 }

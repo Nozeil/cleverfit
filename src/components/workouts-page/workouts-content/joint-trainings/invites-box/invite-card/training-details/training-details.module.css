@@ -4,7 +4,7 @@
 
 .linkBtn:global(.ant-btn) {
     width: fit-content;
-    padding: 0;
+    padding: var(--p-workouts-training-details-link-btn);
 }
 
 .card:global(.ant-card) {
@@ -12,29 +12,29 @@
     top: 0;
     left: 0;
     z-index: var(--z-5);
-    width: 312px;
+    width: var(--w-workouts-training-details-card);
     height: fit-content;
-    padding: 0 12px;
+    padding: var(--p-workouts-training-details-card);
     box-shadow: var(--shadow-md);
 }
 
 .card:global(.ant-card) :global(.ant-card-head) {
-    padding: 18px 0;
+    padding: var(--p-workouts-training-details-card-head);
 }
 
 .card:global(.ant-card) :global(.ant-card-body) {
-    padding: 24px 0;
+    padding: var(--p-workouts-training-details-card-body);
 }
 
 .btn:global(.ant-btn) {
     width: fit-content;
     height: fit-content;
-    padding: 0;
-    border: 0;
+    padding: var(--p-workouts-training-details-btn);
+    border: var(--border-none);
 }
 
 .dates {
-    margin-bottom: 12px;
+    margin-bottom: var(--mb-workouts-training-details-dates);
 }
 
 .humanizedDate:global(.ant-typography) {
@@ -48,7 +48,7 @@
 
 .humanizedDate:global(.ant-typography),
 .exerciseName:global(.ant-typography) {
-    margin: 0;
+    margin: var(--m-workouts-training-details-paragraphs);
 }
 
 .exerciseName:global(.ant-typography)::first-letter {
@@ -72,7 +72,7 @@
 
 @media screen and (max-width: 575px) {
     .card:global(.ant-card) {
-        width: 288px;
-        left: -12px;
+        width: var(--w-workouts-training-details-card-mobile-l);
+        left: var(--workouts-training-details-card-left);
     }
 }

@@ -1,6 +1,6 @@
 .btn:global(.ant-btn) {
     width: fit-content;
-    padding: 10px 16px;
+    padding: var(--p-workouts-new-training-btn);
     font-size: var(--text-sm);
 }
 

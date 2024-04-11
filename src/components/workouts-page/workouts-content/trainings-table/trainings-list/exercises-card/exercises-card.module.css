@@ -9,11 +9,11 @@
 
 .card :global(.ant-card-body),
 .card :global(.ant-card-actions) {
-    padding: 0 12px;
+    padding: var(--p-workouts-exercises-card-body);
 }
 
 .titleWrapper {
-    padding: 18px 8px;
+    padding: var(--p-workouts-exercises-card-title-wrapper);
 }
 
 .title:global(.ant-typography) {
@@ -24,18 +24,18 @@
 .btn:global(.ant-btn) {
     width: fit-content;
     height: fit-content;
-    padding: 0;
+    padding: var(--p-workouts-exercises-card-btn);
 }
 
 .addExerciseBtn:global(.ant-btn) {
-    min-height: 32px;
+    min-height: var(--h-32);
     height: auto;
     white-space: wrap;
 }
 
 .exercisesWrapper {
-    min-height: 130px;
-    padding: 16px 0;
+    min-height: var(--mh-workouts-exercises-card-exercises-wrapper);
+    padding: var(--p-workouts-exercises-card-exercises-wrapper);
 }
 
 .exercise:global(.ant-typography) {

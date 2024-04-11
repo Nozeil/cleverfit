@@ -14,10 +14,10 @@
 :global(.ant-pagination.ant-pagination-mini .ant-pagination-item),
 :global(.ant-pagination.ant-pagination-mini .ant-pagination-prev),
 :global(.ant-pagination.ant-pagination-mini .ant-pagination-next) {
-    min-width: 24px;
-    height: 20px;
-    margin: 0;
-    line-height: 18px;
+    min-width: var(--mw-pagination-item);
+    height: var(--h-pagination-item);
+    margin: var(--m-pagination-item);
+    line-height: var(--line-height-18);
 }
 
 :global(.ant-pagination-item a) {

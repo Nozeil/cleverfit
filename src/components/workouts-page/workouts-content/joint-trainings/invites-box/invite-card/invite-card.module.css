@@ -1,6 +1,6 @@
 .card {
-    padding: 20px;
-    border-radius: 2px 16px 16px 16px;
+    padding: var(--p-workouts-invite-card);
+    border-radius: var(--rounded-2-16-16-16);
     box-shadow: var(--shadow);
 }
 
@@ -10,7 +10,7 @@
 
 .user {
     flex-shrink: 0;
-    width: 160px;
+    width: var(--w-workouts-invite-user);
     text-align: center;
 }
 
@@ -22,19 +22,19 @@
 }
 
 .message:global(.ant-typography) {
-    margin-bottom: 4px;
+    margin-bottom: var(--mb-workouts-invite-message);
     font-size: var(--text-base);
     font-weight: var(--font-bold);
     color: var(--primary-light-9);
 }
 
 .btn:global(.ant-btn) {
-    height: 40px;
+    height: var(--h-40);
 }
 
 @media screen and (max-width: 991px) {
     .card {
-        padding-left: 12px;
+        padding-left: var(--pl-workouts-invite-card-laptop-l);
     }
 
     .user {
@@ -42,6 +42,6 @@
     }
 
     .textWrapper {
-        margin-bottom: 20px;
+        margin-bottom: var(--mb-workouts-invite-card-laptop-l);
     }
 }

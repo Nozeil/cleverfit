@@ -32,8 +32,8 @@
 }
 
 .badge:global(.ant-badge) :global(.ant-badge-count) {
-    width: 16px;
-    height: 16px;
+    width: var(--w-menu-item-badge-count);
+    height: var(--h-menu-item-badge-count);
     line-height: var(--line-height-16);
 }
 

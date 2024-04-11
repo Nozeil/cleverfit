@@ -1,5 +1,5 @@
 .box {
-    padding: 16px 24px 24px;
+    padding: var(--p-workouts-invites-box);
     box-shadow: var(--shadow);
 }
 
@@ -9,15 +9,15 @@
 
 .btn:global(.ant-btn) {
     width: fit-content;
-    padding: 0 8px;
+    padding: var(--p-workouts-invites-box-btn);
 }
 
 .btn:global(.ant-btn) :global(.anticon) + span {
-    margin-left: 12px;
+    margin-left: var(--ml-workouts-invites-box-btn-text);
 }
 
 @media screen and (max-width: 835px) {
     .box {
-        padding: 12px;
+        padding: var(--p-workouts-invites-box-laptop-l);
     }
 }

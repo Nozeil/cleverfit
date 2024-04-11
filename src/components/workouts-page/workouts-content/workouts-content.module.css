@@ -1,5 +1,5 @@
 .contentWrapper {
-    padding-bottom: 16px;
+    padding-bottom: var( --pb-workouts-content-wrapper);
 }
 
 .tabs:global(.ant-tabs) :global(.ant-tabs-nav) {
@@ -9,8 +9,8 @@
 .tabs:global(.ant-tabs) :global(.ant-tabs-nav-list) {
     flex-grow: 1;
     justify-content: space-between;
-    margin-right: 28px;
-    gap: 74px;
+    margin-right: var(--mr-workouts-tabs-nav-list);
+    gap: var(--gap-74);
 }
 
 .tabs :global(.ant-tabs-tab-btn) {
@@ -26,12 +26,12 @@
 }
 
 .badge:global(.ant-badge) {
-    margin-left: 4px;
+    margin-left: var(--ml-workouts-badge);
 }
 
 .badge:global(.ant-badge) :global(.ant-badge-count) {
-    width: 24px;
-    height: 16px;
+    width: var(--w-workouts-badge-count);
+    height: var(--h-workouts-badge-count);
     line-height: var(--line-height-16);
 }
 
@@ -57,6 +57,6 @@
     }
 
     .tabs:global(.ant-tabs) :global(.ant-tabs-nav-list) {
-        gap: 8px;
+        gap: var(--gap-8);
     }
 }

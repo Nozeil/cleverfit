@@ -1,9 +1,9 @@
 .wrapper {
-    padding-top: 144px;
+    padding-top: var(--pt-workouts-empty-trainings-wrapper);
 }
 
 .text:global(.ant-typography) {
-    padding: 56px 130px;
+    padding: var(--p-workouts-empty-trainings-text);
     font-size: var(--text-2xl);
     font-weight: var(--font-medium);
     text-align: center;
@@ -11,22 +11,22 @@
 
 @media screen and (max-width: 835px) {
     .wrapper {
-        padding-top: 177px;
+        padding-top: var(--pt-workouts-empty-trainings-wrapper-tablet-l);
     }
 
     .text:global(.ant-typography) {
-        margin-bottom: 32px;
+        margin-bottom: var(--mb-workouts-empty-trainings-text);
     }
 }
 
 @media screen and (max-width: 450px) {
     .wrapper {
-        padding: 75px 12px 0;
+        padding: var(--p-workouts-empty-trainings-wrapper-mobile);
     }
 
     .text:global(.ant-typography) {
-        margin-bottom: 75px;
-        padding-right: 6px;
-        padding-left: 6px;
+        padding-right: var(--px-workouts-empty-trainings-text-mobile);
+        padding-left: var(--px-workouts-empty-trainings-text-mobile);
+        margin-bottom: var(--mb-workouts-empty-trainings-text-mobile);
     }
 }

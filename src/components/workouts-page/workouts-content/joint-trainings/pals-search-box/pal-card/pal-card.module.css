@@ -1,10 +1,9 @@
-.card,
-.cardRejected {
-    flex-basis: 234px;
+.card {
+    flex-basis: var(--mw-workouts-pal-card);
     flex-shrink: 0;
-    max-width: 234px;
-    height: 194px;
-    padding: 16px;
+    max-width: var(--mw-workouts-pal-card);
+    height: var(--h-workouts-pal-card);
+    padding: var(--p-workouts-pal-card);
 }
 
 .card {
@@ -16,17 +15,13 @@
 }
 
 .btn:global(.ant-btn) {
-    height: 28px;
-    margin-top: 11px;
+    height: var(--h-28);
+    margin-top: var(--mt-workouts-pal-card-btn);
 }
 
 @media screen and (max-width: 480px) {
-    .card,
-    .cardRejected {
+    .card {
         flex-basis: 100%;
-        flex-shrink: 0;
-        max-width: 312px;
-        height: 194px;
-        padding: 16px;
+        max-width: var(--mw-workouts-pal-card-mobile);
     }
 }

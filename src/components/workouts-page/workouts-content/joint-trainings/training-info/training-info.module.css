@@ -10,6 +10,6 @@
 
 .value:global(.ant-typography),
 .label:global(.ant-typography) {
-    height: 16px;
+    height: var(--h-16);
     white-space: nowrap;
 }

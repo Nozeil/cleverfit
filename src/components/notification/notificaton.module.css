@@ -1,5 +1,5 @@
 .space:global(.ant-space) {
-    padding: 16px 24px;
+    padding: var(--p-notification);
 }
 
 .title:global(.ant-typography) {
@@ -7,6 +7,6 @@
 }
 
 .btn:global(.ant-btn) {
-    height: 28px;
-    margin-top: 8px;
+    height: var(--h-28);
+    margin-top: var(--mt-notification-item);
 }

@@ -1,20 +1,20 @@
 .table {
-    max-width: 555px;
-    margin-bottom: 30px;
+    max-width: var(--mw-workouts-trainings-table);
+    margin-bottom: var(--mb-workouts-trainings-table);
 }
 
 @media screen and (max-width: 835px) {
     .table {
-        max-width: 530px;
+        max-width: var(--mw-workouts-trainings-table-tablet-l);
     }
 }
 
 @media screen and (max-width: 450px) {
     .wrapper {
-        padding: 0 12px;
+        padding: var(--p-workouts-trainings-table-wrapper-mobile);
     }
 
     .table {
-        margin-bottom: 0;
+        margin-bottom: var(--mb-workouts-trainings-table-mobile);
     }
 }

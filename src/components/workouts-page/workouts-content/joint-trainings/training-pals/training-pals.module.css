@@ -1,9 +1,9 @@
 .wrapper {
-    margin-top: 14px;
+    margin-top: var(--mt-workouts-training-pals-wrapper);
 }
 
 .title:global(.ant-typography) {
-    margin: 0;
+    margin: var(--m-workouts-training-pals-title);
     font-weight: var(--font-medium);
 }
 

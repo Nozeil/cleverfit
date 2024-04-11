@@ -1,18 +1,18 @@
 .list {
-    padding: 0;
-    margin: 0;
+    padding: var(--p-workouts-trainings-list);
+    margin: var(--m-workouts-trainings-list);
 }
 
 .listItem {
     position: relative;
-    height: 32px;
+    height: var(--h-32);
 }
 
 .editBtn:global(.ant-btn),
 .btn:global(.ant-btn) {
     width: fit-content;
     height: fit-content;
-    padding: 0;
+    padding: var(--p-workouts-trainings-list-btn);
 }
 
 .listItem .period .editBtn:global(.ant-btn:hover),
@@ -32,15 +32,18 @@
 
 .training {
     position: relative;
-    flex-basis: 259px;
+    flex-basis: var(--w-workouts-trainings-table-training-text);
 }
 
 .period {
-    flex-basis: calc(555px - 259px - 12px);
+    flex-basis: calc(
+        var(--mw-workouts-trainings-table) - var(--w-workouts-trainings-table-training-text) -
+            var(--gap-12)
+    );
 }
 
 .periodText {
-    width: 240px;
+    width: var(--w-workouts-trainings-table-sort-btn);
 }
 
 .trainingName {
@@ -64,12 +67,12 @@
 
 @media screen and (max-width: 450px) {
     .training {
-        min-width: 114px;
+        min-width: var(--mw-workouts-trainings-table-trainings-text-mobile);
     }
 
     .period {
         flex-shrink: 0;
-        flex-basis: 188px;
+        flex-basis: var(--w-workouts-trainings-table-sort-btn-mobile);
     }
 
     .periodText {
