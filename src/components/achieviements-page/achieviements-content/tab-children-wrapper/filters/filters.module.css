@@ -1,0 +1,35 @@
+.filters {
+    padding: var(--p-achieviements-filters);
+}
+
+.text:global(.ant-typography) {
+    flex-shrink: 0;
+}
+
+.filtersGroup {
+    flex-wrap: wrap;
+}
+
+.tag:global(.ant-tag) {
+    margin: var(--m-achieviements-tag);
+    line-height: var(--line-height-16);
+    cursor: pointer;
+}
+
+.activeFilter:global(.ant-tag) {
+    border-color: var(--primary-light-3);
+    color: var(--primary-light-6);
+    background-color: var(--primary-light-1);
+}
+
+@media screen and (max-width: 991px) {
+    .filters {
+        padding: var(--p-achieviements-filters-tablet-l);
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .filters {
+        padding-top: var(--pt-achieviements-filters-mobile-l);
+    }
+}

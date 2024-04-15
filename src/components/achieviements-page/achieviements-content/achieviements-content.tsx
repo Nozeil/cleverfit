@@ -1,6 +1,8 @@
 import { ContentWrapper } from '@components/content-wrapper/content-wrapper';
 import { PageContentTabs } from '@components/page-content-tabs/page-content-tabs';
 
+import { TabChildrenWrapper } from './tab-children-wrapper/tab-children-wrapper';
+
 import styles from './achieviements-content.module.css';
 
 export const AchievementsContent = () => {
@@ -8,12 +10,12 @@ export const AchievementsContent = () => {
         {
             label: 'За неделю',
             key: 'week',
-            children: 'week',
+            children: <TabChildrenWrapper>week</TabChildrenWrapper>,
         },
         {
             label: 'За месяц',
             key: 'month',
-            children: 'month',
+            children: <TabChildrenWrapper>month</TabChildrenWrapper>,
         },
         { label: 'За все время (PRO)', key: 'all', disabled: true },
     ];

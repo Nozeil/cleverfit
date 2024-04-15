@@ -180,4 +180,8 @@
     --p-workouts-exercises-card-title-wrapper: 18px 8px;
     --p-workouts-exercises-card-btn: 0;
     --p-workouts-exercises-card-exercises-wrapper: var(--p-16) 0;
+    --p-achieviements-filters: var(--p-16) 0;
+    --p-achieviements-filters-tablet-l: 4px 0;
+    --pt-achieviements-filters-mobile-l: 8px;
+    
 }
