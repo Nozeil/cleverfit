@@ -1,0 +1,15 @@
+@media screen and (max-width: 835px) {
+    .tabs:global(.ant-tabs) :global(.ant-tabs-nav-list) {
+        margin-right: var(--mr-achieviements-page-tabs-tablet-l);
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .contentWrapper {
+        padding: var(--p-page-content-content-wrapper-mobile-l);
+    }
+
+    .tabs:global(.ant-tabs) :global(.ant-tabs-nav-list) {
+        margin-right: var(--mr-achieviements-page-tabs-mobile-l);
+    }
+}

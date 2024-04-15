@@ -3,6 +3,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import { ContentWrapper } from '@components/content-wrapper/content-wrapper';
 import { Flex } from '@components/flex/flex';
 import { Notification } from '@components/notification/notification';
+import { PageContentTabs } from '@components/page-content-tabs/page-content-tabs';
 import { SidePanel } from '@components/side-panel/side-panel';
 import { SidePanelBody } from '@components/side-panel-body/side-panel-body';
 import { SidePanelHeadDependentFromFormMode } from '@components/side-panel-head-dependent-from-form-mode';
@@ -15,7 +16,7 @@ import { exercisesFormModeSelector } from '@redux/slices/training-modal-and-exer
 import { useGetInvitesQuery } from '@services/endpoints/invite';
 import { useGetTrainingQuery } from '@services/endpoints/training';
 import type { ExercisesFormValues } from '@typings/index';
-import { Badge, Form, Tabs } from 'antd';
+import { Badge, Form } from 'antd';
 
 import { EmptyTrainings } from './empty-trainings/empty-trainings';
 import { JointTrainings } from './joint-trainings/joint-trainings';
@@ -113,12 +114,7 @@ export const WorkoutsContent = () => {
 
             <ContentWrapper className={styles.contentWrapper}>
                 <SuccessAlert message={alertMessage} />
-                <Tabs
-                    className={styles.tabs}
-                    items={tabsItems}
-                    destroyInactiveTabPane={true}
-                    moreIcon={null}
-                />
+                <PageContentTabs items={tabsItems} />
             </ContentWrapper>
         </Fragment>
     );

@@ -65,7 +65,7 @@ a {
 }
 
 :global(.ant-btn-link),
-:global(.ant-tabs-tab),
+:global(.ant-tabs-tab:not(.ant-tabs-tab-disabled)),
 a {
     &:hover,
     &:focus {

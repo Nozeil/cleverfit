@@ -93,12 +93,12 @@
     --mb-profile-upload-text: 0;
     --ml-profile-upload-btn-text-mobile-l: 10px;
     --mb-workouts-header-row: 6px;
-    --m-workouts-tabs-nav: 12px 14px 36px;
-    --m-workouts-tabs-nav-tablet-l: 4px 14px 29px;
-    --m-workouts-tabs-nav-mobile-l: 4px 0 25px 2px;
+    --m-page-content-tabs-nav: 12px 14px 36px;
+    --m-page-content-tabs-nav-tablet-l: 4px 14px 29px;
+    --m-page-content-tabs-nav-mobile-l: 4px 0 25px 2px;
     --m-pagination-item: 0;
     --mt-notification-item: 8px;
-    --mr-workouts-tabs-nav-list: 28px;
+    --mr-page-content-tabs-nav-list: 28px;
     --ml-workouts-badge: 4px;
     --mb-workouts-empty-trainings-text: 32px;
     --mb-workouts-empty-trainings-text-mobile: 75px;
@@ -122,4 +122,6 @@
     --m-workouts-trainings-list: 0;
     --mb-achieviements-header-content-tablet-l: 6px;
     --mb-achieviements-header-content-mobile-l: 0;
+    --mr-achieviements-page-tabs-tablet-l: 0;
+    --mr-achieviements-page-tabs-mobile-l: 10px;
 }
