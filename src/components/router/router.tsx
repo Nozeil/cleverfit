@@ -23,6 +23,7 @@ import { NonAuthRoute } from '@components/non-auth-route';
 import { PageLayout } from '@components/page-layout/page-layout';
 import { COMPOUND_ROUTES, ROUTES } from '@constants/routes';
 import { useIsLoading } from '@hooks/use-is-loading';
+import { AchievementsPage } from '@pages/achievements-page';
 import { AuthPage } from '@pages/auth/auth';
 import { CalendarPage } from '@pages/calendar-page/calendar-page';
 import { FeedbacksPage } from '@pages/feedbacks-page';
@@ -158,6 +159,16 @@ const routes = (
                 }
             >
                 <Route index={true} element={<ProfilePage />} />
+            </Route>
+            <Route
+                path={ROUTES.ACHIEVEMENTS}
+                element={
+                    <AuthRoute>
+                        <PageLayout />
+                    </AuthRoute>
+                }
+            >
+                <Route index={true} element={<AchievementsPage />} />
             </Route>
             <Route
                 path={ROUTES.SETTINGS}

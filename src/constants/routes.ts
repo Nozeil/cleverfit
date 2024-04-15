@@ -5,6 +5,7 @@ export const ROUTES = {
     FEEDBACKS: '/feedbacks',
     CALENDAR: '/calendar',
     PROFILE: '/profile',
+    ACHIEVEMENTS: '/achievements',
     TRAINING: '/training',
     SETTINGS: '/settings',
     NOT_FOUND: '/404',
