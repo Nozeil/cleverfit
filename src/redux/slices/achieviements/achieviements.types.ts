@@ -7,6 +7,8 @@ type TrainingPerPeriodItem = {
     dayOfTheWeek: number;
     dayOfTheWeekReadable: string;
     load: number;
+    approaches: number;
+    replays: number;
 };
 
 export type TrainingsPerPeriod = TrainingPerPeriodItem[];

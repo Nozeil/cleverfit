@@ -5,6 +5,7 @@ import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { setTrainingsPerWeek } from '@redux/slices/achieviements/achieviements';
 
 import { useTrainingsPerPeriod } from './hooks/hooks';
+import { ExerciseStatistics } from './per-week/exercise-statistics/exercise-statistics';
 import { LoadBlock } from './per-week/load-block/load-block';
 import { TabChildrenWrapper } from './tab-children-wrapper/tab-children-wrapper';
 
@@ -25,6 +26,7 @@ export const AchievementsContent = () => {
             children: (
                 <TabChildrenWrapper>
                     <LoadBlock />
+                    <ExerciseStatistics />
                 </TabChildrenWrapper>
             ),
         },

@@ -485,6 +485,8 @@ const createEmptyDay = (momentDate: moment.Moment) => {
         dayOfTheWeek,
         dayOfTheWeekReadable,
         load: 0,
+        replays: 0,
+        approaches: 0,
     };
 };
 
@@ -536,29 +538,44 @@ export const useTrainingsPerPeriod = (daysAmount: number) => {
         return trainings;
     }, [activeFilter.key, activeFilter.name, endDate, period, data]);
 
-    const trainingsWithDateAndLoad = useMemo(
+    const trainingsWithSummarizedExercises = useMemo(
         () =>
             dataPerPeriod.map(({ date, exercises }) => {
                 const { iso } = formatDate(date);
 
-                const load = exercises
-                    .map(({ weight, approaches, replays }) =>
-                        calcLoadPerExercise(weight, approaches, replays),
-                    )
-                    .reduce((acc, curr) => acc + curr);
+                const summarizedExercises = exercises
+                    .map(({ weight, approaches, replays }) => ({
+                        load: calcLoadPerExercise(weight, approaches, replays),
+                        approaches,
+                        replays,
+                    }))
+                    .reduce((acc, curr) => ({
+                        load: acc.load + curr.load,
+                        approaches: acc.approaches + curr.approaches,
+                        replays: acc.replays + curr.replays,
+                    }));
 
                 return {
                     date: iso,
-                    load,
+                    summarizedExercises,
                 };
             }),
         [dataPerPeriod],
     );
 
-    const aggregatedTrainingsLoads = useMemo(
+    const aggregatedTrainings = useMemo(
         () =>
-            trainingsWithDateAndLoad
-                .reduce<Array<{ date: string; load: number }>>((acc, curr) => {
+            trainingsWithSummarizedExercises
+                .reduce<
+                    Array<{
+                        date: string;
+                        summarizedExercises: {
+                            load: number;
+                            approaches: number;
+                            replays: number;
+                        };
+                    }>
+                >((acc, curr) => {
                     const trainingIndex = acc.findIndex(
                         (loadPerTraining) => loadPerTraining.date === curr.date,
                     );
@@ -569,31 +586,46 @@ export const useTrainingsPerPeriod = (daysAmount: number) => {
                         const training = acc[trainingIndex];
 
                         acc[trainingIndex] = {
-                            ...training,
-                            load: training.load + curr.load,
+                            date: training.date,
+                            summarizedExercises: {
+                                load:
+                                    training.summarizedExercises.load +
+                                    curr.summarizedExercises.load,
+                                approaches:
+                                    training.summarizedExercises.approaches +
+                                    curr.summarizedExercises.approaches,
+                                replays:
+                                    training.summarizedExercises.replays +
+                                    curr.summarizedExercises.replays,
+                            },
                         };
                     }
 
                     return acc;
                 }, [])
                 .sort((a, b) => a.date.localeCompare(b.date)),
-        [trainingsWithDateAndLoad],
+        [trainingsWithSummarizedExercises],
     );
 
     const trainingsPerPeriod = useMemo(
         () =>
             days.map((day) => {
-                const trainingIndex = aggregatedTrainingsLoads.findIndex(
+                const trainingIndex = aggregatedTrainings.findIndex(
                     (training) => training.date === day.date,
                 );
 
                 if (trainingIndex > -1) {
-                    return { ...day, load: aggregatedTrainingsLoads[trainingIndex].load };
+                    const { summarizedExercises } = aggregatedTrainings[trainingIndex];
+
+                    return {
+                        ...day,
+                        ...summarizedExercises,
+                    };
                 }
 
                 return day;
             }),
-        [days, aggregatedTrainingsLoads],
+        [days, aggregatedTrainings],
     );
 
     return trainingsPerPeriod;
