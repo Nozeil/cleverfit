@@ -484,6 +484,8 @@ const createEmptyDay = (momentDate: moment.Moment) => {
         dm,
         dayOfTheWeek,
         dayOfTheWeekReadable,
+        trainingNames: [],
+        exerciseNames: [],
         load: 0,
         replays: 0,
         approaches: 0,
@@ -540,16 +542,18 @@ export const useTrainingsPerPeriod = (daysAmount: number) => {
 
     const trainingsWithSummarizedExercises = useMemo(
         () =>
-            dataPerPeriod.map(({ date, exercises }) => {
+            dataPerPeriod.map(({ date, name, exercises }) => {
                 const { iso } = formatDate(date);
 
                 const summarizedExercises = exercises
-                    .map(({ weight, approaches, replays }) => ({
+                    .map(({ name: exerciseName, weight, approaches, replays }) => ({
+                        names: [exerciseName],
                         load: calcLoadPerExercise(weight, approaches, replays),
                         approaches,
                         replays,
                     }))
                     .reduce((acc, curr) => ({
+                        names: [...acc.names, ...curr.names],
                         load: acc.load + curr.load,
                         approaches: acc.approaches + curr.approaches,
                         replays: acc.replays + curr.replays,
@@ -557,6 +561,7 @@ export const useTrainingsPerPeriod = (daysAmount: number) => {
 
                 return {
                     date: iso,
+                    trainingNames: [name],
                     summarizedExercises,
                 };
             }),
@@ -569,7 +574,9 @@ export const useTrainingsPerPeriod = (daysAmount: number) => {
                 .reduce<
                     Array<{
                         date: string;
+                        trainingNames: string[];
                         summarizedExercises: {
+                            names: string[];
                             load: number;
                             approaches: number;
                             replays: number;
@@ -587,7 +594,12 @@ export const useTrainingsPerPeriod = (daysAmount: number) => {
 
                         acc[trainingIndex] = {
                             date: training.date,
+                            trainingNames: [...training.trainingNames, ...curr.trainingNames],
                             summarizedExercises: {
+                                names: [
+                                    ...training.summarizedExercises.names,
+                                    ...curr.summarizedExercises.names,
+                                ],
                                 load:
                                     training.summarizedExercises.load +
                                     curr.summarizedExercises.load,
@@ -615,11 +627,15 @@ export const useTrainingsPerPeriod = (daysAmount: number) => {
                 );
 
                 if (trainingIndex > -1) {
-                    const { summarizedExercises } = aggregatedTrainings[trainingIndex];
+                    const { summarizedExercises, trainingNames } =
+                        aggregatedTrainings[trainingIndex];
+                    const { names: exerciseNames, ...exercises } = summarizedExercises;
 
                     return {
                         ...day,
-                        ...summarizedExercises,
+                        trainingNames,
+                        exerciseNames,
+                        ...exercises,
                     };
                 }
 

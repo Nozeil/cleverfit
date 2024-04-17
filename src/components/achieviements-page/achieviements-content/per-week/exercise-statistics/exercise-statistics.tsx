@@ -69,7 +69,7 @@ export const ExerciseStatistics = () => {
                     className={styles.card}
                     as='li'
                     direction={{ sm: 'column' }}
-                    justify={{xs: 'justifyBetween'}}
+                    justify={{ xs: 'justifyBetween' }}
                     align='alignCenter'
                     gap='gap4'
                 >

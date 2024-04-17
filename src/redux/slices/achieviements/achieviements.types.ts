@@ -6,6 +6,8 @@ type TrainingPerPeriodItem = {
     dm: string;
     dayOfTheWeek: number;
     dayOfTheWeekReadable: string;
+    trainingNames: string[];
+    exerciseNames: string[];
     load: number;
     approaches: number;
     replays: number;

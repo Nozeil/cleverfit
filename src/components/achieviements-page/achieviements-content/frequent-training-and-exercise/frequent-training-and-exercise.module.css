@@ -1,0 +1,33 @@
+.list {
+    padding: 12px;
+    margin: 24px 0;
+}
+
+.label:global(.ant-typography) {
+    flex-shrink: 0;
+    width: 188px;
+    white-space: pre-wrap;
+    color: var(--character-light-secondary-45);
+}
+
+.mostFrequentValue:global(.ant-typography) {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-medium);
+}
+
+@media screen and (max-width: 835px) {
+    .list {
+        max-width: 320px;
+        padding: 12px 0;
+        margin: 0;
+    }
+
+    .label:global(.ant-typography) {
+        width: 155px;
+    }
+
+    .mostFrequentValue:global(.ant-typography) {
+        font-size: var(--text-xl);
+        font-weight: var(--font-medium);
+    }
+}

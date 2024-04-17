@@ -4,6 +4,7 @@ import { PageContentTabs } from '@components/page-content-tabs/page-content-tabs
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { setTrainingsPerWeek } from '@redux/slices/achieviements/achieviements';
 
+import { FrequentTrainingAndExercise } from './frequent-training-and-exercise/frequent-training-and-exercise';
 import { useTrainingsPerPeriod } from './hooks/hooks';
 import { ExerciseStatistics } from './per-week/exercise-statistics/exercise-statistics';
 import { LoadBlock } from './per-week/load-block/load-block';
@@ -27,6 +28,7 @@ export const AchievementsContent = () => {
                 <TabChildrenWrapper>
                     <LoadBlock />
                     <ExerciseStatistics />
+                    <FrequentTrainingAndExercise />
                 </TabChildrenWrapper>
             ),
         },
