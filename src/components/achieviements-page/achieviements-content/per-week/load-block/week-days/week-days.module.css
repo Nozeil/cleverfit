@@ -1,0 +1,40 @@
+.dayOfTheWeekReadable:global(.ant-typography) {
+    width: 92px;
+    color: var(--character-light-secondary-45);
+}
+
+.badge :global(.ant-badge-status-text) {
+    font-size: var(--text-xs);
+}
+
+.badge:global(.ant-badge),
+.badge:global(.ant-badge) :global(.ant-badge-count) {
+    min-width: 16px;
+    width: 16px;
+    height: 16px;
+    line-height: var(--line-height-16);
+}
+
+.badge:global(.ant-badge) :global(.ant-badge-count) {
+    padding: 0;
+    background-color: var(--primary-light-6);
+}
+
+.badgeEmpty:global(.ant-badge) :global(.ant-badge-count) {
+    color: var(--primary-light-6);
+    background-color: var(--primary-light-1);
+}
+
+.load:global(.ant-typography) {
+    font-weight: var(--font-bold);
+}
+
+.loadListItem {
+    padding: 6px 0;
+}
+
+@media screen and (min-width: 1200px) {
+    .loadPerDayText:global(.ant-typography) {
+        max-width: 125px;
+    }
+}

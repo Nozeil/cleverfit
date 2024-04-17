@@ -94,7 +94,7 @@ export type TrainingResponse = NewTraining & {
 
 export type GetTrainingResponse = TrainingResponse[];
 
-type TrainingListItem = {
+export type TrainingListItem = {
     name: string;
     key: string;
 };

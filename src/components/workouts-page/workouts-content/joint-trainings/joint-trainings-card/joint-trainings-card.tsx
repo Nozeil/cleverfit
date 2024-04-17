@@ -18,6 +18,7 @@ import {
     useLazyGetUserJointTrainingListQuery,
 } from '@services/endpoints/catalogs';
 import { useGetTrainingQuery } from '@services/endpoints/training';
+import { calcLoadPerExercise } from '@utils/utils';
 import { Button, Card, Typography } from 'antd';
 
 import styles from './joint-trainings-card.module.css';
@@ -34,7 +35,7 @@ export const JointTrainingsCard = () => {
         const training = trainings?.reduce(
             (prevTraining, { name, exercises }) => {
                 const maxLoad = exercises.reduce((prevLoad, { weight, approaches, replays }) => {
-                    const load = weight * approaches * replays;
+                    const load = calcLoadPerExercise(weight, approaches, replays);
 
                     return load > prevLoad ? load : prevLoad;
                 }, 0);

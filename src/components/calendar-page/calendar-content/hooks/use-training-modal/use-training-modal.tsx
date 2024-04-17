@@ -1,5 +1,5 @@
 import { type MouseEventHandler, useEffect, useRef, useState } from 'react';
-import { DATE_FORMATS } from '@constants/index';
+import { DATE_FORMATS, MOMENT_SET } from '@constants/index';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import {
     closeTrainingModal,
@@ -47,7 +47,7 @@ export const useTrainingModal = (breakpoint: boolean | undefined) => {
     };
 
     const dateCellRender = (date: moment.Moment) => {
-        const iso = date.set({ hour: 0, minute: 0, second: 0, millisecond: 0 }).toISOString();
+        const iso = date.set(MOMENT_SET).toISOString();
 
         const onClick: MouseEventHandler<HTMLButtonElement> = (e) => {
             disablePanelChange(e, date, breakpoint);

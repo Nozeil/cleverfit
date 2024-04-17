@@ -6,11 +6,10 @@ import {
     trainingModalAndExercisesFormSelector,
 } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { useGetTrainingQuery } from '@services/endpoints/training';
+import { formatDate } from '@utils/utils';
 import { type DatePickerProps, DatePicker, Form } from 'antd';
 import classNames from 'classnames/bind';
 import moment from 'moment';
-
-import { formatExerciseDate } from '../../workouts-content.utils';
 
 import styles from './training-info-form.module.css';
 
@@ -31,7 +30,7 @@ export const TrainingDatePicker = () => {
         exercisesFormMode !== EDIT && current && current < moment().endOf('day');
 
     const dateRender: DatePickerProps['dateRender'] = (current) => {
-        const { iso } = formatExerciseDate(current);
+        const { iso } = formatDate(current);
 
         const isExercises = data?.some(({ date }) => date === iso);
 
@@ -46,7 +45,7 @@ export const TrainingDatePicker = () => {
 
     const onChange: DatePickerProps['onChange'] = (date) => {
         if (date) {
-            const exerciseDate = formatExerciseDate(date);
+            const exerciseDate = formatDate(date);
 
             dispatch(setExerciseDate(exerciseDate));
 

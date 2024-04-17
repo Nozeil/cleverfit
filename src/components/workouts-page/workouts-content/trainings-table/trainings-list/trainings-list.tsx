@@ -9,8 +9,6 @@ import { ExercisesCard } from './exercises-card/exercises-card';
 import { TrainingListItem } from './training-list-item';
 import { ContainersRefCurrent } from './trainings-list.type';
 
-import styles from './trainings-list.module.css';
-
 const { useBreakpoint } = Grid;
 
 export const TrainingsList = () => {
@@ -41,7 +39,7 @@ export const TrainingsList = () => {
     return (
         <Fragment>
             {isExerciseCard && container && createPortal(<ExercisesCard />, container)}
-            <Flex className={styles.list} as='ul' direction='column' gap='gap5'>
+            <Flex as='ul' direction='column' gap='gap5'>
                 {paginatedTrainings?.map(
                     ({ _id, name, date, parameters, exercises, isImplementation }, index) => (
                         <TrainingListItem

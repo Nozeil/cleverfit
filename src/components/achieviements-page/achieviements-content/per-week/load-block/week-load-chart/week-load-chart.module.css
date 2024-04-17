@@ -1,0 +1,5 @@
+@media screen and (max-width: 830px) and (min-width: 768px) {
+    .chart canvas {
+        width: 460px !important;
+    }
+}

@@ -14,6 +14,7 @@
     --rounded-bottom-6: 0 0 6px 6px;
     --rounded-right-8: 8px 0 0 8px;
     --rounded-8: 8px;
+    --rounded-2: 2px;
     --rounded-2-16-16-16: 2px 16px 16px 16px;
     --border-1: 1px;
     --border-none: 0;
@@ -36,6 +37,7 @@
     --gap-26: 26px;
     --gap-32: 32px;
     --gap-74: 74px;
+    --gap-150: 150px;
     --header-btn-w-tablet: 32px;
     --header-btn-h-tablet: var(--header-btn-w-tablet);
     --loader-w: 150px;

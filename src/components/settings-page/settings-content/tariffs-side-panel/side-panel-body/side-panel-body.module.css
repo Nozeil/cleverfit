@@ -35,8 +35,6 @@
 
 .comparisonList,
 .tariffSelectionList {
-    margin: var(--m-tariffs-side-panel-list);
-    padding: var(--p-tariffs-side-panel-list);
     padding-right: var(--pr-tariffs-side-panel-list);
 }
 

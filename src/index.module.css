@@ -14,6 +14,7 @@
 @import url('./styles/components/radio-inputs.module.css');
 @import url('./styles/components/tabs.module.css');
 @import url('./styles/components/pagination.module.css');
+@import url('./styles/components/g2-tooltip.module.css');
 
 :global(.ant-breadcrumb),
 :global(.ant-breadcrumb) li,

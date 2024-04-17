@@ -4,6 +4,7 @@ import { Flex } from '@components/flex/flex';
 import { TrainingBadge } from '@components/training-badge';
 import { DATE_FORMATS } from '@constants/index';
 import { Invite } from '@models/models';
+import { capitalizeFirstLetter } from '@utils/utils';
 import { Button, Card, Typography } from 'antd';
 import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
@@ -23,7 +24,7 @@ export const TrainingDetails = ({ date, exercises, name }: TrainingDetailsProps)
             .diff(moment({ hours: 0 }), 'days');
         const humanizedDays = moment.duration(days, 'days').humanize(true);
 
-        return humanizedDays[0].toUpperCase() + humanizedDays.slice(1);
+        return capitalizeFirstLetter(humanizedDays);
     }, [date]);
 
     const onShowTrainingDetails = () => setIsTrainingDetails((prevDetails) => !prevDetails);

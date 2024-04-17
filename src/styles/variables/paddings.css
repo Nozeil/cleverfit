@@ -127,7 +127,6 @@
     --p-settings-content-modal-success-result-extra-mobile: 0 var(--p-16);
     --pt-settings-content-side-panel-body: 48px;
     --p-tariff-label: 2px 0;
-    --p-tariffs-side-panel-list: 0;
     --pr-tariffs-side-panel-list: var(--p-16);
     --pt-settings-content-side-panel-body-mobile-l: var(--p-24);
     --p-tariff-selection-form-radio-span: 0;
@@ -174,7 +173,6 @@
     --p-workouts-trainings-table-wrapper-mobile: 0 12px;
     --p-workouts-trainings-table-sort: 7px 8px;
     --py-workouts-trainings-table-training-text-mobile: 4px;
-    --p-workouts-trainings-list: 0;
     --p-workouts-trainings-list-btn: 0;
     --p-workouts-exercises-card-body: 0 12px;
     --p-workouts-exercises-card-title-wrapper: 18px 8px;
@@ -183,5 +181,4 @@
     --p-achieviements-filters: var(--p-16) 0;
     --p-achieviements-filters-tablet-l: 4px 0;
     --pt-achieviements-filters-mobile-l: 8px;
-    
 }
