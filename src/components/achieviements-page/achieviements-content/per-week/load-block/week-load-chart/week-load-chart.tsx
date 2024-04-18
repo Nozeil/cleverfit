@@ -1,7 +1,8 @@
 import { type ColumnConfig, Column } from '@ant-design/charts';
+import { Flex } from '@components/flex/flex';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingsPerWeekSelector } from '@redux/slices/achieviements/achieviements';
-import { Grid } from 'antd';
+import { Grid, Typography } from 'antd';
 
 import styles from './week-load-chart.module.css';
 
@@ -22,11 +23,11 @@ const formatter = (value: number) => `${value} кг`;
 
 export const WeekLoadChart = () => {
     const trainingsPerLastWeek = useAppSelector(trainingsPerWeekSelector);
-    const { sm } = useBreakpoint();
+    const { md } = useBreakpoint();
 
-    const configParams = sm
+    const configParams = md
         ? {
-              width: 520,
+              width: 518,
               height: 318,
               sizeField: 30,
               insetLeft: -18,
@@ -46,14 +47,14 @@ export const WeekLoadChart = () => {
         tick: false,
         labelAutoRotate: false,
         labelFontFamily: 'Inter, sans-serif',
-        labelFontSize: sm ? undefined : 7,
+        labelFontSize: md ? undefined : 7,
     };
 
     const config: ColumnConfig = {
         className: styles.chart,
         data: trainingsPerLastWeek,
         xField: 'dm',
-        yField: 'load',
+        yField: 'averageLoad',
         colorField: '#85a5ff',
         insetTop: 8,
         ...configParams,
@@ -62,7 +63,7 @@ export const WeekLoadChart = () => {
             x: {
                 line: true,
                 lineLineDash: lineDash,
-                labelSpacing: sm ? 16 : 12,
+                labelSpacing: md ? 16 : 12,
                 ...axisParams,
             },
             y: {
@@ -78,5 +79,10 @@ export const WeekLoadChart = () => {
         },
     };
 
-    return <Column {...config} />;
+    return (
+        <Flex className={styles.loadChartWrapper} direction='column' align='alignCenter'>
+            <Column {...config} />
+            <Typography.Text className={styles.text}>Нагрузка, кг</Typography.Text>
+        </Flex>
+    );
 };

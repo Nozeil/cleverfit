@@ -1,7 +1,7 @@
 import type { TrainingListItem } from '@models/models';
 import { PayloadAction } from '@reduxjs/toolkit';
 
-type TrainingPerPeriodItem = {
+export type TrainingPerPeriodItem = {
     date: string;
     dm: string;
     dayOfTheWeek: number;
@@ -9,6 +9,7 @@ type TrainingPerPeriodItem = {
     trainingNames: string[];
     exerciseNames: string[];
     load: number;
+    averageLoad: number;
     approaches: number;
     replays: number;
 };

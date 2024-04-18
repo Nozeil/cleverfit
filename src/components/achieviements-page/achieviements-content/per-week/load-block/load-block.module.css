@@ -1,22 +1,14 @@
-.loadChartWrapper {
-    padding: 16px 0;
-    border: var(--border-1) solid var(--character-light-dividers);
-    border-radius: var(--rounded-2);
-}
-
-@media screen and (max-width: 835px) {
-    .loadBlock {
-        margin-right: 10px;
-    }
-}
-
-@media screen and (max-width: 575px) {
-    .loadChartWrapper {
-        padding: 10px 0;
-    }
-
+@media screen and (min-width: 1200px) {
     .text:global(.ant-typography) {
-        margin-left: 30px;
-        font-size: 9px;
+        max-width: 125px;
     }
+}
+
+.badge:global(.ant-badge) :global(.ant-badge-count) {
+  background-color: var(--primary-light-6);
+}
+
+.badgeEmpty:global(.ant-badge) :global(.ant-badge-count) {
+  color: var(--primary-light-6);
+  background-color: var(--primary-light-1);
 }

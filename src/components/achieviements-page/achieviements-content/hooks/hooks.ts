@@ -487,6 +487,7 @@ const createEmptyDay = (momentDate: moment.Moment) => {
         trainingNames: [],
         exerciseNames: [],
         load: 0,
+        averageLoad: 0,
         replays: 0,
         approaches: 0,
     };
@@ -629,13 +630,16 @@ export const useTrainingsPerPeriod = (daysAmount: number) => {
                 if (trainingIndex > -1) {
                     const { summarizedExercises, trainingNames } =
                         aggregatedTrainings[trainingIndex];
-                    const { names: exerciseNames, ...exercises } = summarizedExercises;
+
+                    const { names: exerciseNames, load, ...exercises } = summarizedExercises;
 
                     return {
                         ...day,
                         trainingNames,
                         exerciseNames,
                         ...exercises,
+                        load,
+                        averageLoad: load ? Math.round(load / exerciseNames.length) : load,
                     };
                 }
 

@@ -1,5 +1,28 @@
+.loadChartWrapper {
+    padding: 16px 0;
+    border: var(--border-1) solid var(--character-light-dividers);
+    border-radius: var(--rounded-2);
+}
+
+@media screen and (max-width: 835px) {
+    .loadChartWrapper {
+        margin-right: 10px;
+    }
+}
+
 @media screen and (max-width: 830px) and (min-width: 768px) {
     .chart canvas {
         width: 460px !important;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .loadChartWrapper {
+        padding: 10px 0;
+    }
+
+    .text:global(.ant-typography) {
+        margin-left: 30px;
+        font-size: 9px;
     }
 }

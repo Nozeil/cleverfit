@@ -1,0 +1,3 @@
+.text:global(.ant-typography) {
+  max-width: 200px;
+}

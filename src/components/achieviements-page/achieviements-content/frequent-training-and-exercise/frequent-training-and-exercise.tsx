@@ -26,9 +26,7 @@ export const FrequentTrainingAndExercise = () => {
 
         const exercise = {
             label: `Самое частое
-упражнение
-силовой
-`,
+упражнение`,
             value: findMostFrequentWord(exercises).toLowerCase(),
         };
 

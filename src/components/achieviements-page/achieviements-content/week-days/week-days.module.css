@@ -1,3 +1,7 @@
+.wrapper {
+    width: 466px;
+}
+
 .dayOfTheWeekReadable:global(.ant-typography) {
     width: 92px;
     color: var(--character-light-secondary-45);
@@ -17,6 +21,9 @@
 
 .badge:global(.ant-badge) :global(.ant-badge-count) {
     padding: 0;
+}
+
+.badgeBg:global(.ant-badge) :global(.ant-badge-count) {
     background-color: var(--primary-light-6);
 }
 
@@ -31,10 +38,4 @@
 
 .loadListItem {
     padding: 6px 0;
-}
-
-@media screen and (min-width: 1200px) {
-    .loadPerDayText:global(.ant-typography) {
-        max-width: 125px;
-    }
 }
