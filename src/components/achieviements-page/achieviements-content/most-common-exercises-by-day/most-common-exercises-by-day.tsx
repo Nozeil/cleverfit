@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { trainingsPerWeekSelector } from '@redux/slices/achieviements/achieviements';
+import { trainingsPerPeriodSelector } from '@redux/slices/achieviements/achieviements';
 import { TrainingPerPeriodItem } from '@redux/slices/achieviements/achieviements.types';
 import { capitalizeFirstLetter } from '@utils/utils';
 import { Typography } from 'antd';
@@ -14,10 +14,10 @@ import { RingChart } from './ring-chart/ring-chart';
 import styles from './most-common-exercises-by-day.module.css';
 
 export const MostCommonExercisesByDay = () => {
-    const trainingsPerWeek = useAppSelector(trainingsPerWeekSelector);
+    const trainingsPerPeriod = useAppSelector(trainingsPerPeriodSelector);
 
     const exercises = useMemo(() => {
-        const exercisesMap = trainingsPerWeek.reduce<
+        const exercisesMap = trainingsPerPeriod.reduce<
             Map<
                 number,
                 Pick<
@@ -51,10 +51,12 @@ export const MostCommonExercisesByDay = () => {
         );
 
         return mostFrequentWeekExercises;
-    }, [trainingsPerWeek]);
+    }, [trainingsPerPeriod]);
 
     const exercisePercents = useMemo(() => {
-        const exerciseNames = exercises.filter((exercise) => exercise.info).map((exercise) => exercise.info);
+        const exerciseNames = exercises
+            .filter((exercise) => exercise.info)
+            .map((exercise) => exercise.info);
         const exerciseOccurrenceCount = Array.from(
             findWordsOccurrenceCount(exerciseNames).values(),
         );

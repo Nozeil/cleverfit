@@ -61,3 +61,8 @@ export const SORT_BY = {
 export const ACTIVE_FILTER_ALL = { NAME: 'Все', KEY: 'all' } as const;
 
 export const MOMENT_SET = { hour: 0, minute: 0, second: 0, millisecond: 0 };
+
+export const ACHIEVEMENT_ACTIVE_KEYS = {
+    WEEK: 'week',
+    MONTH: 'month',
+  } as const;

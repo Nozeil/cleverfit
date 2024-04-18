@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Flex } from '@components/flex/flex';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { trainingsPerWeekSelector } from '@redux/slices/achieviements/achieviements';
+import { trainingsPerPeriodSelector } from '@redux/slices/achieviements/achieviements';
 import { Grid, Typography } from 'antd';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -10,11 +10,11 @@ import styles from './exercise-statistics.module.css';
 const { useBreakpoint } = Grid;
 
 export const ExerciseStatistics = () => {
-    const trainingsPerWeek = useAppSelector(trainingsPerWeekSelector);
+    const trainingsPerPeriod = useAppSelector(trainingsPerPeriodSelector);
     const { xs } = useBreakpoint();
 
     const statistics = useMemo(() => {
-        const { load, approaches, replays } = trainingsPerWeek.reduce(
+        const { load, approaches, replays } = trainingsPerPeriod.reduce(
             (acc, curr) => ({
                 load: acc.load + curr.load,
                 approaches: acc.approaches + curr.approaches,
@@ -23,7 +23,7 @@ export const ExerciseStatistics = () => {
             { load: 0, approaches: 0, replays: 0 },
         );
 
-        const averageLoad = load / trainingsPerWeek.length;
+        const averageLoad = load / trainingsPerPeriod.length;
 
         const averageLoadFixed = Number.isInteger(averageLoad)
             ? averageLoad
@@ -59,7 +59,7 @@ export const ExerciseStatistics = () => {
                 value: approaches,
             },
         ];
-    }, [trainingsPerWeek, xs]);
+    }, [trainingsPerPeriod, xs]);
 
     return (
         <Flex className={styles.list} as='ul' gap={{ xs: 'gap16', sm: 'gap16', lg: 'gap24' }}>

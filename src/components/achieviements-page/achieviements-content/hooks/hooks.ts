@@ -1,7 +1,12 @@
 import { useMemo } from 'react';
-import { ACTIVE_FILTER_ALL, DATE_FORMATS, MOMENT_SET } from '@constants/index';
+import {
+    ACHIEVEMENT_ACTIVE_KEYS,
+    ACTIVE_FILTER_ALL,
+    DATE_FORMATS,
+    MOMENT_SET,
+} from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { activeFilterSelector } from '@redux/slices/achieviements/achieviements';
+import { activeFilterSelector, activeKeySelector } from '@redux/slices/achieviements/achieviements';
 import { useGetTrainingQuery } from '@services/endpoints/training';
 import { calcLoadPerExercise, capitalizeFirstLetter, formatDate } from '@utils/utils';
 import moment from 'moment';
@@ -506,10 +511,15 @@ const createEmptyDay = (momentDate: moment.Moment) => {
     { date: '2024-04-19T00:00:00.000Z' },
 ]; */
 
-export const useTrainingsPerPeriod = (daysAmount: number) => {
+const { WEEK } = ACHIEVEMENT_ACTIVE_KEYS;
+
+export const useTrainingsPerPeriod = () => {
     const { data } = useGetTrainingQuery();
-    const period = daysAmount - 1;
+    const activeKey = useAppSelector(activeKeySelector);
     const activeFilter = useAppSelector(activeFilterSelector);
+
+    const daysAmount = activeKey === WEEK ? 7 : 28;
+    const period = daysAmount - 1;
 
     const startDate = moment().subtract(period, 'd').set(MOMENT_SET);
     const endDate = moment().set(MOMENT_SET);

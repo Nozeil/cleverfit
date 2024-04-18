@@ -1,50 +1,59 @@
 import { useEffect } from 'react';
 import { ContentWrapper } from '@components/content-wrapper/content-wrapper';
 import { PageContentTabs } from '@components/page-content-tabs/page-content-tabs';
-import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
-import { setTrainingsPerWeek } from '@redux/slices/achieviements/achieviements';
+import { ACHIEVEMENT_ACTIVE_KEYS } from '@constants/index';
+import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import {
+    activeKeySelector,
+    setActiveKey,
+    setTrainingsPerPeriod,
+} from '@redux/slices/achieviements/achieviements';
+import { type TabsProps } from 'antd';
 
-import { FrequentTrainingAndExercise } from './frequent-training-and-exercise/frequent-training-and-exercise';
 import { useTrainingsPerPeriod } from './hooks/hooks';
-import { MostCommonExercisesByDay } from './most-common-exercises-by-day/most-common-exercises-by-day';
-import { ExerciseStatistics } from './per-week/exercise-statistics/exercise-statistics';
-import { LoadBlock } from './per-week/load-block/load-block';
-import { TabChildrenWrapper } from './tab-children-wrapper/tab-children-wrapper';
+import { TabChildren } from './tab-children/tab-children';
 
 import styles from './achieviements-content.module.css';
+
+const { WEEK, MONTH } = ACHIEVEMENT_ACTIVE_KEYS;
 
 const tabsItems = [
     {
         label: 'За неделю',
-        key: 'week',
-        children: (
-            <TabChildrenWrapper>
-                <LoadBlock />
-                <ExerciseStatistics />
-                <FrequentTrainingAndExercise />
-                <MostCommonExercisesByDay />
-            </TabChildrenWrapper>
-        ),
+        key: WEEK,
+        children: <TabChildren />,
     },
     {
         label: 'За месяц',
-        key: 'month',
-        children: <TabChildrenWrapper>month</TabChildrenWrapper>,
+        key: MONTH,
+        children: <TabChildren />,
     },
-    { label: 'За все время (PRO)', key: 'all', disabled: true },
+    { label: 'За все время (PRO)', key: '', disabled: true },
 ];
 
 export const AchievementsContent = () => {
-    const trainingsPerLastWeek = useTrainingsPerPeriod(7);
+    const key = useAppSelector(activeKeySelector);
+    const trainingsPerPeriod = useTrainingsPerPeriod(7);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(setTrainingsPerWeek(trainingsPerLastWeek));
-    }, [dispatch, trainingsPerLastWeek]);
+        dispatch(setTrainingsPerPeriod(trainingsPerPeriod));
+    }, [dispatch, trainingsPerPeriod]);
+
+    const onChange: TabsProps['onChange'] = (activeKey) => {
+        if (activeKey === WEEK || activeKey === MONTH) {
+            dispatch(setActiveKey(activeKey));
+        }
+    };
 
     return (
         <ContentWrapper className={styles.contentWrapper}>
-            <PageContentTabs className={styles.tabs} items={tabsItems} />
+            <PageContentTabs
+                className={styles.tabs}
+                activeKey={key}
+                items={tabsItems}
+                onChange={onChange}
+            />
         </ContentWrapper>
     );
 };

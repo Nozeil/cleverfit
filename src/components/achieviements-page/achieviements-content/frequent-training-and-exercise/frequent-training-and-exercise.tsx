@@ -4,7 +4,7 @@ import { ACTIVE_FILTER_ALL } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import {
     activeFilterSelector,
-    trainingsPerWeekSelector,
+    trainingsPerPeriodSelector,
 } from '@redux/slices/achieviements/achieviements';
 import { Typography } from 'antd';
 import { v4 as uuidv4 } from 'uuid';
@@ -14,15 +14,15 @@ import { findMostFrequentWord } from '../achieviements-content.utils';
 import styles from './frequent-training-and-exercise.module.css';
 
 export const FrequentTrainingAndExercise = () => {
-    const trainingsPerWeek = useAppSelector(trainingsPerWeekSelector);
+    const trainingsPerPeriod = useAppSelector(trainingsPerPeriodSelector);
     const activeFilter = useAppSelector(activeFilterSelector);
 
     const mostFrequentTrainingAndExercise = useMemo(() => {
         const trainings =
             activeFilter.key === ACTIVE_FILTER_ALL.KEY
-                ? trainingsPerWeek.flatMap(({ trainingNames }) => trainingNames)
+                ? trainingsPerPeriod.flatMap(({ trainingNames }) => trainingNames)
                 : null;
-        const exercises = trainingsPerWeek.flatMap(({ exerciseNames }) => exerciseNames);
+        const exercises = trainingsPerPeriod.flatMap(({ exerciseNames }) => exerciseNames);
 
         const exercise = {
             label: `Самое частое
@@ -40,7 +40,7 @@ export const FrequentTrainingAndExercise = () => {
                   exercise,
               ]
             : [exercise];
-    }, [activeFilter.key, trainingsPerWeek]);
+    }, [activeFilter.key, trainingsPerPeriod]);
 
     return (
         <Flex className={styles.list} as='ul' direction='column' gap='gap16'>

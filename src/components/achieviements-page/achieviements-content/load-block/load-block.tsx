@@ -1,32 +1,31 @@
 import { useMemo } from 'react';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { trainingsPerWeekSelector } from '@redux/slices/achieviements/achieviements';
+import { trainingsPerPeriodSelector } from '@redux/slices/achieviements/achieviements';
 import { Typography } from 'antd';
 
-import { ChartBlock } from '../../chart-block/chart-block';
-import { WeekDays } from '../../week-days/week-days';
-
-import { WeekLoadChart } from './week-load-chart/week-load-chart';
+import { ChartBlock } from '../chart-block/chart-block';
+import { LoadChart } from '../load-chart/load-chart';
+import { WeekDays } from '../week-days/week-days';
 
 import styles from './load-block.module.css';
 
 export const LoadBlock = () => {
-    const trainingsPerWeek = useAppSelector(trainingsPerWeekSelector);
+    const trainingsPerPeriod = useAppSelector(trainingsPerPeriodSelector);
 
     const trainings = useMemo(
         () =>
-            trainingsPerWeek.map(({ date, dayOfTheWeek, dayOfTheWeekReadable, averageLoad }) => ({
+            trainingsPerPeriod.map(({ date, dayOfTheWeek, dayOfTheWeekReadable, averageLoad }) => ({
                 date,
                 dayOfTheWeek,
                 dayOfTheWeekReadable,
                 info: averageLoad ? `${averageLoad} кг` : averageLoad,
             })),
-        [trainingsPerWeek],
+        [trainingsPerPeriod],
     );
 
     return (
         <ChartBlock>
-            <WeekLoadChart />
+            <LoadChart />
             <WeekDays
                 title={
                     <Typography.Text className={styles.text}>

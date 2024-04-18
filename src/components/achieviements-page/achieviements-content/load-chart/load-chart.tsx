@@ -1,10 +1,10 @@
 import { type ColumnConfig, Column } from '@ant-design/charts';
 import { Flex } from '@components/flex/flex';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { trainingsPerWeekSelector } from '@redux/slices/achieviements/achieviements';
+import { trainingsPerPeriodSelector } from '@redux/slices/achieviements/achieviements';
 import { Grid, Typography } from 'antd';
 
-import styles from './week-load-chart.module.css';
+import styles from './load-chart.module.css';
 
 const { useBreakpoint } = Grid;
 
@@ -21,8 +21,8 @@ const data = [
 const lineDash = [2, 4];
 const formatter = (value: number) => `${value} кг`;
 
-export const WeekLoadChart = () => {
-    const trainingsPerLastWeek = useAppSelector(trainingsPerWeekSelector);
+export const LoadChart = () => {
+    const trainingsPerPeriod = useAppSelector(trainingsPerPeriodSelector);
     const { md } = useBreakpoint();
 
     const configParams = md
@@ -52,7 +52,7 @@ export const WeekLoadChart = () => {
 
     const config: ColumnConfig = {
         className: styles.chart,
-        data: trainingsPerLastWeek,
+        data: trainingsPerPeriod,
         xField: 'dm',
         yField: 'averageLoad',
         colorField: '#85a5ff',
