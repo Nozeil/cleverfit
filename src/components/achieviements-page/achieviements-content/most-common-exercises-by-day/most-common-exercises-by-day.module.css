@@ -1,0 +1,3 @@
+.text:global(.ant-typography) {
+    max-width: var(--mw-achieviements-most-common-exercises-text);
+}

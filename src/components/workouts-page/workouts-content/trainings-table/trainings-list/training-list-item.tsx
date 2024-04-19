@@ -16,10 +16,10 @@ import {
     setTrainingType,
 } from '@redux/slices/training-modal-and-exercises-form/training-modal-and-exercises-form';
 import { setIsExerciseCard } from '@redux/slices/trainings-table/trainings-table';
+import { formatDate } from '@utils/utils';
 import { Badge, Button, ButtonProps, Typography } from 'antd';
 import moment from 'moment';
 
-import { formatExerciseDate } from '../../workouts-content.utils';
 import { PERIODS } from '../workouts-content.constants';
 
 import { ContainersRefCurrent } from './trainings-list.type';
@@ -46,7 +46,7 @@ export const TrainingListItem = ({
     const dispatch = useAppDispatch();
 
     const prepareFormData = () => {
-        const exerciseDate = formatExerciseDate(date);
+        const exerciseDate = formatDate(date);
         const setIsPastAction = moment(date).isBefore() ? setIsPastTrue : setIsPastFalse;
 
         dispatch(resetFormExercises());

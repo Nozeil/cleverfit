@@ -20,7 +20,8 @@ export type Gap =
     | 'gap22'
     | 'gap24'
     | 'gap26'
-    | 'gap32';
+    | 'gap32'
+    | 'gap100';
 
 type DirectionWithBreakpoint = Direction | Partial<Record<Breakpoint, Direction>>;
 type JustifyWithBreakpoint = Justify | Partial<Record<Breakpoint, Justify>>;

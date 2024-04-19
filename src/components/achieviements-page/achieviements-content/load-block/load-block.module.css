@@ -1,0 +1,5 @@
+@media screen and (min-width: 1200px) {
+    .text:global(.ant-typography) {
+        max-width: var(--mw-achieviements-load-block-text);
+    }
+}

@@ -1,0 +1,41 @@
+.list {
+    flex-wrap: wrap;
+    padding: var(--p-achieviements-exercise-statistics-list);
+}
+
+.card {
+    width: var(--w-achieviements-exercise-statistics-card);
+    padding: var(--p-achieviements-exercise-statistics-card);
+    text-align: center;
+    border: var(--border-1) solid var(--character-light-dividers);
+    border-radius: var(--rounded-2);
+}
+
+.title:global(.ant-typography) {
+    margin: var(--m-achieviements-exercise-statistics-title);
+    white-space: nowrap;
+}
+
+.text:global(.ant-typography) {
+    color: var(--character-light-secondary-45);
+    white-space: pre-wrap;
+}
+
+@media screen and (max-width: 835px) {
+    .list {
+        max-width: calc(var(--w-achieviements-exercise-statistics-card) * 2 + var(--gap-16));
+        padding: var(--p-achieviements-exercise-statistics-list-tablet-l);
+    }
+
+    .card {
+        border: none;
+        box-shadow: var(--shadow-md);
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .card {
+        width: 100%;
+        padding: var(--p-achieviements-exercise-statistics-card-mobile-l);
+    }
+}

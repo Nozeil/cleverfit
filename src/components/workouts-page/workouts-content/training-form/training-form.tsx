@@ -10,11 +10,11 @@ import { useCreateInviteMutation } from '@services/endpoints/invite';
 import { useCreateTrainingMutation, useUpdateTrainingMutation } from '@services/endpoints/training';
 import type { ExercisesFormValues } from '@typings/index';
 import { CenteredModalError } from '@utils/modal-error/modal-error';
+import { formatDate } from '@utils/utils';
 import { Form, FormInstance } from 'antd';
 import { type FormProviderProps } from 'antd/lib/form/context';
 
 import type { TrainingInfoFormValues } from '../workouts-content.types';
-import { formatExerciseDate } from '../workouts-content.utils';
 
 import { TrainingInfoForm } from './training-info-form/training-info-form';
 import { checkIsFieldsValid } from './training-form.utils';
@@ -66,7 +66,7 @@ export const TrainingForm = ({ trainingInfoForm, exercisesForm, onClose }: Train
             ? { repeat: true, period: trainingInfoFormValues.period }
             : undefined;
 
-        const date = formatExerciseDate(trainingInfoFormValues.date);
+        const date = formatDate(trainingInfoFormValues.date);
 
         const body = {
             name: trainingInfoFormValues.name,

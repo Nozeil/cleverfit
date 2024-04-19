@@ -1,0 +1,34 @@
+.list {
+    padding: var(--p-achieviements-frequent-training-and-exercise-list);
+    margin: var(--m-achieviements-frequent-training-and-exercise-list);
+}
+
+.label:global(.ant-typography) {
+    flex-shrink: 0;
+    width: var(--w-achieviements-frequent-training-and-exercise-label);
+    white-space: pre-wrap;
+    color: var(--character-light-secondary-45);
+}
+
+.mostFrequentValue:global(.ant-typography) {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-medium);
+}
+
+@media screen and (max-width: 835px) {
+    .list {
+        max-width: var(--mw-achieviements-frequent-training-and-exercise-list-tablet-l);
+        padding-right: var(--px-achieviements-frequent-training-and-exercise-list-tablet-l);
+        padding-left: var(--px-achieviements-frequent-training-and-exercise-list-tablet-l);
+        margin: var(--m-achieviements-frequent-training-and-exercise-list-tablet-l);
+    }
+
+    .label:global(.ant-typography) {
+        width: var(--w-achieviements-frequent-training-and-exercise-label-tablet-l);
+    }
+
+    .mostFrequentValue:global(.ant-typography) {
+        font-size: var(--text-xl);
+        font-weight: var(--font-medium);
+    }
+}

@@ -127,7 +127,6 @@
     --p-settings-content-modal-success-result-extra-mobile: 0 var(--p-16);
     --pt-settings-content-side-panel-body: 48px;
     --p-tariff-label: 2px 0;
-    --p-tariffs-side-panel-list: 0;
     --pr-tariffs-side-panel-list: var(--p-16);
     --pt-settings-content-side-panel-body-mobile-l: var(--p-24);
     --p-tariff-selection-form-radio-span: 0;
@@ -137,8 +136,8 @@
     --p-profile-content-date-picker: var(--p-8) var(--p-12);
     --p-profile-upload-form-item-label-mobile-l: 0;
     --p-profile-upload-btn-mobile-l: 10px 26px;
-    --p-workouts-tabs-tab-btn-tablet-l: 14px 0;
-    --p-workouts-content-wrapper-mobile-l: var(--p-16) var(--p-12);
+    --p-page-content-tabs-tab-btn-tablet-l: 14px 0;
+    --p-page-content-content-wrapper-mobile-l: var(--p-16) var(--p-12);
     --p-notification: var(--p-16-24);
     --pb-workouts-content-wrapper: var(--p-16);
     --pt-workouts-empty-trainings-wrapper: 144px;
@@ -174,10 +173,26 @@
     --p-workouts-trainings-table-wrapper-mobile: 0 12px;
     --p-workouts-trainings-table-sort: 7px 8px;
     --py-workouts-trainings-table-training-text-mobile: 4px;
-    --p-workouts-trainings-list: 0;
     --p-workouts-trainings-list-btn: 0;
     --p-workouts-exercises-card-body: 0 12px;
     --p-workouts-exercises-card-title-wrapper: 18px 8px;
     --p-workouts-exercises-card-btn: 0;
     --p-workouts-exercises-card-exercises-wrapper: var(--p-16) 0;
+    --p-achieviements-filters: var(--p-16) 0;
+    --p-achieviements-filters-tablet-l: 4px 0;
+    --pt-achieviements-filters-mobile-l: 8px;
+    --p-week-days-badge-count: 0;
+    --p-week-days-load-list-item: 6px 0;
+    --p-achieviements-empty-wrapper-tablet-l: 0 40px;
+    --p-achieviements-empty-wrapper-mobile-l: 0;
+    --p-achieviements-load-chart-wrapper: var(--p-16) 0;
+    --p-achieviements-load-chart-wrapper-mobile-l: 10px 0;
+    --p-achieviements-month-load-wrapper-tablet: 8px 0;
+    --p-achieviements-load-by-week-btn: 0;
+    --p-achieviements-frequent-training-and-exercise-list: 12px;
+    --px-achieviements-frequent-training-and-exercise-list-tablet-l: 0;
+    --p-achieviements-exercise-statistics-list: var(--p-24) 0;
+    --p-achieviements-exercise-statistics-list-tablet-l: 0;
+    --p-achieviements-exercise-statistics-card: var(--p-24) 20px;
+    --p-achieviements-exercise-statistics-card-mobile-l: 7.5px var(--p-16);
 }

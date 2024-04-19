@@ -1,0 +1,9 @@
+.wrapper {
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 767px) {
+    .wrapper {
+        padding: var(--p-achieviements-month-load-wrapper-tablet);
+    }
+}

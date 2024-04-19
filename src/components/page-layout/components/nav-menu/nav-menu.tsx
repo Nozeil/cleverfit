@@ -27,6 +27,7 @@ export const NavMenu = () => {
 
     const calendarHandler = useTrainingHandler(() => navigate(ROUTES.CALENDAR));
     const workoutsHandler = useTrainingHandler(() => navigate(ROUTES.TRAINING));
+    const achievementsHandler = useTrainingHandler(() => navigate(ROUTES.ACHIEVEMENTS));
 
     const { md } = useBreakpoint();
     const mode = md ? 'inline' : 'vertical';
@@ -61,7 +62,7 @@ export const NavMenu = () => {
             key: WORKOUT,
         },
         {
-            label: ACHIEVEMENTS,
+            label: <span data-test-id='sidebar-achievements'>{ACHIEVEMENTS}</span>,
             title: ACHIEVEMENTS,
             icon: <TrophyFilled className={styles.icon} style={{ color: ICONS_COLOR }} />,
             key: ACHIEVEMENTS,
@@ -100,6 +101,9 @@ export const NavMenu = () => {
                 break;
             case WORKOUT:
                 workoutsHandler();
+                break;
+            case ACHIEVEMENTS:
+                achievementsHandler();
                 break;
             case PROFILE:
                 navigate(ROUTES.PROFILE);

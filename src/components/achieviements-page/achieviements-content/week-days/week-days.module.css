@@ -1,0 +1,45 @@
+.wrapper {
+    width: var(--w-week-days-wrapper);
+}
+
+.label:global(.ant-typography) {
+    width: var(--w-week-days-label);
+    color: var(--character-light-secondary-45);
+}
+
+.badge :global(.ant-badge-status-text) {
+    font-size: var(--text-xs);
+}
+
+.badge:global(.ant-badge),
+.badge:global(.ant-badge) :global(.ant-badge-count) {
+    min-width: var(--h-16);
+    width: var(--h-16);
+    height: var(--h-16);
+    line-height: var(--line-height-16);
+}
+
+.badge:global(.ant-badge) :global(.ant-badge-count) {
+    padding: var(--p-week-days-badge-count);
+}
+
+.badgeBg:global(.ant-badge) :global(.ant-badge-count) {
+    background-color: var(--primary-light-6);
+}
+
+.badgeEmpty:global(.ant-badge) :global(.ant-badge-count) {
+    color: var(--primary-light-6);
+    background-color: var(--primary-light-1);
+}
+
+.load:global(.ant-typography) {
+    font-weight: var(--font-bold);
+}
+
+.loadListItem {
+    padding: var(--p-week-days-load-list-item);
+}
+
+.list {
+    margin-top: var(--mt-week-days-list);
+}

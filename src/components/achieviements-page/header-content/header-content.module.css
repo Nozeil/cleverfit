@@ -1,0 +1,11 @@
+@media screen and (max-width: 835px) {
+    .row:global(.ant-row) {
+        margin-bottom: var(--mb-achieviements-header-content-tablet-l);
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .row:global(.ant-row) {
+        margin-bottom: var(--mb-achieviements-header-content-mobile-l);
+    }
+}

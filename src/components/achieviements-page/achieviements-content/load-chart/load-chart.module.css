@@ -1,0 +1,46 @@
+.loadChartWrapper {
+    padding: var(--p-achieviements-load-chart-wrapper);
+    border: var(--border-1) solid var(--character-light-dividers);
+    border-radius: var(--rounded-2);
+    overflow: hidden;
+}
+
+.chart {
+    margin: var(--m-achieviements-load-chart-chart);
+}
+
+.chartWeek {
+    width: fit-content;
+}
+
+.text:global(.ant-typography) {
+    margin: var(--m-achieviements-load-chart-text);
+    text-align: center;
+}
+
+@media screen and (max-width: 835px) {
+    .loadChartWrapper {
+        margin-right: var(--mr-achieviements-load-chart-wrapper-tablet-l);
+    }
+
+    .text:global(.ant-typography) {
+        margin-left: var(--ml-achieviements-load-chart-text-tablet-l);
+    }
+}
+
+@media screen and (max-width: 830px) and (min-width: 768px) {
+    .chart canvas {
+        width: var(--w-achieviements-load-chart-canvas-tablet) !important;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .loadChartWrapper {
+        padding: var(--p-achieviements-load-chart-wrapper-mobile-l);
+        margin: var(--m-achieviements-load-chart-wrapper-mobile-l);
+    }
+
+    .text:global(.ant-typography) {
+        font-size: var(--text-9);
+    }
+}

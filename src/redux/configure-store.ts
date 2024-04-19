@@ -4,6 +4,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { api } from '@services/api';
 import { createBrowserHistory } from 'history';
 
+import { achieviementsReducer } from './slices/achieviements/achieviements';
 import { authReducer } from './slices/auth';
 import { error500ModalReducer } from './slices/error-500-modal';
 import { errorFeedbackModalReducer } from './slices/error-feedback-modal';
@@ -45,6 +46,7 @@ export const store = configureStore({
         successAlert: successAlertReducer,
         trainingsTable: trainingsTableReducer,
         jointTrainings: jointTrainingsReducer,
+        achieviements: achieviementsReducer,
         [api.reducerPath]: api.reducer,
     }),
     middleware: (getDefaultMiddleware) =>

@@ -1,0 +1,22 @@
+.wrapper {
+    margin-top: var(--mt-achieviements-empty-wrapper);
+}
+
+.title:global(.ant-typography) {
+    margin: var(--m-achieviements-empty-title);
+    text-align: center;
+}
+
+@media screen and (max-width: 835px) {
+    .wrapper {
+        margin-top: var(--mt-achieviements-empty-wrapper-laptop-l);
+        padding: var(--p-achieviements-empty-wrapper-tablet-l);
+    }
+}
+
+@media screen and (max-width: 535px) {
+    .wrapper {
+        margin-top: var(--mt-achieviements-empty-wrapper-mobile-l);
+        padding: var(--p-achieviements-empty-wrapper-mobile-l);
+    }
+}

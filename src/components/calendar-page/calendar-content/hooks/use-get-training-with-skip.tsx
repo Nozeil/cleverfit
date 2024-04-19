@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { MOMENT_SET } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { routerSelector } from '@redux/router-selector';
 import { useGetTrainingQuery } from '@services/endpoints/training';
@@ -13,9 +14,7 @@ export const useGetTrainingQueryWithSkip = (iso?: string) => {
     const filteredTrainings = useMemo(
         () =>
             result.data?.filter(({ date }) => {
-                const momentDate = moment(date)
-                    .set({ hour: 0, minute: 0, second: 0, millisecond: 0 })
-                    .toISOString();
+                const momentDate = moment(date).set(MOMENT_SET).toISOString();
 
                 return momentDate === iso;
             }),
