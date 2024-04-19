@@ -1,3 +1,6 @@
+import { DATE_FORMATS } from '@constants/index';
+import { capitalizeFirstLetter, formatDate } from '@utils/utils';
+
 export const findWordsOccurrenceCount = (arr: string[]) => {
     const words = new Map<string, { name: string; count: number }>();
 
@@ -28,4 +31,26 @@ export const findMostFrequentWord = (arr: string[]) => {
     });
 
     return mostFrequentWord.word;
+};
+
+export const createEmptyDay = (momentDate: moment.Moment) => {
+    const sunday = 7;
+    const { iso, formated } = formatDate(momentDate);
+    const dm = momentDate.format(DATE_FORMATS.DM);
+    const dayOfTheWeek = momentDate.day() || sunday;
+    const dayOfTheWeekReadable = capitalizeFirstLetter(momentDate.format('dddd'));
+
+    return {
+        date: iso,
+        dm,
+        dmy: formated,
+        dayOfTheWeek,
+        dayOfTheWeekReadable,
+        trainingNames: [],
+        exerciseNames: [],
+        load: 0,
+        averageLoad: 0,
+        replays: 0,
+        approaches: 0,
+    };
 };

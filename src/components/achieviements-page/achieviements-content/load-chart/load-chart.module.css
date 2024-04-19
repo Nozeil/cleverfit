@@ -2,11 +2,29 @@
     padding: 16px 0;
     border: var(--border-1) solid var(--character-light-dividers);
     border-radius: var(--rounded-2);
+    overflow: hidden;
+}
+
+.chart {
+    margin: 0 auto;
+}
+
+.chartWeek {
+    width: fit-content;
+}
+
+.text:global(.ant-typography) {
+    margin: 0;
+    text-align: center;
 }
 
 @media screen and (max-width: 835px) {
     .loadChartWrapper {
         margin-right: 10px;
+    }
+
+    .text:global(.ant-typography) {
+        margin-left: 30px;
     }
 }
 
@@ -19,10 +37,10 @@
 @media screen and (max-width: 575px) {
     .loadChartWrapper {
         padding: 10px 0;
+        margin: 0;
     }
 
     .text:global(.ant-typography) {
-        margin-left: 30px;
         font-size: 9px;
     }
 }

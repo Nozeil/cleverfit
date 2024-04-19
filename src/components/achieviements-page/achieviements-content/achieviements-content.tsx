@@ -33,7 +33,7 @@ const tabsItems = [
 
 export const AchievementsContent = () => {
     const key = useAppSelector(activeKeySelector);
-    const trainingsPerPeriod = useTrainingsPerPeriod(7);
+    const trainingsPerPeriod = useTrainingsPerPeriod();
     const dispatch = useAppDispatch();
 
     useEffect(() => {

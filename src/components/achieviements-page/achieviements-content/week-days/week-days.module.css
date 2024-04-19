@@ -2,7 +2,7 @@
     width: 466px;
 }
 
-.dayOfTheWeekReadable:global(.ant-typography) {
+.label:global(.ant-typography) {
     width: 92px;
     color: var(--character-light-secondary-45);
 }
@@ -38,4 +38,8 @@
 
 .loadListItem {
     padding: 6px 0;
+}
+
+.list {
+    margin-top: 20px;
 }

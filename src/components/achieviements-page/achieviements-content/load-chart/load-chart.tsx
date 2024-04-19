@@ -1,8 +1,12 @@
 import { type ColumnConfig, Column } from '@ant-design/charts';
-import { Flex } from '@components/flex/flex';
+import { ACHIEVEMENT_ACTIVE_KEYS } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { trainingsPerPeriodSelector } from '@redux/slices/achieviements/achieviements';
+import {
+    activeKeySelector,
+    trainingsPerPeriodSelector,
+} from '@redux/slices/achieviements/achieviements';
 import { Grid, Typography } from 'antd';
+import classNames from 'classnames/bind';
 
 import styles from './load-chart.module.css';
 
@@ -20,14 +24,20 @@ const data = [
 
 const lineDash = [2, 4];
 const formatter = (value: number) => `${value} кг`;
+const { WEEK } = ACHIEVEMENT_ACTIVE_KEYS;
+
+const cx = classNames.bind(styles);
 
 export const LoadChart = () => {
     const trainingsPerPeriod = useAppSelector(trainingsPerPeriodSelector);
+    const activeKey = useAppSelector(activeKeySelector);
+    const isWeek = activeKey === WEEK;
+
     const { md } = useBreakpoint();
 
     const configParams = md
         ? {
-              width: 518,
+              width: isWeek ? 518 : undefined,
               height: 318,
               sizeField: 30,
               insetLeft: -18,
@@ -35,12 +45,13 @@ export const LoadChart = () => {
               marginBottom: 6,
           }
         : {
-              width: 345,
+              width: isWeek ? 328 : undefined,
               height: 200,
               sizeField: 20,
               insetLeft: -10,
               marginTop: 0,
               marginBottom: 0,
+              marginLeft: 8,
           };
 
     const axisParams = {
@@ -51,12 +62,19 @@ export const LoadChart = () => {
     };
 
     const config: ColumnConfig = {
-        className: styles.chart,
+        className: cx(styles.chart, { [styles.chartWeek]: isWeek }),
         data: trainingsPerPeriod,
         xField: 'dm',
         yField: 'averageLoad',
         colorField: '#85a5ff',
         insetTop: 8,
+        scrollbar: isWeek
+            ? undefined
+            : {
+                  x: {
+                      ratio: 0.54,
+                  },
+              },
         ...configParams,
 
         axis: {
@@ -80,9 +98,9 @@ export const LoadChart = () => {
     };
 
     return (
-        <Flex className={styles.loadChartWrapper} direction='column' align='alignCenter'>
+        <div className={styles.loadChartWrapper}>
             <Column {...config} />
-            <Typography.Text className={styles.text}>Нагрузка, кг</Typography.Text>
-        </Flex>
+            <Typography.Paragraph className={styles.text}>Нагрузка, кг</Typography.Paragraph>
+        </div>
     );
 };

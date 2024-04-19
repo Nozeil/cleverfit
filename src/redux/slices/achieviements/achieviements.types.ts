@@ -5,6 +5,7 @@ import { PayloadAction } from '@reduxjs/toolkit';
 export type TrainingPerPeriodItem = {
     date: string;
     dm: string;
+    dmy: string;
     dayOfTheWeek: number;
     dayOfTheWeekReadable: string;
     trainingNames: string[];

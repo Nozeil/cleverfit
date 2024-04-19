@@ -3,12 +3,3 @@
         max-width: 125px;
     }
 }
-
-.badge:global(.ant-badge) :global(.ant-badge-count) {
-  background-color: var(--primary-light-6);
-}
-
-.badgeEmpty:global(.ant-badge) :global(.ant-badge-count) {
-  color: var(--primary-light-6);
-  background-color: var(--primary-light-1);
-}

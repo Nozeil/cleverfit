@@ -1,31 +1,41 @@
 import { useMemo } from 'react';
+import { ACHIEVEMENT_ACTIVE_KEYS } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { trainingsPerPeriodSelector } from '@redux/slices/achieviements/achieviements';
+import {
+    activeKeySelector,
+    trainingsPerPeriodSelector,
+} from '@redux/slices/achieviements/achieviements';
 import { Typography } from 'antd';
 
-import { ChartBlock } from '../chart-block/chart-block';
-import { LoadChart } from '../load-chart/load-chart';
 import { WeekDays } from '../week-days/week-days';
+
+import { MonthLoad } from './month-load/month-load';
+import { WeekLoad } from './week-load';
 
 import styles from './load-block.module.css';
 
+const { WEEK } = ACHIEVEMENT_ACTIVE_KEYS;
+
 export const LoadBlock = () => {
     const trainingsPerPeriod = useAppSelector(trainingsPerPeriodSelector);
+    const activeKey = useAppSelector(activeKeySelector);
 
     const trainings = useMemo(
         () =>
-            trainingsPerPeriod.map(({ date, dayOfTheWeek, dayOfTheWeekReadable, averageLoad }) => ({
-                date,
-                dayOfTheWeek,
-                dayOfTheWeekReadable,
-                info: averageLoad ? `${averageLoad} кг` : averageLoad,
-            })),
+            trainingsPerPeriod.map(
+                ({ dm, dmy, dayOfTheWeek, dayOfTheWeekReadable, averageLoad }) => ({
+                    dmy,
+                    dm,
+                    dayOfTheWeek,
+                    dayOfTheWeekReadable,
+                    info: averageLoad ? `${averageLoad} кг` : averageLoad,
+                }),
+            ),
         [trainingsPerPeriod],
     );
 
-    return (
-        <ChartBlock>
-            <LoadChart />
+    return activeKey === WEEK ? (
+        <WeekLoad>
             <WeekDays
                 title={
                     <Typography.Text className={styles.text}>
@@ -33,7 +43,11 @@ export const LoadBlock = () => {
                     </Typography.Text>
                 }
                 data={trainings}
+                listClassName={styles.list}
+                isReadableDays={true}
             />
-        </ChartBlock>
+        </WeekLoad>
+    ) : (
+        <MonthLoad data={trainings} />
     );
 };

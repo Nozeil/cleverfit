@@ -1,528 +1,44 @@
 import { useMemo } from 'react';
-import {
-    ACHIEVEMENT_ACTIVE_KEYS,
-    ACTIVE_FILTER_ALL,
-    DATE_FORMATS,
-    MOMENT_SET,
-} from '@constants/index';
+import { ACHIEVEMENT_ACTIVE_KEYS, ACTIVE_FILTER_ALL, MOMENT_SET } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { activeFilterSelector, activeKeySelector } from '@redux/slices/achieviements/achieviements';
 import { useGetTrainingQuery } from '@services/endpoints/training';
-import { calcLoadPerExercise, capitalizeFirstLetter, formatDate } from '@utils/utils';
+import { calcLoadPerExercise, formatDate } from '@utils/utils';
 import moment from 'moment';
 
-const today = new Date().setDate(new Date().getDate());
-const dayAfterTomorrow = new Date().setDate(new Date().getDate() + 1);
-const dayBeforeToday = new Date().setDate(new Date().getDate() - 1);
-const twoDaysLater = new Date().setDate(new Date().getDate() + 2);
-const threeDaysLater = new Date().setDate(new Date().getDate() + 3);
-const fourDaysLater = new Date().setDate(new Date().getDate() + 4);
-// const nextMonth = new Date(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate());
-const nextMonth = new Date().setDate(new Date().getDate() + 15);
+import { createEmptyDay } from '../achieviements-content.utils';
 
-const userTraining = [
-    {
-        _id: '1',
-        name: 'Ноги',
-        date: today,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: 6,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Присяд',
-                replays: 3,
-                weight: 50,
-                approaches: 10,
-            },
-            {
-                _id: '2',
-                name: 'Толкание нагрузки',
-                replays: 3,
-                weight: 70,
-                approaches: 10,
-            },
-        ],
-    },
-    {
-        _id: '2',
-        name: 'Руки',
-        date: today,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '2',
-                name: 'Упражнение',
-                replays: 1,
-                weight: 0,
-                approaches: 3,
-            },
-        ],
-    },
-    {
-        _id: '3',
-        name: 'Силовая',
-        date: twoDaysLater,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Упражнение',
-                replays: 1,
-                weight: 0,
-                approaches: 3,
-            },
-        ],
-    },
-    {
-        _id: '4',
-        name: 'Спина',
-        date: twoDaysLater,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Упражнение',
-                replays: 1,
-                weight: 0,
-                approaches: 3,
-            },
-        ],
-    },
-    {
-        _id: '5',
-        name: 'Грудь',
-        date: twoDaysLater,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Упражнение',
-                replays: 1,
-                weight: 0,
-                approaches: 3,
-            },
-        ],
-    },
-    {
-        _id: '6',
-        name: 'Ноги',
-        date: twoDaysLater,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Упражнение',
-                replays: 1,
-                weight: 0,
-                approaches: 3,
-            },
-        ],
-    },
-    {
-        _id: '7',
-        name: 'Руки',
-        date: twoDaysLater,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Упражнение',
-                replays: 1,
-                weight: 0,
-                approaches: 3,
-            },
-        ],
-    },
-    {
-        _id: '8',
-        name: 'Силовая',
-        date: threeDaysLater,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Присяд',
-                replays: 3,
-                weight: 50,
-                approaches: 10,
-            },
-            {
-                _id: '2',
-                name: 'Толкание нагрузки',
-                replays: 3,
-                weight: 70,
-                approaches: 10,
-            },
-        ],
-    },
-    {
-        _id: '9',
-        name: 'Спина',
-        date: threeDaysLater,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Упражнение',
-                replays: 1,
-                weight: 0,
-                approaches: 3,
-            },
-        ],
-    },
-    {
-        _id: '10',
-        name: 'Грудь',
-        date: threeDaysLater,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Упражнение',
-                replays: 1,
-                weight: 0,
-                approaches: 3,
-            },
-        ],
-    },
-    {
-        _id: '11',
-        name: 'Ноги',
-        date: threeDaysLater,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Упражнение',
-                replays: 1,
-                weight: 0,
-                approaches: 3,
-            },
-        ],
-    },
-    {
-        _id: '12',
-        name: 'Руки',
-        date: fourDaysLater,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Упражнение',
-                replays: 1,
-                weight: 0,
-                approaches: 3,
-            },
-        ],
-    },
-    {
-        _id: '13',
-        name: 'Силовая',
-        date: dayBeforeToday,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Упражнение',
-                replays: 1,
-                weight: 0,
-                approaches: 3,
-            },
-        ],
-    },
-    {
-        _id: '14',
-        name: 'Спина',
-        date: dayAfterTomorrow,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Упражнение',
-                replays: 1,
-                weight: 0,
-                approaches: 3,
-            },
-        ],
-    },
-    {
-        _id: '15',
-        name: 'Грудь',
-        date: dayAfterTomorrow,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Упражнение',
-                replays: 1,
-                weight: 0,
-                approaches: 3,
-            },
-        ],
-    },
-    {
-        _id: '16',
-        name: 'Ноги',
-        date: nextMonth,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Упражнение',
-                replays: 1,
-                weight: 0,
-                approaches: 3,
-            },
-        ],
-    },
-    {
-        _id: '17',
-        name: 'Руки',
-        date: nextMonth,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Упражнение',
-                replays: 1,
-                weight: 0,
-                approaches: 3,
-            },
-        ],
-    },
-    {
-        _id: '18',
-        name: 'Силовая',
-        date: nextMonth,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Упражнение',
-                replays: 1,
-                weight: 0,
-                approaches: 3,
-            },
-        ],
-    },
-    {
-        _id: '19',
-        name: 'Спина',
-        date: nextMonth,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Упражнение',
-                replays: 1,
-                weight: 0,
-                approaches: 3,
-            },
-        ],
-    },
-    {
-        _id: '20',
-        name: 'Грудь',
-        date: nextMonth,
-        isImplementation: false,
-        userId: '65b809899adc9e39e3660ae0',
-        parameters: {
-            jointTraining: false,
-            participants: [],
-            period: null,
-            repeat: false,
-        },
-        exercises: [
-            {
-                _id: '1',
-                name: 'Упражнение',
-                replays: 1,
-                weight: 0,
-                approaches: 3,
-            },
-        ],
-    },
-];
-
-const createEmptyDay = (momentDate: moment.Moment) => {
-    const sunday = 7;
-    const { iso } = formatDate(momentDate);
-    const dm = momentDate.format(DATE_FORMATS.DM);
-    const dayOfTheWeek = momentDate.day() || sunday;
-    const dayOfTheWeekReadable = capitalizeFirstLetter(momentDate.format('dddd'));
-
-    return {
-        date: iso,
-        dm,
-        dayOfTheWeek,
-        dayOfTheWeekReadable,
-        trainingNames: [],
-        exerciseNames: [],
-        load: 0,
-        averageLoad: 0,
-        replays: 0,
-        approaches: 0,
-    };
-};
-
-/* const mockTrainings = [
-    { date: '2024-04-10T00:00:00.000Z' },
-    { date: '2024-04-11T00:00:00.000Z' },
-    { date: '2024-04-12T00:00:00.000Z' },
-    { date: '2024-04-13T00:00:00.000Z' },
-    { date: '2024-04-14T00:00:00.000Z' },
-    { date: '2024-04-15T00:00:00.000Z' },
-    { date: '2024-04-16T00:00:00.000Z' },
-    { date: '2024-04-17T00:00:00.000Z' },
-    { date: '2024-04-18T00:00:00.000Z' },
-    { date: '2024-04-19T00:00:00.000Z' },
-]; */
-
-const { WEEK } = ACHIEVEMENT_ACTIVE_KEYS;
+const { MONTH } = ACHIEVEMENT_ACTIVE_KEYS;
+const week = 7;
+const month = 28;
 
 export const useTrainingsPerPeriod = () => {
     const { data } = useGetTrainingQuery();
     const activeKey = useAppSelector(activeKeySelector);
     const activeFilter = useAppSelector(activeFilterSelector);
 
-    const daysAmount = activeKey === WEEK ? 7 : 28;
+    const isMonth = activeKey === MONTH;
+    const daysAmount = isMonth ? month : week;
     const period = daysAmount - 1;
 
-    const startDate = moment().subtract(period, 'd').set(MOMENT_SET);
     const endDate = moment().set(MOMENT_SET);
+
+    const startDate = useMemo(() => {
+        const start = moment().subtract(period, 'd').set(MOMENT_SET);
+
+        if (isMonth) {
+            const dayINeed = 1;
+            const startDay = start.isoWeekday();
+
+            if (startDay <= dayINeed) {
+                start.isoWeekday(dayINeed);
+            } else {
+                start.add(1, 'w').isoWeekday(dayINeed);
+            }
+        }
+
+        return start;
+    }, [isMonth, period]);
 
     const days = useMemo(
         () =>
@@ -533,11 +49,11 @@ export const useTrainingsPerPeriod = () => {
     );
 
     const dataPerPeriod = useMemo(() => {
-        /* if (!data) {
+        if (!data) {
             return [];
-        } */
+        }
 
-        const trainings = userTraining.filter(({ date }) => {
+        const trainings = data.filter(({ date }) => {
             const today = 0;
             const diff = endDate.diff(moment(date).set(MOMENT_SET), 'd');
 

@@ -22,33 +22,29 @@ export const MostCommonExercisesByDay = () => {
                 number,
                 Pick<
                     TrainingPerPeriodItem,
-                    'dayOfTheWeek' | 'dayOfTheWeekReadable' | 'exerciseNames'
+                    'dm' | 'dmy' | 'dayOfTheWeek' | 'dayOfTheWeekReadable' | 'exerciseNames'
                 >
             >
-        >((acc, { dayOfTheWeek, dayOfTheWeekReadable, exerciseNames }) => {
-            const key = dayOfTheWeek;
+        >((acc, curr) => {
+            const key = curr.dayOfTheWeek;
             const day = acc.get(key);
 
             if (acc.has(key) && day) {
                 acc.set(key, {
-                    dayOfTheWeek,
-                    dayOfTheWeekReadable,
-                    exerciseNames: [...day.exerciseNames, ...exerciseNames],
+                    ...curr,
+                    exerciseNames: [...day.exerciseNames, ...curr.exerciseNames],
                 });
             } else {
-                acc.set(key, { dayOfTheWeek, dayOfTheWeekReadable, exerciseNames });
+                acc.set(key, curr);
             }
 
             return acc;
         }, new Map());
 
-        const mostFrequentWeekExercises = Array.from(exercisesMap.values()).map(
-            ({ dayOfTheWeek, dayOfTheWeekReadable, exerciseNames }) => ({
-                dayOfTheWeek,
-                dayOfTheWeekReadable,
-                info: findMostFrequentWord(exerciseNames),
-            }),
-        );
+        const mostFrequentWeekExercises = Array.from(exercisesMap.values()).map((exercise) => ({
+            ...exercise,
+            info: findMostFrequentWord(exercise.exerciseNames),
+        }));
 
         return mostFrequentWeekExercises;
     }, [trainingsPerPeriod]);
@@ -82,6 +78,7 @@ export const MostCommonExercisesByDay = () => {
                 }
                 data={exercises}
                 isBadgeDefaultColor={true}
+                isReadableDays={true}
             />
         </ChartBlock>
     );

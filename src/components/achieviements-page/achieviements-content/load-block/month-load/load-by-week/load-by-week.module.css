@@ -1,0 +1,30 @@
+.wrapper {
+    min-width: 166px;
+    width: fit-content;
+}
+
+.label:global(.ant-typography) {
+    width: fit-content;
+    letter-spacing: var(--date-letter-spacing);
+}
+
+.btn:global(.ant-btn) {
+    width: 170px;
+    height: fit-content;
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .list {
+        margin-top: 16px;
+    }
+
+    .listEmpty {
+      margin-top: 0;
+  }
+
+    .label:global(.ant-typography) {
+        width: 92px;
+    }
+}

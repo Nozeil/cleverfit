@@ -98,6 +98,6 @@
     gap: var(--gap-32);
 }
 
-.gap150 {
-    gap: var(--gap-150);
+.gap100 {
+    gap: var(--gap-100);
 }
