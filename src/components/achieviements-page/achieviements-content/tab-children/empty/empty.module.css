@@ -1,0 +1,23 @@
+.wrapper {
+    margin-top: 112px;
+}
+
+.title:global(.ant-typography) {
+    margin: 0;
+    text-align: center;
+}
+
+@media screen and (max-width: 835px) {
+    .wrapper {
+        margin-top: 138px;
+        padding: 0 40px;
+    }
+}
+
+
+@media screen and (max-width: 535px) {
+  .wrapper {
+      margin-top: 0;
+      padding: 0;
+  }
+}

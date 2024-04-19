@@ -23,7 +23,7 @@ export const NavMenu = () => {
     const { signout } = useAuth();
     const navigate = useNavigate();
 
-    const { data: invites } = useGetInvitesQuery(undefined, /* { pollingInterval: 3000 } */);
+    const { data: invites } = useGetInvitesQuery(undefined /* { pollingInterval: 3000 } */);
 
     const calendarHandler = useTrainingHandler(() => navigate(ROUTES.CALENDAR));
     const workoutsHandler = useTrainingHandler(() => navigate(ROUTES.TRAINING));
@@ -62,7 +62,7 @@ export const NavMenu = () => {
             key: WORKOUT,
         },
         {
-            label: ACHIEVEMENTS,
+            label: <span data-test-id='sidebar-achievements'>{ACHIEVEMENTS}</span>,
             title: ACHIEVEMENTS,
             icon: <TrophyFilled className={styles.icon} style={{ color: ICONS_COLOR }} />,
             key: ACHIEVEMENTS,
