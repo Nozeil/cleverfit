@@ -181,4 +181,18 @@
     --p-achieviements-filters: var(--p-16) 0;
     --p-achieviements-filters-tablet-l: 4px 0;
     --pt-achieviements-filters-mobile-l: 8px;
+    --p-week-days-badge-count: 0;
+    --p-week-days-load-list-item: 6px 0;
+    --p-achieviements-empty-wrapper-tablet-l: 0 40px;
+    --p-achieviements-empty-wrapper-mobile-l: 0;
+    --p-achieviements-load-chart-wrapper: var(--p-16) 0;
+    --p-achieviements-load-chart-wrapper-mobile-l: 10px 0;
+    --p-achieviements-month-load-wrapper-tablet: 8px 0;
+    --p-achieviements-load-by-week-btn: 0;
+    --p-achieviements-frequent-training-and-exercise-list: 12px;
+    --px-achieviements-frequent-training-and-exercise-list-tablet-l: 0;
+    --p-achieviements-exercise-statistics-list: var(--p-24) 0;
+    --p-achieviements-exercise-statistics-list-tablet-l: 0;
+    --p-achieviements-exercise-statistics-card: var(--p-24) 20px;
+    --p-achieviements-exercise-statistics-card-mobile-l: 7.5px var(--p-16);
 }

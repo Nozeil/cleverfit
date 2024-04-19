@@ -1,18 +1,18 @@
 .list {
     flex-wrap: wrap;
-    padding: 24px 0;
+    padding: var(--p-achieviements-exercise-statistics-list);
 }
 
 .card {
-    width: 156px;
-    padding: 24px 20px;
+    width: var(--w-achieviements-exercise-statistics-card);
+    padding: var(--p-achieviements-exercise-statistics-card);
     text-align: center;
     border: var(--border-1) solid var(--character-light-dividers);
     border-radius: var(--rounded-2);
 }
 
 .title:global(.ant-typography) {
-    margin: 0;
+    margin: var(--m-achieviements-exercise-statistics-title);
     white-space: nowrap;
 }
 
@@ -23,8 +23,8 @@
 
 @media screen and (max-width: 835px) {
     .list {
-        max-width: calc(156px * 2 + var(--gap-16));
-        padding: 0;
+        max-width: calc(var(--w-achieviements-exercise-statistics-card) * 2 + var(--gap-16));
+        padding: var(--p-achieviements-exercise-statistics-list-tablet-l);
     }
 
     .card {
@@ -36,6 +36,6 @@
 @media screen and (max-width: 575px) {
     .card {
         width: 100%;
-        padding: 7.5px 16px;
+        padding: var(--p-achieviements-exercise-statistics-card-mobile-l);
     }
 }

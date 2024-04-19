@@ -1,8 +1,9 @@
 import { memo, useMemo } from 'react';
-import { Pie, PieConfig } from '@ant-design/charts';
+import { Pie } from '@ant-design/charts';
 import { Flex } from '@components/flex/flex';
 import { Grid } from 'antd';
 
+import { createConfig } from './ring-chart.config';
 import type { RingChartProps } from './ring-chart.types';
 
 const { useBreakpoint } = Grid;
@@ -19,42 +20,11 @@ export const RingChart = memo(({ data }: RingChartProps) => {
         [data, lg],
     );
 
-    const configParams = lg
-        ? {
-              width: 520,
-              height: 334,
-              inset: 72,
-          }
-        : { width: 328, height: 211, inset: 12 };
-
-    const config: PieConfig = {
-        data: formatedData,
-        ...configParams,
-        innerRadius: 0.7,
-        angleField: 'percent',
-        colorField: 'name',
-        label: {
-            text: 'name',
-            position: 'outside',
-            connector: false,
-            hyphens: 'auto',
-            style: {
-                fontFamily: 'Inter, sans-serif',
-                fontSize: lg ? 14 : 12,
-                fill: '#262626',
-                fillOpacity: 1,
-            },
-        },
-        legend: false,
-        tooltip: false,
-        style: {
-            stroke: '#ffffff',
-        },
-    };
+    const config = createConfig(lg);
 
     return (
         <Flex justify='justifyCenter' align='alignCenter'>
-            <Pie {...config} />
+            <Pie data={formatedData} {...config} />
         </Flex>
     );
 });

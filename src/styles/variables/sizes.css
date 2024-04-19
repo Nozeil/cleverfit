@@ -115,4 +115,16 @@
     --mw-workouts-trainings-table-trainings-text-mobile: 114px;
     --w-workouts-trainings-table-sort-btn-mobile: 188px;
     --mh-workouts-exercises-card-exercises-wrapper: 130px;
+    --w-week-days-wrapper: 466px;
+    --w-week-days-label: 92px;
+    --mw-achieviements-most-common-exercises-text: 200px;
+    --w-achieviements-load-chart-canvas-tablet: 460px;
+    --mw-achieviements-load-block-text: 125px;
+    --mw-achieviements-load-by-week-wrapper: 166px;
+    --w-achieviements-load-by-week-btn: 170px;
+    --w-achieviements-load-by-week-label-tablet: 92px;
+    --w-achieviements-frequent-training-and-exercise-label: 188px;
+    --mw-achieviements-frequent-training-and-exercise-list-tablet-l: 320px;
+    --w-achieviements-frequent-training-and-exercise-label-tablet-l: 155px;
+    --w-achieviements-exercise-statistics-card: 156px;
 }

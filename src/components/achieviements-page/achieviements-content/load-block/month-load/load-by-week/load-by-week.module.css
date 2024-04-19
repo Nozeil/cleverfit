@@ -1,5 +1,5 @@
 .wrapper {
-    min-width: 166px;
+    min-width: var(--mw-achieviements-load-by-week-wrapper);
     width: fit-content;
 }
 
@@ -9,22 +9,30 @@
 }
 
 .btn:global(.ant-btn) {
-    width: 170px;
+    width: var(--w-achieviements-load-by-week-btn);
     height: fit-content;
-    padding: 0;
-    margin: 0;
+    padding: var(--p-achieviements-load-by-week-btn);
+    margin: var(--m-achieviements-load-by-week-btn);
+}
+
+.btn:global(
+        .ant-btn-text:not(.ant-upload-list-item-card-actions-btn):not([disabled]):not(
+                .ant-btn-icon-only
+            )
+    ):active {
+    background-color: inherit;
 }
 
 @media screen and (max-width: 767px) {
     .list {
-        margin-top: 16px;
+        margin-top: var(--mt-achieviements-load-by-week-list-tablet);
     }
 
     .listEmpty {
-      margin-top: 0;
-  }
+        margin-top: var(--mt-achieviements-load-by-week-list-empty-tablet);
+    }
 
     .label:global(.ant-typography) {
-        width: 92px;
+        width: var(--w-achieviements-load-by-week-label-tablet);
     }
 }

@@ -1,23 +1,22 @@
 .wrapper {
-    margin-top: 112px;
+    margin-top: var(--mt-achieviements-empty-wrapper);
 }
 
 .title:global(.ant-typography) {
-    margin: 0;
+    margin: var(--m-achieviements-empty-title);
     text-align: center;
 }
 
 @media screen and (max-width: 835px) {
     .wrapper {
-        margin-top: 138px;
-        padding: 0 40px;
+        margin-top: var(--mt-achieviements-empty-wrapper-laptop-l);
+        padding: var(--p-achieviements-empty-wrapper-tablet-l);
     }
 }
 
-
 @media screen and (max-width: 535px) {
-  .wrapper {
-      margin-top: 0;
-      padding: 0;
-  }
+    .wrapper {
+        margin-top: var(--mt-achieviements-empty-wrapper-mobile-l);
+        padding: var(--p-achieviements-empty-wrapper-mobile-l);
+    }
 }

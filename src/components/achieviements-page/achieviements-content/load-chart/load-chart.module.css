@@ -1,12 +1,12 @@
 .loadChartWrapper {
-    padding: 16px 0;
+    padding: var(--p-achieviements-load-chart-wrapper);
     border: var(--border-1) solid var(--character-light-dividers);
     border-radius: var(--rounded-2);
     overflow: hidden;
 }
 
 .chart {
-    margin: 0 auto;
+    margin: var(--m-achieviements-load-chart-chart);
 }
 
 .chartWeek {
@@ -14,33 +14,33 @@
 }
 
 .text:global(.ant-typography) {
-    margin: 0;
+    margin: var(--m-achieviements-load-chart-text);
     text-align: center;
 }
 
 @media screen and (max-width: 835px) {
     .loadChartWrapper {
-        margin-right: 10px;
+        margin-right: var(--mr-achieviements-load-chart-wrapper-tablet-l);
     }
 
     .text:global(.ant-typography) {
-        margin-left: 30px;
+        margin-left: var(--ml-achieviements-load-chart-text-tablet-l);
     }
 }
 
 @media screen and (max-width: 830px) and (min-width: 768px) {
     .chart canvas {
-        width: 460px !important;
+        width: var(--w-achieviements-load-chart-canvas-tablet) !important;
     }
 }
 
 @media screen and (max-width: 575px) {
     .loadChartWrapper {
-        padding: 10px 0;
-        margin: 0;
+        padding: var(--p-achieviements-load-chart-wrapper-mobile-l);
+        margin: var(--m-achieviements-load-chart-wrapper-mobile-l);
     }
 
     .text:global(.ant-typography) {
-        font-size: 9px;
+        font-size: var(--text-9);
     }
 }

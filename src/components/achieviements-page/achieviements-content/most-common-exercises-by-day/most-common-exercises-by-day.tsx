@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingsPerPeriodSelector } from '@redux/slices/achieviements/achieviements';
-import { TrainingPerPeriodItem } from '@redux/slices/achieviements/achieviements.types';
 import { capitalizeFirstLetter } from '@utils/utils';
 import { Typography } from 'antd';
 
@@ -10,6 +9,7 @@ import { ChartBlock } from '../chart-block/chart-block';
 import { WeekDays } from '../week-days/week-days';
 
 import { RingChart } from './ring-chart/ring-chart';
+import type { ExercisesMap } from './most-common-exercises-by-day.types';
 
 import styles from './most-common-exercises-by-day.module.css';
 
@@ -17,15 +17,7 @@ export const MostCommonExercisesByDay = () => {
     const trainingsPerPeriod = useAppSelector(trainingsPerPeriodSelector);
 
     const exercises = useMemo(() => {
-        const exercisesMap = trainingsPerPeriod.reduce<
-            Map<
-                number,
-                Pick<
-                    TrainingPerPeriodItem,
-                    'dm' | 'dmy' | 'dayOfTheWeek' | 'dayOfTheWeekReadable' | 'exerciseNames'
-                >
-            >
-        >((acc, curr) => {
+        const exercisesMap = trainingsPerPeriod.reduce<ExercisesMap>((acc, curr) => {
             const key = curr.dayOfTheWeek;
             const day = acc.get(key);
 

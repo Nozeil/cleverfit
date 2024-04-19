@@ -36,8 +36,6 @@ export const AchievementsContent = () => {
     const trainingsPerPeriod = useTrainingsPerPeriod();
     const dispatch = useAppDispatch();
 
-    console.log(trainingsPerPeriod)
-
     useEffect(() => {
         dispatch(setTrainingsPerPeriod(trainingsPerPeriod));
     }, [dispatch, trainingsPerPeriod]);

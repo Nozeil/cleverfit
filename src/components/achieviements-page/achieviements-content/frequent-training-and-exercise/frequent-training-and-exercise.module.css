@@ -1,11 +1,11 @@
 .list {
-    padding: 12px;
-    margin: 24px 0;
+    padding: var(--p-achieviements-frequent-training-and-exercise-list);
+    margin: var(--m-achieviements-frequent-training-and-exercise-list);
 }
 
 .label:global(.ant-typography) {
     flex-shrink: 0;
-    width: 188px;
+    width: var(--w-achieviements-frequent-training-and-exercise-label);
     white-space: pre-wrap;
     color: var(--character-light-secondary-45);
 }
@@ -17,13 +17,14 @@
 
 @media screen and (max-width: 835px) {
     .list {
-        max-width: 320px;
-        padding: 12px 0;
-        margin: 0;
+        max-width: var(--mw-achieviements-frequent-training-and-exercise-list-tablet-l);
+        padding-right: var(--px-achieviements-frequent-training-and-exercise-list-tablet-l);
+        padding-left: var(--px-achieviements-frequent-training-and-exercise-list-tablet-l);
+        margin: var(--m-achieviements-frequent-training-and-exercise-list-tablet-l);
     }
 
     .label:global(.ant-typography) {
-        width: 155px;
+        width: var(--w-achieviements-frequent-training-and-exercise-label-tablet-l);
     }
 
     .mostFrequentValue:global(.ant-typography) {

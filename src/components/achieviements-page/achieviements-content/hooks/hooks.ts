@@ -8,6 +8,8 @@ import moment from 'moment';
 
 import { createEmptyDay } from '../achieviements-content.utils';
 
+import type { TrainingsWithSummarizedExercises } from './hooks.types';
+
 const { MONTH } = ACHIEVEMENT_ACTIVE_KEYS;
 const week = 7;
 const month = 28;
@@ -98,18 +100,7 @@ export const useTrainingsPerPeriod = () => {
     const aggregatedTrainings = useMemo(
         () =>
             trainingsWithSummarizedExercises
-                .reduce<
-                    Array<{
-                        date: string;
-                        trainingNames: string[];
-                        summarizedExercises: {
-                            names: string[];
-                            load: number;
-                            approaches: number;
-                            replays: number;
-                        };
-                    }>
-                >((acc, curr) => {
+                .reduce<TrainingsWithSummarizedExercises>((acc, curr) => {
                     const trainingIndex = acc.findIndex(
                         (loadPerTraining) => loadPerTraining.date === curr.date,
                     );
