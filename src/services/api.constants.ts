@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://marathon-api.clevertec.ru/';
+export const BASE_URL = 'https://cleverfit-proxy.onrender.com/';
 export const AVATAR_BASE_URL = 'https://training-api.clevertec.ru';
 
 export const AUTH_ENDPOINTS = {
