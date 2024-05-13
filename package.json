@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "vite build --base=/Nozeil/",
+    "build": "vite build --base=/cleverfit/",
     "preview": "vite preview",
     "lint:css": "stylelint ./src/**/*.css",
     "lint:scripts": "eslint ./ ./src/ --ext .js,.jsx,.ts,.tsx",
